@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>código fuente on Programando en voz alta</title>
+    <link>/es/tags/c%C3%B3digo-fuente/</link>
+    <description>Recent content in código fuente on Programando en voz alta</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es</language>
+    <lastBuildDate>Thu, 10 Dec 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/es/tags/c%C3%B3digo-fuente/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>La elegancia de la programación</title>
+      <link>/es/post/programaci%C3%B3n-elegante/</link>
+      <pubDate>Thu, 10 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/programaci%C3%B3n-elegante/</guid>
+      <description>Si está pensando que este artículo versa sobre un sistema para vestir o ver mejor está totalmente equivocado, veremos elegancia, pero en este caso del código escrito en un lenguaje de programación. Hay quienes piensan que eso no es necesario, que el código es obvio independientemente de su estructura. Craso error, es muy, pero muy importante escribir código de una forma estructurada.
+Es verdad que existen herramientas formateadoras de códigos llamadas &amp;ldquo;Identadores&amp;rdquo; como DelForEx para Delphi que una vez escrito el código en la más absoluta oscuridad estructural posible y con apenas presionar una combinación de teclas es capaz de estructurarlo y quedar como un &amp;ldquo;pincel&amp;rdquo; (con opciones de personalizar todos los parámetros posibles); pero esta no es la cuestión, no se equivocó el que dijo que el hábito hace al monje.</description>
+    </item>
+    
+  </channel>
+</rss>

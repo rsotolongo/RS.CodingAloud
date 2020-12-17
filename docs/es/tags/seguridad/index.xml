@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>seguridad on Programando en voz alta</title>
+    <link>/es/tags/seguridad/</link>
+    <description>Recent content in seguridad on Programando en voz alta</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es</language>
+    <lastBuildDate>Wed, 02 Dec 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/es/tags/seguridad/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Validación en el cliente o en el servidor: ¿Llegó .NET? ¡Se acabaron las preocupaciones!</title>
+      <link>/es/post/validaci%C3%B3n-de-datos/</link>
+      <pubDate>Wed, 02 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/validaci%C3%B3n-de-datos/</guid>
+      <description>Desde los tiempos del inicio del protocolo HTTP (¿Quién iba a imaginar que, a solo 12 años, alguien se refiriera a eso con tal antigüedad?) y el ansiado carácter dinámico que poco a poco se fue haciendo más y más necesario en el mismo; la validación de los datos provenientes del cliente se hizo una necesidad mayor cada vez más.
+¿Cuántas veces introducimos código HTML en los campos que se nos pedían en un formulario?</description>
+    </item>
+    
+  </channel>
+</rss>

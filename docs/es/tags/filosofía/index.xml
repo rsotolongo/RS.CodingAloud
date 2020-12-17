@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>filosofía on Programando en voz alta</title>
+    <link>/es/tags/filosof%C3%ADa/</link>
+    <description>Recent content in filosofía on Programando en voz alta</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es</language>
+    <lastBuildDate>Wed, 16 Dec 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/es/tags/filosof%C3%ADa/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Fanatismos</title>
+      <link>/es/post/fanatismos/</link>
+      <pubDate>Wed, 16 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/fanatismos/</guid>
+      <description>Hay que ver que el ser humano, en su vano afán de querer tener siempre la razón, hace cosas increíbles. Una de ellas es aquella manía de empecinarse con algo (dígase objetos, conceptos, teorías, personas, etc.) que le hemos llamado fanatismo.
+¿Alguien podrá decir que no es fanático a nada? Creo que no, pues ¿quién no se obsesionó con su primer amor? Existen varios tipos de fanatismos, el que se profesa por los objetos materiales, la religión, los equipos deportivos, etc.</description>
+    </item>
+    
+  </channel>
+</rss>

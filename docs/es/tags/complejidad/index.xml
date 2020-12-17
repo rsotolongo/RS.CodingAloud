@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>complejidad on Programando en voz alta</title>
+    <link>/es/tags/complejidad/</link>
+    <description>Recent content in complejidad on Programando en voz alta</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es</language>
+    <lastBuildDate>Tue, 01 Dec 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/es/tags/complejidad/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Apuntes sobre la importancia de la Ingeniería de Software</title>
+      <link>/es/post/apuntes-ingenier%C3%ADa-software/</link>
+      <pubDate>Tue, 01 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/apuntes-ingenier%C3%ADa-software/</guid>
+      <description>Cuando comencé la planificación de la asignatura: &amp;ldquo;Programación IV&amp;rdquo; vi que entre los temas que había que tratar estaba la Ingeniería de Software. Las dudas enseguida comenzaron a darme vueltas en la cabeza del por qué insertar ese tema aquí si justo el próximo semestre recibirían la asignatura: &amp;ldquo;Ingeniería de Software I&amp;rdquo; que partía desde cero. Junto a esto me sugirieron que tratara la importancia de esta materia apoyándome en el libro: &amp;ldquo;Software Engineering Project Management&amp;rdquo; donde de manera muy somera inducen a pensar en ella.</description>
+    </item>
+    
+  </channel>
+</rss>
