@@ -6,15 +6,33 @@
     <description>Recent content in Tags on Programando en voz alta</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <lastBuildDate>Thu, 17 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 31 Dec 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/es/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Delphi</title>
+      <link>/es/tags/delphi/</link>
+      <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/es/tags/delphi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>XML</title>
+      <link>/es/tags/xml/</link>
+      <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/es/tags/xml/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>arquitectura</title>
       <link>/es/tags/arquitectura/</link>
-      <pubDate>Thu, 17 Dec 2020 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>/es/tags/arquitectura/</guid>
       <description></description>
@@ -23,9 +41,36 @@
     <item>
       <title>filosofía</title>
       <link>/es/tags/filosof%C3%ADa/</link>
-      <pubDate>Wed, 16 Dec 2020 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 25 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>/es/tags/filosof%C3%ADa/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Internet</title>
+      <link>/es/tags/internet/</link>
+      <pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/es/tags/internet/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ciencia</title>
+      <link>/es/tags/ciencia/</link>
+      <pubDate>Wed, 23 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/es/tags/ciencia/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>evento</title>
+      <link>/es/tags/evento/</link>
+      <pubDate>Wed, 23 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/es/tags/evento/</guid>
       <description></description>
     </item>
     
@@ -62,15 +107,6 @@
       <pubDate>Fri, 11 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>/es/tags/educaci%C3%B3n/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Internet</title>
-      <link>/es/tags/internet/</link>
-      <pubDate>Fri, 11 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/es/tags/internet/</guid>
       <description></description>
     </item>
     

@@ -6,10 +6,108 @@
     <description>Recent content in Posts on Programando en voz alta</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <lastBuildDate>Thu, 17 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 31 Dec 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/es/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Recuperar XML desde Delphi</title>
+      <link>/es/post/recuperaci%C3%B3n-de-xml/</link>
+      <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/recuperaci%C3%B3n-de-xml/</guid>
+      <description>En un artículo anterior vimos una solución a la generación de XML (Lenguaje de Marcas Extendido, siglas en inglés) desde el ambiente de desarrollo Borland Delphi; en este veremos como podemos capturar y utilizar dicho XML para otros usos.
+Para ello nos remitiremos a la misma agencia noticiosa deportiva en la cual nos basamos anteriormente, donde se pretendía cubrir las diferentes competiciones de un evento enviando las noticias y resultados a través de una aplicación diseñada por sus programadores.</description>
+    </item>
+    
+    <item>
+      <title>Generar XML desde Delphi</title>
+      <link>/es/post/generaci%C3%B3n-de-xml/</link>
+      <pubDate>Wed, 30 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/generaci%C3%B3n-de-xml/</guid>
+      <description>En números anteriores de esta revista salió un artículo acerca de cómo generar XML (Lenguaje de Marcas Extendido –siglas en inglés) proveniente de una forma de HTML (Lenguaje de Marcado de Hipertexto –siglas en inglés) desde ASP (Active Server Pages) con la ayuda del objeto del sistema de ficheros (FileSystemObject). En este artículo veremos cómo hacerlo desde Delphi aprovechando algunas de las incontables ventajas de este ambiente de desarrollo.
+Recordemos primeramente que XML es un subconjunto de SGML (Lenguaje de Marcado Generalizado Estándar) y más que un simple lenguaje de marcas como su nombre sugiere es un meta-lenguaje que nos permite definir lenguajes de marcado adecuados a usos determinados y que está llamado a ser el nuevo ASCII debido a su fácil confección, transmisión y comprensión.</description>
+    </item>
+    
+    <item>
+      <title>Algunas consideraciones de Implementación</title>
+      <link>/es/post/consideraciones-de-implementaci%C3%B3n/</link>
+      <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/consideraciones-de-implementaci%C3%B3n/</guid>
+      <description>Creemos que es necesario comenzar este artículo sugiriendo la introducción de tres técnicas que, si bien no son nuevas, sí constituyen buenas prácticas dentro del desarrollo organizado de software.
+El acoplamiento de módulos, la compilación, la producción de ejecutables, la generación de reportes y la creación y restauración de copias de seguridad en la producción de sistemas informáticos constituyen tareas perfectamente automatizables. Las ventajas que puede traer el uso de esta técnica están estrechamente relacionadas con el tiempo total de desarrollo de los sistemas informáticos.</description>
+    </item>
+    
+    <item>
+      <title>Algunas consideraciones de Diseño</title>
+      <link>/es/post/consideraciones-de-dise%C3%B1o/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/consideraciones-de-dise%C3%B1o/</guid>
+      <description>Dentro de las etapas en que se divide el ciclo de vida del desarrollo de software, el Diseño es considerada como la más importante. Se ha calculado que puede llegar a ocupar hasta un treinta y cinco por ciento del total de tiempo. Es por ello que abordaremos el tema para dar algunas consideraciones generales que siempre son válidas a tener en cuenta, sea cual sea el tipo de aplicación a desarrollar.</description>
+    </item>
+    
+    <item>
+      <title>Gobierno electrónico</title>
+      <link>/es/post/gobierno-electr%C3%B3nico/</link>
+      <pubDate>Fri, 25 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/gobierno-electr%C3%B3nico/</guid>
+      <description>Con la decisión de migrar todos sus sistemas y aplicaciones a Software Libre del gobierno alemán, hace ya uno tres años, estalló este fenómeno entre los diferentes países, llegando incluso a instancias particulares de ellos. Ejemplo de ello es España donde ya algunas de sus autonomías han tomado la misma decisión, otras no. Lo cierto es que hay protestas por todo el mundo tanto de detractores como de los que piensan igual.</description>
+    </item>
+    
+    <item>
+      <title>¿Se puede confiar ciegamente en Internet?</title>
+      <link>/es/post/confianza-en-internet/</link>
+      <pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/confianza-en-internet/</guid>
+      <description>Internet se ha convertido poco a poco en la herramienta más útil del quehacer diario de las personas para un sin número de tareas que van desde la investigación científica hasta las compras y el ocio. Es por ello que constituye una fuente invaluable de conocimientos, pero ojo, no todo lo que brilla es oro.
+En varias ocasiones he leído como se descubren cosas insólitas que suceden en Internet, como la publicación de cómo confeccionar artefactos explosivos o de cómo se ponen de acuerdo miembros de sectas para suicidarse masivamente, etc.</description>
+    </item>
+    
+    <item>
+      <title>ISFUROS 2006</title>
+      <link>/es/post/isfuros-2006/</link>
+      <pubDate>Wed, 23 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/isfuros-2006/</guid>
+      <description>He estado tan ocupado en tareas aledañas que poco a poco fue pasando el tiempo y ni cuenta me di de que llevaba meses sin escribir nada, luego caí en un vacío profesional que no me incitaba a redactar nada hasta hoy mismo que luego de participar en el ISFUROS me llamé yo mismo a reflexionar y no dejar pasar inadvertido el evento.
+El International International Symposium on Fuzzy and Rough Sets (ISFUROS) fue un evento que se desarrolló en la UCLV del 4 al 6 de Diciembre del 2006.</description>
+    </item>
+    
+    <item>
+      <title>Poniéndome al día</title>
+      <link>/es/post/poni%C3%A9ndonos-al-d%C3%ADa/</link>
+      <pubDate>Tue, 22 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/poni%C3%A9ndonos-al-d%C3%ADa/</guid>
+      <description>No voy a ponerme a relatar las vicisitudes que llevaron a que prácticamente no tenga Internet a mi disposición, porque sería aburrirlos en vano y al final lo más seguro es que no entenderían y todo quedará igual, así que para qué perder el tiempo entonces; aprovechémoslo en otras cuestiones más importantes.
+Quise hacer esta breve introducción pues lo que quiero comentarles hoy se relaciona con este hecho precisamente. El pasado domingo día 3 de diciembre, vine a la Universidad temprano pues estaba de guardia todo el día y aprovecharía Internet para ponerme al día y confeccionar una serie de documentos atrasados que tenía.</description>
+    </item>
+    
+    <item>
+      <title>Amaos los unos a los otros</title>
+      <link>/es/post/amaos-todos/</link>
+      <pubDate>Mon, 21 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/amaos-todos/</guid>
+      <description>Leyendo el título de este artículo pudieran pensar que se enfrentarán a un debate relacionado con la teología, pero no será así. Creo haber escrito antes algo sobre las diferencias entre profesionales de la computación y la semejanza que tienen sus discusiones con las que sostienen los creyentes con los no creyentes en Dios.
+No repetiré lo que ya dije una vez, esta vez me desenvolveré en la rama de mi profesión solamente.</description>
+    </item>
+    
+    <item>
+      <title>La delgada línea entre reescribir y reutilizar código</title>
+      <link>/es/post/reescribir-%C3%B3-reusar/</link>
+      <pubDate>Fri, 18 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/reescribir-%C3%B3-reusar/</guid>
+      <description>Hay veces que no nos damos cuenta de la existencia de delgadas líneas que existen entre cosas. Por otra parte, no sé por qué tenemos esa desconfianza en lo que otro hace. La reticencia al cambio es algo siempre presente en toda persona y es un mal muy difícil de arraigar, hay que ser un experto para lograr que se entiendan los cambios.
+Serán por estas razones por las que nosotros los profesionales de la computación cada vez que tenemos que desarrollar una aplicación pensamos seriamente codificarla desde cero, incluso a veces lo hacemos.</description>
+    </item>
     
     <item>
       <title>El futuro del Ensamblador</title>
@@ -108,35 +206,6 @@ Precisamente fue Bill Gates el que en un comunicado a la comunidad de usuarios y
       
       <guid>/es/post/profesionales-de-la-computaci%C3%B3n/</guid>
       <description>No les miento si les cuento que durante muchos años viví engañado. Desde antes de entrar a estudiar la carrera de &amp;ldquo;Licenciatura en Ciencia de la Computación&amp;rdquo; (Cibernética, como todos la conocen) en la Universidad Central &amp;ldquo;Marta Abreu&amp;rdquo; de Las Villas, pensaba que los cibernéticos eran los que &amp;ldquo;diseñaban&amp;rdquo; los productos informáticos debido a sus conocimientos más profundos en materias de computación y que luego los informáticos se encargaban de &amp;ldquo;implementarlos&amp;rdquo;.</description>
-    </item>
-    
-    <item>
-      <title>¿Cibernéticos como Ingenieros?</title>
-      <link>/es/post/cibern%C3%A9ticos-como-ingenieros/</link>
-      <pubDate>Thu, 03 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/es/post/cibern%C3%A9ticos-como-ingenieros/</guid>
-      <description>La pregunta que da título a esta redacción está muy acorde a las carreras universitarias que se cursan un Cuba: &amp;ldquo;Ciencia de la Computación&amp;rdquo; (más conocida por &amp;ldquo;Cibernética&amp;rdquo;) e &amp;ldquo;Informática&amp;rdquo;. La primera es una licenciatura mientras que la segunda es una ingeniería.
-Si bien la Ingeniería Informática se ve mucho más ligada a la producción de software de gestión empresarial, no es menos cierto que existe una rama de la ingeniería que la computación no podía dejar de hacer uso de ella: la Ingeniería Inversa.</description>
-    </item>
-    
-    <item>
-      <title>Validación en el cliente o en el servidor: ¿Llegó .NET? ¡Se acabaron las preocupaciones!</title>
-      <link>/es/post/validaci%C3%B3n-de-datos/</link>
-      <pubDate>Wed, 02 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/es/post/validaci%C3%B3n-de-datos/</guid>
-      <description>Desde los tiempos del inicio del protocolo HTTP (¿Quién iba a imaginar que, a solo 12 años, alguien se refiriera a eso con tal antigüedad?) y el ansiado carácter dinámico que poco a poco se fue haciendo más y más necesario en el mismo; la validación de los datos provenientes del cliente se hizo una necesidad mayor cada vez más.
-¿Cuántas veces introducimos código HTML en los campos que se nos pedían en un formulario?</description>
-    </item>
-    
-    <item>
-      <title>Apuntes sobre la importancia de la Ingeniería de Software</title>
-      <link>/es/post/apuntes-ingenier%C3%ADa-software/</link>
-      <pubDate>Tue, 01 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/es/post/apuntes-ingenier%C3%ADa-software/</guid>
-      <description>Cuando comencé la planificación de la asignatura: &amp;ldquo;Programación IV&amp;rdquo; vi que entre los temas que había que tratar estaba la Ingeniería de Software. Las dudas enseguida comenzaron a darme vueltas en la cabeza del por qué insertar ese tema aquí si justo el próximo semestre recibirían la asignatura: &amp;ldquo;Ingeniería de Software I&amp;rdquo; que partía desde cero. Junto a esto me sugirieron que tratara la importancia de esta materia apoyándome en el libro: &amp;ldquo;Software Engineering Project Management&amp;rdquo; donde de manera muy somera inducen a pensar en ella.</description>
     </item>
     
   </channel>

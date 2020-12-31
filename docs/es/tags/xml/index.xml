@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>XML on Programando en voz alta</title>
+    <link>/es/tags/xml/</link>
+    <description>Recent content in XML on Programando en voz alta</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es</language>
+    <lastBuildDate>Thu, 31 Dec 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/es/tags/xml/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Recuperar XML desde Delphi</title>
+      <link>/es/post/recuperaci%C3%B3n-de-xml/</link>
+      <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/recuperaci%C3%B3n-de-xml/</guid>
+      <description>En un artículo anterior vimos una solución a la generación de XML (Lenguaje de Marcas Extendido, siglas en inglés) desde el ambiente de desarrollo Borland Delphi; en este veremos como podemos capturar y utilizar dicho XML para otros usos.
+Para ello nos remitiremos a la misma agencia noticiosa deportiva en la cual nos basamos anteriormente, donde se pretendía cubrir las diferentes competiciones de un evento enviando las noticias y resultados a través de una aplicación diseñada por sus programadores.</description>
+    </item>
+    
+    <item>
+      <title>Generar XML desde Delphi</title>
+      <link>/es/post/generaci%C3%B3n-de-xml/</link>
+      <pubDate>Wed, 30 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/generaci%C3%B3n-de-xml/</guid>
+      <description>En números anteriores de esta revista salió un artículo acerca de cómo generar XML (Lenguaje de Marcas Extendido –siglas en inglés) proveniente de una forma de HTML (Lenguaje de Marcado de Hipertexto –siglas en inglés) desde ASP (Active Server Pages) con la ayuda del objeto del sistema de ficheros (FileSystemObject). En este artículo veremos cómo hacerlo desde Delphi aprovechando algunas de las incontables ventajas de este ambiente de desarrollo.
+Recordemos primeramente que XML es un subconjunto de SGML (Lenguaje de Marcado Generalizado Estándar) y más que un simple lenguaje de marcas como su nombre sugiere es un meta-lenguaje que nos permite definir lenguajes de marcado adecuados a usos determinados y que está llamado a ser el nuevo ASCII debido a su fácil confección, transmisión y comprensión.</description>
+    </item>
+    
+  </channel>
+</rss>

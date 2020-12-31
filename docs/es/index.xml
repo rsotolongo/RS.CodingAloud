@@ -6,10 +6,1052 @@
     <description>Recent content on Programando en voz alta</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <lastBuildDate>Thu, 17 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 31 Dec 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/es/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Recuperar XML desde Delphi</title>
+      <link>/es/post/recuperaci%C3%B3n-de-xml/</link>
+      <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/recuperaci%C3%B3n-de-xml/</guid>
+      
+        <description>&lt;p&gt;En un artículo anterior vimos una solución a la generación de XML (Lenguaje de Marcas Extendido, siglas en inglés) desde el ambiente de desarrollo Borland Delphi; en este veremos como podemos capturar y utilizar dicho XML para otros usos.&lt;/p&gt;
+&lt;p&gt;Para ello nos remitiremos a la misma agencia noticiosa deportiva en la cual nos basamos anteriormente, donde se pretendía cubrir las diferentes competiciones de un evento enviando las noticias y resultados a través de una aplicación diseñada por sus programadores. Si bien habíamos enfocado el problema desde el punto de vista de los reporteros (en este caso los clientes), ahora lo haremos desde el punto de vista servidor.&lt;/p&gt;
+&lt;p&gt;Los programadores de dicha agencia decidieron que una vez enviadas las noticias y/o resultados (correos) a la agencia, tendría que haber una aplicación que se encargara de procesarlos para mostrar los datos que de ellos provenían en su sitio web. Dicha aplicación no fue más que un servicio de Windows (o daemon en Linux).&lt;/p&gt;
+&lt;p&gt;Dicho servicio se encargaba cada un tiempo determinado de revisar todos los correos que habían llegado a una cuenta específica creada al efecto. Una vez obtenidos los correos eran procesados uno a uno para extraerle la información útil y guardarla primeramente en un fichero independiente y luego en la base de datos de la cual se nutre el sitio web. Para ello se confeccionó un componente ActiveX utilizando la tecnología Windows Script Component que brindaba entre sus métodos las facilidades para las inserciones pertinentes.&lt;/p&gt;
+&lt;p&gt;Analicemos entonces el código fuente de este componente script (safedata.wsc):&lt;/p&gt;
+&lt;p&gt;Primeramente se da la descripción general del componente: comentarios, descripción, versión, progid, etc.; luego se describen los métodos con sus respectivos parámetros que el mismo exporta: GetDataID, ReplaceDataID, CleanData y ProccessData. Por último se expone la implementación de estos métodos en el lenguaje especificado (en este caso Java Script).&lt;/p&gt;
+&lt;p&gt;Como se puede observar en la figura 1 tanto las etapas, los centros y atletas participantes, como los deportes llegan al servicio con sus nombres y no con sus respectivos identificadores, por lo que antes de tomar los datos para insertarlos en la base de datos, deben ser transformados; esto se logra a través de la llamada al método CleanData pasándole como parámetros el nombre del fichero XML con los datos y el DSN (Nombre de la Fuente de Datos, siglas en inglés).&lt;/p&gt;
+&lt;p&gt;Una vez acomodados los datos no falta más que llamar al método ProccessData pasándole el nombre del fichero XML de los datos, el del XSL (Lenguaje de Estilos Extendidos, siglas en inglés) que es el que se encargará de generar las consultas de inserción en la base de datos que referencia el DSN como tercer parámetro. Con esto no hace más que abrir el fichero XML, transformarlo con el XLS y luego ir iterando y ejecutando cada una de las consultas generadas por dicha transformación haciendo uso del XML DOM (Modelo de Objetos del Documento, siglas en inglés).&lt;/p&gt;
+&lt;p&gt;Entonces el código que haría falta a la hora de procesar cada correo sería:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;procedure TService1.ProcessMessage;
+
+  var
+    Safe : OleVariant;
+    …
+
+  begin
+    …
+    Safe := CreateOleObject(&amp;#39;redway.safedata&amp;#39;);
+    Safe.CleanData(&amp;#39;DSN=EventoX&amp;#39;, &amp;#39;informaciones.xml&amp;#39;);
+    Safe.ProccessData(&amp;#39;informaciones.xml&amp;#39;, &amp;#39;informaciones.xsl&amp;#39;, &amp;#39;DSN=EventoX&amp;#39;);
+    …
+  end;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Por supuesto que el cuerpo del correo que se está analizando debió ser salvado a priori en un fichero externo llamado “informaciones.xml” y debe existir un DSN de sistema llamado “EventoX” que referencie la base de datos del sitio web. Ver algunas de las relaciones de la base de datos en la figura 4&lt;/p&gt;
+&lt;p&gt;Solo resta aclarar que debe existir un fichero llamado “informaciones.xsl” que contenga las transformaciones a los datos (ver en la figura 2). Se tienen apenas dos transformaciones: una para las noticias y otra para el deporte baloncesto, se deberán tener tantas como de deportes se quiera brindar datos. Si a los datos expresados en el XML de la figura 1 los hubiésemos transformado con el XSL de la figura 2 hubiésemos tenido como resultado el XML de la figura 3.&lt;/p&gt;
+&lt;p&gt;No es objetivo de este artículo el cómo fueron trabajados los correos (para lo cual se utilizó también los componentes Indy) ni las transformaciones de los datos, ni la exhaustiva seguridad que debe tener un sistema como el tomado de referencia. Para concluir le informamos que el ejemplo expuesto aquí se utilizó como parte también del sistema noticioso de la V Universiada Nacional celebrada en las provincias Villa Clara y Sancti Spiritus en abril del 2001 con resultados muy favorables.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;ISO-8859-1&amp;#34;?&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;informaciones&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;baloncesto&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;dia&amp;gt;&lt;/span&gt;21&lt;span class=&#34;nt&#34;&gt;&amp;lt;/dia&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;sexo&amp;gt;&lt;/span&gt;M&lt;span class=&#34;nt&#34;&gt;&amp;lt;/sexo&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;etapa&amp;gt;&lt;/span&gt;Clasificatoria&lt;span class=&#34;nt&#34;&gt;&amp;lt;/etapa&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;equipos&amp;gt;&lt;/span&gt;
+      &lt;span class=&#34;nt&#34;&gt;&amp;lt;equipo&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;centro&amp;gt;&lt;/span&gt;UCLV&lt;span class=&#34;nt&#34;&gt;&amp;lt;/centro&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;puntuacion&amp;gt;&lt;/span&gt;85&lt;span class=&#34;nt&#34;&gt;&amp;lt;/puntuacion&amp;gt;&lt;/span&gt;
+      &lt;span class=&#34;nt&#34;&gt;&amp;lt;/equipo&amp;gt;&lt;/span&gt;
+      &lt;span class=&#34;nt&#34;&gt;&amp;lt;equipo&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;centro&amp;gt;&lt;/span&gt;UHO&lt;span class=&#34;nt&#34;&gt;&amp;lt;/centro&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;puntuacion&amp;gt;&lt;/span&gt;76&lt;span class=&#34;nt&#34;&gt;&amp;lt;/puntuacion&amp;gt;&lt;/span&gt;
+      &lt;span class=&#34;nt&#34;&gt;&amp;lt;/equipo&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/equipos&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;lanotador&amp;gt;&lt;/span&gt;Orlando Abreu Rojas&lt;span class=&#34;nt&#34;&gt;&amp;lt;/lanotador&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;ldefensivo&amp;gt;&lt;/span&gt;Michael Hernández Martínez&lt;span class=&#34;nt&#34;&gt;&amp;lt;/ldefensivo&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/baloncesto&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;noticia&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;dia&amp;gt;&lt;/span&gt;25&lt;span class=&#34;nt&#34;&gt;&amp;lt;/dia&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;deporte&amp;gt;&lt;/span&gt;Todos&lt;span class=&#34;nt&#34;&gt;&amp;lt;/deporte&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;titular&amp;gt;&lt;/span&gt;Adiós, adiós&lt;span class=&#34;nt&#34;&gt;&amp;lt;/titular&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;cuerpo&amp;gt;&lt;/span&gt;
+      Hoy se cierran las puertas luego de varios días de intensas y emocionantes jornadas. Los
+      resultados preliminares permiten concluir en que ha sido un exitoso evento caracterizado
+      por la excelente organización, la disciplina, el alto espíritu deportivo y la lucha por
+      defender dignamente el nombre y la bandera de cada centro participante.
+      Si se ha cumplido previsto, ello ha sido posible por la decisiva contribución de los
+      participantes, en particular de los atletas...
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/cuerpo&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;resumen&amp;gt;&lt;/span&gt;
+      Llega el final de esta competición y con él las notas de despedida...
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/resumen&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/noticia&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/informaciones&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Figura 1: Ejemplo de XML generado.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;xsl:stylesheet&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;xmlns:xsl=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;http://www.w3.org/TR/WD-xsl&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;xsl:template&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;match=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;/&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;sqls&amp;gt;&lt;/span&gt;
+      &lt;span class=&#34;nt&#34;&gt;&amp;lt;xsl:apply-templates&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;select=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;informaciones/baloncesto&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+      &lt;span class=&#34;nt&#34;&gt;&amp;lt;xsl:apply-templates&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;select=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;informaciones/noticia&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/sqls&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/xsl:template&amp;gt;&lt;/span&gt;  
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;xsl:template&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;match=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;baloncesto&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;sql&amp;gt;&lt;/span&gt;
+      INSERT INTO tbBaloncesto VALUES (
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;xsl:value-of&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;select=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;dia&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;,
+        &amp;#39;&lt;span class=&#34;nt&#34;&gt;&amp;lt;xsl:value-of&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;select=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;sexo&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;&amp;#39;,
+        &amp;#39;&lt;span class=&#34;nt&#34;&gt;&amp;lt;xsl:value-of&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;select=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;etapa&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;&amp;#39;,
+        &amp;#39;&lt;span class=&#34;nt&#34;&gt;&amp;lt;xsl:value-of&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;select=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;equipos/equipo[0]/centro&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;&amp;#39;,
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;xsl:value-of&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;select=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;equipos/equipo[0]/puntuacion&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;,
+        &amp;#39;&lt;span class=&#34;nt&#34;&gt;&amp;lt;xsl:value-of&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;select=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;equipos/equipo[1]/centro&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;&amp;#39;,
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;xsl:value-of&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;select=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;equipos/equipo[1]/puntuacion&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;,
+        &amp;#39;&lt;span class=&#34;nt&#34;&gt;&amp;lt;xsl:value-of&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;select=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;lanotador&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;&amp;#39;,
+        &amp;#39;&lt;span class=&#34;nt&#34;&gt;&amp;lt;xsl:value-of&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;select=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;ldefensivo&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;&amp;#39;
+      )
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/sql&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;br/&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;br/&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/xsl:template&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;xsl:template&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;match=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;noticia&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;sql&amp;gt;&lt;/span&gt;
+      INSERT INTO tbNoticias VALUES (
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;xsl:value-of&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;select=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;dia&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;,
+        &amp;#39;&lt;span class=&#34;nt&#34;&gt;&amp;lt;xsl:value-of&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;select=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;deporte&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;&amp;#39;,
+        &amp;#39;&lt;span class=&#34;nt&#34;&gt;&amp;lt;xsl:value-of&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;select=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;titular&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;&amp;#39;,
+        &amp;#39;&lt;span class=&#34;nt&#34;&gt;&amp;lt;xsl:value-of&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;select=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;cuerpo&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;&amp;#39;,
+        &amp;#39;&lt;span class=&#34;nt&#34;&gt;&amp;lt;xsl:value-of&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;select=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;resumen&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;&amp;#39;
+      )
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/sql&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;br/&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;br/&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/xsl:template&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/xsl:stylesheet&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Figura 2: Transfomaciones a los datos (informaciones.xsl).&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;sqls&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;sql&amp;gt;&lt;/span&gt;
+    INSERT INTO tbBaloncesto VALUES (21, &amp;#39;M&amp;#39;, &amp;#39;Clasificatoria&amp;#39;, &amp;#39;UCLV&amp;#39;, 85, &amp;#39;UHO&amp;#39;, 76, &amp;#39;Orlando Abreu Rojas&amp;#39;, &amp;#39;Michael Hernández Martínez&amp;#39;)
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/sql&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;sql&amp;gt;&lt;/span&gt;
+    INSERT INTO tbNoticias VALUES (25, &amp;#39;Todos&amp;#39;, &amp;#39;Adiós, adiós&amp;#39;, &amp;#39;Hoy se cierran las puertas luego de varios días de intensas y emocionantes jornadas...&amp;#39;)
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/sql&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/sqls&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Figura 3: Resultado de las transformaciones a los datos.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/xml-recovery/04.jpg&#34; alt=&#34;Relaciones de las tablas en la base de datos&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 4: Algunas relaciones de las tablas en la base de datos.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;  1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 39
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 40
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 41
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 42
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 43
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 44
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 45
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 46
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 47
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 48
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 49
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 50
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 51
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 52
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 53
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 54
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 55
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 56
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 57
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 58
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 59
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 60
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 61
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 62
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 63
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 64
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 65
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 66
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 67
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 68
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 69
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 70
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 71
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 72
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 73
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 74
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 75
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 76
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 77
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 78
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 79
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 80
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 81
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 82
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 83
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 84
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 85
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 86
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 87
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 88
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 89
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 90
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 91
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 92
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 93
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 94
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 95
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 96
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 97
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 98
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 99
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;100
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;101
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;102
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;103
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;104
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;105
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;106
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;107
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;108
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&amp;lt;?xml version=&amp;#34;1.0&amp;#34;?&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;package&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;cp&#34;&gt;&amp;lt;?component error=&amp;#34;true&amp;#34; debug=&amp;#34;true&amp;#34;?&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;comment&amp;gt;&lt;/span&gt;
+    Componente auxiliar para la transferencia de datos en XML a una base de datos
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/comment&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;component&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;safedata&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;registration&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;progid=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;redway.safedata&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;description=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Transfiere los datos en XML a una base de datos&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;version=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;1.0&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;public&amp;gt;&lt;/span&gt;
+      &lt;span class=&#34;nt&#34;&gt;&amp;lt;method&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;GetDataID&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;parameter&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;DSN&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;parameter&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Table&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;parameter&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;IndexField&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;parameter&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;ValueField&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;parameter&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Value&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+      &lt;span class=&#34;nt&#34;&gt;&amp;lt;/method&amp;gt;&lt;/span&gt;
+      &lt;span class=&#34;nt&#34;&gt;&amp;lt;method&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;ReplaceDataID&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;parameter&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;DSN&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;parameter&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Table&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;parameter&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;IndexField&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;parameter&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;ValueField&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;parameter&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Pattern&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;parameter&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;XMLDOM&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+      &lt;span class=&#34;nt&#34;&gt;&amp;lt;/method&amp;gt;&lt;/span&gt;
+      &lt;span class=&#34;nt&#34;&gt;&amp;lt;method&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;CleanData&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;parameter&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;XML&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;parameter&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;DSN&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+      &lt;span class=&#34;nt&#34;&gt;&amp;lt;/method&amp;gt;&lt;/span&gt;
+      &lt;span class=&#34;nt&#34;&gt;&amp;lt;method&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;ProccessData&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;parameter&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;XML&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;parameter&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;XSL&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;lt;parameter&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;DSN&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+      &lt;span class=&#34;nt&#34;&gt;&amp;lt;/method&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/public&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;script&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;language=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;JScript&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&#34;cp&#34;&gt;&amp;lt;![CDATA[
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;        function GetDataID(DSN, Table, IndexField, ValueField, Value)
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;          {
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;            var RecordSet = new ActiveXObject(&amp;#34;ADODB.Recordset&amp;#34;);
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;            RecordSet.CursorType = 3;
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;            RecordSet.LockType = 3;
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;            var result = -1;
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;            var SQL = &amp;#34;SELECT &amp;#34; + IndexField + &amp;#34; FROM &amp;#34; + Table + &amp;#34;WHERE (&amp;#34;+ValueField+&amp;#34;=&amp;#39;&amp;#34;+Value + &amp;#34;&amp;#39;)&amp;#34;;
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;            RecordSet.Open(SQL, DSN);
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;            if(RecordSet.EoF == false)
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;                result = RecordSet.Fields.Item(0).Value
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;            RecordSet.Close();
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;            RecordSet = null;
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;            return result;
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;          }
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;        function ReplaceDataID(DSN, Table, IndexField, ValueField, Pattern, XMLDOM)
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;          {
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;            NodeList = XMLDOM.getElementsByTagName(Pattern);
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;            for(i = 0; i &amp;lt; NodeList.length; i++)
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;              {
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;                ID = GetDataID(DSN, Table, IndexField, ValueField, NodeList.item(i).text);
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;                if(ID != -1)
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;                    NodeList.item(i).text = ID
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;                  else
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;                    return(-1);
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;              }
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;            return(0);
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;          }
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;        function CleanData(XML, DSN)
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;          {
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;            var XMLDOM = new ActiveXObject(&amp;#34;Microsoft.XMLDOM&amp;#34;);
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;            XMLDOM.async = false;
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;            XMLDOM.load(XML);
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;            if(
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;               (ReplaceDataID(DSN, &amp;#34;tbEtapas&amp;#34;, &amp;#34;ID&amp;#34;, &amp;#34;descripcion&amp;#34;, &amp;#34;etapa&amp;#34;, XMLDOM) == -1) ||
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;               (ReplaceDataID(DSN, &amp;#34;tbEquipos&amp;#34;, &amp;#34;ID&amp;#34;, &amp;#34;abreviatura&amp;#34;, &amp;#34;centro&amp;#34;, XMLDOM) == -1) ||
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;               (ReplaceDataID(DSN, &amp;#34;tbAtletas&amp;#34;, &amp;#34;ID&amp;#34;, &amp;#34;nombre&amp;#34;, &amp;#34;lanotador&amp;#34;, XMLDOM) == -1) ||
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;               (ReplaceDataID(DSN, &amp;#34;tbAtletas&amp;#34;, &amp;#34;ID&amp;#34;, &amp;#34;nombre&amp;#34;, &amp;#34;ldefensivo&amp;#34;, XMLDOM) == -1) ||
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;               (ReplaceDataID(DSN, &amp;#34;tbDeportes&amp;#34;, &amp;#34;ID&amp;#34;, &amp;#34;nombre&amp;#34;, &amp;#34;deporte&amp;#34;, XMLDOM) == -1)
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;              )
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;                return(-1)
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;              else
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;              {
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;                XMLDOM.save(XML);
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;                return(0);
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;              }
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;          }
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;        function ProccessData(XML, XSL, DSN)
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;          {
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;            var XMLDOM = new ActiveXObject(&amp;#34;Microsoft.XMLDOM&amp;#34;);
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;            XMLDOM.async = false;
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;            XMLDOM.load(XML);
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;            var XSLDOM = new ActiveXObject(&amp;#34;Microsoft.XMLDOM&amp;#34;);
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;            XSLDOM.async = false;
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;            XSLDOM.load(XSL);
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;            var RESDOM = new ActiveXObject(&amp;#34;Microsoft.XMLDOM&amp;#34;);
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;            RESDOM.async = false;
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;            XMLDOM.transformNodeToObject(XSLDOM, RESDOM);
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;            var Connection = new ActiveXObject(&amp;#34;ADODB.Connection&amp;#34;);
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;            Connection.Open(DSN);
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;            var SQLS = RESDOM.getElementsByTagName(&amp;#34;sql&amp;#34;);
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;            for(i = 0; i &amp;lt; SQLS.length; i++)
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;              Connection.Execute(SQLS.item(i).text);
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;            Connection.Close();
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;            Connection = null;
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;            RESDOM = null;
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;            XSLDOM = null;
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;            XMLDOM = null;
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;          }
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;      ]]&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/component&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/package&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Listado 1: Código fuente del componente script (safedata.wsc).&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Generar XML desde Delphi</title>
+      <link>/es/post/generaci%C3%B3n-de-xml/</link>
+      <pubDate>Wed, 30 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/generaci%C3%B3n-de-xml/</guid>
+      
+        <description>&lt;p&gt;En números anteriores de esta revista salió un artículo acerca de cómo generar XML (Lenguaje de Marcas Extendido –siglas en inglés) proveniente de una forma de HTML (Lenguaje de Marcado de Hipertexto –siglas en inglés) desde ASP (Active Server Pages) con la ayuda del objeto del sistema de ficheros (FileSystemObject). En este artículo veremos cómo hacerlo desde Delphi aprovechando algunas de las incontables ventajas de este ambiente de desarrollo.&lt;/p&gt;
+&lt;p&gt;Recordemos primeramente que XML es un subconjunto de SGML (Lenguaje de Marcado Generalizado Estándar) y más que un simple lenguaje de marcas como su nombre sugiere es un meta-lenguaje que nos permite definir lenguajes de marcado adecuados a usos determinados y que está llamado a ser el nuevo ASCII debido a su fácil confección, transmisión y comprensión.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;ISO-8859-1&amp;#34;?&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;baloncesto&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;dia&amp;gt;&lt;/span&gt;21&lt;span class=&#34;nt&#34;&gt;&amp;lt;/dia&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;sexo&amp;gt;&lt;/span&gt;M&lt;span class=&#34;nt&#34;&gt;&amp;lt;/sexo&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;etapa&amp;gt;&lt;/span&gt;Clasificatoria&lt;span class=&#34;nt&#34;&gt;&amp;lt;/etapa&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;equipos&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;equipo&amp;gt;&lt;/span&gt;
+      &lt;span class=&#34;nt&#34;&gt;&amp;lt;centro&amp;gt;&lt;/span&gt;UCLV&lt;span class=&#34;nt&#34;&gt;&amp;lt;/centro&amp;gt;&lt;/span&gt;
+      &lt;span class=&#34;nt&#34;&gt;&amp;lt;puntuacion&amp;gt;&lt;/span&gt;85&lt;span class=&#34;nt&#34;&gt;&amp;lt;/puntuacion&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/equipo&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;equipo&amp;gt;&lt;/span&gt;
+      &lt;span class=&#34;nt&#34;&gt;&amp;lt;centro&amp;gt;&lt;/span&gt;UHO&lt;span class=&#34;nt&#34;&gt;&amp;lt;/centro&amp;gt;&lt;/span&gt;
+      &lt;span class=&#34;nt&#34;&gt;&amp;lt;puntuacion&amp;gt;&lt;/span&gt;76&lt;span class=&#34;nt&#34;&gt;&amp;lt;/puntuacion&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/equipo&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/equipos&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;lanotador&amp;gt;&lt;/span&gt;Orlando Abreu Rojas&lt;span class=&#34;nt&#34;&gt;&amp;lt;/lanotador&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;ldefensivo&amp;gt;&lt;/span&gt;Michael Hernández Martínez&lt;span class=&#34;nt&#34;&gt;&amp;lt;/ldefensivo&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/baloncesto&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Figura 1: Ejemplo de XML.&lt;/p&gt;
+&lt;p&gt;Nos remitiremos a un ejemplo a grandes rasgos para ver cómo funciona en la práctica. Supongamos que una agencia noticiosa deportiva, se comprometió a brindar como servicio de su sitio web en Internet, todos los pormenores de una competición X cualquiera. La misma tiene reporteros en todos los eventos programados encargados de hacer llegar los detalles.&lt;/p&gt;
+&lt;p&gt;Pues bien, los programadores de dicha agencia luego de deliberar mucho acerca de cómo hacerlo, llegaron a la conclusión de que lo ideal sería hacer una aplicación que recogiera los datos pertinentes, los cuales pueden ser tanto noticias y entrevistas; como estadísticas y resultados de eventos en sí para el repositorio de artículos y tablas resúmenes respectivamente. Los mismos irían a parar al centro de comunicaciones a través del correo electrónico (buena elección si no se posee plena conexión a Internet) donde una vez allí, un servicio creado a la espera de dichos correos los haría guardarse en la base de datos de la cual se nutre el sitio web de la agencia.&lt;/p&gt;
+&lt;p&gt;Dicha aplicación fue implementada en Borland Delphi 6 y consiste en un conjunto de formas MDI que se acceden por menús (ver figura 2) donde cada una representa un modelo de resultado y/o noticia (ver figuras 3 y 4 respectivamente). Para no perder tiempo en la confección de la misma decidieron reutilizar tanto código como pudiesen. Para ello hicieron un módulo (unit) con una función cuya tarea es generar el XML de los datos partiendo de ciertas características de los componentes dispuestos en las formas.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/xml-generation/02.jpg&#34; alt=&#34;Menús de aplicación&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 2: Menús de la aplicación.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/xml-generation/03.jpg&#34; alt=&#34;Forma captadora de resultados&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 3: Forma captadora de resultados (en este caso un partido de baloncesto) y generadora del XML de la figura 1.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/xml-generation/04.jpg&#34; alt=&#34;Forma captadora de noticias&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 4: Forma captadora de noticias.&lt;/p&gt;
+&lt;p&gt;Según esta función basta con esparcir componentes y ajustarles ciertas propiedades, la propiedad Name corresponderá con el nombre de la etiqueta del XML y la propiedad Tag indicará el orden en el que serán tomados los componentes para la generación de sus respectivas etiquetas de XML. Cuando se quiera no tomar en cuenta algunos componentes bastará con dejarle su Tag con valor 0 (el por defecto). Podrá haber componentes con el mismo orden de prioridad sin que dejen de incluirse solo que indistintamente podrá procesarse uno primero o después; esto solo es importante a la hora de generar listas de etiquetas con un mismo nivel de profundidad. La lista de propiedades Tag no tiene por qué ser consecutiva, es decir, se podrán omitir números sin que se afecte el resultado. Los Paneles agrupan dentro de sí otros componentes al igual que los GroupBoxs agrupan dentro de sí listas de etiquetas.&lt;/p&gt;
+&lt;p&gt;En la figura 3 se colocó un Panel llamado “baloncesto” que agrupa todos los componentes que generarán etiquetas XML en orden (según propiedad Tag): el Edit “dia”, el ComboBox “sexo”, el ComboBox “etapa” y el Panel “equipos”, el ComboBox “lanotador” (líder anotador del partido) y el ComboBox “ldefensivo” (el más destacado en la defensa). A su vez dentro del Panel “equipos” se dispuso un GroupBox llamado “equipo” que agrupa un ListBox “centro” y un ListBox “puntuacion” estos con el mismo orden de prioridad (propiedad Tag, 1) ya que son listas que tienen (según el XML deseado) que estar al mismo nivel. Los botones: “Adicionar”, “Eliminar”, “Generar” y “Enviar” y el Memo en este caso no generarán XML por lo que se les dejó su Tag como 0.&lt;/p&gt;
+&lt;p&gt;Analicemos el código fuente de la unit “UMyXML”. En la inicialización del mismo se crea y da valores iniciales a una lista de cadenas (ClassNames) donde cada una de ellas corresponderá con una de las clases que al ser procesadas generarán etiquetas XML, no se incluyeron todas las clases de la VCL (Biblioteca de Componentes Visuales, siglas en inglés) porque solo se trabajará con este reducido número de ellas, es decir: (GroupBoxs, Paneles, Edits, ComboBoxs, SpinEdits, ListBoxs y Memos). A la única función que exporta (GenMyXML) se le pasa un control cualquiera que será el inicial para generar el XML. Luego este control es pasado a la función GetMyXML donde la misma es la encargada de obtenerle todos sus componentes y de ellos generar el XML según corresponda. Es precisamente en esta última función, donde en dependencia de la clase del componente que se le pase, se generará su etiqueta XML.&lt;/p&gt;
+&lt;p&gt;Entonces, cuando se presione el botón “Generar” lo que se hace además de todas las validaciones pertinentes: si el día está en el rango válido, si hay solo dos equipos con sus respectivas puntuaciones, etc.; es llamar a GenMyXML pasándole la forma en cuestión como el control inicial a ser procesado.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;procedure TBaloncestoForm.GenerarClick(Sender : TObject);
+
+var
+  XML : string;
+  …
+
+begin
+  …// Validaciones
+  XML := GenMyXML(Self);
+  TotalXML := TotalXML + XML;
+  …// Procesar XML para su visualización
+end;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;El proceso es análogo para todas las formas ya que GenMyXML es genérico y es precisamente esta característica fundamental la que hizo que se ahorrara un considerable tiempo de desarrollo. TotalXML es una variable común a todas las formas donde quedará el XML resultado de todas las informaciones captadas por el reportero con el fin de enviar solo un correo con todos los datos posibles. La aplicación sería acompañada de una base de datos con las tablas correspondientes a los centros que competirán, los deportistas, etc., para de ahí tomar dichos datos según le haga falta (ejemplo: líder anotador, destacado en la defensa, etapa, etc.). Una vez generado el XML solo restaría enviarlo a la agencia, esto se logra usando la opción “Enviar” del menú principal, la cual tendría una rutina asociada como la siguiente:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;procedure TMainForm.Enviar1Click(Sender : TObject);
+  
+  var
+    Mail : TIdMessage;
+
+  begin
+    …
+    Mail.Body.Add(&amp;#39;&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;ISO-8859-1&amp;#34;?&amp;gt;&amp;#39;);
+    Mail.Body.Add(&amp;#39;&amp;lt;informaciones&amp;gt;&amp;#39;);
+    Mail.Body.Add(TotalXML);
+    Mail.Body.Add(&amp;#39;&amp;lt;/informaciones&amp;gt;&amp;#39;);
+    …
+  end;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Solo se puso parte de la rutina pues no es objetivo de este artículo enviar los correos; para lo cual se utilizaron los componentes Indy que vienen también con Kylix aunque también hay versiones para C++ Builder 4 y 5 y Delphi 5. Para concluir le informamos que el ejemplo expuesto aquí se utilizó como parte del sistema noticioso de la V Universiada Nacional celebrada en las provincias Villa Clara y Sancti Spiritus en abril del 2001 con resultados muy favorables. En un próximo artículo veremos cómo recuperar el XML de los correos y guardarlos en la base de datos.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;  1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 39
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 40
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 41
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 42
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 43
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 44
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 45
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 46
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 47
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 48
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 49
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 50
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 51
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 52
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 53
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 54
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 55
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 56
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 57
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 58
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 59
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 60
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 61
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 62
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 63
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 64
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 65
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 66
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 67
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 68
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 69
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 70
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 71
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 72
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 73
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 74
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 75
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 76
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 77
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 78
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 79
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 80
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 81
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 82
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 83
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 84
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 85
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 86
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 87
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 88
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 89
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 90
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 91
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 92
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 93
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 94
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 95
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 96
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 97
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 98
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 99
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;100
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;101
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;102
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;103
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;104
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;105
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;106
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;107
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;108
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;109
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;110
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;111
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;112
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;113
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;114
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;115
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;116
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;117
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;118
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;119
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;120
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;121
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;122
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;123
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;124
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;125
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;126
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;127
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;128
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;129
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;130
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;131
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;132
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;unit UMyXML;
+
+interface
+
+uses Controls;
+
+function GenMyXML(const WinControl : TWinControl) : string;
+
+implementation
+
+uses
+  StdCtrls, ExtCtrls, Spin, Classes;
+
+var
+  ClassNames : TStringList;
+
+function GetMyXML(const WinControl : TWinControl; const Parent : string) : string;
+
+  var
+    i, j : integer;
+    List : TList;
+
+  function GetMaxControlNumber : integer;
+
+    var i : integer;
+
+    begin
+      result := 0;
+      for i := 0 to WinControl.ControlCount - 1 do
+        if WinControl.Controls[i].Tag &amp;gt; result
+          then result := WinControl.controls[i].Tag;
+    end;
+
+  procedure GetControls(const ControlNumber : integer; List : TList);
+
+    var i : integer;
+
+    begin
+      List.Clear;
+      for i := 0 to WinControl.ControlCount - 1 do
+        if WinControl.Controls[i].Tag = ControlNumber
+          then List.Add(WinControl.Controls[i]);
+    end;
+
+  function GetXMLTag(const List : TList; const Parent : string) : string;
+
+    var
+      i, j, index : integer;
+      Items       : array of integer;
+      obj         : TWinControl;
+      flag        : boolean;
+
+    begin
+       result := &amp;#39;&amp;#39;;
+       if (List &amp;lt;&amp;gt; nil) and (List.Count &amp;gt; 0)
+         then
+           begin
+             SetLength(Items, List.Count);
+             flag := false;
+             while not flag do
+               begin
+                 flag := true;
+                 if Parent &amp;lt;&amp;gt; &amp;#39;&amp;#39;
+                   then result := result + &amp;#39;&amp;lt;&amp;#39; + Parent + &amp;#39;&amp;gt;&amp;#39;;
+                 for i := 0 to List.Count -  1 do
+                   begin
+                     obj := TWinControl(List[i]);
+                     index := ClassNames.IndexOf(obj.ClassName);
+                     if index &amp;gt;= 0
+                       then
+                         begin
+                           if index &amp;gt; 0
+                             then result := result + &amp;#39;&amp;lt;&amp;#39; + obj.Name + &amp;#39;&amp;gt;&amp;#39;;
+                           case index of
+                             0 : result := result + GetMyXML(TGroupBox(obj), obj.Name);
+                             1 : result := result + GetMyXML(TPanel(obj), &amp;#39;&amp;#39;);
+                             2 : result := result + TEdit(obj).Text;
+                             3 : result := result + TComboBox(obj).Text;
+                             4 : result := result + TSpinEdit(obj).Text;
+                             5 : begin
+                                   result := result + TListBox(obj).Items[Items[i]];
+                                   if Items[i] &amp;lt; TListBox(obj).Items.Count - 1
+                                     then
+                                       begin
+                                         Inc(Items[i]);
+                                         flag := false;
+                                       end;
+                                 end;
+                             6 : begin
+                                   for j := 0 to TMemo(obj).Lines.Count - 1 do
+                                     result := result + TMemo(obj).Lines.Strings[j] + &amp;#39; &amp;#39;;
+                                 end;
+                           end;
+                         end;
+                     if index &amp;gt; 0
+                       then result := result + &amp;#39;&amp;lt;/&amp;#39; + obj.Name + &amp;#39;&amp;gt;&amp;#39;;
+                   end;
+                 if Parent &amp;lt;&amp;gt; &amp;#39;&amp;#39;
+                   then result := result + &amp;#39;&amp;lt;/&amp;#39; + Parent + &amp;#39;&amp;gt;&amp;#39;;
+               end;
+           end;
+    end;
+
+  begin
+    List := TList.Create;
+    j := GetMaxControlNumber;
+    for i := 1 to j do
+      begin
+        GetControls(i, List);
+        result := result + GetXMLTag(List, Parent);
+      end;
+  end;
+
+function GenMyXML(const WinControl : TWinControl) : string;
+
+  begin
+    result := GetMyXML(WinControl, &amp;#39;&amp;#39;);
+  end;
+
+initialization
+  ClassNames := TStringList.Create;
+  ClassNames.Add(&amp;#39;TGroupBox&amp;#39;);
+  ClassNames.Add(&amp;#39;TPanel&amp;#39;);
+  ClassNames.Add(&amp;#39;TEdit&amp;#39;);
+  ClassNames.Add(&amp;#39;TComboBox&amp;#39;);
+  ClassNames.Add(&amp;#39;TSpinEdit&amp;#39;);
+  ClassNames.Add(&amp;#39;TListBox&amp;#39;);
+  ClassNames.Add(&amp;#39;TMemo&amp;#39;);
+
+finalization
+  ClassNames.Free;
+end.
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>Algunas consideraciones de Implementación</title>
+      <link>/es/post/consideraciones-de-implementaci%C3%B3n/</link>
+      <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/consideraciones-de-implementaci%C3%B3n/</guid>
+      
+        <description>&lt;p&gt;Creemos que es necesario comenzar este artículo sugiriendo la introducción de tres técnicas que, si bien no son nuevas, sí constituyen buenas prácticas dentro del desarrollo organizado de software.&lt;/p&gt;
+&lt;p&gt;El acoplamiento de módulos, la compilación, la producción de ejecutables, la generación de reportes y la creación y restauración de copias de seguridad en la producción de sistemas informáticos constituyen tareas perfectamente automatizables. Las ventajas que puede traer el uso de esta técnica están estrechamente relacionadas con el tiempo total de desarrollo de los sistemas informáticos. Cuanto menor sea el tiempo que se dedique a este tipo de actividades mayor será el que se pueda invertir en hacer cumplir los requisitos funcionales del sistema. Dentro de los métodos más utilizados en esta técnica están la creación de archivos de ejecución por lotes combinados con los eventos calendariables que brindan los sistemas operativos modernos. FinalBuilder es una de las herramientas que brinda por igual estas facilidades de una forma visual y amena.&lt;/p&gt;
+&lt;p&gt;Un CVS (Sistema de Control de Versiones, siglas en inglés) implantado desde el inicio del proceso de desarrollo de software permite que se tenga un rastro exacto del estado del proyecto en cualquier momento del mismo. Permitiendo además que se los programadores puedan trabajar simultáneamente en un mismo fichero de forma segura. CVS es la herramienta más utilizada por los programadores de Linux, mientras que WinCVS, Borland TeamWork y Microsoft Visual Source Safe son las más utilizadas en Windows.&lt;/p&gt;
+&lt;p&gt;La tercera técnica que debe tenerse en cuenta es la explotación de una Base de Datos de Errores. En ella se irán reflejando los errores que vayan surgiendo, quién de los miembros lo descubrió, causas que lo originaron, así como quién es el encargado de corregirlo y cómo lo hizo. Cada error debe permanecer abierto (no corregido) hasta una vez no se haya probado su solución. Esta técnica constituye para los desarrolladores una fuente extra de información y experiencia.&lt;/p&gt;
+&lt;p&gt;De más está decir que el hecho de implementar un producto informático en un lenguaje y/o ambiente u otro está estrechamente relacionado con las características propias del producto a desarrollar. Por ello es que nos referiremos a tres grandes lenguajes de programación con sus respectivos ambientes de trabajo más comunes que, si bien no son los únicos, sí podemos afirmar que son los más extendidos en nuestro país y en el mundo.&lt;/p&gt;
+&lt;h5 id=&#34;object-pascal--delphi&#34;&gt;Object Pascal / Delphi&lt;/h5&gt;
+&lt;p&gt;Object Pascal, lógica evolución de Pascal y evangelizado por Borland, será nuestro primer lenguaje. Cuando en 1995 Borland sacó al mercado Delphi 1.0 la comunidad de profesionales de la computación enseguida vio un futuro muy próspero para este ambiente que reemplazaba a los antiguos Turbo con la introducción de un nuevo lenguaje: Object Pascal. Desde su primera versión soportó las características fundamentales del paradigma Orientado a Objetos como son la herencia y el polimorfismo, en versiones posteriores se le incorporarían los soportes para interfaces y meta clases.&lt;/p&gt;
+&lt;p&gt;Borland Delphi -nombre oficial de este ambiente de desarrollo- ya va por ocho versiones y en los próximos años verán la luz dos más. Considerada por muchos la mejor herramienta RAD (Desarrollo Rápido de Aplicaciones) no las ha tenido todas consigo en las herramientas CASE (Ingeniería de Software Asistida por Computadora, siglas en inglés) pues no todas generan código Object Pascal de forma nativa, lográndose en la mayoría de los casos solo a través de la instalación de &amp;ldquo;pluggings&amp;rdquo; o extensiones.&lt;/p&gt;
+&lt;p&gt;No es difícil de demostrar el hecho de que para Delphi es la herramienta que más componentes se han implementado. Tal vez esto se deba a que son varias las formas de extensión que permite, BPL como propio, pero permite además DLL (Bibliotecas de Enlace Dinámico), COM (Modelo de Objetos de Componentes), DCOM (COM Distribuido, siglas en inglés en todos los casos) y la gran facilidad con que maneja cada una de ellas.&lt;/p&gt;
+&lt;p&gt;Los ficheros de configuración INI, el registro de Windows o los modernos XML (Lenguaje Extendido de Marcas, siglas en inglés) son soportados de forma nativa por la biblioteca de clases VCL (Biblioteca de Componentes Visuales, siglas en inglés) que es parte de Delphi.&lt;/p&gt;
+&lt;p&gt;Un paso muy importante en la portabilidad de este lenguaje hacia otras plataformas lo dio precisamente Borland cuando en 1995 saca al mercado Kylix. Herramienta RAD que vino a cubrir un espacio vacío en la comunidad de desarrolladores de Linux. Se puede llegar hasta un 90% del total del proyecto sin tener que hacer ninguna modificación. Lamentamos que este potencial se esté perdiendo y Kylix haya sido relegado por Borland a planos secundarios.&lt;/p&gt;
+&lt;p&gt;Los costos dependen mucho de la versión que se desee comprar y esta del para qué se quiera la herramienta. Por lo general de una misma versión hay varias ediciones, una para el usuario medio, una para el desarrollador y una para un nivel corporativo (esto es, por supuesto, lo más clásico) que en ese mismo orden van soportando y facilitando el desarrollo de diferentes tipos de aplicaciones en dependencia de su complejidad y composición.&lt;/p&gt;
+&lt;h5 id=&#34;c--visual-c&#34;&gt;C++ / Visual C++&lt;/h5&gt;
+&lt;p&gt;C++ ó C plus plus es una extensión del C original para soportar el paradigma Orientado a Objetos. Ambientes de desarrollo RAD para este lenguaje son muy variados desde la misma Borland hasta Microsoft. La primera con su serie C++ Builder no ha logrado consolidarse tal como lo hizo con Delphi, mientras que la segunda ha progresado enormemente con su Visual C++ al incorporarlo a la herramienta de desarrollo más completa que existe hasta estos momentos: Visual Studio.&lt;/p&gt;
+&lt;p&gt;C++ soporta todas las características de la orientación a objetos excepto las meta clases. La herencia se hace múltiple en vez de simple, las interfaces se logran solo mediante algunos &amp;ldquo;trucos&amp;rdquo; de sintaxis, lo que le quita elegancia al lenguaje, no obstante, sigue siendo elegido para aplicaciones dentro de este paradigma por muchos programadores.&lt;/p&gt;
+&lt;p&gt;Desde las primeras implementaciones de las herramientas CASE, estas fueron capaces de generar código para este lenguaje ya que su comunidad lideraba a las demás. Generalización es un tópico que está presente en este lenguaje y el hecho de poder hacer clases genéricas (sin que medie el tipo hasta la pre compilación). Los macros son otra extensión del lenguaje, aunque en estos días tenga más detractores que seguidores (algo similar a la sentencia goto).&lt;/p&gt;
+&lt;p&gt;La VCL es la biblioteca de clases que incorpora C++ Builder y la MFC (Fundación de Clases de Microsoft, siglas en inglés) el Visual C++. Esta última cuenta con más de 300 clases para su más variado uso. La gran ventaja del C++ Builder es el hecho de estar concebido sobre la VCL lo que lo hace fácil la translación de los códigos a Delphi y por otra parte Borland trabaja en un producto integrador del lenguaje C++ completo, llamado C++ BuilderX que no solo hará posible portar códigos a Linux, sino que a cualquier o desde cualquier otra plataforma y/o compilador de este lenguaje.&lt;/p&gt;
+&lt;p&gt;¿Dónde está entonces la portabilidad de Visual C++? En que este ambiente está girando alrededor de la generación de código intermedio administrado y con el mismo es posible ejecutarlo en cualquier máquina virtual. La estrategia .NET de Microsoft ya ha tenido resultados en Linux con la implementación de Mono, el traspaso de código hasta el momento solo es posible en C# (C sharp ó C almohadilla) que constituye a su vez una combinación mejora de los tres lenguajes que hemos tomado como casos de estudio.&lt;/p&gt;
+&lt;p&gt;Estos dos ambientes analizados centran su atención en el paradigma Orientado a Objetos soportando el paradigma Estructurado gracias a la compatibilidad que comparten con su lenguaje de programación base. La mayoría de los lenguajes propios del paradigma Funcional brindan sus potencialidades a través de su encapsulamiento en DLL (Bibliotecas de Enlace Dinámico, siglas en inglés) o cualquier tipo de módulo propio del ambiente. Este es el caso también del tercer lenguaje Java.&lt;/p&gt;
+&lt;p&gt;Visual Studio, si bien coincidimos en que es la herramienta de desarrollo más integradora que existe, sus costos son en la actualidad lucrativos para la mayoría de entidades productoras de software; independientemente del hecho de que Microsoft esté llevando a cabo algunas ofensivas comercializadoras muy competitivas.&lt;/p&gt;
+&lt;h5 id=&#34;java--eclipse&#34;&gt;Java / Eclipse&lt;/h5&gt;
+&lt;p&gt;Descendiente del Oak y con el propósito de que se pudiera insertar en cualquier equipo electrodoméstico estudiaremos el tercer lenguaje: Java. Original de Sun Microsystems es Java el lenguaje más extendido sobre las plataformas de teléfonos celulares. Es muy rico en su sintaxis contando con un número considerable de palabras reservadas y reglas gramaticales. Soporta todas las características del paradigma Orientado a Objetos.&lt;/p&gt;
+&lt;p&gt;Fruto de su amplia extensión en cuanta plataforma de hardware existe enseguida las herramientas CASE fueron capaces de generar código para él. Los paquetes de componentes constituyen su base fundamental de componentización nativa. Las demás formas de reutilización de componentes no es algo que lo lleve implícito este lenguaje.&lt;/p&gt;
+&lt;p&gt;Como podemos inferir la ejecución del código que se produce de la compilación de una aplicación programada en Java (que no es más que un código intermedio llamado &amp;ldquo;ByteCode&amp;rdquo;) debe realizarse bajo la máquina virtual propia para esa plataforma. Aprovechando esto Microsoft introdujo cambios en la máquina virtual que adjuntaba con su Internet Explorer haciendo que existieran ciertos problemas de compatibilidad, por suerte esto ha cambiado y ya casi no existen. Es el mismo caso para los diferentes Sistemas Operativos por lo que para cada una existen diferentes implementaciones y extensiones.&lt;/p&gt;
+&lt;p&gt;Preferimos hablar del lenguaje en sí y no del ambiente de desarrollo puesto que en este tópico la competencia es muy reñida entre un producto u otro. Ejemplo de ello tenemos a JBuilderX de Borland; Visual J# (extensión de Java soportando código administrado e incorporado como parte del Microsoft Visual Studio); VisualAge de IBM y Eclipse de Eclipse Foundation que es el más extendido.&lt;/p&gt;
+&lt;p&gt;Los costos son elevados en caso de los ambientes de desarrollo pues algunas máquinas virtuales y la biblioteca de clases JFC (Fundación de Clases de Java, siglas en inglés) son gratuitas e incluso incluyen su código fuente.&lt;/p&gt;
+&lt;p&gt;Todos los lenguajes se pueden utilizar para el desarrollo de cualquier tipo de aplicaciones desde las de consola y las que llevan bases de datos hasta las que hacen uso de la multitarea o son concebidas de una forma distribuida (sin dejar de tener en cuenta las de redes y las &amp;ldquo;standalone&amp;rdquo;). Dependiendo solo de las restricciones propias de los ambientes desde los que son utilizados. Poco a poco se van creando los artefactos necesarios para que cada uno soporte la última tendencia o tecnología moderna en cuanto a la creación de productos informáticos. Algunos son más rápidos que otros en responder dependiendo del estado del ambiente, su comunidad de seguidores y compañías que lo desarrolla.&lt;/p&gt;
+&lt;p&gt;Quisiéramos que este material le sirva como introducción a la hora de tomar decisiones críticas en el proceso de implementación de una determinada solución de software. Nos hemos basado en la experiencia y los consejos de muchos profesionales que han dedicado miles de horas al incansable arte de la programación.&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Algunas consideraciones de Diseño</title>
+      <link>/es/post/consideraciones-de-dise%C3%B1o/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/consideraciones-de-dise%C3%B1o/</guid>
+      
+        <description>&lt;p&gt;Dentro de las etapas en que se divide el ciclo de vida del desarrollo de software, el Diseño es considerada como la más importante. Se ha calculado que puede llegar a ocupar hasta un treinta y cinco por ciento del total de tiempo. Es por ello que abordaremos el tema para dar algunas consideraciones generales que siempre son válidas a tener en cuenta, sea cual sea el tipo de aplicación a desarrollar.&lt;/p&gt;
+&lt;p&gt;Existen tres paradigmas principales de programación: el Estructurado, el Orientado a Objetos y el Funcional. Cada uno tiene sus características propias que están muy relacionadas con la evolución en el tiempo de la programación. Hoy en día el paradigma Estructurado se ve muy ligado a la implementación de algoritmos, el Funcional a la resolución de problemas en la Inteligencia Artificial y el paradigma Orientado a Objetos -el más extendido- a la implementación de aplicaciones.&lt;/p&gt;
+&lt;p&gt;Es precisamente en este último paradigma donde los profesionales de la computación han hecho la mayor cantidad de aportes ya sean teóricos o prácticos como pueden ser las herramientas que ayudan en su uso. Las herramientas CASE (Ingeniería de Software Asistida por Computadoras, siglas en inglés) son, sin duda alguna, unas de las más representativas. Mediante el modelado visual de la jerarquía de clases a través de UML (Lenguaje Unificado de Modelado, siglas en inglés) puede generarse código altamente confiable y fácilmente modificable, para infinidad de lenguajes de programación; dándole así una elegancia agregada al diseño.&lt;/p&gt;
+&lt;p&gt;Otro tipo de herramientas son las RAD (Desarrollo Rápido de Aplicaciones, siglas en inglés). En ellas se puede trabajar en el diseño y la implementación a la vez de una forma hasta intuitiva; lográndose con ello disminuir considerablemente el tiempo total de desarrollo del proyecto. El hecho de poder mezclar de una forma muy fácil las reglas del problema dentro de los eventos de los campos visuales de la aplicación (técnica tan difundida en aplicaciones pequeñas y medianas) trae consigo que se afecte directamente la reutilización del código.&lt;/p&gt;
+&lt;p&gt;Para contrarrestar este problema le proponemos, que una vez haya decidido el paradigma que va a utilizar y el uso o no de herramientas CASE y/o RAD, piense también en separar la lógica de la aplicación de la vista de la misma. La técnica más utilizada para esto es la componentización de la solución ya sea mediante COM (Modelo de Objetos en Componentes, siglas en inglés), Scriptlets, Servicios Web o cualquier otra vía propia de la herramienta de implementación (ejemplo: BPL de Borland Delphi), en dependencia por supuesto de la portabilidad que le quiera dar a la solución.&lt;/p&gt;
+&lt;p&gt;Nunca descarte el posible uso de la aplicación a ser desarrollada desde la consola de trabajo (stdin, stdout en Linux) sobre todo si la misma realiza tareas programadas. Para ello diseñe adecuadamente los parámetros necesarios que se le deberán pasar.&lt;/p&gt;
+&lt;p&gt;La creación de nuevos procesos (en Linux) o hilos de aplicación (en Windows) es muy común en las aplicaciones que quieran hacer uso de la multitarea. Si su aplicación es una de ellas tenga en cuenta el uso de las llamadas &amp;ldquo;piscinas de hilos&amp;rdquo; que le incorporan un mayor rendimiento y escalabilidad a la solución. Otro aspecto a tener en cuenta en este tema es la cantidad máxima de procesos o hilos que se pueden crear de forma tal que no se afecte el rendimiento final, piense siempre que no debe exceder la decena de unidades.&lt;/p&gt;
+&lt;p&gt;Para las aplicaciones de mediano o gran tamaño es muy común hacer uso de las facilidades de la Programación Distribuida ya sea mediante la arquitectura Cliente/Servidor o la arquitectura N-capas o SOA (Arquitectura Orientada a Servicios, siglas en inglés). Llamada a Procedimientos Remotos e Invocación de Métodos Remotos (RPC y RMI, siglas en inglés respectivamente) son dos técnicas para implementar el modelo Cliente/Servidor. Mucho es el uso que se hizo y hace en la N-capas, tanto es, que constituye la base fundamental de su evolución: SOA. Esta última se basa en la distribución de Servicios Web como unidades estructurales implementados cada uno como un modelo N-capas, siendo considerada la de más futuro en los venideros años.&lt;/p&gt;
+&lt;p&gt;Hemos tratado de mantenernos lo más alejado posible de toda clase de decisiones, intentando siempre no mencionar productos o marcas para que no busquen en nosotros una preferencia marcada hacia uno u otra parte de las actuales controversias (IBM-Mac, Windows-Linux, .NET-Java, etc.). Lo que sí quisiéramos es que no utilice tecnologías propietarias que no sean estándares y pueda así evitarse futuros dolores de cabeza sobre todo a la hora de diseñar los mecanismos de comunicación. Nos referimos a DCOM (COM Distribuido), MTS (Servidor de Transacciones de Microsoft, siglas en inglés), COM+ (DCOM + MTS) y CORBA por solo citar algunos ejemplos.&lt;/p&gt;
+&lt;p&gt;Dentro de este punto quisiéramos tratar el formato de representación de los datos, si bien en el pasado se utilizó mucho los ficheros textos no estructurados y los ficheros estructurados; en la actualidad no son más que historia y añoranzas. XML (Lenguaje Extendido de Marcas, siglas en inglés) está llamado a ser el nuevo ASCII del intercambio de información; dándole así una nueva dimensión hasta ahora dominada por los protocolos binarios.&lt;/p&gt;
+&lt;p&gt;Los ficheros de configuración (.INI) constituyeron todo un hito como combinación de los dos tipos de ficheros fundamentales (textos y estructurados) y por consiguiente la unión de sus respectivas ventajas. Esto fue así hasta la salida al mercado de Windows 95 donde se introdujo una buena nueva idea, la de centralizar la configuración de las computadoras, en el llamado &amp;ldquo;registro de configuraciones&amp;rdquo;. Lo malo fue su implementación lo que a la postre se convirtió en una pesadilla para los programadores. Es aquí donde intervine otra vez la mano salvadora de XML que poco a poco se está adueñando de esta funcionalidad también.&lt;/p&gt;
+&lt;p&gt;El diseño de marcos de trabajo (frameworks) es una buena idea si se quiere hacer más de un trabajo relacionado que compartan jerarquías de clases de forma tal que le sirva como base. Ejemplos tenemos sobrados: VCL, MFC, Java, .NET Framework, BizTalk Framework, etc.&lt;/p&gt;
+&lt;p&gt;La aplicación de un determinado patrón de diseño acorde con los requisitos propios de la solución a desarrollar es una de las mejores opciones que tiene el diseñador de software en estos momentos. Un tema relativamente nuevo en esta etapa no deja de fascinarnos con sus buena prácticas recomendadas amén de las dificultades que pueda traer.&lt;/p&gt;
+&lt;p&gt;Quisiéramos que este material le sirva como introducción a la hora de diseñar una determinada solución de software. En un próximo artículo comentaremos algunas consideraciones de implementación con semejante objetivo.&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Gobierno electrónico</title>
+      <link>/es/post/gobierno-electr%C3%B3nico/</link>
+      <pubDate>Fri, 25 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/gobierno-electr%C3%B3nico/</guid>
+      
+        <description>&lt;p&gt;Con la decisión de migrar todos sus sistemas y aplicaciones a Software Libre del gobierno alemán, hace ya uno tres años, estalló este fenómeno entre los diferentes países, llegando incluso a instancias particulares de ellos. Ejemplo de ello es España donde ya algunas de sus autonomías han tomado la misma decisión, otras no.
+Lo cierto es que hay protestas por todo el mundo tanto de detractores como de los que piensan igual. Unos porque ven amenazados sus fuentes de ingresos y otros porque quieren que su gobierno haga lo mismo. El principal motivo por el cual la toman es porque &amp;ldquo;supuestamente&amp;rdquo; hay una reducción de costes en soluciones informáticas y eso permite mayores inversiones en otras cosas.&lt;/p&gt;
+&lt;p&gt;Las comillas ahorita en &amp;ldquo;supuestamente&amp;rdquo; son a propósito, pues en este punto es donde debe intervenir el equipo de informáticos de las entidades (gobiernos en este caso) para que junto con la dirección y ubicándose claramente en el contexto decidan lo que realmente es mejor para la entidad. Por lo general no se analiza a profundidad y aparentemente se recortan gastos al no pagar licencias por cuestiones de software y cuando se suman los ahorros son significativos, sin embargo, no se tiene en cuenta (o cuando se hace muy superficialmente) varias cuestiones:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;El Software Libre no es gratis para nada.&lt;/li&gt;
+&lt;li&gt;El costo asociado a la capacitación del personal sobre los nuevos sistemas es a veces superior al de las licencias.&lt;/li&gt;
+&lt;li&gt;El cambio siempre suscita reproches.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Así que los gobiernos lo que no pueden es tomarse a la ligera una decisión tan importante como esta. Deben poder escoger lo que más se ajusta a sus necesidades en su entorno, ahora, eso sí, lo que no pueden es basar sus soluciones sobre protocolos y formatos propietarios.&lt;/p&gt;
+&lt;p&gt;Todas las soluciones informáticas que se desarrollen deben estar soportadas sobre estándares abiertos, desde los protocolos de comunicación, hasta los formatos de documentos. Para ello debe trabajar con las herramientas más cómodas les resulten que soporten estos paradigmas.&lt;/p&gt;
+&lt;p&gt;XML se ha convertido en el estándar de intercambio de información, así como los servicios web en el paradigma de la programación distribuida. La arquitectura de cualquier sistema a desarrollar o implantar en una entidad gubernamental sobre todo debe de estar en concordancia con estos lineamientos. XML y servicios web no son los únicos parámetros, existen muchísimos más con los que lidiar.&lt;/p&gt;
+&lt;p&gt;La idea de redactar este artículo fue dada porque recibí la convocatoria a participar en el primer taller de gobierno en línea que recientemente se desarrolló en la provincia Las Tunas y no quise dejar pasar por alto el llamado de atención sobre las reflexiones antes expuestas.&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>¿Se puede confiar ciegamente en Internet?</title>
+      <link>/es/post/confianza-en-internet/</link>
+      <pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/confianza-en-internet/</guid>
+      
+        <description>&lt;p&gt;Internet se ha convertido poco a poco en la herramienta más útil del quehacer diario de las personas para un sin número de tareas que van desde la investigación científica hasta las compras y el ocio. Es por ello que constituye una fuente invaluable de conocimientos, pero ojo, no todo lo que brilla es oro.&lt;/p&gt;
+&lt;p&gt;En varias ocasiones he leído como se descubren cosas insólitas que suceden en Internet, como la publicación de cómo confeccionar artefactos explosivos o de cómo se ponen de acuerdo miembros de sectas para suicidarse masivamente, etc. Podríamos catalogar lo antes publicado como el pago (si bien no necesario) que hay que hacer por las incontables ventajas que ella ofrece.&lt;/p&gt;
+&lt;p&gt;Recientemente leí que la asociación de personas que creen que el planeta Tierra es plano y no esférico (cada día me impresiona más lo que pueden creer las personas) ya tiene una buena cantidad de miembros; de cosas como estas es de lo que quiero hablarles hoy, de que, si bien en Internet hay muchas cosas interesantes, también hay mucha basura. Se me ocurrió escribir sobre esto pues leyendo el blog de Francisco Joma&amp;lt; leí su comentario sobre el artículo: &amp;ldquo;Consejos para la programación en Linux&amp;rdquo; que me llamó fuertemente la atención, sobre todo luego de leerme el artículo original.&lt;/p&gt;
+&lt;p&gt;Coincido plenamente con este profesional que, a pesar de no compartir algunas ideas filosóficas con él, lo considero una persona admirable. Es un defensor a muerte de Linux, pero del Linux bueno, el que tiene errores y no es perfecto. En el comentario del artículo referido Francisco no llega a refutar todos los argumentos que se exponen, pero los que no refutó no es necesario hacerlo pues son muy triviales. Los exhortos a que lo lean y evalúen, lo considero una sarta de sandeces escritas y plasmadas en Internet. A quién se le ocurre cuestionar tan si quiera el desarrollo bajo una API unificada o que programar con un editor de texto al estilo notepad.exe es mejor a veces que un IDE como Visual Studio.NET o defender el hecho de no tener una fuente de documentación de desarrollo como MSDN.&lt;/p&gt;
+&lt;p&gt;Linux habrá podido ganar mucho terreno en el sector de los servidores e incluso en el de usuario común, pero le falta muchísimo, pero muchísimo todavía en el desarrollo de sus aplicaciones. Eclipse es uno de los pocos IDE para Linux que realmente vale la pena (amén de Kylix) pero mientras sigan mirándose el ombligo y diciendo que lo mejor es lo de Linux y que Windows no tiene nada bueno, Linux no va a mejorar.&lt;/p&gt;
+&lt;p&gt;No es primera vez que se trata el tema del desarrollo de aplicaciones en Linux, es un tema complejo y que todavía está en pañales sobre todo por cuestiones de números (el por ciento de usuarios con este Sistema Operativo todavía es muy bajo). Poco a poco debe ir mejorando la situación.&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>ISFUROS 2006</title>
+      <link>/es/post/isfuros-2006/</link>
+      <pubDate>Wed, 23 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/isfuros-2006/</guid>
+      
+        <description>&lt;p&gt;He estado tan ocupado en tareas aledañas que poco a poco fue pasando el tiempo y ni cuenta me di de que llevaba meses sin escribir nada, luego caí en un vacío profesional que no me incitaba a redactar nada hasta hoy mismo que luego de participar en el ISFUROS me llamé yo mismo a reflexionar y no dejar pasar inadvertido el evento.&lt;/p&gt;
+&lt;p&gt;El International International Symposium on Fuzzy and Rough Sets (ISFUROS) fue un evento que se desarrolló en la UCLV del 4 al 6 de Diciembre del 2006. El comité Organizador hizo un trabajo encomiable y digno de elogiar pues a pesar de todas las carencias materiales que a diario nos entorpecen, el evento fue un éxito total, al menos yo lo considero así.&lt;/p&gt;
+&lt;p&gt;Al evento pudo asistir un profesor por cada Universidad donde se estudia Informática o Cibernética como invitados, además, claro está de aquellos que tuvieran trabajos aceptados por el Comité Evaluador. El Comité Organizador y Evaluador estuvo compuesto por personalidades nacionales y extranjeras de alto rango y quehacer científico, se podría catalogar de excelencia ambos comités.&lt;/p&gt;
+&lt;p&gt;Por la parte extranjera asistieron muchos profesionales de varios países que trabajan las líneas de investigación centrales del evento. Dentro de las personalidades que asistieron se encuentra Jose Luis Verdegay, Kaoru Hirota, Bernard de Baets, Witold Pedrycz, Wojciech Ziarko, estos dos últimos, presidentes de las asociaciones internacionales de conjuntos difusos y aproximados respectivamente.&lt;/p&gt;
+&lt;p&gt;Las exposiciones estuvieron muy buenas (todas en inglés -incluyendo las de los cubanos-) con trabajos muy buenos todos (exalto otra vez el trabajo del Comité Evaluador). Fue una ocasión única de compartir con tan altas personalidades mundiales y oír sus criterios y en lo que actualmente trabajan.&lt;/p&gt;
+&lt;p&gt;Las actividades colaterales fueron organizadas con esmero, desde el aseguramiento alimenticio, el hospedaje, hasta los recorridos turísticos. La idea final fue repetir el encuentro cada dos años.&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Poniéndome al día</title>
+      <link>/es/post/poni%C3%A9ndonos-al-d%C3%ADa/</link>
+      <pubDate>Tue, 22 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/poni%C3%A9ndonos-al-d%C3%ADa/</guid>
+      
+        <description>&lt;p&gt;No voy a ponerme a relatar las vicisitudes que llevaron a que prácticamente no tenga Internet a mi disposición, porque sería aburrirlos en vano y al final lo más seguro es que no entenderían y todo quedará igual, así que para qué perder el tiempo entonces; aprovechémoslo en otras cuestiones más importantes.&lt;/p&gt;
+&lt;p&gt;Quise hacer esta breve introducción pues lo que quiero comentarles hoy se relaciona con este hecho precisamente. El pasado domingo día 3 de diciembre, vine a la Universidad temprano pues estaba de guardia todo el día y aprovecharía Internet para ponerme al día y confeccionar una serie de documentos atrasados que tenía.&lt;/p&gt;
+&lt;p&gt;¡Increíble lo que me sucedió, no pude hacer ningún documento pues terminé de ponerme al día a las 8:00 PM! No me considero un profesional que examina a profundidad todas las temáticas de la rama de la computación. Dentro de las pocas que puedo revisar (me gustaría poder hacer más) pues cuestiones igualmente obvias no puedo enterarme de todo lo que se relaciona con ellas. Es por eso que decidí revisarlas periódicamente con diferente frecuencia en dependencia del nivel de actualización de los sitios, algunos sitios los visitaba diariamente, otros semanales y otros mensuales. Así fue pasando el tiempo y adopté un lector de RSS como herramienta de trabajo imprescindible; así todo fluctuó de una manera más cómoda y rápida.&lt;/p&gt;
+&lt;p&gt;Este sistema el único defecto que poseía (y posee todavía) es que no está preparado para cuando no hay Internet pues al fin y al cabo sigo siendo yo el que al final determine lo importante o no y dentro de los primeros lo que realmente vale la pena leer y estudiar a profundidad.&lt;/p&gt;
+&lt;p&gt;Antes del día antes mencionado estuve 10 días sin poder consultar absolutamente nada de Internet y cuando al fin lo pude hacer miren cuantas horas me costó y el sacrificio que tuve que hacer. Al punto que quiero llegar es poner un ejemplo de lo importante que es estar al día en las temáticas de la ciencia que de desempeñes y el súper papel que juega Internet en eso. Hoy por hoy es difícil imaginarse un profesional competente que no tenga a su disposición Internet.&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Amaos los unos a los otros</title>
+      <link>/es/post/amaos-todos/</link>
+      <pubDate>Mon, 21 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/amaos-todos/</guid>
+      
+        <description>&lt;p&gt;Leyendo el título de este artículo pudieran pensar que se enfrentarán a un debate relacionado con la teología, pero no será así. Creo haber escrito antes algo sobre las diferencias entre profesionales de la computación y la semejanza que tienen sus discusiones con las que sostienen los creyentes con los no creyentes en Dios.&lt;/p&gt;
+&lt;p&gt;No repetiré lo que ya dije una vez, esta vez me desenvolveré en la rama de mi profesión solamente. Cada día salen nuevas tecnologías y por lo general lo que hacen es dividir a la comunidad en dos bandos, el que la acepta y el que no la acepta; este proceso se repite muchas veces dentro de cada bando y así sucesivamente.&lt;/p&gt;
+&lt;p&gt;Al final todos están en lo cierto pues &amp;ldquo;para gusto están los colores&amp;hellip;&amp;rdquo; y eso hace que cada profesional se rodee de un conjunto de tecnologías y herramientas y que luego el cambio hacia otras le resulte falta y a veces nunca lo hacen, aunque queden obsoletas. Pienso que el error está (y pasa actualmente, según creo) en las rencillas que tienen los profesionales de la computación hacia las implementaciones particulares de las tecnologías y no a ellas en su concepción.&lt;/p&gt;
+&lt;p&gt;Todos entendemos la necesidad y utilidad de AJAX, pero unos prefieren Atlas y otros jAJAX, unos prefieren RPC y otros RMI y así por el estilo pasa con casi todas las tecnologías de desarrollo de software que hay en el mercado. Las motivaciones para que este fenómeno se de son muy variadas, donde intervienen las licencias de software, precios, filosofías y otros factores, cada cual tiene los suyos.&lt;/p&gt;
+&lt;p&gt;El título de este artículo es con toda intención, le llamaré &amp;ldquo;los unos&amp;rdquo; a aquellos seguidores de las tecnologías y herramientas de Microsoft y llamaré &amp;ldquo;los otros&amp;rdquo; a aquellos seguidores de las de Linux. No hay desmérito en que precisamente haya sido en ese orden y no al revés por mi ya sabida predilección por Microsoft (es decir yo sería un &amp;ldquo;uno&amp;rdquo; y no un &amp;ldquo;otro&amp;rdquo;), dada más bien por la fuerza de costumbre, aunque no me declaro un ciego, sino más bien un agnóstico de este tipo de creencias. Bueno, a lo que iba.&lt;/p&gt;
+&lt;p&gt;Microsoft atacó con medidas drásticas (con las cuales no concuerdo en nada) desde la coerción hasta los juicios a otras empresas etc. Creo que al final haga lo que haga gana siempre el mejor y en eso Microsoft tenía las de ganar sin llegar a esos extremos que tanto dinero le ha costado. Si bien esto fue así, de un tiempo para acá la situación ha cambiado y en vez de seguir luchando contra lo indetenible (fenómeno Linux) ha decidido aliarse sin traicionar sus propios principios (¿no hay mejor estrategia verdad?). Ejemplo de ello tenemos el recién mega-acuerdo con Novell que incluye de todo como en botica (patentes, herramientas, tecnologías de desarrollo, códigos fuentes, etc.) el cual ha sido muy bien visto por su &amp;ldquo;unos-comunidad&amp;rdquo; y no tan así por la &amp;ldquo;otros-comunidad&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;La &amp;ldquo;otros-comunidad&amp;rdquo; nació y crece con esa fobia hacia Microsoft sin importar si Microsoft tiene o no razón o si desarrolla algo mejor; lo único que hace el mirarse el ombligo y ser ciega y sorda para cualquier otro criterio. Así son la mayoría de las personas de esa comunidad con las que me he topado alguna vez en mi vida, lo bueno es que tampoco son todas las personas, sino que hay un grupo más asequible que entiende y razona las diferencias y sabe valorar muy bien las cosas.&lt;/p&gt;
+&lt;p&gt;Son simples cuestionamientos los que quisiera que se hagan ustedes mismos a ver si les sucede lo mismo y lo más que quisiera que supieran apoyar al que realmente tenga la razón para un contexto dado y no se dejen llevar por las creencias tecnológicas, por muy arraigadas que las tengan, la próxima vez que se enfrente a la pregunta de a qué grupo pertenecen, si a los &amp;ldquo;unos&amp;rdquo; o a los &amp;ldquo;otros&amp;rdquo;.&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>La delgada línea entre reescribir y reutilizar código</title>
+      <link>/es/post/reescribir-%C3%B3-reusar/</link>
+      <pubDate>Fri, 18 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/reescribir-%C3%B3-reusar/</guid>
+      
+        <description>&lt;p&gt;Hay veces que no nos damos cuenta de la existencia de delgadas líneas que existen entre cosas. Por otra parte, no sé por qué tenemos esa desconfianza en lo que otro hace. La reticencia al cambio es algo siempre presente en toda persona y es un mal muy difícil de arraigar, hay que ser un experto para lograr que se entiendan los cambios.&lt;/p&gt;
+&lt;p&gt;Serán por estas razones por las que nosotros los profesionales de la computación cada vez que tenemos que desarrollar una aplicación pensamos seriamente codificarla desde cero, incluso a veces lo hacemos. De nada vale que nos hayamos leído cientos de artículos que resalten la importancia de hacer código reusable para utilizarlo posteriormente. En el mejor de los casos utilizamos componentes desarrollados por nosotros mismos en otro momento, pero rechazamos todo en lo que no hayamos puesto nuestras manos.&lt;/p&gt;
+&lt;p&gt;Yo se lo achaco a problemas de cultura, si interiorizáramos estas cuestiones a profundidad y pensamos solamente un poquito que efectivamente esto es cierto, no tendríamos necesidad alguna de gastar horas y horas &amp;ldquo;reinventando la rueda&amp;rdquo; o &amp;ldquo;descubriendo el agua tibia&amp;rdquo;. Es cierto que al utilizar código (dígase componentes) tenemos que estudiar su referencia, que la mayoría de las veces no están a la altura de la documentación de una API o Framework profesional, pero les aseguro que es mucho menor el tiempo que se puede emplear en esto que el que se puede emplear para implementarlo desde cero.&lt;/p&gt;
+&lt;p&gt;Por lo general los desarrolladores de componentes hacen sus trabajos de forma impecable, funcionamiento correcto, comportamiento más que probado y referencia completa. Somos nosotros los supuestos clientes los que no le otorgamos la confianza suficiente como para utilizarlos.&lt;/p&gt;
+&lt;p&gt;En el caso particular de la carrera de Ingeniería Informática su currículo está muy pensado sobre todo a desarrollar desde cero (otro factor que influye en lo antes expuesto); por suerte los encargados de rediseñar su Plan de Estudios se dieron cuenta y entonces el nuevo Plan de Estudios &amp;ldquo;D&amp;rdquo; se enfocará más al reuso que a la reescritura de código. Otorgarle la confianza a lo que se lo merece en aras de ganar tiempo para otras cuestiones fundamentales del proceso de desarrollo de software. Las mentes tienen que cambiar, de lo contrario, jamás podremos hacer algo que esté al nivel de los estándares mundiales de hoy en día.&lt;/p&gt;
+&lt;p&gt;Para que se tenga un ejemplo de esto, alguien se ha preguntado el ¿por qué en Windows existe el Worpad si Microsoft Word es mejor por millas y millas de funcionalidad? Sencillamente por problemas de compatibilidad (al igual que hay dos copias del Notepad.exe) y alguien se ha preguntado ¿Por qué su tamaño es despreciable con respecto al Word, por qué tardó tanto en ser actualizado? Pues bien, en su momento era otra compañía su desarrolladora y decidieron hacerlo en Ensamblador a pesar de ya existir la API de Win32, cierto fue que permitía un buen número de funcionalidades de una manera muy eficaz (rapidez y consumo de memoria) pero su mantenimiento se hizo insoportable al punto de que tuvo que ser vendido a Microsoft.&lt;/p&gt;
+&lt;p&gt;Con esto no quiero decir que las cosas no se hagan eficientes, sino que hay que llegar a un balance entre lo eficiencia y la eficacia del proyecto, y me despido porque me estoy yendo del tema.&lt;/p&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>El futuro del Ensamblador</title>
@@ -204,74 +1246,6 @@ Superación Profesional por Internet 652 000&lt;/p&gt;
 &lt;p&gt;&amp;ldquo;&amp;hellip;Informático es aquel profesional que basado en los principios de la cibernética logra construir soluciones informáticas a los problemas comunes de la sociedad&amp;hellip;&amp;rdquo;&lt;/p&gt;
 &lt;p&gt;Otra que, aunque es más general, es válida colocar en esta redacción es:&lt;/p&gt;
 &lt;p&gt;&amp;ldquo;&amp;hellip;La diferencia entre un ingeniero y un licenciado radica en que el ingeniero hace y luego piensa mientras que el licenciado piensa y luego hace&amp;hellip;&amp;rdquo;&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>¿Cibernéticos como Ingenieros?</title>
-      <link>/es/post/cibern%C3%A9ticos-como-ingenieros/</link>
-      <pubDate>Thu, 03 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/es/post/cibern%C3%A9ticos-como-ingenieros/</guid>
-      
-        <description>&lt;p&gt;La pregunta que da título a esta redacción está muy acorde a las carreras universitarias que se cursan un Cuba: &amp;ldquo;Ciencia de la Computación&amp;rdquo; (más conocida por &amp;ldquo;Cibernética&amp;rdquo;) e &amp;ldquo;Informática&amp;rdquo;. La primera es una licenciatura mientras que la segunda es una ingeniería.&lt;/p&gt;
-&lt;p&gt;Si bien la Ingeniería Informática se ve mucho más ligada a la producción de software de gestión empresarial, no es menos cierto que existe una rama de la ingeniería que la computación no podía dejar de hacer uso de ella: la Ingeniería Inversa.&lt;/p&gt;
-&lt;p&gt;Como su nombre bien lo indica esta ingeniería es la encargada de obtener los códigos fuentes de los programas a partir de las aplicaciones en código de máquina.
-Ahora bien, ¿Qué tiene que ver una cosa con otra? Pues que los cibernéticos, hasta ahora, han sido la mayoría de los que se han dedicado a esta ingeniería en mi muy modesta experiencia.&lt;/p&gt;
-&lt;p&gt;¿No les parece algo contradictorio? Tal vez esto tenga que ver con un próximo aporte que pienso redactar.&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Validación en el cliente o en el servidor: ¿Llegó .NET? ¡Se acabaron las preocupaciones!</title>
-      <link>/es/post/validaci%C3%B3n-de-datos/</link>
-      <pubDate>Wed, 02 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/es/post/validaci%C3%B3n-de-datos/</guid>
-      
-        <description>&lt;p&gt;Desde los tiempos del inicio del protocolo HTTP (¿Quién iba a imaginar que, a solo 12 años, alguien se refiriera a eso con tal antigüedad?) y el ansiado carácter dinámico que poco a poco se fue haciendo más y más necesario en el mismo; la validación de los datos provenientes del cliente se hizo una necesidad mayor cada vez más.&lt;/p&gt;
-&lt;p&gt;¿Cuántas veces introducimos código HTML en los campos que se nos pedían en un formulario? ¿Nunca probaron la respuesta del sistema ante la introducción de una consulta a la base de datos en un campo de un formulario? Como por ejemplo: &amp;ldquo;;DROP ALL DATABASE&amp;rdquo; o algo similar en dependencia del SQL que se maneje -el punto y coma &amp;ldquo;;&amp;rdquo; lo que le dice al sistema es que la consulta se que termina ahí y en adelante hay otra y entonces cuando se trataba de insertar el valor en la base de datos lo que pasaba era que se truncaba el INSERT y se ejecutaba el DROP y por consiguiente sus devastadoras consecuencias (OJO: Todavía hay sistemas vulnerables a este tipo de código malicioso, nunca digan que fue aquí donde lo aprendieron).&lt;/p&gt;
-&lt;p&gt;Para evitar cosas como estas se realizan (incluso hoy en la actualidad) validaciones en el servidor donde se validaban los datos. Esto por supuesto trae aparejado una ralentización del sistema producto del tráfico en la red; cosa que puede dar al traste con la buena explotación del sistema debido a sus bajas prestaciones en dependencia de la configuración de la red.&lt;/p&gt;
-&lt;p&gt;En este caso también caían las restricciones propias de los sistemas en cuanto a obligar a sus usuarios a introducir determinados campos de los formularios y al olvido de los clientes de esta restricción.&lt;/p&gt;
-&lt;p&gt;Para todo esto se comenzó a hacer las validaciones en el cliente, es decir en el navegador web mediante la característica que poseen casi todos de brindar una interface de su documento mediante la programación en un lenguaje de secuencia de comandos (generalmente JavaScript). Esto no fue obstáculo para lo usuarios más avanzados pues comenzaron a salvar las páginas en sus computadoras para modificar los códigos fuentes eliminando dichas validaciones. Una vez introducidos los datos eran enviados al servidor donde eran procesados y de nuevo caían los sistemas.&lt;/p&gt;
-&lt;p&gt;Si bien es verdad que la filosofía de validaciones no ha cambiado con la introducción de modernas tecnologías de programación como lo constituye la plataforma .NET de Microsoft; es verdad también que el código a escribir se ha minimizado a un extremo que prácticamente es cero la cantidad de líneas que hay que escribir, sobre todo si se hace uso de las facilidades de herramientas RAD como el Visual Studio .NET.&lt;/p&gt;
-&lt;p&gt;Basta con arrastrar y soltar en nuestro formulario algunos controles y configurar, si acaso, un par de propiedades de los mimos para lograr que el sistema valide los datos tanto en el cliente como en el servidor en caso de que sea necesario. &amp;ldquo;RequiredFieldValidator&amp;rdquo; como su nombre bien lo indica hace que el control que se convierta de obligatoriedad la introducción de datos en el control que tiene asociado.&lt;/p&gt;
-&lt;p&gt;&amp;ldquo;RangeFieldValidator&amp;rdquo; es otro control de este tipo. Por si los que vienen con la biblioteca de clases de la plataforma (.NET Framework) no fueran suficientes la misma posee una clase para que se pueda heredar de ella e implementar nosotros mismos nuestros propios validadores respondiendo a las restricciones propias del sistema a implementar.&lt;/p&gt;
-&lt;p&gt;Evalúe las posibilidades que brindan los validadores de .NET a la seguridad de aplicaciones web y utilícelos cuando los necesite para que vea en la práctica lo que decimos.&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Apuntes sobre la importancia de la Ingeniería de Software</title>
-      <link>/es/post/apuntes-ingenier%C3%ADa-software/</link>
-      <pubDate>Tue, 01 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/es/post/apuntes-ingenier%C3%ADa-software/</guid>
-      
-        <description>&lt;p&gt;Cuando comencé la planificación de la asignatura: &amp;ldquo;Programación IV&amp;rdquo; vi que entre los temas que había que tratar estaba la Ingeniería de Software. Las dudas enseguida comenzaron a darme vueltas en la cabeza del por qué insertar ese tema aquí si justo el próximo semestre recibirían la asignatura: &amp;ldquo;Ingeniería de Software I&amp;rdquo; que partía desde cero. Junto a esto me sugirieron que tratara la importancia de esta materia apoyándome en el libro: &amp;ldquo;Software Engineering Project Management&amp;rdquo; donde de manera muy somera inducen a pensar en ella. Como colofón a las razones que me hicieron escribir estas notas fue la ayuda que me solicitó una alumna para que le prestara los apuntes que había recopilado hasta el momento; así que me di la tarea de darle forma para que sirviera de material de consulta.&lt;/p&gt;
-&lt;p&gt;Un ejemplo clásico de lo que puede constituir un buen diseño de software fue lo que sucedió con el sistema automatizado de transportación de equipajes del nuevo aeropuerto internacional de Denver que reunía, entre otras, estas características:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;2 veces el tamaño de Manhattan.&lt;/li&gt;
-&lt;li&gt;Capacidad para aterrizar tres jets a la vez en mal tiempo.&lt;/li&gt;
-&lt;li&gt;21 millas de pista de acero para equipajes.&lt;/li&gt;
-&lt;li&gt;100 computadoras en red.&lt;/li&gt;
-&lt;li&gt;5000 ojos electrónicos.&lt;/li&gt;
-&lt;li&gt;56 escáneres de códigos de barra.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Inicialmente planificado para ser desarrollado en nueve meses una vez llegado su fecha límite en Septiembre, fue pospuesto para Diciembre, de ahí para Marzo, luego para Mayo y después para Junio. Ya el Junio este proyecto estaba costando alrededor de 1.1 millones de dólares diarios. El proyecto fue suspendido cuando las pérdidas superaron los 193 millones de dólares. Lo que se pensó fuese el sistema de transportación de equipajes más avanzado de la historia, se convirtió en un gran fracaso por cuestiones de desarrollo de software.&lt;/p&gt;
-&lt;p&gt;Ejemplos como este son muchos los que día a día nos topamos a tal punto que de cada seis nuevos grandes proyectos puestos en operación, otros dos son cancelados. Que si le agregásemos que la mitad de los proyectos se cancelan sin haberse puesto en operación y que las tres cuartas partes de los grandes proyectos funcionan mal, es decir, que no cumplen con las especificaciones; vemos entonces que el desarrollo de proyectos informáticos no está nada bien que digamos y que hay que poner en marchas estrategias que ayuden a contrarrestar este fenómeno.&lt;/p&gt;
-&lt;p&gt;El software si bien comenzó a producirse solo para las computadoras ya hoy en día es difícil encontrarse un equipo electrodoméstico que no tenga incorporado algunas líneas de códigos. Incluso en aquellos que pueden poner en riesgo la vida humana. A continuación, una tabla con algunos equipos y una medida del código que incorpora:&lt;/p&gt;
-&lt;p&gt;Televisión &amp;mdash;&amp;gt; 500Kb de código
-Depiladora &amp;mdash;&amp;gt; 2Kb de código
-Trenes &amp;mdash;&amp;gt; 30000 líneas de código&lt;/p&gt;
-&lt;p&gt;Un fallo en estos softwares, por mínimo que sea, puede traer consecuencias desastrosas.&lt;/p&gt;
-&lt;p&gt;Un grupo consultor de IBM encuestó a 24 compañías que desarrollan grandes proyectos de software arrojando que el 55% de los proyectos terminan costando más que lo planificado, el 68% sobrepasan el tiempo límite de entrega y el 88% son substancialmente rediseñados. Otras razones más para comenzar a &amp;ldquo;pensar distinto&amp;rdquo;.&lt;/p&gt;
-&lt;p&gt;Por suerte no todo es malo y no puede verse como un caos (sino como algo que está cambiando para bien y que hizo falta para darnos cuenta). La industria y la academia (lo práctico y lo teórico) han dado pasos significativos en todo este meollo con el confeccionamiento de CMM y otros estándares del desarrollo de software como es el ISO.&lt;/p&gt;
-&lt;p&gt;En cuanto a CMM tenemos que el 75% de las compañías productoras de software son Nivel 1; el 24% tienen Nivel 2 ó 3 (ejemplos: NASA y USAF); mientras que el solo el 1% posee Nivel 4 ó 5. Chile es el único país latinoamericanos con una compañía de Nivel 5. El estándar ISO es mucho más fácil de obtener pues está diseñado para cualquier proceso productivo mientras que CMM solo para software, el estándar ISO es equivalente a CMM Nivel 3.&lt;/p&gt;
-&lt;p&gt;La intención de este artículo fue hacerlo reflexionar un poco en el tema de la Ingeniería de Software comprendiendo su importancia derivada de ejemplos y estudios realizados en el campo del desarrollo de software. Ahora le toca a usted sacar sus propias conclusiones a la hora de llevar a cabo un proyecto.&lt;/p&gt;
 </description>
       
     </item>
