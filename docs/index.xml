@@ -6,9 +6,92 @@
     <description>Recent content on Coding Aloud</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
+    <lastBuildDate>Mon, 04 Jan 2021 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Coding style using StyleCop</title>
+      <link>/post/stylecop-coding-style/</link>
+      <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/stylecop-coding-style/</guid>
+      
+        <description>&lt;p&gt;A colleague ask me to share my experience coding with ReSharper and once he heard that I’m not use ReSharper he was even more curious about how I write source codes. Who knows me knows I love NuGet packages and be updated constantly, that’s why I found a very useful package that I install in all my projects as soon I start it.&lt;/p&gt;
+&lt;p&gt;StyleCop.MSBuild&lt;/p&gt;
+&lt;p&gt;StyleCop used to be a standalone application with integration with Visual Studio but that changed a while ago. I’ll explain through an example. Let’s start creating a console application from scratch.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/stylecop-coding-style/01.png&#34; alt=&#34;Console application&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 1 show a just created console application in Visual Studio.&lt;/p&gt;
+&lt;p&gt;Notice the 0 errors, 0 warnings, and 0 messages once is compiled. Let’s install the NuGet package and see what happens. Figure 2 shows the management of NuGet packages for the application.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/stylecop-coding-style/02.png&#34; alt=&#34;Solution package management&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 2.&lt;/p&gt;
+&lt;p&gt;Figure 3 shows the results of the solution build once that package is installed.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/stylecop-coding-style/03.png&#34; alt=&#34;First build results&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 3.&lt;/p&gt;
+&lt;p&gt;Notice the 11 warnings. My personal philosophy is deliver products with zero errors (that is logic because compilers and managers looks for it); zero warnings (few tools and people prevent you to deploy with warnings); and zero messages (practically nobody cares about this).&lt;/p&gt;
+&lt;p&gt;Most of the warnings received are self-explanatory and easy to fix. Let’s analyze them one by one.&lt;/p&gt;
+&lt;p&gt;The first and the last one are related with the fact that files &amp;ldquo;Program.cs&amp;rdquo; and &amp;ldquo;AssemblyInfo.cs&amp;rdquo; don’t have header and can be fixed just adding a header in XML format containing the name of the file among other information useful.&lt;/p&gt;
+&lt;p&gt;The following five warnings are related with the fact that &amp;ldquo;using&amp;rdquo; statements should be inside the namespace and not outside as the template put it. The solution is obvious, just move the statements inside the namespace.&lt;/p&gt;
+&lt;p&gt;The following four warnings are related with the lack of documentation in the different code instruments: classes and methods in this case. Once the documentation are added the warnings disappear.&lt;/p&gt;
+&lt;p&gt;Figure 4 show the build result after applied the above fixes.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/stylecop-coding-style/04.png&#34; alt=&#34;Second build results&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 4.&lt;/p&gt;
+&lt;p&gt;Notice the new two warnings. At this point is good to mention that this is an iterative procedure until the goal (0 errors, 0 warnings, 0 messages). Also the not used &amp;ldquo;using&amp;rdquo; statements were deleted (those gray out). Figure 5 shows the new result once we fix these two warnings adding &amp;ldquo;public&amp;rdquo; modifier to the class and the method.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/stylecop-coding-style/05.png&#34; alt=&#34;First fix&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 5.&lt;/p&gt;
+&lt;p&gt;Hurrah! We made it! But (there is always a but, right?), these is possible because the rule set that we have configured in the project to report warnings. So, let’s be more picky changing the rule set.&lt;/p&gt;
+&lt;p&gt;Figure 6 shows the project properties in the &amp;ldquo;Code Analysis&amp;rdquo; option. Notice the unselected checkbox: &amp;ldquo;Enable Code Analysis on Build&amp;rdquo; and the &amp;ldquo;Microsoft Managed Recommended Rules&amp;rdquo; in the Rule Set dropdown.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/stylecop-coding-style/06.png&#34; alt=&#34;Project properties settings&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 6.&lt;/p&gt;
+&lt;p&gt;If you enable the checkbox without install the NuGet package you will not receive any warnings and if also you change the rule set without install the NuGet package you will receive only 2 warnings also returned by the StyleCop package because what is does is add many more rules to the working set. That is the reason why I love to add it to my projects and not only use what is included in Visual Studio.&lt;/p&gt;
+&lt;p&gt;Figure 7 show the recommended options.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/stylecop-coding-style/07.png&#34; alt=&#34;Recommended options&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 7.&lt;/p&gt;
+&lt;p&gt;Yes, &amp;ldquo;Microsoft All Rules&amp;rdquo;, more strict we are, better code we obtain if we follow the criteria to obtain at the end 0 errors, 0 warnings, and 0 messages.&lt;/p&gt;
+&lt;p&gt;Figure 8 shows the results of the build after the new options for code analysis.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/stylecop-coding-style/08.png&#34; alt=&#34;Third build results&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 8.&lt;/p&gt;
+&lt;p&gt;Six new warnings, time to start again. Uhmmm… The first two don’t have a file associated, how I can fix them? Well there is a solution. Right click in the code &amp;ldquo;CA2210&amp;rdquo; in this case, select the option for &amp;ldquo;Suppress&amp;rdquo; and then the option &amp;ldquo;In Suppression File&amp;rdquo; as is shown in figure 9.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/stylecop-coding-style/09.png&#34; alt=&#34;Rule fix options&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 9.&lt;/p&gt;
+&lt;p&gt;Once this option is selected a new file called &amp;ldquo;GlobalSuppressions.cs&amp;rdquo; is created in the root of the project as is shown in figure 10.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/stylecop-coding-style/10.png&#34; alt=&#34;Rules suppressions file&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 10.&lt;/p&gt;
+&lt;p&gt;At this point I would like to mention that there are occasions where you can suppress the warning in the suppression file and others directly in the source code. In the figure 10 there are still 5 more warnings to fix. My choices are suppress in global suppression file the first warning, and suppress in source code the fourth warning. To suppress in source code you should do almost the same: right click in the warning’s code, select &amp;ldquo;Suppression&amp;rdquo; option and then select option &amp;ldquo;In Source&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;This option adds an attribute above the method being reported containing the code to suppress the warning, similar to the code added into &amp;ldquo;GlobalSuppressions.cs&amp;rdquo; file.&lt;/p&gt;
+&lt;p&gt;The second warning can be fixed marking the &amp;ldquo;Main&amp;rdquo; method as &amp;ldquo;static&amp;rdquo;; while the third can be fixed removing the &amp;ldquo;args&amp;rdquo; parameter (and its documentation in the method comments). Finally the fifth warning can be fixed just correcting the spelling of the word. Yes, StyleCop also include spell checking, great isn’t?&lt;/p&gt;
+&lt;p&gt;Once all remaining warnings are addressed, we can build again and see what is reported this time, figure 11 show that.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/stylecop-coding-style/11.png&#34; alt=&#34;Fourth build results&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 11.&lt;/p&gt;
+&lt;p&gt;What? More warnings? Yes, remember that you added a new file: &amp;ldquo;GlobalSuppressions.cs&amp;rdquo; and that file enter to the loop to reports compilation warnings too. So, is time to fix the new reported warnings.&lt;/p&gt;
+&lt;p&gt;All suppressions trough code (source code of &amp;ldquo;GlobalSuppressions.cs&amp;rdquo; file or attributes in the code instruments) must to have a justification. I use my initials as justification as a way to tracking who decided to suppress this warning. That is how I fix the first and third warnings.&lt;/p&gt;
+&lt;p&gt;The second warning can be fix adding the header to the file &amp;ldquo;GlobalSuppressions.cs&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;The fourth warning ask for the use of &amp;ldquo;////&amp;rdquo; instead of &amp;ldquo;//&amp;rdquo; to start a source code comment. If you don’t like this option you can suppress globally in the &amp;ldquo;GlobalSuppressions.cs&amp;rdquo; file but I prefer to fix it changing the way of how I write comments.&lt;/p&gt;
+&lt;p&gt;Finally figure 12 show how the code looks at the end.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/stylecop-coding-style/12.png&#34; alt=&#34;Final code&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 12.&lt;/p&gt;
+&lt;p&gt;First that all our goal is fulfilled: 0 errors, 0 warnings, and 0 messages. Second, our resulting code is beautiful and self-explanatory for future modifications as well as less entries in other security analysis tools as HP Fortify.&lt;/p&gt;
+&lt;p&gt;Is valid to mention that because this discipline requires to add comments in all instruments write all those comments manually is a tedious task. For that reason I also use another tool called &amp;ldquo;GhostDoc&amp;rdquo; that generate very accurate documentation depending of the context for the instrument being documented. The issue with this is that should be done one by one due to license limitation. Actually I use the free version but professional license allows to generate comments for a whole class, or file, or namespace in only one click or pressing &amp;ldquo;Shift + Ctrl + D&amp;rdquo; over the instrument. In the good news is that recently &amp;ldquo;GhostDoc&amp;rdquo; distributed a version using Visual Studio extension package and not the standalone application as it was, so the installation and updates become more ease.&lt;/p&gt;
+&lt;p&gt;Team, once again these are my experience creating source codes. I know that follow this discipline is not funny if the product is not new but as Robert C. Martin say: &amp;ldquo;…no matter the state of a project, but anything you change try to do your best…&amp;rdquo; to me that means to not generate new warnings. At the end always think that the developer that touch you code in the future could be a serial killer and knows your address (Robert C. Martin quote too), so is better to leave the code as clean as possible.&lt;/p&gt;
+&lt;p&gt;All of these started with a ReSharper question and will end with a ReSharper related comment. Sometimes the warnings reported by StyleCop and those reported by ReSharper enter in conflict between them. I usually give priority to those reported by StyleCop because I think they are more strict and compatible with more tools. Also there is no money associated because is free while ReSharper is not.&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Welcome</title>
+      <link>/post/welcome/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/welcome/</guid>
+      
+        <description>&lt;p&gt;I officially welcome you to my professional blog, I will try to write frequently about development technologies, programming languages, data structures, algorithms, among other topics related to this incredible technological world, always expressing my personal opinions.&lt;/p&gt;
+&lt;p&gt;I decided to start thanks to the fact that I felt the urgent need to write after accumulating experience developing software and constantly explaining over and over again the concepts, approaches, and solutions applied; together with Scott Hanselman&amp;rsquo;s recommendation to write an article about everything that cannot be explained in six sentences.&lt;/p&gt;
+&lt;p&gt;Most of the articles will also be translated into English. I hope to be of help to people who speak both languages.&lt;/p&gt;
+</description>
+      
+    </item>
     
   </channel>
 </rss>

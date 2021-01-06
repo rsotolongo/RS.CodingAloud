@@ -6,9 +6,51 @@
     <description>Recent content in Tags on Coding Aloud</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
+    <lastBuildDate>Mon, 04 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>code analysis</title>
+      <link>/tags/code-analysis/</link>
+      <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/code-analysis/</guid>
+      <description></description>
+    </item>
     
-	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ReSharper</title>
+      <link>/tags/resharper/</link>
+      <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/resharper/</guid>
+      <description></description>
+    </item>
     
+    <item>
+      <title>source code</title>
+      <link>/tags/source-code/</link>
+      <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/source-code/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>StyleCop</title>
+      <link>/tags/stylecop/</link>
+      <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/stylecop/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Visual Studio</title>
+      <link>/tags/visual-studio/</link>
+      <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/visual-studio/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

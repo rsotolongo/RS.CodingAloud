@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>General on Programando en voz alta</title>
+    <link>/es/categories/general/</link>
+    <description>Recent content in General on Programando en voz alta</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es</language>
+    <lastBuildDate>Fri, 01 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/es/categories/general/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bienvenida</title>
+      <link>/es/post/bienvenida/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/bienvenida/</guid>
+      <description>Les doy la bienvenida oficial a mi blog profesional, intentaré escribir frecuentemente sobre tecnologías de desarrollo, lenguajes de programación, estructuras de datos, algoritmos, entre otros temas vinculados con este increíble mundo tecnológico expresando siempre mis opiniones personales.
+Me decidí gracias a que sentí la necesidad imperiosa de escribir luego de acumular experiencia desarrollando software y constantemente explicar una y otra vez los conceptos, enfoques, y soluciones aplicados; unido a la recomendación de Scott Hanselman de escribir un artículo de todo aquello que no pueda ser explicado en seis oraciones.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -6,10 +6,16 @@
     <description>Recent content in Memorias on Programando en voz alta</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <lastBuildDate>Thu, 31 Dec 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/es/categories/memorias/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Thu, 31 Dec 2020 23:59:00 +0000</lastBuildDate><atom:link href="/es/categories/memorias/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Memorias</title>
+      <link>/es/post/memorias/</link>
+      <pubDate>Thu, 31 Dec 2020 23:59:00 +0000</pubDate>
+      
+      <guid>/es/post/memorias/</guid>
+      <description>Esta primera entrada es para listar todos los artículos previamente publicados en un antiguo blog que inicié en el 2006 cuando era profesor de la Universidad de Ciego de Ávila. Volviendo a leerlos, noto mucha ingenuidad, e imprecisiones pero quiero recordar que en aquel entonces mi acceso a Internet era muy limitado y mi experiencia profesional apenas comenzaba.
+Creo que hay muchas cosas que siguen siendo válidas hoy en día y pueden servir de ayuda todavía.</description>
+    </item>
     
     <item>
       <title>Recuperar XML desde Delphi</title>
@@ -197,15 +203,6 @@ La tecnología de Internet y en especial la tecnología web hace muy fácil la p
       <guid>/es/post/encapsulamiento-vs-c%C3%B3digo-abierto/</guid>
       <description>No es de un partido de béisbol ni de una pelea de boxeo de lo que se trata este artículo sino de una duda que quisiera compartir con ustedes. Ante todo, quiero aclarar que no tengo nada en contra del Código Abierto (OS del inglés Open Source) a pesar de ser un fiel defensor de los productos Microsoft.
 Precisamente fue Bill Gates el que en un comunicado a la comunidad de usuarios y desarrolladores de software lanza un llamado a la reflexión sobre la &amp;ldquo;piratería&amp;rdquo; iniciando así el fenómeno de licenciamiento de software.</description>
-    </item>
-    
-    <item>
-      <title>¿Quién es quién en los profesionales de la computación?</title>
-      <link>/es/post/profesionales-de-la-computaci%C3%B3n/</link>
-      <pubDate>Fri, 04 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/es/post/profesionales-de-la-computaci%C3%B3n/</guid>
-      <description>No les miento si les cuento que durante muchos años viví engañado. Desde antes de entrar a estudiar la carrera de &amp;ldquo;Licenciatura en Ciencia de la Computación&amp;rdquo; (Cibernética, como todos la conocen) en la Universidad Central &amp;ldquo;Marta Abreu&amp;rdquo; de Las Villas, pensaba que los cibernéticos eran los que &amp;ldquo;diseñaban&amp;rdquo; los productos informáticos debido a sus conocimientos más profundos en materias de computación y que luego los informáticos se encargaban de &amp;ldquo;implementarlos&amp;rdquo;.</description>
     </item>
     
   </channel>

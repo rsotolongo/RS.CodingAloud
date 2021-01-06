@@ -6,11 +6,7 @@
     <description>Recent content in Internet on Programando en voz alta</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <lastBuildDate>Thu, 24 Dec 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/es/tags/internet/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 24 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="/es/tags/internet/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>¿Se puede confiar ciegamente en Internet?</title>
       <link>/es/post/confianza-en-internet/</link>

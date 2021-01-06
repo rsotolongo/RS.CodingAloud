@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Coding Aloud</title>
+    <link>/post/</link>
+    <description>Recent content in Posts on Coding Aloud</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 04 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Coding style using StyleCop</title>
+      <link>/post/stylecop-coding-style/</link>
+      <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/stylecop-coding-style/</guid>
+      <description>A colleague ask me to share my experience coding with ReSharper and once he heard that I’m not use ReSharper he was even more curious about how I write source codes. Who knows me knows I love NuGet packages and be updated constantly, that’s why I found a very useful package that I install in all my projects as soon I start it.
+StyleCop.MSBuild
+StyleCop used to be a standalone application with integration with Visual Studio but that changed a while ago.</description>
+    </item>
+    
+    <item>
+      <title>Welcome</title>
+      <link>/post/welcome/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/welcome/</guid>
+      <description>I officially welcome you to my professional blog, I will try to write frequently about development technologies, programming languages, data structures, algorithms, among other topics related to this incredible technological world, always expressing my personal opinions.
+I decided to start thanks to the fact that I felt the urgent need to write after accumulating experience developing software and constantly explaining over and over again the concepts, approaches, and solutions applied; together with Scott Hanselman&amp;rsquo;s recommendation to write an article about everything that cannot be explained in six sentences.</description>
+    </item>
+    
+  </channel>
+</rss>

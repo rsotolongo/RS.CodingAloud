@@ -6,10 +6,37 @@
     <description>Recent content in Posts on Programando en voz alta</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <lastBuildDate>Thu, 31 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 04 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/es/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Estilizando códigos usando StyleCop</title>
+      <link>/es/post/estilo-de-c%C3%B3digo-usando-stylecop/</link>
+      <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/estilo-de-c%C3%B3digo-usando-stylecop/</guid>
+      <description>Un colega me pidió que compartiera mi experiencia programando con ReSharper y, una vez que se enteró de que no uso ReSharper, sintió aún más curiosidad por saber cómo escribo los códigos fuentes. Quien me conoce sabe que me encantan los paquetes NuGet y estar actualizado constantemente, por eso encontré un paquete muy útil que instalo en todos mis proyectos apenas los inicio.
+StyleCop.MSBuild
+StyleCop solía ser una aplicación independiente con integración con Visual Studio, pero eso cambió hace un tiempo.</description>
+    </item>
     
-	<atom:link href="/es/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bienvenida</title>
+      <link>/es/post/bienvenida/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/bienvenida/</guid>
+      <description>Les doy la bienvenida oficial a mi blog profesional, intentaré escribir frecuentemente sobre tecnologías de desarrollo, lenguajes de programación, estructuras de datos, algoritmos, entre otros temas vinculados con este increíble mundo tecnológico expresando siempre mis opiniones personales.
+Me decidí gracias a que sentí la necesidad imperiosa de escribir luego de acumular experiencia desarrollando software y constantemente explicar una y otra vez los conceptos, enfoques, y soluciones aplicados; unido a la recomendación de Scott Hanselman de escribir un artículo de todo aquello que no pueda ser explicado en seis oraciones.</description>
+    </item>
     
+    <item>
+      <title>Memorias</title>
+      <link>/es/post/memorias/</link>
+      <pubDate>Thu, 31 Dec 2020 23:59:00 +0000</pubDate>
+      
+      <guid>/es/post/memorias/</guid>
+      <description>Esta primera entrada es para listar todos los artículos previamente publicados en un antiguo blog que inicié en el 2006 cuando era profesor de la Universidad de Ciego de Ávila. Volviendo a leerlos, noto mucha ingenuidad, e imprecisiones pero quiero recordar que en aquel entonces mi acceso a Internet era muy limitado y mi experiencia profesional apenas comenzaba.
+Creo que hay muchas cosas que siguen siendo válidas hoy en día y pueden servir de ayuda todavía.</description>
+    </item>
     
     <item>
       <title>Recuperar XML desde Delphi</title>
@@ -178,34 +205,6 @@ Es verdad que existen herramientas formateadoras de códigos llamadas &amp;ldquo
       <guid>/es/post/solo-desplegar-no-basta/</guid>
       <description>La experiencia nos ha mostrado que la creación de un sitio web debe partir de una planeación, seguido por una construcción del sitio y posteriormente ejecutar un proceso de medición para garantizar que los resultados se cumplan. Sin embargo, en la práctica, tal vez por parecer muy fácil su construcción, o por la poca disponibilidad de tiempo se arranca por la construcción, obviando la planeación e impidiendo la medición.
 La tecnología de Internet y en especial la tecnología web hace muy fácil la publicación de una aplicación, por lo que la planeación nos parece trivial.</description>
-    </item>
-    
-    <item>
-      <title>Objetos ‘duros’ y ‘blandos’</title>
-      <link>/es/post/objetos-duros-objetos-blandos/</link>
-      <pubDate>Tue, 08 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/es/post/objetos-duros-objetos-blandos/</guid>
-      <description>Hace unos días cuando les aclaraba unas dudas a unos estudiantes hice alusión a dos tipos de objetos tal vez no muy &amp;ldquo;difundidos&amp;rdquo; (al menos por la terminología): &amp;ldquo;objetos duros&amp;rdquo; y &amp;ldquo;objetos blandos&amp;rdquo;. Unos minutos después se me acercó un profesor muy estimado por mí a hacerme la pregunta de qué significaba en realidad aquello de &amp;ldquo;objetos duros&amp;rdquo; y &amp;ldquo;objetos blandos&amp;rdquo; y me aconsejó (en un marcado tono jodedor) que me cuidara de la dureza de los mismos no fuera a ser que alguno se escapara de la computadora y me golpeara.</description>
-    </item>
-    
-    <item>
-      <title>Encapsulamiento vs. Código Abierto</title>
-      <link>/es/post/encapsulamiento-vs-c%C3%B3digo-abierto/</link>
-      <pubDate>Mon, 07 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/es/post/encapsulamiento-vs-c%C3%B3digo-abierto/</guid>
-      <description>No es de un partido de béisbol ni de una pelea de boxeo de lo que se trata este artículo sino de una duda que quisiera compartir con ustedes. Ante todo, quiero aclarar que no tengo nada en contra del Código Abierto (OS del inglés Open Source) a pesar de ser un fiel defensor de los productos Microsoft.
-Precisamente fue Bill Gates el que en un comunicado a la comunidad de usuarios y desarrolladores de software lanza un llamado a la reflexión sobre la &amp;ldquo;piratería&amp;rdquo; iniciando así el fenómeno de licenciamiento de software.</description>
-    </item>
-    
-    <item>
-      <title>¿Quién es quién en los profesionales de la computación?</title>
-      <link>/es/post/profesionales-de-la-computaci%C3%B3n/</link>
-      <pubDate>Fri, 04 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/es/post/profesionales-de-la-computaci%C3%B3n/</guid>
-      <description>No les miento si les cuento que durante muchos años viví engañado. Desde antes de entrar a estudiar la carrera de &amp;ldquo;Licenciatura en Ciencia de la Computación&amp;rdquo; (Cibernética, como todos la conocen) en la Universidad Central &amp;ldquo;Marta Abreu&amp;rdquo; de Las Villas, pensaba que los cibernéticos eran los que &amp;ldquo;diseñaban&amp;rdquo; los productos informáticos debido a sus conocimientos más profundos en materias de computación y que luego los informáticos se encargaban de &amp;ldquo;implementarlos&amp;rdquo;.</description>
     </item>
     
   </channel>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ReSharper on Programando en voz alta</title>
+    <link>/es/tags/resharper/</link>
+    <description>Recent content in ReSharper on Programando en voz alta</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es</language>
+    <lastBuildDate>Mon, 04 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/es/tags/resharper/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Estilizando códigos usando StyleCop</title>
+      <link>/es/post/estilo-de-c%C3%B3digo-usando-stylecop/</link>
+      <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/estilo-de-c%C3%B3digo-usando-stylecop/</guid>
+      <description>Un colega me pidió que compartiera mi experiencia programando con ReSharper y, una vez que se enteró de que no uso ReSharper, sintió aún más curiosidad por saber cómo escribo los códigos fuentes. Quien me conoce sabe que me encantan los paquetes NuGet y estar actualizado constantemente, por eso encontré un paquete muy útil que instalo en todos mis proyectos apenas los inicio.
+StyleCop.MSBuild
+StyleCop solía ser una aplicación independiente con integración con Visual Studio, pero eso cambió hace un tiempo.</description>
+    </item>
+    
+  </channel>
+</rss>

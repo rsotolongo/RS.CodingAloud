@@ -6,10 +6,51 @@
     <description>Recent content in Tags on Programando en voz alta</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <lastBuildDate>Thu, 31 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 04 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/es/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>análisis de código</title>
+      <link>/es/tags/an%C3%A1lisis-de-c%C3%B3digo/</link>
+      <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/es/tags/an%C3%A1lisis-de-c%C3%B3digo/</guid>
+      <description></description>
+    </item>
     
-	<atom:link href="/es/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>código fuente</title>
+      <link>/es/tags/c%C3%B3digo-fuente/</link>
+      <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/es/tags/c%C3%B3digo-fuente/</guid>
+      <description></description>
+    </item>
     
+    <item>
+      <title>ReSharper</title>
+      <link>/es/tags/resharper/</link>
+      <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/es/tags/resharper/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>StyleCop</title>
+      <link>/es/tags/stylecop/</link>
+      <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/es/tags/stylecop/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Visual Studio</title>
+      <link>/es/tags/visual-studio/</link>
+      <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/es/tags/visual-studio/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Delphi</title>
@@ -107,15 +148,6 @@
       <pubDate>Fri, 11 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>/es/tags/educaci%C3%B3n/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>código fuente</title>
-      <link>/es/tags/c%C3%B3digo-fuente/</link>
-      <pubDate>Thu, 10 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/es/tags/c%C3%B3digo-fuente/</guid>
       <description></description>
     </item>
     

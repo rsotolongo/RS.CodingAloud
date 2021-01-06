@@ -6,10 +6,130 @@
     <description>Recent content on Programando en voz alta</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <lastBuildDate>Thu, 31 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 04 Jan 2021 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/es/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Estilizando códigos usando StyleCop</title>
+      <link>/es/post/estilo-de-c%C3%B3digo-usando-stylecop/</link>
+      <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/estilo-de-c%C3%B3digo-usando-stylecop/</guid>
+      
+        <description>&lt;p&gt;Un colega me pidió que compartiera mi experiencia programando con ReSharper y, una vez que se enteró de que no uso ReSharper, sintió aún más curiosidad por saber cómo escribo los códigos fuentes. Quien me conoce sabe que me encantan los paquetes NuGet y estar actualizado constantemente, por eso encontré un paquete muy útil que instalo en todos mis proyectos apenas los inicio.&lt;/p&gt;
+&lt;p&gt;StyleCop.MSBuild&lt;/p&gt;
+&lt;p&gt;StyleCop solía ser una aplicación independiente con integración con Visual Studio, pero eso cambió hace un tiempo. Lo explicaré con un ejemplo. Comencemos a crear una aplicación de consola desde cero.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/stylecop-coding-style/01.png&#34; alt=&#34;Applicación de consola&#34;&gt;&lt;/p&gt;
+&lt;p&gt;La figura 1 muestra una aplicación de consola recién creada en Visual Studio.&lt;/p&gt;
+&lt;p&gt;Observe los 0 errores, 0 advertencias y 0 mensajes una vez que se compila. Instalemos el paquete NuGet y veamos qué sucede. La figura 2 muestra la administración de paquetes NuGet para la aplicación.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/stylecop-coding-style/02.png&#34; alt=&#34;Administrador de paquetes de la solución&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 2.&lt;/p&gt;
+&lt;p&gt;La figura 3 muestra los resultados de la creación de la solución una vez que se instala ese paquete.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/stylecop-coding-style/03.png&#34; alt=&#34;Primeros resultados de compilación&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 3.&lt;/p&gt;
+&lt;p&gt;Note las 11 advertencias. Mi filosofía personal es entregar productos sin errores (eso es lógico porque los compiladores y administradores lo buscan); cero advertencias (pocas herramientas y personas le impiden implementar con advertencias); y cero mensajes (prácticamente a nadie le importa esto).&lt;/p&gt;
+&lt;p&gt;La mayoría de las advertencias recibidas se explican por sí mismas y son fáciles de solucionar. Analicémoslsas una por una.&lt;/p&gt;
+&lt;p&gt;La primera y el última están relacionadas con el hecho de que los archivos &amp;ldquo;Program.cs&amp;rdquo; y &amp;ldquo;AssemblyInfo.cs&amp;rdquo; no tienen encabezado y se pueden arreglar simplemente agregando un encabezado en formato XML que contenga el nombre del archivo entre otra información útil.&lt;/p&gt;
+&lt;p&gt;Las siguientes cinco advertencias están relacionadas con el hecho de que las declaraciones de &amp;ldquo;uso&amp;rdquo; deben estar dentro del espacio de nombres y no afuera, como dice la plantilla. La solución es obvia, simplemente mover las declaraciones dentro del espacio de nombres.&lt;/p&gt;
+&lt;p&gt;Las siguientes cuatro advertencias están relacionadas con la falta de documentación en los diferentes instrumentos de código: clases y métodos en este caso. Una vez que se agrega la documentación, las advertencias desaparecen.&lt;/p&gt;
+&lt;p&gt;La figura 4 muestra el resultado de la compilación después de aplicar las correcciones anteriores.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/stylecop-coding-style/04.png&#34; alt=&#34;Segundos resultados de compilación&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 4.&lt;/p&gt;
+&lt;p&gt;Observe las dos nuevas advertencias. En este punto es bueno mencionar que este es un procedimiento iterativo hasta la meta (0 errores, 0 advertencias, 0 mensajes). También se eliminaron las declaraciones de &amp;ldquo;uso&amp;rdquo; no utilizadas (las que están en gris). La figura 5 muestra el nuevo resultado una vez que arreglamos estas dos advertencias agregando el modificador &amp;ldquo;público&amp;rdquo; a la clase y al método.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/stylecop-coding-style/05.png&#34; alt=&#34;Primeros arreglos&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 5.&lt;/p&gt;
+&lt;p&gt;¡Hurra! ¡Lo hicimos! Pero (siempre hay un pero, ¿no?), Esto es posible gracias al conjunto de reglas que hemos configurado en el proyecto para reportar advertencias. Entonces, seamos más exigentes al cambiar el conjunto de reglas.&lt;/p&gt;
+&lt;p&gt;La figura 6 muestra las propiedades del proyecto en la opción &amp;ldquo;Análisis de código&amp;rdquo;. Observe la casilla de verificación no seleccionada: &amp;ldquo;Habilitar análisis de código al compilar&amp;rdquo; y las &amp;ldquo;Reglas recomendadas administradas por Microsoft&amp;rdquo; en el menú desplegable Conjunto de reglas.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/stylecop-coding-style/06.png&#34; alt=&#34;Opciones de configuración del proyecto&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 6.&lt;/p&gt;
+&lt;p&gt;Si habilita la casilla de verificación sin instalar el paquete NuGet, no recibirá ninguna advertencia y si también cambia el conjunto de reglas sin instalar el paquete NuGet, recibirá solo 2 advertencias también devueltas por el paquete StyleCop porque lo que hace es agregar muchas más reglas al conjunto de trabajo. Esa es la razón por la que me encanta agregarlo a mis proyectos y no solo usar lo que está incluido en Visual Studio.&lt;/p&gt;
+&lt;p&gt;La figura 7 muestra las opciones recomendadas.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/stylecop-coding-style/07.png&#34; alt=&#34;Opciones recomendadas&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 7.&lt;/p&gt;
+&lt;p&gt;Sí, &amp;ldquo;Microsoft All Rules&amp;rdquo;, más estrictos somos, mejor código obtenemos si seguimos los criterios para obtener al final 0 errores, 0 advertencias y 0 mensajes.&lt;/p&gt;
+&lt;p&gt;La figura 8 muestra los resultados de la compilación después de las nuevas opciones para el análisis de código.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/stylecop-coding-style/08.png&#34; alt=&#34;Terceros resultados de compilación&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 8.&lt;/p&gt;
+&lt;p&gt;Seis nuevas advertencias, es hora de empezar de nuevo. Uhmmm&amp;hellip; Los dos primeros no tienen un archivo asociado, ¿cómo puedo solucionarlos? Bueno, hay una solución. Haga clic derecho en el código &amp;ldquo;CA2210&amp;rdquo; en este caso, seleccione la opción de &amp;ldquo;Suprimir&amp;rdquo; y luego la opción &amp;ldquo;En Archivo de Supresión&amp;rdquo; como se muestra en La figura 9.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/stylecop-coding-style/09.png&#34; alt=&#34;Opciones de reglas&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 9.&lt;/p&gt;
+&lt;p&gt;Una vez seleccionada esta opción, se crea un nuevo archivo llamado &amp;ldquo;GlobalSuppressions.cs&amp;rdquo; en la raíz del proyecto como se muestra en La figura 10.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/stylecop-coding-style/10.png&#34; alt=&#34;Archivo de supresión de reglas&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 10.&lt;/p&gt;
+&lt;p&gt;En este punto, me gustaría mencionar que hay ocasiones en las que puede suprimir la advertencia en el archivo de supresión y otras directamente en el código fuente. En La figura 10 todavía hay 5 advertencias más para corregir. Mis opciones son suprimir en el archivo de supresión global la primera advertencia y suprimir en el código fuente la cuarta advertencia. Para suprimir el código fuente, debe hacer casi lo mismo: haga clic con el botón derecho en el código de la advertencia, seleccione la opción &amp;ldquo;Supresión&amp;rdquo; y luego seleccione la opción &amp;ldquo;En fuente&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Esta opción agrega un atributo sobre el método que se informa que contiene el código para suprimir la advertencia, similar al código agregado en el archivo &amp;ldquo;GlobalSuppressions.cs&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;La segunda advertencia se puede arreglar marcando el método &amp;ldquo;Principal&amp;rdquo; como &amp;ldquo;estático&amp;rdquo;; mientras que el tercero se puede arreglar eliminando el parámetro &amp;ldquo;args&amp;rdquo; (y su documentación en los comentarios del método). Finalmente, la quinta advertencia se puede arreglar simplemente corrigiendo la ortografía de la palabra. Sí, StyleCop también incluye corrección ortográfica, ¿no es genial?&lt;/p&gt;
+&lt;p&gt;Una vez que se abordan todas las advertencias restantes, podemos volver a compilar y ver lo que se informa esta vez, La figura 11 muestra eso.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/stylecop-coding-style/11.png&#34; alt=&#34;Cuartos resultados de compilación&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 11.&lt;/p&gt;
+&lt;p&gt;¿Qué? ¿Más advertencias? Sí, recuerde que agregó un nuevo archivo: &amp;ldquo;GlobalSuppressions.cs&amp;rdquo; y ese archivo ingresa al ciclo para reportar advertencias de compilación también. Entonces, es hora de corregir las nuevas advertencias informadas.&lt;/p&gt;
+&lt;p&gt;Todas las supresiones a través del código (código fuente del archivo &amp;ldquo;GlobalSuppressions.cs&amp;rdquo; o atributos en los instrumentos de código) deben tener una justificación. Utilizo mis iniciales como justificación como una forma de rastrear quién decidió suprimir esta advertencia. Así es como soluciono la primera y tercera advertencias.&lt;/p&gt;
+&lt;p&gt;La segunda advertencia se puede corregir agregando el encabezado al archivo &amp;ldquo;GlobalSuppressions.cs&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;La cuarta advertencia solicita el uso de &amp;ldquo;////&amp;rdquo; en lugar de &amp;ldquo;//&amp;rdquo; para iniciar un comentario de código fuente. Si no le gusta esta opción, puede suprimir globalmente en el archivo &amp;ldquo;GlobalSuppressions.cs&amp;rdquo;, pero prefiero corregirlo cambiando la forma en que escribo los comentarios.&lt;/p&gt;
+&lt;p&gt;Finalmente, La figura 12 muestra cómo se ve el código al final.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/stylecop-coding-style/12.png&#34; alt=&#34;Código final&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 12.&lt;/p&gt;
+&lt;p&gt;Primero que se cumpla todo nuestro objetivo: 0 errores, 0 advertencias y 0 mensajes. En segundo lugar, nuestro código resultante es atractivo y se explica por sí mismo para futuras modificaciones, así como menos problemas reportados por otras herramientas de análisis de seguridad como HP Fortify.&lt;/p&gt;
+&lt;p&gt;Es válido mencionar que debido a que esta disciplina requiere agregar comentarios en todos los instrumentos escribir todos esos comentarios manualmente es una tarea tediosa. Por esa razón también utilizo otra herramienta llamada &amp;ldquo;GhostDoc&amp;rdquo; que genera documentación muy precisa dependiendo del contexto del instrumento que se está documentando. El problema con esto es que debe hacerse uno por uno debido a la limitación de la licencia. En realidad, yo uso la versión gratuita, pero la licencia profesional permite generar comentarios para toda una clase, archivo o espacio de nombres con un solo clic o presionando &amp;ldquo;Shift + Ctrl + D&amp;rdquo; sobre el instrumento. La buena noticia es que recientemente &amp;ldquo;GhostDoc&amp;rdquo; distribuyó una versión usando el paquete de extensión de Visual Studio y no la aplicación independiente como estaba, por lo que la instalación y las actualizaciones se vuelven más fáciles.&lt;/p&gt;
+&lt;p&gt;Una vez más esta es mi experiencia creando códigos fuentes. Sé que seguir esta disciplina no tiene gracia si el producto no es nuevo pero como dice Robert C. Martin: &amp;ldquo;… no importa el estado de un proyecto, pero cualquier cosa que cambies trata de hacer tu mejor esfuerzo…&amp;rdquo; para mí eso significa no generar nuevas advertencias. Al final, piense siempre que el desarrollador que le toque el código en el futuro podría ser un asesino en serie y conoce su dirección (también cita de Robert C. Martin), así que es mejor dejar el código lo más limpio posible.&lt;/p&gt;
+&lt;p&gt;Todos esto comenzó con una pregunta de ReSharper y terminará con un comentario relacionado con ReSharper. A veces, las advertencias informadas por StyleCop y las informadas por ReSharper entran en conflicto entre ellas. Yo suelo dar prioridad a los reportados por StyleCop porque creo que son más estrictos y compatibles con más herramientas. Además, no hay dinero asociado porque es gratis mientras que ReSharper no lo es.&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Bienvenida</title>
+      <link>/es/post/bienvenida/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/bienvenida/</guid>
+      
+        <description>&lt;p&gt;Les doy la bienvenida oficial a mi blog profesional, intentaré escribir frecuentemente sobre tecnologías de desarrollo, lenguajes de programación, estructuras de datos, algoritmos, entre otros temas vinculados con este increíble mundo tecnológico expresando siempre mis opiniones personales.&lt;/p&gt;
+&lt;p&gt;Me decidí gracias a que sentí la necesidad imperiosa de escribir luego de acumular experiencia desarrollando software y constantemente explicar una y otra vez los conceptos, enfoques, y soluciones aplicados; unido a la recomendación de Scott Hanselman de escribir un artículo de todo aquello que no pueda ser explicado en seis oraciones.&lt;/p&gt;
+&lt;p&gt;La mayoría de los artículos estarán también traducidos al inglés. Espero poder servir de ayuda a personas hablantes de ambos idiomas.&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Memorias</title>
+      <link>/es/post/memorias/</link>
+      <pubDate>Thu, 31 Dec 2020 23:59:00 +0000</pubDate>
+      
+      <guid>/es/post/memorias/</guid>
+      
+        <description>&lt;p&gt;Esta primera entrada es para listar todos los artículos previamente publicados en un antiguo blog que inicié en el 2006 cuando era profesor de la Universidad de Ciego de Ávila. Volviendo a leerlos, noto mucha ingenuidad, e imprecisiones pero quiero recordar que en aquel entonces mi acceso a Internet era muy limitado y mi experiencia profesional apenas comenzaba.&lt;/p&gt;
+&lt;p&gt;Creo que hay muchas cosas que siguen siendo válidas hoy en día y pueden servir de ayuda todavía.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;../recuperaci%C3%B3n-de-xml&#34;&gt;Recuperar XML desde Delphi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../generaci%C3%B3n-de-xml&#34;&gt;Generar XML desde Delphi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../consideraciones-de-implementaci%C3%B3n&#34;&gt;Algunas consideraciones de Implementación&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../consideraciones-de-dise%C3%B1o&#34;&gt;Algunas consideraciones de Diseño&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../gobierno-electr%C3%B3nico&#34;&gt;Gobierno electrónico&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../confianza-en-internet&#34;&gt;¿Se puede confiar ciegamente en Internet?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../isfuros-2006&#34;&gt;ISFUROS 2006&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../poni%C3%A9ndonos-al-d%C3%ADa&#34;&gt;Poniéndome al día&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../amaos-todos&#34;&gt;Amaos los unos a los otros&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../reescribir-%C3%B3-reusar&#34;&gt;La delgada línea entre reescribir y reutilizar código&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../futuro-del-ensamblador&#34;&gt;El futuro del Ensamblador&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../fanatismos&#34;&gt;Fanatismos&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../herramientas-para-blogs&#34;&gt;Herramientas para los blogs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../borland&#34;&gt;Borland Co.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../superaci%C3%B3n-personal&#34;&gt;Aspectos tener en cuenta a la hora de valorar el uso de Internet en la superación profesional&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../programaci%C3%B3n-elegante&#34;&gt;La elegancia de la programación&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../solo-desplegar-no-basta&#34;&gt;No basta con solo construir&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../objetos-duros-objetos-blandos&#34;&gt;Objetos ‘duros’ y ‘blandos’&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../encapsulamiento-vs-c%C3%B3digo-abierto&#34;&gt;Encapsulamiento vs. Código Abierto&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../profesionales-de-la-computaci%C3%B3n&#34;&gt;¿Quién es quién en los profesionales de la computación?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../cibern%C3%A9ticos-como-ingenieros&#34;&gt;¿Cibernéticos como Ingenieros?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../validaci%C3%B3n-de-datos&#34;&gt;Validación en el cliente o en el servidor: ¿Llegó .NET? ¡Se acabaron las preocupaciones!&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../apuntes-ingenier%C3%ADa-software&#34;&gt;Apuntes sobre la importancia de la Ingeniería de Software&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>Recuperar XML desde Delphi</title>
@@ -1195,57 +1315,6 @@ Superación Profesional por Internet 652 000&lt;/p&gt;
 &lt;p&gt;Sin planeación, tampoco se tienen parámetros claros contra los cuales se pueda medir entonces el resultado del esfuerzo. Pero suponiendo que de alguna manera podamos censar que el resultado es menor al deseado, efectuar las tareas de planeación una vez desarrollado el portal es mucho más difícil y puede inclusive obligar a cambios en el portal y hasta un rediseño total.&lt;/p&gt;
 &lt;p&gt;Quedaba un factor por analizar, y es el de la generación de contenido para el portal. Es imperante que haya una estrategia al interior de la empresa para garantizar que el contenido del mismo es acorde con las necesidades de los públicos. Si tenemos un catálogo de productos, se deberá actualizar los precios, agregar y eliminar productos, y demás funciones requeridas. Si se van a efectuar pagos, habrá que conciliar las cuentas y tener como proveer al cliente consulta sobre el estado de su pedido. Si es un sitio de contenido, habrá que manejar la imagen y el texto en forma ágil y oportuna.&lt;/p&gt;
 &lt;p&gt;Estas actividades no se prevén en la construcción. Simplemente se construye y se coloca al aire, para ver que, al cabo del tiempo, y sin importar el monto de la inversión, el sitio no tuvo ningún impacto positivo y, por el contrario, podría afectar negativamente a la empresa.&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Objetos ‘duros’ y ‘blandos’</title>
-      <link>/es/post/objetos-duros-objetos-blandos/</link>
-      <pubDate>Tue, 08 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/es/post/objetos-duros-objetos-blandos/</guid>
-      
-        <description>&lt;p&gt;Hace unos días cuando les aclaraba unas dudas a unos estudiantes hice alusión a dos tipos de objetos tal vez no muy &amp;ldquo;difundidos&amp;rdquo; (al menos por la terminología): &amp;ldquo;objetos duros&amp;rdquo; y &amp;ldquo;objetos blandos&amp;rdquo;. Unos minutos después se me acercó un profesor muy estimado por mí a hacerme la pregunta de qué significaba en realidad aquello de &amp;ldquo;objetos duros&amp;rdquo; y &amp;ldquo;objetos blandos&amp;rdquo; y me aconsejó (en un marcado tono jodedor) que me cuidara de la dureza de los mismos no fuera a ser que alguno se escapara de la computadora y me golpeara.&lt;/p&gt;
-&lt;p&gt;Hasta ahí la broma, pero considero necesario aclarar los términos. Esa propiedad atribuida a los objetos en general tiene su origen en mi época de estudiante universitario mi tutor nos diferenciaba los objetos construidos en ambientes de desarrollo como Borland Delphi, Microsoft Visual Studio (C++, J++), etc. y los construidos con lenguajes scripts (JavaScript, PHP, Phyton, etc.) como objetos &amp;ldquo;duros&amp;rdquo; y &amp;ldquo;blandos&amp;rdquo; respectivamente.&lt;/p&gt;
-&lt;p&gt;Una vez aclarado su origen les comento que siguió utilizándose por los miembros del grupo de investigación y en este momento todavía se usa. Su significado no había sido cuestionado, pero nunca es tarde para definiciones formales. Cuando se construyen aplicaciones sobre la arquitectura N-capas (donde es muy común tener objetos en las páginas del servidor) es bueno tener una diferenciación entre los objetos de la capa intermedia (objetos del negocio o &amp;ldquo;duros&amp;rdquo;) y los encargados de guardar información proveniente de la base de datos (objetos &amp;ldquo;blandos&amp;rdquo;).&lt;/p&gt;
-&lt;p&gt;Espero que, si no se extiende esta terminología, al menos que los lectores de mi blog me comprendan una vez que me oigan hablando de &amp;ldquo;objetos duros&amp;rdquo; y &amp;ldquo;objetos blandos&amp;rdquo;. Y para mi amigo que no se preocupe que no va a tener que visitarme en un hospital por el golpe de un objeto.&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Encapsulamiento vs. Código Abierto</title>
-      <link>/es/post/encapsulamiento-vs-c%C3%B3digo-abierto/</link>
-      <pubDate>Mon, 07 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/es/post/encapsulamiento-vs-c%C3%B3digo-abierto/</guid>
-      
-        <description>&lt;p&gt;No es de un partido de béisbol ni de una pelea de boxeo de lo que se trata este artículo sino de una duda que quisiera compartir con ustedes. Ante todo, quiero aclarar que no tengo nada en contra del Código Abierto (OS del inglés Open Source) a pesar de ser un fiel defensor de los productos Microsoft.&lt;/p&gt;
-&lt;p&gt;Precisamente fue Bill Gates el que en un comunicado a la comunidad de usuarios y desarrolladores de software lanza un llamado a la reflexión sobre la &amp;ldquo;piratería&amp;rdquo; iniciando así el fenómeno de licenciamiento de software. Las respuestas no se hicieron esperar y enseguida se crearon movimientos contrarios a esta política con ligeras diferencias entre ellos, manteniendo como divisa que el conocimiento era de todos. Ejemplos tenemos a BSD, GNU y OS que es el que nos ataña.&lt;/p&gt;
-&lt;p&gt;Dentro de sus características nos referiremos a la que precisamente le da nombre, la que permite que los productos que se comercialicen bajo esta licencia vayan acompañados de su código fuente. Ahora bien, por otra parte, tenemos al encapsulamiento que no es más que un mecanismo que permite a los diseñadores de tipos de datos determinar qué miembros de los tipos creen pueden ser utilizados por otros programadores y cuáles no.&lt;/p&gt;
-&lt;p&gt;Entonces tenemos a los que por una parte pregonan que el código fuente es de domino público mientras que por otra encapsulan sus tipos tanto como pueden. ¿No creen que por absurda que parezca existe una paradoja en lo antes planteado?&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>¿Quién es quién en los profesionales de la computación?</title>
-      <link>/es/post/profesionales-de-la-computaci%C3%B3n/</link>
-      <pubDate>Fri, 04 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/es/post/profesionales-de-la-computaci%C3%B3n/</guid>
-      
-        <description>&lt;p&gt;No les miento si les cuento que durante muchos años viví engañado. Desde antes de entrar a estudiar la carrera de &amp;ldquo;Licenciatura en Ciencia de la Computación&amp;rdquo; (Cibernética, como todos la conocen) en la Universidad Central &amp;ldquo;Marta Abreu&amp;rdquo; de Las Villas, pensaba que los cibernéticos eran los que &amp;ldquo;diseñaban&amp;rdquo; los productos informáticos debido a sus conocimientos más profundos en materias de computación y que luego los informáticos se encargaban de &amp;ldquo;implementarlos&amp;rdquo;.&lt;/p&gt;
-&lt;p&gt;Dejando a un lado los significados del diseño y la implementación en un proceso de desarrollo de software organizado y tomándolo como la más simple de sus acepciones. El diseño es la planificación ordenada del producto desde un punto de vista arquitectural y la implementación como la codificación de las especificaciones funcionales y no funcionales.&lt;/p&gt;
-&lt;p&gt;¡Qué lejos estaba de la verdad! En la carrera nunca se mencionó el tema y si no es por el roce que sostuvimos durante un curso escolar completo con los estudiantes de Ingeniería Informática (la otra carrera) de todas las universidades del país nunca hubiésemos aclarado nuestras dudas.&lt;/p&gt;
-&lt;p&gt;Lo gracioso del asunto es que al compartir estas ideas con ellos me aseguraron que ellos también pensaban así solo que al revés. Los informáticos diseñaban los productos y los cibernéticos los implementaban. ¡Qué discusiones se formaban!&lt;/p&gt;
-&lt;p&gt;Tanto los cibernéticos como los informáticos diseñan e implementan sistemas informáticos, la diferencia radica en el tipo de producto informático que se diseña e implementa. Mientras los segundos lo hacen con sistemas informáticos de gestión empresarial; los primeros se dedican a las herramientas y tecnologías sobre las cuales se basan los informáticos.&lt;/p&gt;
-&lt;p&gt;Es cierto que el límite entre una profesión y otra es muy difuso sobre todo en nuestro país donde los puestos laborales hacen que ambos profesionales ejecuten las mismas tareas. Tal vez donde se vea un poco más las diferencias sea en las universidades donde se tengan las dos carreras a la vez, hasta ahora la Universidad de Oriente y pronto la Universidad Central de Las Villas lo experimentará.&lt;/p&gt;
-&lt;p&gt;Fueron varias las definiciones de uno y de otro bando las que logramos oír. A continuación, reproducimos una de las más frecuentes:&lt;/p&gt;
-&lt;p&gt;&amp;ldquo;&amp;hellip;Informático es aquel profesional que basado en los principios de la cibernética logra construir soluciones informáticas a los problemas comunes de la sociedad&amp;hellip;&amp;rdquo;&lt;/p&gt;
-&lt;p&gt;Otra que, aunque es más general, es válida colocar en esta redacción es:&lt;/p&gt;
-&lt;p&gt;&amp;ldquo;&amp;hellip;La diferencia entre un ingeniero y un licenciado radica en que el ingeniero hace y luego piensa mientras que el licenciado piensa y luego hace&amp;hellip;&amp;rdquo;&lt;/p&gt;
 </description>
       
     </item>

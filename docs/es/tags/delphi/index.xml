@@ -6,11 +6,7 @@
     <description>Recent content in Delphi on Programando en voz alta</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <lastBuildDate>Thu, 31 Dec 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/es/tags/delphi/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 31 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="/es/tags/delphi/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Recuperar XML desde Delphi</title>
       <link>/es/post/recuperaci%C3%B3n-de-xml/</link>
