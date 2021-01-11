@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Archivo - Programando en voz alta</title>
+  <title>Creando y desplegando aplicaciones usando Octopus - Programando en voz alta</title>
   
-<link rel="alternate" hreflang="en" href="/post/" />
+<link rel="alternate" hreflang="en" href="/post/using-octopus/" />
 
 
 <meta name="renderer" content="webkit" />
@@ -25,7 +25,10 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Ricardo Sotolongo" />
-  <meta name="description" content="Hugo theme jane example site." />
+  <meta name="description" content="Código fuente de apoyo disponible en GitHub
+Desde hace un tiempo quería compartir mis experiencias automatizando los despliegues de productos con Octopus desde Visual Studio. Nuevamente, hagámoslo con un ejemplo.
+Como no podía ser de otra manera, La figura 1 muestra el primer paquete que debes agregar a tu proyecto para poder crear paquetes Octopus listos para ser desplegados: &amp;ldquo;OctoPack&amp;rdquo;. La última versión del paquete disponible en el momento de este tutorial era la &amp;ldquo;3." />
+
   <meta name="keywords" content="Hugo, theme, jane" />
 
 
@@ -36,8 +39,8 @@
 <meta name="generator" content="Hugo 0.79.1" />
 
 
-<link rel="canonical" href="/es/post/" />
-<link href="/es/post/index.xml" rel="alternate" type="application/rss+xml" title="Programando en voz alta" />
+<link rel="canonical" href="/es/post/usando-octopus/" />
+
 
 
 
@@ -60,16 +63,30 @@
 
 
 
-<meta property="og:title" content="Posts" />
-<meta property="og:description" content="Hugo theme jane example site." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="/es/post/" />
-<meta property="og:updated_time" content="2021-01-11T00:00:00+00:00" /><meta property="og:site_name" content="Programando en voz alta" />
-<meta itemprop="name" content="Posts">
-<meta itemprop="description" content="Hugo theme jane example site.">
+<meta property="og:title" content="Creando y desplegando aplicaciones usando Octopus" />
+<meta property="og:description" content="Código fuente de apoyo disponible en GitHub
+Desde hace un tiempo quería compartir mis experiencias automatizando los despliegues de productos con Octopus desde Visual Studio. Nuevamente, hagámoslo con un ejemplo.
+Como no podía ser de otra manera, La figura 1 muestra el primer paquete que debes agregar a tu proyecto para poder crear paquetes Octopus listos para ser desplegados: &ldquo;OctoPack&rdquo;. La última versión del paquete disponible en el momento de este tutorial era la &ldquo;3." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/es/post/usando-octopus/" />
+<meta property="article:published_time" content="2021-01-11T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-01-11T00:00:00+00:00" /><meta property="og:site_name" content="Programando en voz alta" />
+<meta itemprop="name" content="Creando y desplegando aplicaciones usando Octopus">
+<meta itemprop="description" content="Código fuente de apoyo disponible en GitHub
+Desde hace un tiempo quería compartir mis experiencias automatizando los despliegues de productos con Octopus desde Visual Studio. Nuevamente, hagámoslo con un ejemplo.
+Como no podía ser de otra manera, La figura 1 muestra el primer paquete que debes agregar a tu proyecto para poder crear paquetes Octopus listos para ser desplegados: &ldquo;OctoPack&rdquo;. La última versión del paquete disponible en el momento de este tutorial era la &ldquo;3.">
+<meta itemprop="datePublished" content="2021-01-11T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-01-11T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1692">
+
+
+
+<meta itemprop="keywords" content="Visual Studio,Octopus," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Posts"/>
-<meta name="twitter:description" content="Hugo theme jane example site."/>
+<meta name="twitter:title" content="Creando y desplegando aplicaciones usando Octopus"/>
+<meta name="twitter:description" content="Código fuente de apoyo disponible en GitHub
+Desde hace un tiempo quería compartir mis experiencias automatizando los despliegues de productos con Octopus desde Visual Studio. Nuevamente, hagámoslo con un ejemplo.
+Como no podía ser de otra manera, La figura 1 muestra el primer paquete que debes agregar a tu proyecto para poder crear paquetes Octopus listos para ser desplegados: &ldquo;OctoPack&rdquo;. La última versión del paquete disponible en el momento de este tutorial era la &ldquo;3."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -375,116 +392,244 @@ if (!doNotTrack) {
     <main id="main" class="main bg-llight">
       <div class="content-wrapper">
         <div id="content" class="content container">
-          
-<section id="archive" class="archive">
+          <article class="post bg-white">
     
-      <div class="collection-title">
-        <h2 class="archive-year">2020</h2>
+    <header class="post-header">
+      <h1 class="post-title">Creando y desplegando aplicaciones usando Octopus</h1>
+      
+<div class="post-meta">
+  
+  <div><a href="/post/using-octopus/">Read in English: Creating and deploying releases using Octopus</a></div>
+  
+</div>
+
+      <div class="post-meta">
+        <time datetime="2021-01-11" class="post-time">
+          2021-01-11
+        </time>
+        <div class="post-category">
+            <a href="/es/categories/desarrollo/"> Desarrollo </a>
+            
+          </div>
+        <span class="more-meta"> 1692 palabras </span>
+          <span class="more-meta"> 8 min lectura </span>
+
+        
+        
+
+        
+        
       </div>
+    </header>
 
-    <div class="archive-post">
-      <time datetime="2020-12-31" class="archive-post-time">
-        2020-12-31
-      </time>
-      <span class="archive-post-title">
-        <a href="/es/post/memorias/" class="archive-post-link">
-          Memorias
-        </a>
-      </span>
-    </div>
+    
     
 
-    <div class="archive-post">
-      <time datetime="2020-12-31" class="archive-post-time">
-        2020-12-31
-      </time>
-      <span class="archive-post-title">
-        <a href="/es/post/recuperaci%C3%B3n-de-xml/" class="archive-post-link">
-          Recuperar XML desde Delphi
-        </a>
-      </span>
+    
+    <div class="post-content">
+      <p><a href="https://github.com/rsotolongo/RS.Blog.Projects/tree/main/UsingOctopus">Código fuente de apoyo disponible en GitHub</a></p>
+<p>Desde hace un tiempo quería compartir mis experiencias automatizando los despliegues de productos con Octopus desde Visual Studio. Nuevamente, hagámoslo con un ejemplo.</p>
+<p>Como no podía ser de otra manera, La figura 1 muestra el primer paquete que debes agregar a tu proyecto para poder crear paquetes Octopus listos para ser desplegados: &ldquo;OctoPack&rdquo;. La última versión del paquete disponible en el momento de este tutorial era la &ldquo;3.6.1&rdquo;, pero instalamos la &ldquo;3.6.0&rdquo; a propósito para mostrar el proceso de actualización.</p>
+<p><img src="/using-octopus/01.png" alt="Paquete OctoPack"></p>
+<p>Figura 1.</p>
+<p>La figura 2 muestra el segundo paquete que debería instalarse: &ldquo;OctopusTool&rdquo;. Lo mismo aquí, la última versión disponible fue la &ldquo;4.17.0&rdquo; pero instalamos la &ldquo;4.15.7&rdquo; con el mismo propósito.</p>
+<p><img src="/using-octopus/02.png" alt="Paquete OctopusTool"></p>
+<p>Figura 2.</p>
+<p>Una vez instalados ambos paquetes, podemos comprobar el subdirectorio &ldquo;paquetes&rdquo; dentro del subdirectorio de la solución (C:\Temp\WebApplication1\packages) en este caso. La figura 3 muestra el contenido del subdirectorio.</p>
+<p><img src="/using-octopus/03.png" alt="Paquetes instalados"></p>
+<p>Figura 3.</p>
+<p>Ahora comienza los pasos divertidos. Primero, necesitamos abrir el archivo del proyecto (WebApplication1.csproj) en este caso. Al final del archivo, debemos eliminar la tarea &ldquo;Importar&rdquo; de &ldquo;OctoPack.targets&rdquo; del subdirectorio del paquete NuGet. Este es un paso MUY importante porque debe repetirse cada vez que se actualiza el paquete &ldquo;OctoPack&rdquo;. La figura 4 muestra la línea que debe eliminarse.</p>
+<p><img src="/using-octopus/04.png" alt="Contenidos del archivo de proyecto"></p>
+<p>Figura 4.</p>
+<p>Expliquemos un poco más aquí. MSBuild importará y ejecutará los destinos de &ldquo;OctoPack&rdquo; en cada compilación. Si mantenemos esa línea, el archivo que debe modificarse es el que se encuentra en el subdirectorio del paquete, lo que significa que normalmente no forma parte de los elementos controlados por el sistema de control de versiones (TFS ó Git) y estará suelto en cada actualización del paquete. NuGet elimina el subdirectorio del paquete anterior una vez que se descarga la nueva versión después de una actualización. Para evitar estos retrocesos y mantener actualizados los paquetes al mismo tiempo, es una buena práctica eliminar esta línea y continuar el proceso como recomiendo en los siguientes pasos.</p>
+<p>Cree un nuevo subdirectorio dentro del proyecto a implementar y copie el archivo &ldquo;OctoPack.targets&rdquo; en ella. Normalmente lo llamo &ldquo;Implementación&rdquo; y guardo el archivo con el mismo nombre. Quiero decir, copiar &ldquo;$(SolutionDir)\packages\OctoPack.X.Y.Z\build\OctoPack.targets&rdquo; a &ldquo;$(ProjectDir)\Deployment\OctoPack.targets&rdquo; La figura 5 muestra este paso.</p>
+<p><img src="/using-octopus/05.png" alt="Tareas del archivo OctoPack"></p>
+<p>Figura 5.</p>
+<p>En el archivo: &ldquo;OctoPack.targets&rdquo; dentro del subdirectorio &ldquo;Implementación&rdquo;, necesitamos modificar algunos campos y agregar algunos otros.</p>
+<p>Los dos primeros campos que necesitamos modificar son los que apuntan a las bibliotecas de Octopus para ejecutar las tareas especificadas. La figura 6 lo muestra.</p>
+<p><img src="/using-octopus/06.png" alt="Tareas importadas"></p>
+<p>Figura 6.</p>
+<p>Debido a que hemos movido el archivo de destino, necesitamos actualizar esas rutas a las bibliotecas dentro del subdirectorio del paquete. Debido a que estamos dentro del subdirectorio &ldquo;Implementación&rdquo;, necesitamos subir dos niveles hasta el subdirectorio de la solución donde está el subdirectorio &ldquo;Paquete&rdquo;. Tenga en cuenta que en cada actualización del paquete &ldquo;OctoPack&rdquo;, necesitamos actualizar estas rutas.</p>
+<p>Después, necesitamos especificar el valor de &ldquo;OctoPackNuGetExePath&rdquo;. Me gusta usar lo que está incluido en el paquete que se está usando porque Octopus usa una versión personalizada de NuGet.exe, por lo que es mejor usar lo que está incluido en el paquete, por esa razón: &ldquo;..\packages\OctoPack.3.6.0\build\NuGet.exe&rdquo; es un buen valor (tenga en cuenta que también depende de la versión del paquete y subimos solo un nivel porque esto se ejecuta desde el subdirectorio raí del proyecto). La última variable para modificar aquí es &ldquo;OctoPackPublishPackageToFileShare&rdquo; que debe apuntar al subdirectorio compartido donde se copiará el paquete para implementarlo en Octopus. Normalmente usamos &ldquo;\rant.com\Nuget&rdquo;, por lo que &ldquo;\rant.com\Nuget\Portals.WebApplication1&rdquo; es una buena opción. La figura 7 muestra las modificaciones.</p>
+<p><img src="/using-octopus/07.png" alt="Valores de las variables de configuración"></p>
+<p>Figura 7.</p>
+<p>Ahora lo que tenemos que hacer es configurar el proyecto para ejecutar la tarea una vez que esté construida. ¿Recuerda la línea eliminada en la figura 4? Necesitamos agregar una línea allí como se muestra en la figura 8.</p>
+<p><img src="/using-octopus/08.png" alt="Tareas importadas en el archivo de proyecto"></p>
+<p>Figura 8.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-XML" data-lang="XML"><span class="nt">&lt;Import</span> <span class="na">Project=</span><span class="s">&#34;.\Deployment\OctoPack.targets&#34;</span> <span class="na">Condition=</span><span class="s">&#34;Exists(&#39;.\Deployment\OctoPack.targets&#39;)&#34;</span> <span class="nt">/&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Una vez agregada esta línea podemos construir la solución pero &ldquo;\rant.com\Nuget\Portals.WebApplication1&rdquo; sigue estando vacío. ¿Por qué? Porque necesitamos cambiar el valor de la variable &ldquo;RunOctoPack&rdquo; a &ldquo;verdadero&rdquo; como muestra la figura 9.</p>
+<p><img src="/using-octopus/09.png" alt="Valor de configuración para tarea de creación"></p>
+<p>Figura 9.</p>
+<p>Ahora, si construimos nuevamente la solución obtenemos los resultados que se muestran en la figura 10 y un archivo de paquete en &ldquo;\rant.com\Nuget\Portals.WebApplication1&rdquo; como muestra la figura 11.</p>
+<p><img src="/using-octopus/10.png" alt="Resultados de la primera compilación"></p>
+<p>Figura 10.</p>
+<p><img src="/using-octopus/11.png" alt="Primer paquete generado"></p>
+<p>Figura 11.</p>
+<p>Hasta ahora todo va bien, excepto que no importa cuántas veces compilemos, el paquete generado será la misma versión: &ldquo;1.0.0.0&rdquo; que no es buena para las versiones automáticas de Octopus. Entonces, arreglemos esto abriendo el archivo &ldquo;AssemblyInfo.cs&rdquo; dentro del subdirectorio del proyecto &ldquo;Propiedades&rdquo; y cambiemos el atributo &ldquo;AssemblyVersion&rdquo; de &ldquo;1.0.0.0&rdquo; a &ldquo;1.0. *&rdquo; Como se muestra en la figura 12.</p>
+<p><img src="/using-octopus/12.png" alt="Archivo de información del ensamblado"></p>
+<p>Figura 12.</p>
+<p>Al hacer eso, nos aseguramos de que cada compilación tenga una versión de ensamblado diferente, es decir, una versión de Octopus diferente que configuraremos en los siguientes pasos. Consulte las figuras 13 y 14 para observar los cambios.</p>
+<p><img src="/using-octopus/13.png" alt="Resultados de la segunda compilación"></p>
+<p>Figura 13.</p>
+<p><img src="/using-octopus/14.png" alt="Segundo paquete generado"></p>
+<p>Figura 14.</p>
+<p>Vayamos de nuevo al archivo: &ldquo;OctoPack.targets&rdquo; y agreguemos la sección resaltada en la figura 15.</p>
+<p>Esta región es una sección totalmente nueva que debemos agregar para configurar (no ejecutar) despliegues automáticos de Octopus. El codigo es:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-XML" data-lang="XML"><span class="nt">&lt;OctoExePath</span> <span class="na">Condition=</span><span class="s">&#34;&#39;$(OctoExePath)&#39; == &#39;&#39;&#34;</span><span class="nt">&gt;</span>..\packages\OctopusTools.4.15.7\tools\Octo.exe<span class="nt">&lt;/OctoExePath&gt;</span>
+<span class="nt">&lt;OctopusProject</span> <span class="na">Condition=</span><span class="s">&#34;&#39;$(OctopusProject)&#39; == &#39;&#39;&#34;</span><span class="nt">&gt;</span>Portals.WebApplication1<span class="nt">&lt;/OctopusProject&gt;</span>
+<span class="nt">&lt;OctopusEnvironment</span> <span class="na">Condition=</span><span class="s">&#34;&#39;$(OctopusEnvironment)&#39; == &#39;&#39;&#34;</span><span class="nt">&gt;</span>Development<span class="nt">&lt;/OctopusEnvironment&gt;</span>
+<span class="nt">&lt;OctopusPortal</span> <span class="na">Condition=</span><span class="s">&#34;&#39;$(OctopusPortal)&#39; == &#39;&#39;&#34;</span><span class="nt">&gt;</span>http://octopus.rant.com/Web<span class="nt">&lt;/OctopusPortal&gt;</span>
+<span class="nt">&lt;OctopusApiKey</span> <span class="na">Condition=</span><span class="s">&#34;&#39;$(OctopusApiKey)&#39; == &#39;&#39;&#34;</span><span class="nt">&gt;</span>API-L6NRPGPZB4V1EYDVUX23KDXUJU<span class="nt">&lt;/OctopusApiKey&gt;</span>
+<span class="nt">&lt;OctopusNotes</span> <span class="na">Condition=</span><span class="s">&#34;&#39;$(OctopusNotes)&#39; == &#39;&#39;&#34;</span><span class="nt">&gt;</span>New release sample notes.<span class="nt">&lt;/OctopusNotes&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="/using-octopus/15.png" alt="Valores de configuración para tarea de despliegue"></p>
+<p>Figura 15.</p>
+<p>Debido a que esto se ejecuta desdel subdirectorio raíz del proyecto, solo necesitamos subir un nivel. &ldquo;OctoExePath&rdquo; es la única variable que depende de la ruta del paquete &ldquo;OctopusTools&rdquo;. Las variables &ldquo;OctopusProject&rdquo;, &ldquo;OctopusEnvironment&rdquo;, &ldquo;OctopusPortal&rdquo; y &ldquo;OctopusApiKey&rdquo; dependen de la configuración de Octopus de tu proyecto, pero lo que puedo decir aquí es que normalmente solo desplegamos al entorno de &ldquo;Desarrollo&rdquo; y hablaré de la variable API después en este documento. Por último, especificamos el valor de las notas de la versión en la variable &ldquo;OctopusNotes&rdquo; que normalmente se incluyen en el correo electrónico que envía el servidor Octopus una vez que una nueva versión termina de implementarse.</p>
+<p>Una vez más, esa región es solo para configurar variables relacionadas con Octopus para crear despliegues. Para hacer realmente los despliegues, necesitamos agregar las siguientes líneas al final de ese archivo. La figura 16 muestra los resultados.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-XML" data-lang="XML"><span class="nt">&lt;Message</span> <span class="na">Text=</span><span class="s">&#34;Creating release in Octopus Portal: $(OctoPackPackageVersion)&#34;</span> <span class="na">Condition=</span><span class="s">&#34;&#39;$(OctoExePath)&#39; != &#39;&#39;&#34;</span> <span class="na">Importance=</span><span class="s">&#34;Normal&#34;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;Exec</span> <span class="na">Command=</span><span class="s">&#39;&#34;$(OctoExePath)&#34; create-release --server=&#34;$(OctopusPortal)&#34; --project=&#34;$(OctopusProject)&#34; --apikey=&#34;$(OctopusApiKey)&#34; --deployto=&#34;$(OctopusEnvironment)&#34; --version=$(OctoPackPackageVersion) --packageversion=$(OctoPackPackageVersion)&#39;</span> <span class="na">Condition=</span><span class="s">&#34;&#39;$(OctoExePath)&#39; != &#39;&#39;&#34;</span> <span class="nt">/&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="/using-octopus/16.png" alt="Configuración de tarea de despliegue"></p>
+<p>Figura 16.</p>
+<p>La Figura 17 muestra el resultado de la compilación, observe la sección resaltada después del último mensaje recibido en la figura 10.</p>
+<p><img src="/using-octopus/17.png" alt="Salida de tercera compilación"></p>
+<p>Figura 17.</p>
+<p>Si abre el portal Octopus en su proyecto después de la compilación, puede obtener algo como lo que se muestra en la figura 18.</p>
+<p><img src="/using-octopus/18.png" alt="Portal del proyecto en Octopus"></p>
+<p>Figura 18.</p>
+<p>Entonces, con solo un cambio de una palabra: &ldquo;falso&rdquo; por &ldquo;verdadero&rdquo; en la variable &ldquo;RunOctoPack&rdquo; logramos muchos resultados: un paquete Octopus listo para ser desplegado y una versión del producto desplegado en el entorno especificado en Octopus. El riesgo aquí es dejar esa variable como verdadera y/o registrarla como verdadera y hacer un despliegue después de cada compilación. Eso sucede, pero generalmente no es lo que me gusta hacer, por lo que presto doble atención antes de registrar los cambios en este archivo.</p>
+<p>Pasemos entonces a la actualización de paquetes. La Figura 19 muestra las actualizaciones disponibles.</p>
+<p><img src="/using-octopus/19.png" alt="Actualización de paquetes"></p>
+<p>Figura 19.</p>
+<p>Después de actualizar ambos paquetes, Visual Studio elimina las versiones anteriores como muestra la Figura 20.</p>
+<p><img src="/using-octopus/20.png" alt="Subdirectorios de paquetes actualizados"></p>
+<p>Figura 20.</p>
+<p>Gracias a que estamos usando los objetivos no desde la ubicación del paquete sino desde la ubicación del proyecto, lo que tenemos que hacer es actualizar todas las referencias de la versión anterior a las referencias de la nueva versión, es decir, todos &ldquo;3.6.0&rdquo; por &ldquo;3.6.1&rdquo; y todos &ldquo;4.15.7&rdquo; por &ldquo;4.17.0&rdquo;. Hay 3 lugares en &ldquo;OctoPack.targets&rdquo; para los primeros cambios y solo un lugar para el segundo cambio.</p>
+<p>Las figures 21 y 22 muestran los respectivos lugares.</p>
+<p><img src="/using-octopus/21.png" alt="Configuración actualizada para tarea de creación"></p>
+<p>Figura 21.</p>
+<p><img src="/using-octopus/22.png" alt="Configuración actualizada para tarea de despliegue"></p>
+<p>Figura 22.</p>
+<p>Una cosa más, el valor de API para las versiones de Octopus se puede generar accediendo al portal de Octopus&hellip;</p>
+<p><a href="http://octopus.rant.com/Web/">http://octopus.rant.com/Web/</a></p>
+<p>&hellip;y siga los pasos de la figura 23 a la figura 26.</p>
+<p><img src="/using-octopus/23.png" alt="Opciön del perfil en Octopus"></p>
+<p>Figura 23.</p>
+<p><img src="/using-octopus/24.png" alt="Configuración del perfil en Octopus"></p>
+<p>Figura 24.</p>
+<p><img src="/using-octopus/25.png" alt="Opción de generación de llave API en Octopus"></p>
+<p>Figura 25.</p>
+<p><img src="/using-octopus/26.png" alt="Resultado de generación de llave API en Octopus"></p>
+<p>Figura 26.</p>
+<p>Es importante que guarde esta clave porque tan pronto como cierre este cuadro de diálogo, no podrá volver a ver ese valor.</p>
+<p>Una última cosa, algunos productos pueden introducir nuevos problemas a la mesa porque pueden estar siendo implementandos por países: es decir, diferentes proyectos de Octopus, entornos, ruta física, etc. Entonces, la idea es tener varios archivos &ldquo;.target&rdquo; en el subdirectorio &ldquo;Implementación&rdquo; y agregado de la misma manera que lo hicimos en el archivo &ldquo;.csproj&rdquo;. Las figuras 27 y 28 muestran un ejemplo.</p>
+<p><img src="/using-octopus/27.png" alt="Archivos multi objetivo"></p>
+<p>Figura 27.</p>
+<p>Se agregaron objetivos para Chile y Brasil para implementar esas respectivas instancias.</p>
+<p><img src="/using-octopus/28.png" alt="Archivo del proyecto using multi objetivo"></p>
+<p>Figura 28.</p>
+<p>Aquí en el &ldquo;.csproj&rdquo; es importante tener el primer objetivo creado (llamémoslo de ahora en adelante el &ldquo;general&rdquo; o &ldquo;genérico&rdquo; -OctoPack.targets-) como el último en la lista de objetivos importados.</p>
+<p>Las figuras 29 y 30 muestran el contenido de esos nuevos objetivos creados.</p>
+<p><img src="/using-octopus/29.png" alt="Primer archivo de objetivo específico"></p>
+<p>Figura 29.</p>
+<p><img src="/using-octopus/30.png" alt="Segundo archivo de objetivo específico"></p>
+<p>Figura 30.</p>
+<p>Básicamente, ambos nuevos destinos son archivos muy pequeños que comparten la misma estructura pero con valores muy específicos para la instancia del país.</p>
+<p>RunOctoPack
+OctopusProject
+OctopusNotas</p>
+<p>Son las variables específicas de la instancia que deben cambiar el valor en el momento del despliegue. Todos se controlan ahora mediante una nueva condición que depende del valor de una nueva variable introducida: &ldquo;Desploy&hellip;&rdquo; (&ldquo;DeployBrasil&rdquo; y &ldquo;DeployChile&rdquo; en las figuras). Es válido mencionar que es posible incluir más variables como la versión que queremos usar, etc.</p>
+<p>Esta nueva variable es la única que deberíamos cambiar si decidimos desplegar esa instancia. Por ejemplo, si quiero desplegar una instancia de Brasil, puse el valor de la variable &ldquo;DeployBazil&rdquo; como &ldquo;verdadero&rdquo; en el archivo &ldquo;OctoPack (Brasil).targets&rdquo; y eso hará que &ldquo;RunOctoPack&rdquo; sea verdadero y &ldquo;OctopusProject&rdquo; el nombre de Proyecto Octopus para Brasil. Debido a que el destino para Brasil se importa antes que el genérico en el archivo &ldquo;.csproj&rdquo;, una vez que ese destino se ejecuta en el tiempo de compilación, se implementará utilizando los valores especificados.</p>
+<p>Por último, pero no menos importante, debemos modificar el objetivo genérico para eliminar el valor de &ldquo;OctopusProject&rdquo;. Ver figura 31.</p>
+<p><img src="/using-octopus/31.png" alt="Configuración actualizada para multi objetivo"></p>
+<p>Figura 31.</p>
+<p>Espero que haya disfrutado de esta guía y la encuentre útil.</p>
+<p><a href="https://github.com/rsotolongo/RS.Blog.Projects/tree/main/UsingOctopus">Código fuente de apoyo disponible en GitHub</a></p>
+
     </div>
+
+    
     
 
-    <div class="archive-post">
-      <time datetime="2020-12-30" class="archive-post-time">
-        2020-12-30
-      </time>
-      <span class="archive-post-title">
-        <a href="/es/post/generaci%C3%B3n-de-xml/" class="archive-post-link">
-          Generar XML desde Delphi
-        </a>
-      </span>
-    </div></section>
 
+    
+    
 
+    <footer class="post-footer">
+      <div class="post-tags">
+          <a href="/es/tags/visual-studio/">Visual Studio</a>
+          <a href="/es/tags/octopus/">Octopus</a>
+          
+        </div>
 
-
-
-
-  
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-  <nav class="pagination">
-    <ul>
       
-      <li >
-        <a href="/es/post/">1</a>
-      </li>
-      
-      <li  class="active" >
-        <a href="/es/post/page/2/">2</a>
-      </li>
-      
-      <li >
-        <a href="/es/post/page/3/">3</a>
-      </li>
-      
-      <li >
-        <a href="/es/post/page/4/">4</a>
-      </li>
-      
-      <li >
-        <a href="/es/post/page/5/">5</a>
-      </li>
-      
-      <li >
-        <a href="/es/post/page/6/">6</a>
-      </li>
-      
-      <li >
-        <a href="/es/post/page/7/">7</a>
-      </li>
-      
-      <li >
-        <a href="/es/post/page/8/">8</a>
-      </li>
-      
-      <li >
-        <a href="/es/post/page/9/">9</a>
-      </li>
-      
-    </ul>
-  </nav>
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/es/post/estilo-de-c%C3%B3digo-usando-stylecop/">
+            <span class="next-text nav-default">Estilizando códigos usando StyleCop</span>
+            <span class="prev-text nav-mobile">Siguiente</span>
+            
+            <i class="iconfont">
+              <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+            </i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+
+  
+  
+  
+  
 
   
   
 
+  
 
+  
+  
 
+  
 
+  
+
+  
+
+    
+
+  
 
         </div>
       </div>

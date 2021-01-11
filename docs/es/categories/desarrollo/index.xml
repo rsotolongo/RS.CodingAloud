@@ -6,7 +6,18 @@
     <description>Recent content in Desarrollo on Programando en voz alta</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <lastBuildDate>Mon, 04 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/es/categories/desarrollo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 11 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/es/categories/desarrollo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Creando y desplegando aplicaciones usando Octopus</title>
+      <link>/es/post/usando-octopus/</link>
+      <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/usando-octopus/</guid>
+      <description>Código fuente de apoyo disponible en GitHub
+Desde hace un tiempo quería compartir mis experiencias automatizando los despliegues de productos con Octopus desde Visual Studio. Nuevamente, hagámoslo con un ejemplo.
+Como no podía ser de otra manera, La figura 1 muestra el primer paquete que debes agregar a tu proyecto para poder crear paquetes Octopus listos para ser desplegados: &amp;ldquo;OctoPack&amp;rdquo;. La última versión del paquete disponible en el momento de este tutorial era la &amp;ldquo;3.</description>
+    </item>
+    
     <item>
       <title>Estilizando códigos usando StyleCop</title>
       <link>/es/post/estilo-de-c%C3%B3digo-usando-stylecop/</link>

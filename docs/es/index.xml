@@ -6,10 +6,164 @@
     <description>Recent content on Programando en voz alta</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <lastBuildDate>Mon, 04 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 11 Jan 2021 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/es/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Creando y desplegando aplicaciones usando Octopus</title>
+      <link>/es/post/usando-octopus/</link>
+      <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/usando-octopus/</guid>
+      
+        <description>&lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/UsingOctopus&#34;&gt;Código fuente de apoyo disponible en GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Desde hace un tiempo quería compartir mis experiencias automatizando los despliegues de productos con Octopus desde Visual Studio. Nuevamente, hagámoslo con un ejemplo.&lt;/p&gt;
+&lt;p&gt;Como no podía ser de otra manera, La figura 1 muestra el primer paquete que debes agregar a tu proyecto para poder crear paquetes Octopus listos para ser desplegados: &amp;ldquo;OctoPack&amp;rdquo;. La última versión del paquete disponible en el momento de este tutorial era la &amp;ldquo;3.6.1&amp;rdquo;, pero instalamos la &amp;ldquo;3.6.0&amp;rdquo; a propósito para mostrar el proceso de actualización.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/01.png&#34; alt=&#34;Paquete OctoPack&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 1.&lt;/p&gt;
+&lt;p&gt;La figura 2 muestra el segundo paquete que debería instalarse: &amp;ldquo;OctopusTool&amp;rdquo;. Lo mismo aquí, la última versión disponible fue la &amp;ldquo;4.17.0&amp;rdquo; pero instalamos la &amp;ldquo;4.15.7&amp;rdquo; con el mismo propósito.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/02.png&#34; alt=&#34;Paquete OctopusTool&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 2.&lt;/p&gt;
+&lt;p&gt;Una vez instalados ambos paquetes, podemos comprobar el subdirectorio &amp;ldquo;paquetes&amp;rdquo; dentro del subdirectorio de la solución (C:\Temp\WebApplication1\packages) en este caso. La figura 3 muestra el contenido del subdirectorio.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/03.png&#34; alt=&#34;Paquetes instalados&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 3.&lt;/p&gt;
+&lt;p&gt;Ahora comienza los pasos divertidos. Primero, necesitamos abrir el archivo del proyecto (WebApplication1.csproj) en este caso. Al final del archivo, debemos eliminar la tarea &amp;ldquo;Importar&amp;rdquo; de &amp;ldquo;OctoPack.targets&amp;rdquo; del subdirectorio del paquete NuGet. Este es un paso MUY importante porque debe repetirse cada vez que se actualiza el paquete &amp;ldquo;OctoPack&amp;rdquo;. La figura 4 muestra la línea que debe eliminarse.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/04.png&#34; alt=&#34;Contenidos del archivo de proyecto&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 4.&lt;/p&gt;
+&lt;p&gt;Expliquemos un poco más aquí. MSBuild importará y ejecutará los destinos de &amp;ldquo;OctoPack&amp;rdquo; en cada compilación. Si mantenemos esa línea, el archivo que debe modificarse es el que se encuentra en el subdirectorio del paquete, lo que significa que normalmente no forma parte de los elementos controlados por el sistema de control de versiones (TFS ó Git) y estará suelto en cada actualización del paquete. NuGet elimina el subdirectorio del paquete anterior una vez que se descarga la nueva versión después de una actualización. Para evitar estos retrocesos y mantener actualizados los paquetes al mismo tiempo, es una buena práctica eliminar esta línea y continuar el proceso como recomiendo en los siguientes pasos.&lt;/p&gt;
+&lt;p&gt;Cree un nuevo subdirectorio dentro del proyecto a implementar y copie el archivo &amp;ldquo;OctoPack.targets&amp;rdquo; en ella. Normalmente lo llamo &amp;ldquo;Implementación&amp;rdquo; y guardo el archivo con el mismo nombre. Quiero decir, copiar &amp;ldquo;$(SolutionDir)\packages\OctoPack.X.Y.Z\build\OctoPack.targets&amp;rdquo; a &amp;ldquo;$(ProjectDir)\Deployment\OctoPack.targets&amp;rdquo; La figura 5 muestra este paso.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/05.png&#34; alt=&#34;Tareas del archivo OctoPack&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 5.&lt;/p&gt;
+&lt;p&gt;En el archivo: &amp;ldquo;OctoPack.targets&amp;rdquo; dentro del subdirectorio &amp;ldquo;Implementación&amp;rdquo;, necesitamos modificar algunos campos y agregar algunos otros.&lt;/p&gt;
+&lt;p&gt;Los dos primeros campos que necesitamos modificar son los que apuntan a las bibliotecas de Octopus para ejecutar las tareas especificadas. La figura 6 lo muestra.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/06.png&#34; alt=&#34;Tareas importadas&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 6.&lt;/p&gt;
+&lt;p&gt;Debido a que hemos movido el archivo de destino, necesitamos actualizar esas rutas a las bibliotecas dentro del subdirectorio del paquete. Debido a que estamos dentro del subdirectorio &amp;ldquo;Implementación&amp;rdquo;, necesitamos subir dos niveles hasta el subdirectorio de la solución donde está el subdirectorio &amp;ldquo;Paquete&amp;rdquo;. Tenga en cuenta que en cada actualización del paquete &amp;ldquo;OctoPack&amp;rdquo;, necesitamos actualizar estas rutas.&lt;/p&gt;
+&lt;p&gt;Después, necesitamos especificar el valor de &amp;ldquo;OctoPackNuGetExePath&amp;rdquo;. Me gusta usar lo que está incluido en el paquete que se está usando porque Octopus usa una versión personalizada de NuGet.exe, por lo que es mejor usar lo que está incluido en el paquete, por esa razón: &amp;ldquo;..\packages\OctoPack.3.6.0\build\NuGet.exe&amp;rdquo; es un buen valor (tenga en cuenta que también depende de la versión del paquete y subimos solo un nivel porque esto se ejecuta desde el subdirectorio raí del proyecto). La última variable para modificar aquí es &amp;ldquo;OctoPackPublishPackageToFileShare&amp;rdquo; que debe apuntar al subdirectorio compartido donde se copiará el paquete para implementarlo en Octopus. Normalmente usamos &amp;ldquo;\rant.com\Nuget&amp;rdquo;, por lo que &amp;ldquo;\rant.com\Nuget\Portals.WebApplication1&amp;rdquo; es una buena opción. La figura 7 muestra las modificaciones.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/07.png&#34; alt=&#34;Valores de las variables de configuración&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 7.&lt;/p&gt;
+&lt;p&gt;Ahora lo que tenemos que hacer es configurar el proyecto para ejecutar la tarea una vez que esté construida. ¿Recuerda la línea eliminada en la figura 4? Necesitamos agregar una línea allí como se muestra en la figura 8.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/08.png&#34; alt=&#34;Tareas importadas en el archivo de proyecto&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 8.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;Import&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Project=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;.\Deployment\OctoPack.targets&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Condition=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Exists(&amp;#39;.\Deployment\OctoPack.targets&amp;#39;)&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Una vez agregada esta línea podemos construir la solución pero &amp;ldquo;\rant.com\Nuget\Portals.WebApplication1&amp;rdquo; sigue estando vacío. ¿Por qué? Porque necesitamos cambiar el valor de la variable &amp;ldquo;RunOctoPack&amp;rdquo; a &amp;ldquo;verdadero&amp;rdquo; como muestra la figura 9.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/09.png&#34; alt=&#34;Valor de configuración para tarea de creación&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 9.&lt;/p&gt;
+&lt;p&gt;Ahora, si construimos nuevamente la solución obtenemos los resultados que se muestran en la figura 10 y un archivo de paquete en &amp;ldquo;\rant.com\Nuget\Portals.WebApplication1&amp;rdquo; como muestra la figura 11.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/10.png&#34; alt=&#34;Resultados de la primera compilación&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 10.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/11.png&#34; alt=&#34;Primer paquete generado&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 11.&lt;/p&gt;
+&lt;p&gt;Hasta ahora todo va bien, excepto que no importa cuántas veces compilemos, el paquete generado será la misma versión: &amp;ldquo;1.0.0.0&amp;rdquo; que no es buena para las versiones automáticas de Octopus. Entonces, arreglemos esto abriendo el archivo &amp;ldquo;AssemblyInfo.cs&amp;rdquo; dentro del subdirectorio del proyecto &amp;ldquo;Propiedades&amp;rdquo; y cambiemos el atributo &amp;ldquo;AssemblyVersion&amp;rdquo; de &amp;ldquo;1.0.0.0&amp;rdquo; a &amp;ldquo;1.0. *&amp;rdquo; Como se muestra en la figura 12.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/12.png&#34; alt=&#34;Archivo de información del ensamblado&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 12.&lt;/p&gt;
+&lt;p&gt;Al hacer eso, nos aseguramos de que cada compilación tenga una versión de ensamblado diferente, es decir, una versión de Octopus diferente que configuraremos en los siguientes pasos. Consulte las figuras 13 y 14 para observar los cambios.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/13.png&#34; alt=&#34;Resultados de la segunda compilación&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 13.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/14.png&#34; alt=&#34;Segundo paquete generado&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 14.&lt;/p&gt;
+&lt;p&gt;Vayamos de nuevo al archivo: &amp;ldquo;OctoPack.targets&amp;rdquo; y agreguemos la sección resaltada en la figura 15.&lt;/p&gt;
+&lt;p&gt;Esta región es una sección totalmente nueva que debemos agregar para configurar (no ejecutar) despliegues automáticos de Octopus. El codigo es:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;OctoExePath&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Condition=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#39;$(OctoExePath)&amp;#39; == &amp;#39;&amp;#39;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;..\packages\OctopusTools.4.15.7\tools\Octo.exe&lt;span class=&#34;nt&#34;&gt;&amp;lt;/OctoExePath&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;OctopusProject&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Condition=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#39;$(OctopusProject)&amp;#39; == &amp;#39;&amp;#39;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;Portals.WebApplication1&lt;span class=&#34;nt&#34;&gt;&amp;lt;/OctopusProject&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;OctopusEnvironment&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Condition=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#39;$(OctopusEnvironment)&amp;#39; == &amp;#39;&amp;#39;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;Development&lt;span class=&#34;nt&#34;&gt;&amp;lt;/OctopusEnvironment&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;OctopusPortal&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Condition=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#39;$(OctopusPortal)&amp;#39; == &amp;#39;&amp;#39;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;http://octopus.rant.com/Web&lt;span class=&#34;nt&#34;&gt;&amp;lt;/OctopusPortal&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;OctopusApiKey&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Condition=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#39;$(OctopusApiKey)&amp;#39; == &amp;#39;&amp;#39;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;API-L6NRPGPZB4V1EYDVUX23KDXUJU&lt;span class=&#34;nt&#34;&gt;&amp;lt;/OctopusApiKey&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;OctopusNotes&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Condition=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#39;$(OctopusNotes)&amp;#39; == &amp;#39;&amp;#39;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;New release sample notes.&lt;span class=&#34;nt&#34;&gt;&amp;lt;/OctopusNotes&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;/using-octopus/15.png&#34; alt=&#34;Valores de configuración para tarea de despliegue&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 15.&lt;/p&gt;
+&lt;p&gt;Debido a que esto se ejecuta desdel subdirectorio raíz del proyecto, solo necesitamos subir un nivel. &amp;ldquo;OctoExePath&amp;rdquo; es la única variable que depende de la ruta del paquete &amp;ldquo;OctopusTools&amp;rdquo;. Las variables &amp;ldquo;OctopusProject&amp;rdquo;, &amp;ldquo;OctopusEnvironment&amp;rdquo;, &amp;ldquo;OctopusPortal&amp;rdquo; y &amp;ldquo;OctopusApiKey&amp;rdquo; dependen de la configuración de Octopus de tu proyecto, pero lo que puedo decir aquí es que normalmente solo desplegamos al entorno de &amp;ldquo;Desarrollo&amp;rdquo; y hablaré de la variable API después en este documento. Por último, especificamos el valor de las notas de la versión en la variable &amp;ldquo;OctopusNotes&amp;rdquo; que normalmente se incluyen en el correo electrónico que envía el servidor Octopus una vez que una nueva versión termina de implementarse.&lt;/p&gt;
+&lt;p&gt;Una vez más, esa región es solo para configurar variables relacionadas con Octopus para crear despliegues. Para hacer realmente los despliegues, necesitamos agregar las siguientes líneas al final de ese archivo. La figura 16 muestra los resultados.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;Message&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Text=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Creating release in Octopus Portal: $(OctoPackPackageVersion)&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Condition=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#39;$(OctoExePath)&amp;#39; != &amp;#39;&amp;#39;&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Importance=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Normal&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;Exec&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Command=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;&amp;#34;$(OctoExePath)&amp;#34; create-release --server=&amp;#34;$(OctopusPortal)&amp;#34; --project=&amp;#34;$(OctopusProject)&amp;#34; --apikey=&amp;#34;$(OctopusApiKey)&amp;#34; --deployto=&amp;#34;$(OctopusEnvironment)&amp;#34; --version=$(OctoPackPackageVersion) --packageversion=$(OctoPackPackageVersion)&amp;#39;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Condition=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#39;$(OctoExePath)&amp;#39; != &amp;#39;&amp;#39;&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;/using-octopus/16.png&#34; alt=&#34;Configuración de tarea de despliegue&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 16.&lt;/p&gt;
+&lt;p&gt;La Figura 17 muestra el resultado de la compilación, observe la sección resaltada después del último mensaje recibido en la figura 10.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/17.png&#34; alt=&#34;Salida de tercera compilación&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 17.&lt;/p&gt;
+&lt;p&gt;Si abre el portal Octopus en su proyecto después de la compilación, puede obtener algo como lo que se muestra en la figura 18.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/18.png&#34; alt=&#34;Portal del proyecto en Octopus&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 18.&lt;/p&gt;
+&lt;p&gt;Entonces, con solo un cambio de una palabra: &amp;ldquo;falso&amp;rdquo; por &amp;ldquo;verdadero&amp;rdquo; en la variable &amp;ldquo;RunOctoPack&amp;rdquo; logramos muchos resultados: un paquete Octopus listo para ser desplegado y una versión del producto desplegado en el entorno especificado en Octopus. El riesgo aquí es dejar esa variable como verdadera y/o registrarla como verdadera y hacer un despliegue después de cada compilación. Eso sucede, pero generalmente no es lo que me gusta hacer, por lo que presto doble atención antes de registrar los cambios en este archivo.&lt;/p&gt;
+&lt;p&gt;Pasemos entonces a la actualización de paquetes. La Figura 19 muestra las actualizaciones disponibles.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/19.png&#34; alt=&#34;Actualización de paquetes&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 19.&lt;/p&gt;
+&lt;p&gt;Después de actualizar ambos paquetes, Visual Studio elimina las versiones anteriores como muestra la Figura 20.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/20.png&#34; alt=&#34;Subdirectorios de paquetes actualizados&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 20.&lt;/p&gt;
+&lt;p&gt;Gracias a que estamos usando los objetivos no desde la ubicación del paquete sino desde la ubicación del proyecto, lo que tenemos que hacer es actualizar todas las referencias de la versión anterior a las referencias de la nueva versión, es decir, todos &amp;ldquo;3.6.0&amp;rdquo; por &amp;ldquo;3.6.1&amp;rdquo; y todos &amp;ldquo;4.15.7&amp;rdquo; por &amp;ldquo;4.17.0&amp;rdquo;. Hay 3 lugares en &amp;ldquo;OctoPack.targets&amp;rdquo; para los primeros cambios y solo un lugar para el segundo cambio.&lt;/p&gt;
+&lt;p&gt;Las figures 21 y 22 muestran los respectivos lugares.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/21.png&#34; alt=&#34;Configuración actualizada para tarea de creación&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 21.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/22.png&#34; alt=&#34;Configuración actualizada para tarea de despliegue&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 22.&lt;/p&gt;
+&lt;p&gt;Una cosa más, el valor de API para las versiones de Octopus se puede generar accediendo al portal de Octopus&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://octopus.rant.com/Web/&#34;&gt;http://octopus.rant.com/Web/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&amp;hellip;y siga los pasos de la figura 23 a la figura 26.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/23.png&#34; alt=&#34;Opciön del perfil en Octopus&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 23.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/24.png&#34; alt=&#34;Configuración del perfil en Octopus&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 24.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/25.png&#34; alt=&#34;Opción de generación de llave API en Octopus&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 25.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/26.png&#34; alt=&#34;Resultado de generación de llave API en Octopus&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 26.&lt;/p&gt;
+&lt;p&gt;Es importante que guarde esta clave porque tan pronto como cierre este cuadro de diálogo, no podrá volver a ver ese valor.&lt;/p&gt;
+&lt;p&gt;Una última cosa, algunos productos pueden introducir nuevos problemas a la mesa porque pueden estar siendo implementandos por países: es decir, diferentes proyectos de Octopus, entornos, ruta física, etc. Entonces, la idea es tener varios archivos &amp;ldquo;.target&amp;rdquo; en el subdirectorio &amp;ldquo;Implementación&amp;rdquo; y agregado de la misma manera que lo hicimos en el archivo &amp;ldquo;.csproj&amp;rdquo;. Las figuras 27 y 28 muestran un ejemplo.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/27.png&#34; alt=&#34;Archivos multi objetivo&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 27.&lt;/p&gt;
+&lt;p&gt;Se agregaron objetivos para Chile y Brasil para implementar esas respectivas instancias.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/28.png&#34; alt=&#34;Archivo del proyecto using multi objetivo&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 28.&lt;/p&gt;
+&lt;p&gt;Aquí en el &amp;ldquo;.csproj&amp;rdquo; es importante tener el primer objetivo creado (llamémoslo de ahora en adelante el &amp;ldquo;general&amp;rdquo; o &amp;ldquo;genérico&amp;rdquo; -OctoPack.targets-) como el último en la lista de objetivos importados.&lt;/p&gt;
+&lt;p&gt;Las figuras 29 y 30 muestran el contenido de esos nuevos objetivos creados.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/29.png&#34; alt=&#34;Primer archivo de objetivo específico&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 29.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/30.png&#34; alt=&#34;Segundo archivo de objetivo específico&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 30.&lt;/p&gt;
+&lt;p&gt;Básicamente, ambos nuevos destinos son archivos muy pequeños que comparten la misma estructura pero con valores muy específicos para la instancia del país.&lt;/p&gt;
+&lt;p&gt;RunOctoPack
+OctopusProject
+OctopusNotas&lt;/p&gt;
+&lt;p&gt;Son las variables específicas de la instancia que deben cambiar el valor en el momento del despliegue. Todos se controlan ahora mediante una nueva condición que depende del valor de una nueva variable introducida: &amp;ldquo;Desploy&amp;hellip;&amp;rdquo; (&amp;ldquo;DeployBrasil&amp;rdquo; y &amp;ldquo;DeployChile&amp;rdquo; en las figuras). Es válido mencionar que es posible incluir más variables como la versión que queremos usar, etc.&lt;/p&gt;
+&lt;p&gt;Esta nueva variable es la única que deberíamos cambiar si decidimos desplegar esa instancia. Por ejemplo, si quiero desplegar una instancia de Brasil, puse el valor de la variable &amp;ldquo;DeployBazil&amp;rdquo; como &amp;ldquo;verdadero&amp;rdquo; en el archivo &amp;ldquo;OctoPack (Brasil).targets&amp;rdquo; y eso hará que &amp;ldquo;RunOctoPack&amp;rdquo; sea verdadero y &amp;ldquo;OctopusProject&amp;rdquo; el nombre de Proyecto Octopus para Brasil. Debido a que el destino para Brasil se importa antes que el genérico en el archivo &amp;ldquo;.csproj&amp;rdquo;, una vez que ese destino se ejecuta en el tiempo de compilación, se implementará utilizando los valores especificados.&lt;/p&gt;
+&lt;p&gt;Por último, pero no menos importante, debemos modificar el objetivo genérico para eliminar el valor de &amp;ldquo;OctopusProject&amp;rdquo;. Ver figura 31.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/31.png&#34; alt=&#34;Configuración actualizada para multi objetivo&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 31.&lt;/p&gt;
+&lt;p&gt;Espero que haya disfrutado de esta guía y la encuentre útil.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/UsingOctopus&#34;&gt;Código fuente de apoyo disponible en GitHub&lt;/a&gt;&lt;/p&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>Estilizando códigos usando StyleCop</title>
@@ -1296,25 +1450,6 @@ Superación Profesional por Internet 652 000&lt;/p&gt;
         <description>&lt;p&gt;Si está pensando que este artículo versa sobre un sistema para vestir o ver mejor está totalmente equivocado, veremos elegancia, pero en este caso del código escrito en un lenguaje de programación. Hay quienes piensan que eso no es necesario, que el código es obvio independientemente de su estructura. Craso error, es muy, pero muy importante escribir código de una forma estructurada.&lt;/p&gt;
 &lt;p&gt;Es verdad que existen herramientas formateadoras de códigos llamadas &amp;ldquo;Identadores&amp;rdquo; como DelForEx para Delphi que una vez escrito el código en la más absoluta oscuridad estructural posible y con apenas presionar una combinación de teclas es capaz de estructurarlo y quedar como un &amp;ldquo;pincel&amp;rdquo; (con opciones de personalizar todos los parámetros posibles); pero esta no es la cuestión, no se equivocó el que dijo que el hábito hace al monje.&lt;/p&gt;
 &lt;p&gt;Es imprescindible interiorizar desde temprano la necesidad de escribir organizadamente el código, para ello debe comenzarse imitando la forma de hacerlo de algún profesor o compañero y luego al ir tomando experiencia adaptarlo poco a poco a nuestros gustos hasta contar con el nuestro propio al paso de los años. Esto llega sin apenas darnos cuenta de que pasó, el día que menos se lo imagina nos sorprendemos escribiendo rutinas rutinariamente (valga la redundancia).&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>No basta con solo construir</title>
-      <link>/es/post/solo-desplegar-no-basta/</link>
-      <pubDate>Wed, 09 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/es/post/solo-desplegar-no-basta/</guid>
-      
-        <description>&lt;p&gt;La experiencia nos ha mostrado que la creación de un sitio web debe partir de una planeación, seguido por una construcción del sitio y posteriormente ejecutar un proceso de medición para garantizar que los resultados se cumplan. Sin embargo, en la práctica, tal vez por parecer muy fácil su construcción, o por la poca disponibilidad de tiempo se arranca por la construcción, obviando la planeación e impidiendo la medición.&lt;/p&gt;
-&lt;p&gt;La tecnología de Internet y en especial la tecnología web hace muy fácil la publicación de una aplicación, por lo que la planeación nos parece trivial. Tal vez esto sea válido para un sitio personal, pero cuando se trata de respaldar las estrategias del negocio, y en ocasiones el sitio web ES la estrategia competitiva mas importante, no se puede construir sin planear.&lt;/p&gt;
-&lt;p&gt;La planeación cubre aspectos fundamentales del sitio como la funcionalidad que se quiere manejar para los diferentes públicos que accederán al portal. Hay una funcionalidad especificada en el qué, y otra que debe cubrir el cómo (la técnica). En otras palabras, se debe estipular lo que podrá hacer un usuario en el portal, y también como se implementará desde el punto de vista técnico para que se pueda realizar. Esta funcionalidad se desprende entonces en unos documentos que especifican la construcción de software que se requiere, y el diseño de la parte gráfica del sitio.&lt;/p&gt;
-&lt;p&gt;También se debe desprender de la planeación la estrategia para garantizar que el portal llegará como queremos que llegue a los diferentes públicos objetivo. Si es para nuestros proveedores, por ejemplo, bastará con hacer una campaña de expectativa a través de una comunicación física, y luego implementar un procedimiento que obligue a la utilización del portal para efectuar las transacciones.&lt;/p&gt;
-&lt;p&gt;Si el portal es para el público en general, como puede aplicar para una tienda virtual, se requiere establecer una campaña de mercadeo que permita llegar por los medios tradicionales a todo el público objetivo, y un plan de fidelización que promueva la compra repetitiva. Ninguno de estos ejemplos que he colocado es tarea fácil, y su dificultad aumenta en la medida en que haya menos tiempo para desarrollarla.&lt;/p&gt;
-&lt;p&gt;Sin planeación, tampoco se tienen parámetros claros contra los cuales se pueda medir entonces el resultado del esfuerzo. Pero suponiendo que de alguna manera podamos censar que el resultado es menor al deseado, efectuar las tareas de planeación una vez desarrollado el portal es mucho más difícil y puede inclusive obligar a cambios en el portal y hasta un rediseño total.&lt;/p&gt;
-&lt;p&gt;Quedaba un factor por analizar, y es el de la generación de contenido para el portal. Es imperante que haya una estrategia al interior de la empresa para garantizar que el contenido del mismo es acorde con las necesidades de los públicos. Si tenemos un catálogo de productos, se deberá actualizar los precios, agregar y eliminar productos, y demás funciones requeridas. Si se van a efectuar pagos, habrá que conciliar las cuentas y tener como proveer al cliente consulta sobre el estado de su pedido. Si es un sitio de contenido, habrá que manejar la imagen y el texto en forma ágil y oportuna.&lt;/p&gt;
-&lt;p&gt;Estas actividades no se prevén en la construcción. Simplemente se construye y se coloca al aire, para ver que, al cabo del tiempo, y sin importar el monto de la inversión, el sitio no tuvo ningún impacto positivo y, por el contrario, podría afectar negativamente a la empresa.&lt;/p&gt;
 </description>
       
     </item>

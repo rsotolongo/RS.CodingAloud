@@ -2,14 +2,63 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>/es/tags/an%C3%A1lisis-de-c%C3%B3digo/</loc>
-    <lastmod>2021-01-04T00:00:00+00:00</lastmod>
+    <loc>/es/categories/</loc>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/categories/</loc>
+    <loc>/es/post/usando-octopus/</loc>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/es/categories/desarrollo/</loc>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/es/tags/octopus/</loc>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/es/post/</loc>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/es/</loc>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/es/tags/</loc>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/es/tags/visual-studio/</loc>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/es/tags/an%C3%A1lisis-de-c%C3%B3digo/</loc>
     <lastmod>2021-01-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -23,28 +72,7 @@
   </url>
   
   <url>
-    <loc>/es/categories/desarrollo/</loc>
-    <lastmod>2021-01-04T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>/es/post/estilo-de-c%C3%B3digo-usando-stylecop/</loc>
-    <lastmod>2021-01-04T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>/es/post/</loc>
-    <lastmod>2021-01-04T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>/es/</loc>
     <lastmod>2021-01-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -59,20 +87,6 @@
   
   <url>
     <loc>/es/tags/stylecop/</loc>
-    <lastmod>2021-01-04T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>/es/tags/</loc>
-    <lastmod>2021-01-04T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>/es/tags/visual-studio/</loc>
     <lastmod>2021-01-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

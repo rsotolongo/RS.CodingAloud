@@ -6,10 +6,164 @@
     <description>Recent content on Coding Aloud</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 04 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 11 Jan 2021 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Creating and deploying releases using Octopus</title>
+      <link>/post/using-octopus/</link>
+      <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/using-octopus/</guid>
+      
+        <description>&lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/UsingOctopus&#34;&gt;Source code of support available at GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Since while ago I wanted to share my experiences automatizing the product releases with Octopus from Visual Studio. Again, let’s do it through an example.&lt;/p&gt;
+&lt;p&gt;As it could not be otherwise, figure 1 shows the first package you should add to your project in order to create Octopus packages ready to be deployed: &amp;ldquo;OctoPack&amp;rdquo;. The latest package version available at the time of this tutorial was the &amp;ldquo;3.6.1&amp;rdquo; but we installed the &amp;ldquo;3.6.0&amp;rdquo; on purpose in order to show the update process.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/01.png&#34; alt=&#34;OctoPack package&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 1.&lt;/p&gt;
+&lt;p&gt;Figure 2 show the second package that should be installed: &amp;ldquo;OctopusTool&amp;rdquo;. Same here, latest version available was the &amp;ldquo;4.17.0&amp;rdquo; but we installed the &amp;ldquo;4.15.7&amp;rdquo; with the same purpose.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/02.png&#34; alt=&#34;OctopusTool package&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 2.&lt;/p&gt;
+&lt;p&gt;Once both packages are installed we can check the &amp;ldquo;packages&amp;rdquo; folder inside solution folder (C:\Temp\WebApplication1\packages) in this case. Figure 3 show the folder contents.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/03.png&#34; alt=&#34;Installed packages&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 3.&lt;/p&gt;
+&lt;p&gt;Now start the funny steps. First, we need to open the project file (WebApplication1.csproj) in this case. At the end of the file we need to delete the &amp;ldquo;Import&amp;rdquo; task of &amp;ldquo;OctoPack.targets&amp;rdquo; from the NuGet package folder. This is VERY important step because have to be repeated every time &amp;ldquo;OctoPack&amp;rdquo; package is updated. Figure 4 show the line that needs to be deleted.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/04.png&#34; alt=&#34;Project file content&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 4.&lt;/p&gt;
+&lt;p&gt;Let’s explain a little bit deeper here. MSBuild will import and execute the targets of &amp;ldquo;OctoPack&amp;rdquo; in every build. If we keep that line the file that need to be modified is that one that is located in the package folder, meaning that normally is not part of the TFS controlled items and it will be loose in every package update. NuGet delete the old package folder once the new version is downloaded after an update. To avoid these rollbacks, and keep updated the packages at same time is good practice to delete this line and continue the process as I recommend in next steps.&lt;/p&gt;
+&lt;p&gt;Create a new folder inside the project to be deployed and copy the file &amp;ldquo;OctoPack.targets&amp;rdquo; to it. I usually call this folder &amp;ldquo;Deployment&amp;rdquo; and keep the file with the same name. I mean, copy &amp;ldquo;$(SolutionDir)\packages\OctoPack.X.Y.Z\build\OctoPack.targets&amp;rdquo; to &amp;ldquo;$(ProjectDir)\Deployment\OctoPack.targets&amp;rdquo; Figure 5 shows this step.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/05.png&#34; alt=&#34;OctoPack file tasks&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 5.&lt;/p&gt;
+&lt;p&gt;In file: &amp;ldquo;OctoPack.targets&amp;rdquo; inside &amp;ldquo;Deployment&amp;rdquo; folder, we need to modify some fields and add few others.&lt;/p&gt;
+&lt;p&gt;The first two fields we need to modify are those that point to the Octopus libraries to execute the specified tasks. Figure 6 show it.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/06.png&#34; alt=&#34;Imported tasks&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 6.&lt;/p&gt;
+&lt;p&gt;Because we have moved the targets file we need to update those paths to the libraries inside the package folder. Because are inside the &amp;ldquo;Deployment&amp;rdquo; folder we need go up two levels until solution folder where &amp;ldquo;package&amp;rdquo; folder is. Notice that in every update of the &amp;ldquo;OctoPack&amp;rdquo; package, we need to update these paths.&lt;/p&gt;
+&lt;p&gt;After, we need to specify the value of the &amp;ldquo;OctoPackNuGetExePath&amp;rdquo; I like to use what is included in the package being used because Octopus use a custom-made version of NuGet.exe, so is better to use what is included in the package, for that reason: &amp;ldquo;..\packages\OctoPack.3.6.0\build\NuGet.exe&amp;rdquo; is a good value (notice that is depends of the package version too and we go up only one level because this is executed from the project root folder). Last variable to modify here is &amp;ldquo;OctoPackPublishPackageToFileShare&amp;rdquo; that should point into the shared directory where package will be copied to be deployed to Octopus. We normally use &amp;ldquo;\rant.com\Nuget&amp;rdquo;, so &amp;ldquo;\rant.com\Nuget\Portals.WebApplication1&amp;rdquo; is a good value for it. Figure 7 show the modifications.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/07.png&#34; alt=&#34;Task configuration variable values&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 7.&lt;/p&gt;
+&lt;p&gt;Now what we need to do is configure the project to execute the task once is build. Remember the line deleted in figure 4? We need to add a line there as is shown in figure 8.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/08.png&#34; alt=&#34;Project file imported tasks&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 8.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;Import&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Project=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;.\Deployment\OctoPack.targets&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Condition=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Exists(&amp;#39;.\Deployment\OctoPack.targets&amp;#39;)&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Once this line is added we can build the solution but &amp;ldquo;\rant.com\Nuget\Portals.WebApplication1&amp;rdquo; continues being empty. Why? Because we need to change the value of variable &amp;ldquo;RunOctoPack&amp;rdquo; to &amp;ldquo;true&amp;rdquo; as figure 9 shows.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/09.png&#34; alt=&#34;Execute task setting value&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 9.&lt;/p&gt;
+&lt;p&gt;Now, if we build again the solution we obtain the results shown in figure 10 and a package file in &amp;ldquo;\rant.com\Nuget\Portals.WebApplication1&amp;rdquo; as figure 11 shows.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/10.png&#34; alt=&#34;First compilation results&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 10.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/11.png&#34; alt=&#34;First generated package&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 11.&lt;/p&gt;
+&lt;p&gt;So far so good except that no matter how many times we build, the package generated will be the same version: &amp;ldquo;1.0.0.0&amp;rdquo; that is not good for automatic Octopus releases. So, let’s fix this opening the file &amp;ldquo;AssemblyInfo.cs&amp;rdquo; inside &amp;ldquo;Properties&amp;rdquo; project directory and change the &amp;ldquo;AssemblyVersion&amp;rdquo; attribute from &amp;ldquo;1.0.0.0&amp;rdquo; to &amp;ldquo;1.0.*&amp;rdquo; as is shown in figure 12.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/12.png&#34; alt=&#34;Assembly file information&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 12.&lt;/p&gt;
+&lt;p&gt;Doing that we ensure that every build will have a different assembly version, meaning different Octopus release version that we will configure in the following steps. Please see figure 13 and 14 to notice the changes.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/13.png&#34; alt=&#34;Second compilation results&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 13.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/14.png&#34; alt=&#34;Second generated package&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 14.&lt;/p&gt;
+&lt;p&gt;Let’s go again to file: &amp;ldquo;OctoPack.targets&amp;rdquo; and add the section highlighted in figure 15.&lt;/p&gt;
+&lt;p&gt;This region is totally new section that we should add in order to configure (not execute) automatic releases to Octopus. The code is:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;OctoExePath&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Condition=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#39;$(OctoExePath)&amp;#39; == &amp;#39;&amp;#39;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;..\packages\OctopusTools.4.15.7\tools\Octo.exe&lt;span class=&#34;nt&#34;&gt;&amp;lt;/OctoExePath&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;OctopusProject&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Condition=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#39;$(OctopusProject)&amp;#39; == &amp;#39;&amp;#39;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;Portals.WebApplication1&lt;span class=&#34;nt&#34;&gt;&amp;lt;/OctopusProject&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;OctopusEnvironment&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Condition=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#39;$(OctopusEnvironment)&amp;#39; == &amp;#39;&amp;#39;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;Development&lt;span class=&#34;nt&#34;&gt;&amp;lt;/OctopusEnvironment&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;OctopusPortal&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Condition=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#39;$(OctopusPortal)&amp;#39; == &amp;#39;&amp;#39;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;http://octopus.rant.com/Web&lt;span class=&#34;nt&#34;&gt;&amp;lt;/OctopusPortal&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;OctopusApiKey&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Condition=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#39;$(OctopusApiKey)&amp;#39; == &amp;#39;&amp;#39;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;API-L6NRPGPZB4V1EYDVUX23KDXUJU&lt;span class=&#34;nt&#34;&gt;&amp;lt;/OctopusApiKey&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;OctopusNotes&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Condition=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#39;$(OctopusNotes)&amp;#39; == &amp;#39;&amp;#39;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;New release sample notes.&lt;span class=&#34;nt&#34;&gt;&amp;lt;/OctopusNotes&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;/using-octopus/15.png&#34; alt=&#34;Release configuration settings&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 15.&lt;/p&gt;
+&lt;p&gt;Because this is executed from the project root folder, we need to go up only one level. The &amp;ldquo;OctoExePath&amp;rdquo; is the only one variable dependent of the path of the &amp;ldquo;OctopusTools&amp;rdquo; package. The variables &amp;ldquo;OctopusProject&amp;rdquo;, &amp;ldquo;OctopusEnvironment&amp;rdquo;, &amp;ldquo;OctopusPortal&amp;rdquo;, and &amp;ldquo;OctopusApiKey&amp;rdquo; depends of your project Octopus configuration but what I can say here is that normally we only release to &amp;ldquo;Development&amp;rdquo; environment and I’ll talk about the API variable after in this document. Finally, we specify the value for the release notes in the variable &amp;ldquo;OctopusNotes&amp;rdquo; that normally are included in the email sent by Octopus server once a new release finished to be deployed.&lt;/p&gt;
+&lt;p&gt;Once again, that region is only for configure variables related with Octopus for create releases. To actually create the releases, we need to add the following lines to the end of that file. Figure 16 shows the results.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;Message&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Text=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Creating release in Octopus Portal: $(OctoPackPackageVersion)&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Condition=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#39;$(OctoExePath)&amp;#39; != &amp;#39;&amp;#39;&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Importance=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Normal&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;Exec&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Command=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;&amp;#34;$(OctoExePath)&amp;#34; create-release --server=&amp;#34;$(OctopusPortal)&amp;#34; --project=&amp;#34;$(OctopusProject)&amp;#34; --apikey=&amp;#34;$(OctopusApiKey)&amp;#34; --deployto=&amp;#34;$(OctopusEnvironment)&amp;#34; --version=$(OctoPackPackageVersion) --packageversion=$(OctoPackPackageVersion)&amp;#39;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Condition=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#39;$(OctoExePath)&amp;#39; != &amp;#39;&amp;#39;&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;/using-octopus/16.png&#34; alt=&#34;Release configuration tasks&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 16.&lt;/p&gt;
+&lt;p&gt;Figure 17 show the build output, notice the highlighted section after the last message received in figure 10.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/17.png&#34; alt=&#34;Third compilation output&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 17.&lt;/p&gt;
+&lt;p&gt;If you open Octopus portal in your project after the build you can get something like what is shown in figure 18.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/18.png&#34; alt=&#34;Octopus project portal&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 18.&lt;/p&gt;
+&lt;p&gt;So, with just a change of a word: &amp;ldquo;false&amp;rdquo; by &amp;ldquo;true&amp;rdquo; in variable &amp;ldquo;RunOctoPack&amp;rdquo; we achieved many results: An Octopus package ready for be deployed and an Octopus release with product deployed in the specified environment. The risk here is leave that variable as true and/or check-in it as true and make a release in every build. That happens but usually is not what I like to do, so I pay double attention before check-in changes in this file.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s talk now about packages update. Figure 19 show the updates available.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/19.png&#34; alt=&#34;Packages update&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 19.&lt;/p&gt;
+&lt;p&gt;After update both packages, Visual Studio deletes the old versions as Figure 20 shows.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/20.png&#34; alt=&#34;Updated package folders&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 20.&lt;/p&gt;
+&lt;p&gt;Thanks that we are using the targets not from the package location but from inside project location, what we have to do is update all old version references to the new version references, meaning all &amp;ldquo;3.6.0&amp;rdquo; by &amp;ldquo;3.6.1&amp;rdquo; and all &amp;ldquo;4.15.7&amp;rdquo; by &amp;ldquo;4.17.0&amp;rdquo;. There are 3 places in &amp;ldquo;OctoPack.targets&amp;rdquo; for the first changes and only one place for the second change.&lt;/p&gt;
+&lt;p&gt;Figures 21 and 22 shows the respective places.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/21.png&#34; alt=&#34;Updated creation task settings&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 21.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/22.png&#34; alt=&#34;Updated deployment task settings&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 22.&lt;/p&gt;
+&lt;p&gt;One more thing, the API value for Octopus releases can be generated accessing to the Octopus portal&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://octopus.rant.com/Web/&#34;&gt;http://octopus.rant.com/Web/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&amp;hellip;and follow the steps in figure 23 to figure 26.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/23.png&#34; alt=&#34;Octopus profile option&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 23.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/24.png&#34; alt=&#34;Octopus profile settings&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 24.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/25.png&#34; alt=&#34;Octopus API key generation option&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 25.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/26.png&#34; alt=&#34;Octopus API key generation result&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 26.&lt;/p&gt;
+&lt;p&gt;Is important that you save this key because as soon as you close this dialog, you will not be able to see that value again.&lt;/p&gt;
+&lt;p&gt;One last thing, some projects could bring new problems to the table because is they are being deployed by country: meaning different Octopus projects, environments, physical path, etc. So, the idea is to have multiple &amp;ldquo;.target&amp;rdquo; files in the &amp;ldquo;Deployment&amp;rdquo; folder and added in the same way we did in the &amp;ldquo;.csproj&amp;rdquo; file. Figure 27 and 28 shows an example.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/27.png&#34; alt=&#34;Multi target files&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 27.&lt;/p&gt;
+&lt;p&gt;Targets for Chile and Brazil were added to deploy those respective instances.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/28.png&#34; alt=&#34;Project file using multi-target&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 28.&lt;/p&gt;
+&lt;p&gt;Here in the .csprj is important to have the first target create (let’s call it from now on the &amp;ldquo;general one&amp;rdquo; or &amp;ldquo;generic one&amp;rdquo; -OctoPack.targets-) as the last one in the list of targets imported.&lt;/p&gt;
+&lt;p&gt;Figures 29 and 30 shows the content of those new targets created.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/29.png&#34; alt=&#34;First specific target file&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 29.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/30.png&#34; alt=&#34;Second specific target file&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 30.&lt;/p&gt;
+&lt;p&gt;Basically, both new targets are very small files sharing the same structure but with very specific values for the country instance.&lt;/p&gt;
+&lt;p&gt;RunOctoPack
+OctopusProject
+OctopusNotes&lt;/p&gt;
+&lt;p&gt;They are the variables specific to the instance that should change the value at the time to deployment. All are controlled now using a new condition that depends of the value of a new variable introduced: &amp;ldquo;Deploy…&amp;rdquo; (&amp;ldquo;DeployBrazil&amp;rdquo; and &amp;ldquo;DeployChile&amp;rdquo; in the figures). Is valid to mention that is possible to include more variables as the version we want to use, etc.&lt;/p&gt;
+&lt;p&gt;This new variable is the only one what we should change if we decided to deploy that instance. For example, is I want to deploy Brazil instance I put the value of variable &amp;ldquo;DeployBazil&amp;rdquo; as &amp;ldquo;true&amp;rdquo; in file &amp;ldquo;OctoPack (Brazil).targets&amp;rdquo; and that will make &amp;ldquo;RunOctoPack&amp;rdquo; as true and &amp;ldquo;OctopusProject&amp;rdquo; as the name of Octopus project for Brazil instance. Because the target for Brazil is imported before the generic one in the .csproj file, once that target is executed in build time, it will deploy using those values specified.&lt;/p&gt;
+&lt;p&gt;Last but not less important, we must modify the generic target to delete the value for &amp;ldquo;OctopusProject&amp;rdquo;. See figure 31.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/31.png&#34; alt=&#34;Updated release setting for multi-target&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 31.&lt;/p&gt;
+&lt;p&gt;I hope you enjoyed this guide and find it useful.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/UsingOctopus&#34;&gt;Source code of support available at GitHub&lt;/a&gt;&lt;/p&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>Coding style using StyleCop</title>
