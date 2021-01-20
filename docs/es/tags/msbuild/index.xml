@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MSBuild on Programando en voz alta</title>
+    <link>/es/tags/msbuild/</link>
+    <description>Recent content in MSBuild on Programando en voz alta</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es</language>
+    <lastBuildDate>Mon, 18 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/es/tags/msbuild/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Creando paquetes NuGet</title>
+      <link>/es/post/creando-paquetes-nuget/</link>
+      <pubDate>Mon, 18 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/creando-paquetes-nuget/</guid>
+      <description>Últimamente he estado involucrado en la creación de varios paquetes NuGet útiles para algunos portales que se están siendo desarrollando. Quiero compartir mis conocimientos en este tema.
+Si estuviéramos desarrollando bibliotecas para .NET Core o .NET Standard, la vida sería fácil, como muestra La figura 1 a La figura 8.
+Figura 1: &amp;ldquo;Creación de una nueva biblioteca de .NET Core&amp;rdquo;.
+Figura 2: “Código predeterminado”.
+Figura 3: &amp;ldquo;Resultados de la primera compilación&amp;rdquo;.</description>
+    </item>
+    
+  </channel>
+</rss>

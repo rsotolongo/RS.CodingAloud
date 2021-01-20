@@ -6,22 +6,40 @@
     <description>Recent content in Tags on Programando en voz alta</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <lastBuildDate>Mon, 11 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/es/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 18 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/es/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Octopus</title>
-      <link>/es/tags/octopus/</link>
-      <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
+      <title>MSBuild</title>
+      <link>/es/tags/msbuild/</link>
+      <pubDate>Mon, 18 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>/es/tags/octopus/</guid>
+      <guid>/es/tags/msbuild/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NuGet</title>
+      <link>/es/tags/nuget/</link>
+      <pubDate>Mon, 18 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/es/tags/nuget/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Visual Studio</title>
       <link>/es/tags/visual-studio/</link>
-      <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 18 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>/es/tags/visual-studio/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Octopus</title>
+      <link>/es/tags/octopus/</link>
+      <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/es/tags/octopus/</guid>
       <description></description>
     </item>
     
@@ -166,24 +184,6 @@
       <pubDate>Wed, 09 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>/es/tags/calidad/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>seguridad</title>
-      <link>/es/tags/seguridad/</link>
-      <pubDate>Wed, 02 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/es/tags/seguridad/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>complejidad</title>
-      <link>/es/tags/complejidad/</link>
-      <pubDate>Tue, 01 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/es/tags/complejidad/</guid>
       <description></description>
     </item>
     

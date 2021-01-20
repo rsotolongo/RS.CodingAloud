@@ -6,7 +6,20 @@
     <description>Recent content in Posts on Programando en voz alta</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <lastBuildDate>Mon, 11 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/es/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 18 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/es/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Creando paquetes NuGet</title>
+      <link>/es/post/creando-paquetes-nuget/</link>
+      <pubDate>Mon, 18 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/creando-paquetes-nuget/</guid>
+      <description>Últimamente he estado involucrado en la creación de varios paquetes NuGet útiles para algunos portales que se están siendo desarrollando. Quiero compartir mis conocimientos en este tema.
+Si estuviéramos desarrollando bibliotecas para .NET Core o .NET Standard, la vida sería fácil, como muestra La figura 1 a La figura 8.
+Figura 1: &amp;ldquo;Creación de una nueva biblioteca de .NET Core&amp;rdquo;.
+Figura 2: “Código predeterminado”.
+Figura 3: &amp;ldquo;Resultados de la primera compilación&amp;rdquo;.</description>
+    </item>
+    
     <item>
       <title>Creando y desplegando aplicaciones usando Octopus</title>
       <link>/es/post/usando-octopus/</link>
@@ -196,16 +209,6 @@ Borland surgió allá por los lejanos años 80 como desarrolladora de los mejore
       <description>Tengo pendiente una entrevista en la Televisión Avileña (TVA) en el programa Equilibrio de las 12 del día para conversar sobre Internet y superación profesional. Por eso es que no queriendo ir en blanco a esa entrevista decidí anotar los aspectos a mencionar en algún momento por su relevante importancia:
   La superación profesional produce un alto grado de inserción laboral.
   Internet hace suponer le eliminación de las barreras de movilidad geográfica, horarios fijos, y usar materiales de formación efectivos con bastante calidad didáctica.</description>
-    </item>
-    
-    <item>
-      <title>La elegancia de la programación</title>
-      <link>/es/post/programaci%C3%B3n-elegante/</link>
-      <pubDate>Thu, 10 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/es/post/programaci%C3%B3n-elegante/</guid>
-      <description>Si está pensando que este artículo versa sobre un sistema para vestir o ver mejor está totalmente equivocado, veremos elegancia, pero en este caso del código escrito en un lenguaje de programación. Hay quienes piensan que eso no es necesario, que el código es obvio independientemente de su estructura. Craso error, es muy, pero muy importante escribir código de una forma estructurada.
-Es verdad que existen herramientas formateadoras de códigos llamadas &amp;ldquo;Identadores&amp;rdquo; como DelForEx para Delphi que una vez escrito el código en la más absoluta oscuridad estructural posible y con apenas presionar una combinación de teclas es capaz de estructurarlo y quedar como un &amp;ldquo;pincel&amp;rdquo; (con opciones de personalizar todos los parámetros posibles); pero esta no es la cuestión, no se equivocó el que dijo que el hábito hace al monje.</description>
     </item>
     
   </channel>

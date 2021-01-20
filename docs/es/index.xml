@@ -6,10 +6,136 @@
     <description>Recent content on Programando en voz alta</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <lastBuildDate>Mon, 11 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 18 Jan 2021 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/es/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Creando paquetes NuGet</title>
+      <link>/es/post/creando-paquetes-nuget/</link>
+      <pubDate>Mon, 18 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/creando-paquetes-nuget/</guid>
+      
+        <description>&lt;p&gt;Últimamente he estado involucrado en la creación de varios paquetes NuGet útiles para algunos portales que se están siendo desarrollando. Quiero compartir mis conocimientos en este tema.&lt;/p&gt;
+&lt;p&gt;Si estuviéramos desarrollando bibliotecas para .NET Core o .NET Standard, la vida sería fácil, como muestra La figura 1 a La figura 8.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/01.png&#34; alt=&#34;Creación de una nueva biblioteca de .NET Core&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 1: &amp;ldquo;Creación de una nueva biblioteca de .NET Core&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/02.png&#34; alt=&#34;Código predeterminado&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 2: “Código predeterminado”.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/03.png&#34; alt=&#34;Resultados de la primera compilación&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 3: &amp;ldquo;Resultados de la primera compilación&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/04.png&#34; alt=&#34;Propiedades del proyecto&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 4: “Propiedades del proyecto”.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/05.png&#34; alt=&#34;Salida de la segunda compilación&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 5: &amp;ldquo;Salida de la segunda compilación&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/06.png&#34; alt=&#34;Resultados de la segunda compilación&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 6: &amp;ldquo;Resultados de la segunda compilación&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Pero la vida no es tan fácil y casi todos nuestros productos utilizan .NET Framework (normal), lo que significa que Visual Studio no nos ofrece las capacidades que se muestran en las figuras 7 y 8.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/07.png&#34; alt=&#34;Nueva biblioteca de .NET Framework&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 7: “Nueva biblioteca de .NET Framework”.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/08.png&#34; alt=&#34;Propiedades del proyecto biblioteca&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 8: &amp;ldquo;Las propiedades para este tipo de proyectos no incluyen la función Paquete&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Entonces, ¿qué alternativa tenemos? En realidad, algunas de ellas: usan Octopus para generar el paquete, pero esto es complicado debido a que Octopus usa una compilación personalizada de NuGet.exe, por lo que la estructura generada puede no coincidir y su obtención implica muchos pasos.&lt;/p&gt;
+&lt;p&gt;Otra alternativa es usar &amp;ldquo;NuGet.exe&amp;rdquo; manualmente desde la línea de comandos, pero esto puede ser confuso y también implica muchos otros pasos para realizar.&lt;/p&gt;
+&lt;p&gt;Dije una vez pero me gusta repetirlo, me encantan los paquetes NuGet, entonces, ¿por qué no usar un paquete NuGet para generar paquetes NuGet? Bueno, ya existe y es muy fácil de usar. El primer paso es agregar el paquete: “CreateNewNuGetPackageFromProjectAfterEachBuild” al proyecto que queremos distribuir como un paquete NuGet. La figura 9 muestra un ejemplo.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/09.png&#34; alt=&#34;Administrador de paquetes de la solución&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 9.&lt;/p&gt;
+&lt;p&gt;Una vez agregado, este paquete crea un subdirectorio dentro de la raíz del proyecto llamado: &amp;ldquo;_CreateNewNuGetPackage&amp;rdquo; y eso es todo lo que necesita. La figura 10 muestra la estructura creada.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/10.png&#34; alt=&#34;Explorardor de la solución&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 10.&lt;/p&gt;
+&lt;p&gt;Una vez que compilamos el proyecto, podemos ver el resultado en La figura 11.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/11.png&#34; alt=&#34;Salida de la tercera compilación&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 11.&lt;/p&gt;
+&lt;p&gt;La figura 12 muestra los resultados de la compilación.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/12.png&#34; alt=&#34;Resultados de la tercera compilación&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 12.&lt;/p&gt;
+&lt;p&gt;La figura 13 muestra el contenido del paquete generado.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/13.png&#34; alt=&#34;Contenidos del paquete&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 13.&lt;/p&gt;
+&lt;p&gt;Tenga en cuenta que los metadatos se extraen básicamente de la información del ensamblado o se generan automáticamente (la salida de la compilación también tiene registros sobre esto). Podemos cambiar esto si incluimos un archivo de metadatos como muestra La figura 14.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/14.png&#34; alt=&#34;Archivo de metadatos del paquete&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 14.&lt;/p&gt;
+&lt;p&gt;El contenido de este archivo depende de lo que desee para su paquete, pero como ejemplo:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;utf-8&amp;#34;?&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;c&#34;&gt;&amp;lt;!-- 
+&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;  For more info on this file format visit http://docs.nuget.org/docs/reference/nuspec-reference.
+&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;--&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;package&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;xmlns=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;metadata&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;id&amp;gt;&lt;/span&gt;Portals.ClassLibrary1&lt;span class=&#34;nt&#34;&gt;&amp;lt;/id&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;1.0.0&lt;span class=&#34;nt&#34;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;authors&amp;gt;&lt;/span&gt;Portals Development&lt;span class=&#34;nt&#34;&gt;&amp;lt;/authors&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;description&amp;gt;&lt;/span&gt;Class library to help portals development.&lt;span class=&#34;nt&#34;&gt;&amp;lt;/description&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;language&amp;gt;&lt;/span&gt;en-US&lt;span class=&#34;nt&#34;&gt;&amp;lt;/language&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;releaseNotes&amp;gt;&amp;lt;/releaseNotes&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/metadata&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/package&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Ahora los resultados de la compilación se parecen a los de La figura 15.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/15.png&#34; alt=&#34;Primeros paquetes generados&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 15.&lt;/p&gt;
+&lt;p&gt;La figura 16 muestra el contenido del nuevo paquete generado, esta vez con metadatos más precisos.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/16.png&#34; alt=&#34;Contenido del primer paquete&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 16.&lt;/p&gt;
+&lt;p&gt;En este punto pudimos generar el paquete pero lo que realmente necesitamos es la posibilidad de consumirlo desde otro proyecto. Primero necesitamos implementarlo en un repositorio interno de NuGet llamado: &amp;ldquo;McNuget&amp;rdquo;. Expliquemos cómo hacerlo.&lt;/p&gt;
+&lt;p&gt;Primero abra “$(ProjectDir)_CreateNewNuGetPackage\Config1.ps1” y realice las modificaciones resaltadas en color amarillo en La figura 17.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/17.png&#34; alt=&#34;Archivo de configuración para la generación del paquete&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 17.&lt;/p&gt;
+&lt;p&gt;Básicamente, estamos especificando que en cada compilación se genera otro paquete que contiene todos los símbolos de depuración, incluidos los códigos fuentes, para facilitar la depuración de este paquete. No agregue la configuración y la plataforma utilizadas para compilar en el nombre del paquete. Además, eventualmente implementaremos este paquete en McNuget (digo eventualmente porque no es automático en todas las compilaciones) y la API para implementar en McNuget. Esta API fue generada por el administrador de McNuget y nos la envió.&lt;/p&gt;
+&lt;p&gt;La figura 18 muestra el resultado de la compilación.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/18.png&#34; alt=&#34;Segundos paquetes generados&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 18.&lt;/p&gt;
+&lt;p&gt;Observe los dos nuevos paquetes sin la configuración y la plataforma; uno sin símbolos de depuración (igual que en La figura 16) y otro con símbolos y código fuente como muestra La figura 19.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/19.png&#34; alt=&#34;Contenido del segundo paquete&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 19.&lt;/p&gt;
+&lt;p&gt;Es hora de implementar el paquete en McNuget y para hacer esto necesitamos ejecutar “$(ProjectDir)_CreateNewNuGetPackage\RunMeToUploadNuGetPackage.cmd” como se muestra en La figura 20.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/20.png&#34; alt=&#34;Comando para subir paquete&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 20.&lt;/p&gt;
+&lt;p&gt;Una vez ejecutado, se abrirá una ventana de línea de comandos y un cuadro de diálogo solicitando que el paquete se despliegue, como se muestra en La figura 21.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/21.png&#34; alt=&#34;Diálogo para subir paquete&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 21.&lt;/p&gt;
+&lt;p&gt;Una vez que se selecciona el paquete como se muestra en La figura 22&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/22.png&#34; alt=&#34;Selección para subir paquete&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 22.&lt;/p&gt;
+&lt;p&gt;&amp;hellip;pide una confirmación como muestra La figura 23. Un punto válido para mencionar es que el repositorio de McNuget puede no estar configurado para permitir implementaciones de paquetes que contienen símbolos de código fuente y depuración. Entonces, la única opción que podemos despleguar es el paquete regular.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/23.png&#34; alt=&#34;Confirmación de subida de paquete&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 23.&lt;/p&gt;
+&lt;p&gt;Una vez aceptado y si todo ha ido bien, deberíamos poder ver una pantalla similar a la que muestra La figura 24.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/24.png&#34; alt=&#34;Resultado de subida de paquete&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 24.&lt;/p&gt;
+&lt;p&gt;Lo que significa que nuestro paquete está en McNuget listo para usarse. Probémoslo.&lt;/p&gt;
+&lt;p&gt;La figura 25 muestra la gestión de paquetes para otro proyecto.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/25.png&#34; alt=&#34;Administrador de paquetes de proyecto&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 25.&lt;/p&gt;
+&lt;p&gt;Una vez que el paquete está instalado, podemos usar sus características. La figura 26 muestra un ejemplo.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/26.png&#34; alt=&#34;Ejemplo de uso de paquete&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 26.&lt;/p&gt;
+&lt;p&gt;Una última observación, hemos implementado el paquete regular porque hipotéticamente McNuget no permite implementar paquetes con símbolos de depuración; pero hemos desplegado la versión construida en modo &amp;ldquo;Debug&amp;rdquo; y esto no es bueno, debemos desplegar la versión construida en modo &amp;ldquo;Release&amp;rdquo; y ganar más rendimiento.&lt;/p&gt;
+&lt;p&gt;Esto es todo lo que tengo que compartir con ustedes hoy. Espero que esta guía le resulte útil para sus proyectos una vez que desee generar paquetes NuGet.&lt;/p&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>Creando y desplegando aplicaciones usando Octopus</title>
@@ -1436,20 +1562,6 @@ Internet 4 470 000 000
 Superación Profesional por Internet 652 000&lt;/p&gt;
 &lt;p&gt;Para concluir nada más cierto que esta cita:&lt;/p&gt;
 &lt;p&gt;&amp;ldquo;El rápido avance de la ciencia genera nuevas disciplinas que obligan a tener una visión futurista&amp;rdquo;&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>La elegancia de la programación</title>
-      <link>/es/post/programaci%C3%B3n-elegante/</link>
-      <pubDate>Thu, 10 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/es/post/programaci%C3%B3n-elegante/</guid>
-      
-        <description>&lt;p&gt;Si está pensando que este artículo versa sobre un sistema para vestir o ver mejor está totalmente equivocado, veremos elegancia, pero en este caso del código escrito en un lenguaje de programación. Hay quienes piensan que eso no es necesario, que el código es obvio independientemente de su estructura. Craso error, es muy, pero muy importante escribir código de una forma estructurada.&lt;/p&gt;
-&lt;p&gt;Es verdad que existen herramientas formateadoras de códigos llamadas &amp;ldquo;Identadores&amp;rdquo; como DelForEx para Delphi que una vez escrito el código en la más absoluta oscuridad estructural posible y con apenas presionar una combinación de teclas es capaz de estructurarlo y quedar como un &amp;ldquo;pincel&amp;rdquo; (con opciones de personalizar todos los parámetros posibles); pero esta no es la cuestión, no se equivocó el que dijo que el hábito hace al monje.&lt;/p&gt;
-&lt;p&gt;Es imprescindible interiorizar desde temprano la necesidad de escribir organizadamente el código, para ello debe comenzarse imitando la forma de hacerlo de algún profesor o compañero y luego al ir tomando experiencia adaptarlo poco a poco a nuestros gustos hasta contar con el nuestro propio al paso de los años. Esto llega sin apenas darnos cuenta de que pasó, el día que menos se lo imagina nos sorprendemos escribiendo rutinas rutinariamente (valga la redundancia).&lt;/p&gt;
 </description>
       
     </item>

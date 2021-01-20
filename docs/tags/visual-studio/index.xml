@@ -6,7 +6,21 @@
     <description>Recent content in Visual Studio on Coding Aloud</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 11 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/visual-studio/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 18 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/visual-studio/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Creating NuGet packages</title>
+      <link>/post/creating-nuget-packages/</link>
+      <pubDate>Mon, 18 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/creating-nuget-packages/</guid>
+      <description>Lately I have been involved in the creation of several NuGet packages useful for some portals being developed. I want to share my knowledge in this topic.
+If we were developing libraries for .NET Core or .NET Standard life would be easy as figure 1 to figure 8 shows.
+Figure 1: &amp;ldquo;Creating a new .NET Core library&amp;rdquo;.
+Figure 2: &amp;ldquo;Default code&amp;rdquo;.
+Figure 3: &amp;ldquo;First build results&amp;rdquo;.
+Figure 4: &amp;ldquo;Project properties&amp;rdquo;.</description>
+    </item>
+    
     <item>
       <title>Creating and deploying releases using Octopus</title>
       <link>/post/using-octopus/</link>
