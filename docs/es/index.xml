@@ -6,10 +6,102 @@
     <description>Recent content on Programando en voz alta</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <lastBuildDate>Mon, 18 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 25 Jan 2021 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/es/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Desplegando paquetes NuGet</title>
+      <link>/es/post/deploying-nuget-packages/</link>
+      <pubDate>Mon, 25 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/deploying-nuget-packages/</guid>
+      
+        <description>&lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/DeployPackages&#34;&gt;Código fuente de apoyo disponible en GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;En una publicación anterior vimos cómo: &amp;ldquo;&lt;a href=&#34;../create_nuget_packages&#34;&gt;Crear paquetes NuGet&lt;/a&gt;&amp;rdquo; pero el paso de despliegue aún era un proceso manual. Intentemos automatizar esto. La figura 1 muestra cómo generar un paquete NuGet para un proyecto de .NET Core (similar al enfoque mostrado anteriormente) utilizando las propiedades del proyecto.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/deploying-nuget-packages/01.png&#34; alt=&#34;Creando un paquete NuGet&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 1: &amp;ldquo;Creando un paquete NuGet&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Esto agrega un par de líneas al archivo del proyecto (.csproj) como muestra la figura 2:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/deploying-nuget-packages/02.png&#34; alt=&#34;Propiedades del archivo de proyecto para crear el paquete NuGet&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 2: &amp;ldquo;Propiedades del archivo de proyecto para crear el paquete NuGet&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Mi enfoque también usa tagets de MSBuild. El primer paso es incluir el siguiente código en el archivo del proyecto (.csproj):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;Import&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Project=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;..\DeployPackage.targets&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Condition=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Exists(&amp;#39;..\DeployPackage.targets&amp;#39;)&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;Target&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;DeployingPackage&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;AfterTargets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;GenerateNuspec&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;MSBuild&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Projects=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;$(MsBuildThisFile)&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Targets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;DeployPackage&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Properties=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;PackageIdentifier=$(PackageId);PackageVersion=$(Version);DeployPackage=true&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/Target&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Básicamente, importamos el archivo de tareas: &amp;ldquo;DeployPackage.targets&amp;rdquo; y llamamos a su tarea: &amp;ldquo;DeployPackage&amp;rdquo; pasando dos parámetros: &amp;ldquo;PackageIdentifier&amp;rdquo; y &amp;ldquo;PackageVersion&amp;rdquo;. El contenido del archivo: &amp;ldquo;DeployPackage.targets&amp;rdquo; es:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;utf-8&amp;#34;?&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;Project&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;xmlns=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;http://schemas.microsoft.com/developer/msbuild/2003&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;PropertyGroup&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;DeployPackages&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Condition=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#39;$(DeployPackages)&amp;#39; == &amp;#39;&amp;#39;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;false&lt;span class=&#34;nt&#34;&gt;&amp;lt;/DeployPackages&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;NuGetPath&amp;gt;&lt;/span&gt;C:\Temp\&lt;span class=&#34;nt&#34;&gt;&amp;lt;/NuGetPath&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;NuGetUrl&amp;gt;&lt;/span&gt;https://dist.nuget.org/win-x86-commandline/latest/nuget.exe&lt;span class=&#34;nt&#34;&gt;&amp;lt;/NuGetUrl&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;NuGetSource&amp;gt;&lt;/span&gt;C:\Temp\Packages\&lt;span class=&#34;nt&#34;&gt;&amp;lt;/NuGetSource&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;ApiKey&amp;gt;&lt;/span&gt;45606a77-19e6-4de3-9302-e651a507c785&lt;span class=&#34;nt&#34;&gt;&amp;lt;/ApiKey&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/PropertyGroup&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;Target&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;DownloadNuget&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Condition=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;!Exists(&amp;#39;$(NuGetPath)nuget.exe&amp;#39;)&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;Message&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Importance=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;high&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Text=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Downloading NuGet...&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;DownloadFile&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;SourceUrl=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;$(NuGeturl)&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;DestinationFolder=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;$(NuGetPath)&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;Message&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Importance=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;high&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Text=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;NuGet downloaded...&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/Target&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;Target&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;DeployPackage&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Condition=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;$(DeployPackage) OR $(DeployPackages)&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;DependsOnTargets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;DownloadNuget&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;Message&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Importance=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;high&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Text=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Deploying package...&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;Exec&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Command=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;amp;quot;$(NuGetPath)nuget.exe&amp;amp;quot; push &amp;amp;quot;$(ProjectDir)bin\$(Configuration)\$(PackageIdentifier).$(PackageVersion).nupkg&amp;amp;quot; -Source $(NuGetSource) -ApiKey $(ApiKey)&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;Message&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Importance=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;high&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Text=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Package deployed...&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/Target&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/Project&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Este archivo de tareas hace toda la magia. Analicémoslo paso a paso.&lt;/p&gt;
+&lt;p&gt;Primero, especificamos algunas variables que serán útiles para la ejecución de las tareas incluidas en este archivo. La variable: &amp;ldquo;NuGetSource&amp;rdquo; tiene un valor correspondiente a un subdirectorio local pero pudiera ser una dirección web.&lt;/p&gt;
+&lt;p&gt;La tarea: &amp;ldquo;DeployPackage&amp;rdquo; (llamada desde el archivo del proyecto) se ejecutará solo si las variables: &amp;ldquo;DeployPackage&amp;rdquo; o &amp;ldquo;DeployPackages&amp;rdquo; tienen el valor: &amp;ldquo;true&amp;rdquo;. La variable: &amp;ldquo;DeployPackage&amp;rdquo; se pasa desde la llamada en el archivo del proyecto y está diseñada para desplegar solo el paquete NuGet generado para ese proyecto. Por otro lado, la variable: &amp;ldquo;DeployPackages&amp;rdquo; es global para este archivo y está diseñada para desplegar todos los paquetes generados en la solución (normalmente cada proyecto genera un paquete NuGet diferente). Si esta tarea cumple con la condición de ejecución, se ejecutará primero su tarea dependiente.&lt;/p&gt;
+&lt;p&gt;La tarea: &amp;ldquo;DownloadNuget&amp;rdquo; proporciona un administrador de paquetes: &amp;ldquo;NuGet.exe&amp;rdquo; para no lidiar con herramientas instaladas, rutas de herramientas, diferencias en el entorno de desarrollo entre los miembros del equipo, etc. Una vez finalizada esta tarea, vuelve a la ejecución de la tarea: &amp;ldquo;DeployPackage&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Finalmente, se llama a la herramienta del administrador de paquetes con todos los parámetros requeridos. La figura 3 muestra un ejemplo de ejecución.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/deploying-nuget-packages/03.png&#34; alt=&#34;Resultado del despliegue&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 3: &amp;ldquo;Resultado del despliegue&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;la figura 4 muestra el paquete desplegado.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/deploying-nuget-packages/04.png&#34; alt=&#34;Paquete desplegado&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 4: &amp;ldquo;Paquete desplegado&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Espero que estas siemples instrucciones le ayuden a automatizar los despliegues de paquetes NuGet.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/DeployPackages&#34;&gt;Código fuente de apoyo disponible en GitHub&lt;/a&gt;&lt;/p&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>Creando paquetes NuGet</title>
@@ -1525,43 +1617,6 @@ Sin dejar de asemejarse con otros fanatismos (al menos en sus esencias fundament
 &lt;p&gt;Resulta ser que después de tanto años y esfuerzos en cada versión de Java Builder que lanzaban anunciaron que apoyarían al máximo posible el ambiente Eclipse. Aseguraron que seguirían dándole soporte a Java Builder y que eso no iba a cambiar la posición de la compañía, pero del dicho al hecho hay tremendo trecho.&lt;/p&gt;
 &lt;p&gt;Para colmo de males, y para que se tenga una idea de lo que estamos hablando, Borland busca afanadamente una compañía que le compre todos sus productos de desarrollo (Delphi, C++ Builder, Java Builder, etc.) para centrarse solo en la metodología de desarrollo de software ALM. Es un cambio total de estrategia lo que están buscando, supongo que no dan a basto con los planes con los que intentaban ganar más adeptos, no fue suficiente con sacar una versión de un nuevo ambiente de desarrollo integrador de lenguajes de programación en 2005 -que es una pura copia de Visual Studio.NET 2003- cuando en este año y sin apenas dar tiempo a digerir esta versión lanzaron Borland Developer Studio 2006 con la misma filosofía. Lo único nuevo es ambas versiones es la posibilidad de desarrollar aplicaciones tanto para Win32 como para .NET y no en todas combinaciones de lenguajes y plataformas posibles.&lt;/p&gt;
 &lt;p&gt;Resumen: pérdida de confianza total por parte de la comunidad de desarrolladores en la compañía, pérdida de gran parte del mercado de aplicaciones de desarrollo (cada día son más los que pasan a otros ambientes), pérdida de ingresos, pérdida de identidad, desaparición total de la compañía (esto no ha pasado, pero sin duda alguna sucederá pronto).&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Aspectos tener en cuenta a la hora de valorar el uso de Internet en la superación profesional</title>
-      <link>/es/post/superaci%C3%B3n-personal/</link>
-      <pubDate>Fri, 11 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/es/post/superaci%C3%B3n-personal/</guid>
-      
-        <description>&lt;p&gt;Tengo pendiente una entrevista en la Televisión Avileña (TVA) en el programa Equilibrio de las 12 del día para conversar sobre Internet y superación profesional. Por eso es que no queriendo ir en blanco a esa entrevista decidí anotar los aspectos a mencionar en algún momento por su relevante importancia:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;La superación profesional produce un alto grado de inserción laboral.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Internet hace suponer le eliminación de las barreras de movilidad geográfica, horarios fijos, y usar materiales de formación efectivos con bastante calidad didáctica.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Internet ha ayudado a mitigar la marginación de la mujer al permitir acceso a la misma información tanto a hombre como a mujeres, sin discriminación de sexo.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Si bien el 30% de las cuentas de Internet pertenecen a mujeres, cosa que no es mucho todavía, poco a poco crece y se hace más notable su presencia en la red.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Los usuarios de Internet poseen una gran cultura informacional y son capaces de crear su propio conocimiento sin ningún intermediario.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Resultado de búsquedas en Internet de estos términos (según Google):&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Superación Profesional 1 890 000
-Internet 4 470 000 000
-Superación Profesional por Internet 652 000&lt;/p&gt;
-&lt;p&gt;Para concluir nada más cierto que esta cita:&lt;/p&gt;
-&lt;p&gt;&amp;ldquo;El rápido avance de la ciencia genera nuevas disciplinas que obligan a tener una visión futurista&amp;rdquo;&lt;/p&gt;
 </description>
       
     </item>

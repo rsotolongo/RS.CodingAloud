@@ -6,7 +6,19 @@
     <description>Recent content in MSBuild on Programando en voz alta</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <lastBuildDate>Mon, 18 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/es/tags/msbuild/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 25 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/es/tags/msbuild/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Desplegando paquetes NuGet</title>
+      <link>/es/post/deploying-nuget-packages/</link>
+      <pubDate>Mon, 25 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/deploying-nuget-packages/</guid>
+      <description>Código fuente de apoyo disponible en GitHub
+En una publicación anterior vimos cómo: &amp;ldquo;Crear paquetes NuGet&amp;rdquo; pero el paso de despliegue aún era un proceso manual. Intentemos automatizar esto. La figura 1 muestra cómo generar un paquete NuGet para un proyecto de .NET Core (similar al enfoque mostrado anteriormente) utilizando las propiedades del proyecto.
+Figura 1: &amp;ldquo;Creando un paquete NuGet&amp;rdquo;.
+Esto agrega un par de líneas al archivo del proyecto (.</description>
+    </item>
+    
     <item>
       <title>Creando paquetes NuGet</title>
       <link>/es/post/creando-paquetes-nuget/</link>

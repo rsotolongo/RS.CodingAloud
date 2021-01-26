@@ -6,7 +6,19 @@
     <description>Recent content in NuGet on Coding Aloud</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 18 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/nuget/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 25 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/nuget/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Deploying NuGet packages</title>
+      <link>/post/deploying-nuget-packages/</link>
+      <pubDate>Mon, 25 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/deploying-nuget-packages/</guid>
+      <description>Source code of support available at GitHub
+I a previous post we saw how to: &amp;ldquo;Create NuGet packages&amp;rdquo; but the deployment step was still a manual process. Let&amp;rsquo;s try to automatize this. Figure 1 shows how to generate NuGet package for a .NET Core project (similar to the approach previously shown) using the project&amp;rsquo;s properties.
+Figure 1: &amp;ldquo;Creating NuGet package&amp;rdquo;.
+This adds a couple of lines into the project file (.</description>
+    </item>
+    
     <item>
       <title>Creating NuGet packages</title>
       <link>/post/creating-nuget-packages/</link>
