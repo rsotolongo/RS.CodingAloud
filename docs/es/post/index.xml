@@ -6,7 +6,20 @@
     <description>Recent content in Posts on Programando en voz alta</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <lastBuildDate>Mon, 25 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/es/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 01 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="/es/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Generando certificados de firma</title>
+      <link>/es/post/generating-signature-certificates/</link>
+      <pubDate>Mon, 01 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/generating-signature-certificates/</guid>
+      <description>Código fuente de apoyo disponible en GitHub
+A veces, los ensamblados (ejecutables y bibliotecas) deben estar firmados y no tenemos un certificado disponible con fines de prueba. En este post pretendo mostrar cómo generar un certificado para firmar ensamblados.
+Primero, necesitamos instalar OpenSSL que podemos lograr siguiendo los pasos que se especifican en el siguiente enlace:
+Instalación de OpenSSL en Windows 10 y actualización de PATH
+En segundo lugar, creemos un archivo de secuencia de comandos por lotes llamado: &amp;ldquo;generateCertificate.</description>
+    </item>
+    
     <item>
       <title>Desplegando paquetes NuGet</title>
       <link>/es/post/deploying-nuget-packages/</link>
@@ -200,16 +213,6 @@ Poco a poco fue tomando auge, pero a la vez fueron surgiendo nuevos lenguajes qu
       <guid>/es/post/herramientas-para-blogs/</guid>
       <description>No hay duda que la web revolucionó el mundo de la información a disposición de todos sus usuarios, pero por sus propias características tiene un gran inconveniente: sigue siendo el usuario el responsable de visitar expresamente los sitios de los que quiere nutrirse.
 Cuando se visitan dos o tres sitios o se hace con poca frecuencia esto no interesa mucho, sin embargo, cuando se requiere informarse apenas se publique la información esto se convierte en un problema.</description>
-    </item>
-    
-    <item>
-      <title>Borland Co.</title>
-      <link>/es/post/borland/</link>
-      <pubDate>Mon, 14 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/es/post/borland/</guid>
-      <description>Es increíble cómo las malas estrategias de negocio llevan a convertir a una empresa líder mundial en herramientas de desarrollo en una empresa de retaguardia tecnológica. Específicamente me refiero a Borland Company.
-Borland surgió allá por los lejanos años 80 como desarrolladora de los mejores compiladores del lenguaje Pascal y luego de sus ambientes de desarrollo Turbo Pascal (Microsoft en su momento lanzó en Microsoft Pascal que fue todo un fracaso).</description>
     </item>
     
   </channel>

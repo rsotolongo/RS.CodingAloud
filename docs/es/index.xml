@@ -6,10 +6,75 @@
     <description>Recent content on Programando en voz alta</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <lastBuildDate>Mon, 25 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 01 Feb 2021 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/es/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Generando certificados de firma</title>
+      <link>/es/post/generating-signature-certificates/</link>
+      <pubDate>Mon, 01 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/generating-signature-certificates/</guid>
+      
+        <description>&lt;p&gt;&lt;a href=&#34;https://gist.github.com/rsotolongo/80410cee05c26a7bcb17327d0c279b86&#34;&gt;Código fuente de apoyo disponible en GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;A veces, los ensamblados (ejecutables y bibliotecas) deben estar firmados y no tenemos un certificado disponible con fines de prueba. En este post pretendo mostrar cómo generar un certificado para firmar ensamblados.&lt;/p&gt;
+&lt;p&gt;Primero, necesitamos instalar OpenSSL que podemos lograr siguiendo los pasos que se especifican en el siguiente enlace:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://medium.com/swlh/installing-openssl-on-windows-10-and-updating-path-80992e26f6a1&#34;&gt;Instalación de OpenSSL en Windows 10 y actualización de PATH&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;En segundo lugar, creemos un archivo de secuencia de comandos por lotes llamado: &amp;ldquo;generateCertificate.cmd&amp;rdquo; con contenido:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;MD Certificate
+CD Certificate
+
+ECHO authorityKeyIdentifier=keyid,issuer&amp;gt;certificate.ext
+ECHO basicConstraints=CA:FALSE&amp;gt;&amp;gt;certificate.ext
+ECHO keyUsage=digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment&amp;gt;&amp;gt;certificate.ext
+ECHO subjectAltName=@alt_names&amp;gt;&amp;gt;certificate.ext
+ECHO.&amp;gt;&amp;gt;certificate.ext
+ECHO [alt_names]&amp;gt;&amp;gt;certificate.ext
+ECHO DNS.1=RS&amp;gt;&amp;gt;certificate.ext
+
+openssl.exe genrsa -des3 -passout pass:&amp;#34;pass&amp;amp;1234&amp;#34; -out certificate.pass.key 2048
+openssl.exe rsa -passin pass:&amp;#34;pass&amp;amp;1234&amp;#34; -in certificate.pass.key -out certificate.key
+openssl.exe req -new -key certificate.key -out certificate.csr
+openssl.exe x509 -req -sha256 -extfile certificate.ext -days 365 -in certificate.csr -signkey certificate.key -out certificate.crt
+openssl.exe pkcs12 -export -out certificate.pfx -inkey certificate.key -in certificate.crt
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Básicamente creamos una carpeta (llamada: &amp;ldquo;Certificate&amp;rdquo;) y la convertimos en el directorio de trabajo. Después creamos un archivo escribiendo su contenido línea por línea. Finalmente, en varios pasos, usamos la herramienta: &amp;ldquo;openssl.exe&amp;rdquo; para generar el certificado. Observe las comillas dobles que rodean el valor de la contraseña debido a que contiene el carácter especial de conjunción (&amp;amp;). El código fuente de ese archivo se puede descargar desde &lt;a href=&#34;https://gist.github.com/rsotolongo/80410cee05c26a7bcb17327d0c279b86&#34;&gt;este GIST&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Suponiendo que lo hemos copiado en la carpeta: &amp;ldquo;C:\Temp&amp;rdquo;, veamos qué hace a través del análisis de la figura 1 que representa su ejecución.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generating-signature-certificates/01.png&#34; alt=&#34;Ejecución de la secuencia de comandos&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 1: Ejecución de la secuencia de comandos.&lt;/p&gt;
+&lt;p&gt;Los pasos a prestar más atención se indican con flechas rojas y amarillas, mientras que hay otros pasos opcionales indicados con flechas azules. La primera flecha roja es el nombre común que elegimos para el certificado. Este debe ser el mismo valor que tenemos que ingresar una vez que la secuencia de comandos solicita un valor en la segunda flecha roja.&lt;/p&gt;
+&lt;p&gt;Las flechas amarillas son la contraseña elegida para el certificado. Si bien los dos primeros valores se especifican en el archivo por lotes: &amp;ldquo;generateCertificate.cmd&amp;rdquo;, los dos últimos valores deben introducirse manualmente cuando se soliciten. La herramienta: &amp;ldquo;openssl.exe&amp;rdquo; oculta esos valores mientras se escriben, pero deben coincidir.&lt;/p&gt;
+&lt;p&gt;Una vez que todos los pasos terminan con éxito, podemos ver el resultado en la figura 2.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generating-signature-certificates/02.png&#34; alt=&#34;Certificado resultante&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 2: Certificado resultante.&lt;/p&gt;
+&lt;p&gt;Ese es un certificado que podemos usar para firmar ensamblados (un proceso que explicaré en una publicación posterior).&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://gist.github.com/rsotolongo/80410cee05c26a7bcb17327d0c279b86&#34;&gt;Código fuente de apoyo disponible en GitHub&lt;/a&gt;&lt;/p&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>Desplegando paquetes NuGet</title>
@@ -1594,29 +1659,6 @@ Sin dejar de asemejarse con otros fanatismos (al menos en sus esencias fundament
 &lt;p&gt;Son los blogs el tipo de sitio que más ha ayudado a proliferar estas tecnologías. Recordemos que los blogs se pueden ver como la versión digitalizada de un diario personal. Hoy por hoy constituyen precisamente los blogs la fuente número uno de publicaciones de científicos, programadores, filósofos, etc. En el mundo, todo profesional que se respeta tiene uno y sobre todas las cosas establece un compromiso para con sus suscriptores de mantenerlo actualizado constantemente.&lt;/p&gt;
 &lt;p&gt;Microsoft comprendió rápidamente lo antes expuesto y le ha incorporado la posibilidad de RSS al Internet Explorer 7 que pronto saldrá al mercado. Por su parte existe una extensión para Mozilla Firefox que permite lo mismo. Poco a poco pienso que se hará más común su integración con los restantes navegadores de Internet.&lt;/p&gt;
 &lt;p&gt;Yo comencé a utilizar el FeedReader apenas lo vi pues comprendí todo lo que podía ayudarme, al punto que lo instalé en las máquinas de los laboratorios docentes para que se utilizara. En mi máquina le configuré todos los sitios de los que asiduamente visito y más nunca tuve que ir a ellos a ver qué tenían de nuevo, el FeedReader cada cierto tiempo (por lo general una o dos horas) me avisaba. Luego de la reinstalación de los servidores en pos de insertarnos en RedUNIV se puso que la autentificación contra el proxy fuera integrada y ahí mismo dejó de funcionar esta útil herramienta, esperamos que en alguna versión superior tenga la posibilidad de autentificase por NTLM.&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Borland Co.</title>
-      <link>/es/post/borland/</link>
-      <pubDate>Mon, 14 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/es/post/borland/</guid>
-      
-        <description>&lt;p&gt;Es increíble cómo las malas estrategias de negocio llevan a convertir a una empresa líder mundial en herramientas de desarrollo en una empresa de retaguardia tecnológica. Específicamente me refiero a Borland Company.&lt;/p&gt;
-&lt;p&gt;Borland surgió allá por los lejanos años 80 como desarrolladora de los mejores compiladores del lenguaje Pascal y luego de sus ambientes de desarrollo Turbo Pascal (Microsoft en su momento lanzó en Microsoft Pascal que fue todo un fracaso). Ya desde la versión 3 se perfiló como una herramienta innovadora para su tiempo, pero no fue hasta la versión 5 que se consagró al permitir de manera integrada depurar errores. Apenas en la próxima versión (la 5.5) ya incorporaba al lenguaje el soporte (aunque muy rudimentario y con errores conceptuales) del nuevo paradigma de programación: la Orientación a Objetos. En esos tiempos no se conoció ningún marco de trabajo mejor que TurboVision para el desarrollo de aplicaciones con interfaces increíbles sobre MS-DOS, característica nueva en la versión 6. La versión 7 aportó pocas cosas nuevas, no siendo hasta la próxima que cambió de nombre el producto llamándose ahora Borland Pascal, cuya característica fundamental fue la posibilidad de acceso a la API de Windows y poder desarrollar aplicaciones con interfaces que usaban la GUI.&lt;/p&gt;
-&lt;p&gt;Ahí terminó esa línea de productos y con ella los fondos de la compañía, hasta el punto que tuvieron que despedir a casi todo el personal y quedarse solo con una reducida cantidad de programadores. Ellos se encerraron durante casi dos años desarrollando un producto nuevo súper secreto que iba a revolucionar las herramientas de desarrollo de aplicaciones. No se equivocaron, ese producto fue Borland Delphi 1. Éxito total, increíble, magnífico, se acababan los elogios cuando se le describía.&lt;/p&gt;
-&lt;p&gt;Luego fueron saliendo las próximas versiones que se pueden catalogar más de lo mismo, amén de raras excepciones. Si bien la versión 3 incorporó las funcionalidades de COM y descendientes, no fue hasta la versión 4 donde se hace un salto cualitativo. La versión 5 más de lo mismo al igual que la 6 y la 7. El factor común de todas las versiones fue la mejora de los componentes de la versión anterior y mejoras en el IDE.&lt;/p&gt;
-&lt;p&gt;A medida que fueron afianzándose en el mercado fueron desarrollando casi a la par también herramientas sumamente parecidas con la diferencia del lenguaje de programación, así fue como surgió Borland C++ Builder y Java Builder. La respuesta de los programadores del mundo completo no se hizo esperar y en poco tiempo Borland contaba con la mayor comunidad de desarrolladores volcados sobre sus herramientas, por eso no es extraño todavía hoy en día encontrar que sea Delphi el ambiente de desarrollo para el cual existan la mayor cantidad de componentes disponibles.&lt;/p&gt;
-&lt;p&gt;Si bien esto es cierto, Borland no supo cuidar de esa comunidad y de sus justos reclamos. Nunca sacó versiones de sus productos en un idioma que no fuera el inglés y mucho menos entonces documentación técnica de ellos en los idiomas reclamados. Cuando comenzaron a ver problemas financieros otra vez pensaron que con cambiarle en nombre a la compañía los solucionarían, todo lo contrario, a la comunidad no le gustó mucho que dejara de ser Borland para convertirse en Inprise (Delphi 5 y su XML). Microsoft no se quedó con los brazos cruzados y de alguna manera convenció a los principales programadores líderes para que se pasaran a sus líneas de investigación y consiguió desarticular Borland (pronto publicaré un artículo al respecto que hace ya algunos años redacté por necesidad).&lt;/p&gt;
-&lt;p&gt;Si algo identificó siempre a los productos de Borland ese algo fueron los IDE, desde las antiguas versiones de Turbo Pascal no había ningún IDE que se le asemejara y mucho menos que compitiera con su editor de códigos. Incluso el Quick Editor (qe.exe) -todo un editor de textos profesional- compitiendo ahí, ahí con el de Turbo Pascal se las veía negras para ganarle. Esto poco a poco fue desapareciéndose en Borland, dejándose tomar la delantera estratégica por Microsoft y su gama de herramientas de desarrollo Visual Studio, sobre todo a partir de las versiones para la plataforma de desarrollo .NET.&lt;/p&gt;
-&lt;p&gt;Cuando alguna compañía está en picada, es cierto que sus errores se ven más porque lejos de levantar lo que hace es hundirse más en los problemas. Kylix (Delphi para Linux) que constituyó todo un suceso en las herramientas de desarrollo profesional en Linux no supieron consagrarlo a pesar de no contar con rival en el área. Fueron capaces de desarrollar tres versiones del producto, pero todo fue en vano. A la borda dinero y esfuerzo otra vez.&lt;/p&gt;
-&lt;p&gt;Ian Marteens, el ilustre escritor de la saga de libros &amp;ldquo;Mastering in Delphi X&amp;rdquo; ya promueve en un propio sitio las herramientas Microsoft en vez de sus asiduas Borland. Anders Hejlsberg, ex-arquitecto principal de Delphi hoy por es el de C# 3 (Omega) luego de su rotundo éxito con C# y Visual Studio.NET 2002 a su paso a Microsoft. Danny Thorpe que se quedó en su puesto recientemente fue fichado por Google para trabajar con ellos. Poco a poco han perdido a sus principales profesionales y según evalúo todo es por las malas estrategias que están tomando.&lt;/p&gt;
-&lt;p&gt;Resulta ser que después de tanto años y esfuerzos en cada versión de Java Builder que lanzaban anunciaron que apoyarían al máximo posible el ambiente Eclipse. Aseguraron que seguirían dándole soporte a Java Builder y que eso no iba a cambiar la posición de la compañía, pero del dicho al hecho hay tremendo trecho.&lt;/p&gt;
-&lt;p&gt;Para colmo de males, y para que se tenga una idea de lo que estamos hablando, Borland busca afanadamente una compañía que le compre todos sus productos de desarrollo (Delphi, C++ Builder, Java Builder, etc.) para centrarse solo en la metodología de desarrollo de software ALM. Es un cambio total de estrategia lo que están buscando, supongo que no dan a basto con los planes con los que intentaban ganar más adeptos, no fue suficiente con sacar una versión de un nuevo ambiente de desarrollo integrador de lenguajes de programación en 2005 -que es una pura copia de Visual Studio.NET 2003- cuando en este año y sin apenas dar tiempo a digerir esta versión lanzaron Borland Developer Studio 2006 con la misma filosofía. Lo único nuevo es ambas versiones es la posibilidad de desarrollar aplicaciones tanto para Win32 como para .NET y no en todas combinaciones de lenguajes y plataformas posibles.&lt;/p&gt;
-&lt;p&gt;Resumen: pérdida de confianza total por parte de la comunidad de desarrolladores en la compañía, pérdida de gran parte del mercado de aplicaciones de desarrollo (cada día son más los que pasan a otros ambientes), pérdida de ingresos, pérdida de identidad, desaparición total de la compañía (esto no ha pasado, pero sin duda alguna sucederá pronto).&lt;/p&gt;
 </description>
       
     </item>

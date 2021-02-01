@@ -6,10 +6,75 @@
     <description>Recent content on Coding Aloud</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 25 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 01 Feb 2021 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Generating signature certificates</title>
+      <link>/post/generating-signature-certificates/</link>
+      <pubDate>Mon, 01 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/generating-signature-certificates/</guid>
+      
+        <description>&lt;p&gt;&lt;a href=&#34;https://gist.github.com/rsotolongo/80410cee05c26a7bcb17327d0c279b86&#34;&gt;Source code of support available at GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Sometimes assemblies (executables and libraries) are required to be sign and I don&amp;rsquo;t have a certificate available for test purpose. In this post I pretend to show how to generate a certificate to sign assemblies.&lt;/p&gt;
+&lt;p&gt;First, we need to install OpenSSL that we can achive following the steps specified in the next link:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://medium.com/swlh/installing-openssl-on-windows-10-and-updating-path-80992e26f6a1&#34;&gt;Installing OpenSSL on Windows 10 and updating PATH&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Second, let&amp;rsquo;s create a batch script file called: &amp;ldquo;generateCertificate.cmd&amp;rdquo; with content:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;MD Certificate
+CD Certificate
+
+ECHO authorityKeyIdentifier=keyid,issuer&amp;gt;certificate.ext
+ECHO basicConstraints=CA:FALSE&amp;gt;&amp;gt;certificate.ext
+ECHO keyUsage=digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment&amp;gt;&amp;gt;certificate.ext
+ECHO subjectAltName=@alt_names&amp;gt;&amp;gt;certificate.ext
+ECHO.&amp;gt;&amp;gt;certificate.ext
+ECHO [alt_names]&amp;gt;&amp;gt;certificate.ext
+ECHO DNS.1=RS&amp;gt;&amp;gt;certificate.ext
+
+openssl.exe genrsa -des3 -passout pass:&amp;#34;pass&amp;amp;1234&amp;#34; -out certificate.pass.key 2048
+openssl.exe rsa -passin pass:&amp;#34;pass&amp;amp;1234&amp;#34; -in certificate.pass.key -out certificate.key
+openssl.exe req -new -key certificate.key -out certificate.csr
+openssl.exe x509 -req -sha256 -extfile certificate.ext -days 365 -in certificate.csr -signkey certificate.key -out certificate.crt
+openssl.exe pkcs12 -export -out certificate.pfx -inkey certificate.key -in certificate.crt
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Roughly we create a folder (called: &amp;ldquo;Certificate&amp;rdquo;) and make it the working directory. After we create a file writing its content line by line. Finally, in several steps, we use tool: &amp;ldquo;openssl.exe&amp;rdquo; to generate the certificate. Notice the double quotes surrounding the password value due to it contains the special character ampersand (&amp;amp;). The source code for that file could be downloaded from &lt;a href=&#34;https://gist.github.com/rsotolongo/80410cee05c26a7bcb17327d0c279b86&#34;&gt;this GIST&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Assuming that we have copied it into folder: &amp;ldquo;C:\Temp&amp;rdquo;, let&amp;rsquo;s see what it does through the analysis of figure 1 representing its execution.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generating-signature-certificates/01.png&#34; alt=&#34;Script execution&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 1: Script execution.&lt;/p&gt;
+&lt;p&gt;The steps to pay more attention are indicated with red and yellow arrows while there are other optional steps indicated with blue arrows. The first red arrow is the common name that we choose for the certificate. This must to be the same value that we have to enter once the script asks for a value in the second red arrow.&lt;/p&gt;
+&lt;p&gt;Yellow arrows are the password chosen for the certificate. While the first two values are specified in batch file: &amp;ldquo;generateCertificate.cmd&amp;rdquo;, the last two values have to be introduced manually when are requested. Tool: &amp;ldquo;openssl.exe&amp;rdquo; hides those values while are typed but they must to be match.&lt;/p&gt;
+&lt;p&gt;Once all steps end successfully we can see the result in figure 2.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generating-signature-certificates/02.png&#34; alt=&#34;Resulting certificate&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 2: Resulting certificate.&lt;/p&gt;
+&lt;p&gt;That is a certificate we can use to sign assemblies (a process I will explain in a later post).&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://gist.github.com/rsotolongo/80410cee05c26a7bcb17327d0c279b86&#34;&gt;Source code of support available at GitHub&lt;/a&gt;&lt;/p&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>Deploying NuGet packages</title>
