@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Generating signature certificates - Coding Aloud</title>
+  <title>Signing assemblies - Coding Aloud</title>
   
-<link rel="alternate" hreflang="es" href="/es/post/generating-signature-certificates/" />
+<link rel="alternate" hreflang="es" href="/es/post/signing-assemblies/" />
 
 
 <meta name="renderer" content="webkit" />
@@ -26,10 +26,9 @@
 
 <meta name="author" content="Ricardo Sotolongo" />
   <meta name="description" content="Source code of support available at GitHub
-Sometimes assemblies (executables and libraries) are required to be sign and I don&amp;rsquo;t have a certificate available for test purpose. In this post I pretend to show how to generate a certificate to sign assemblies.
-First, we need to install OpenSSL that we can achive following the steps specified in the next link:
-Installing OpenSSL on Windows 10 and updating PATH
-Second, let&amp;rsquo;s create a batch script file called: &amp;ldquo;generateCertificate." />
+.NET Core Not all clients require to sign the assemblies of their applications but when its required, the task is not so easy as you can expect.
+In the case of .NET Core applications, we can achieve this just editing the project file (.csproj) adding the following code:
+1 2 3  &amp;lt;Target Name=&amp;#34;BuildSigning&amp;#34; AfterTargets=&amp;#34;AfterBuild&amp;#34;&amp;gt; &amp;lt;Exec Command=&amp;#34;SIGNING_COMMAND&amp;#34; /&amp;gt; &amp;lt;/Target&amp;gt;   As example SIGNING_COMMAND could be:" />
 
   <meta name="keywords" content="Hugo, theme, jane" />
 
@@ -41,7 +40,7 @@ Second, let&amp;rsquo;s create a batch script file called: &amp;ldquo;generateCe
 <meta name="generator" content="Hugo 0.79.1" />
 
 
-<link rel="canonical" href="/post/generating-signature-certificates/" />
+<link rel="canonical" href="/post/signing-assemblies/" />
 
 
 
@@ -65,36 +64,33 @@ Second, let&amp;rsquo;s create a batch script file called: &amp;ldquo;generateCe
 
 
 
-<meta property="og:title" content="Generating signature certificates" />
+<meta property="og:title" content="Signing assemblies" />
 <meta property="og:description" content="Source code of support available at GitHub
-Sometimes assemblies (executables and libraries) are required to be sign and I don&rsquo;t have a certificate available for test purpose. In this post I pretend to show how to generate a certificate to sign assemblies.
-First, we need to install OpenSSL that we can achive following the steps specified in the next link:
-Installing OpenSSL on Windows 10 and updating PATH
-Second, let&rsquo;s create a batch script file called: &ldquo;generateCertificate." />
+.NET Core Not all clients require to sign the assemblies of their applications but when its required, the task is not so easy as you can expect.
+In the case of .NET Core applications, we can achieve this just editing the project file (.csproj) adding the following code:
+1 2 3  &lt;Target Name=&#34;BuildSigning&#34; AfterTargets=&#34;AfterBuild&#34;&gt; &lt;Exec Command=&#34;SIGNING_COMMAND&#34; /&gt; &lt;/Target&gt;   As example SIGNING_COMMAND could be:" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/post/generating-signature-certificates/" />
-<meta property="article:published_time" content="2021-02-01T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-02-01T00:00:00+00:00" /><meta property="og:site_name" content="Coding Aloud" />
-<meta itemprop="name" content="Generating signature certificates">
+<meta property="og:url" content="/post/signing-assemblies/" />
+<meta property="article:published_time" content="2021-02-08T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-02-08T00:00:00+00:00" /><meta property="og:site_name" content="Coding Aloud" />
+<meta itemprop="name" content="Signing assemblies">
 <meta itemprop="description" content="Source code of support available at GitHub
-Sometimes assemblies (executables and libraries) are required to be sign and I don&rsquo;t have a certificate available for test purpose. In this post I pretend to show how to generate a certificate to sign assemblies.
-First, we need to install OpenSSL that we can achive following the steps specified in the next link:
-Installing OpenSSL on Windows 10 and updating PATH
-Second, let&rsquo;s create a batch script file called: &ldquo;generateCertificate.">
-<meta itemprop="datePublished" content="2021-02-01T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2021-02-01T00:00:00+00:00" />
-<meta itemprop="wordCount" content="403">
+.NET Core Not all clients require to sign the assemblies of their applications but when its required, the task is not so easy as you can expect.
+In the case of .NET Core applications, we can achieve this just editing the project file (.csproj) adding the following code:
+1 2 3  &lt;Target Name=&#34;BuildSigning&#34; AfterTargets=&#34;AfterBuild&#34;&gt; &lt;Exec Command=&#34;SIGNING_COMMAND&#34; /&gt; &lt;/Target&gt;   As example SIGNING_COMMAND could be:">
+<meta itemprop="datePublished" content="2021-02-08T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-02-08T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1629">
 
 
 
-<meta itemprop="keywords" content="OpenSSL,security," />
+<meta itemprop="keywords" content="Visual Studio,MSBuild,security," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Generating signature certificates"/>
+<meta name="twitter:title" content="Signing assemblies"/>
 <meta name="twitter:description" content="Source code of support available at GitHub
-Sometimes assemblies (executables and libraries) are required to be sign and I don&rsquo;t have a certificate available for test purpose. In this post I pretend to show how to generate a certificate to sign assemblies.
-First, we need to install OpenSSL that we can achive following the steps specified in the next link:
-Installing OpenSSL on Windows 10 and updating PATH
-Second, let&rsquo;s create a batch script file called: &ldquo;generateCertificate."/>
+.NET Core Not all clients require to sign the assemblies of their applications but when its required, the task is not so easy as you can expect.
+In the case of .NET Core applications, we can achieve this just editing the project file (.csproj) adding the following code:
+1 2 3  &lt;Target Name=&#34;BuildSigning&#34; AfterTargets=&#34;AfterBuild&#34;&gt; &lt;Exec Command=&#34;SIGNING_COMMAND&#34; /&gt; &lt;/Target&gt;   As example SIGNING_COMMAND could be:"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -403,24 +399,24 @@ if (!doNotTrack) {
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">Generating signature certificates</h1>
+      <h1 class="post-title">Signing assemblies</h1>
       
 <div class="post-meta">
   
-  <div><a href="/es/post/generating-signature-certificates/">Leer en español: Generando certificados de firma</a></div>
+  <div><a href="/es/post/signing-assemblies/">Leer en español: Firmando ensamblados</a></div>
   
 </div>
 
       <div class="post-meta">
-        <time datetime="2021-02-01" class="post-time">
-          2021-02-01
+        <time datetime="2021-02-08" class="post-time">
+          2021-02-08
         </time>
         <div class="post-category">
             <a href="/categories/development/"> Development </a>
             
           </div>
-        <span class="more-meta"> 403 words </span>
-          <span class="more-meta"> 2 min read </span>
+        <span class="more-meta"> 1629 words </span>
+          <span class="more-meta"> 8 min read </span>
 
         
         
@@ -435,11 +431,139 @@ if (!doNotTrack) {
 
     
     <div class="post-content">
-      <p><a href="https://gist.github.com/rsotolongo/80410cee05c26a7bcb17327d0c279b86">Source code of support available at GitHub</a></p>
-<p>Sometimes assemblies (executables and libraries) are required to be sign and I don&rsquo;t have a certificate available for test purpose. In this post I pretend to show how to generate a certificate to sign assemblies.</p>
-<p>First, we need to install OpenSSL that we can achive following the steps specified in the next link:</p>
-<p><a href="https://medium.com/swlh/installing-openssl-on-windows-10-and-updating-path-80992e26f6a1">Installing OpenSSL on Windows 10 and updating PATH</a></p>
-<p>Second, let&rsquo;s create a batch script file called: &ldquo;generateCertificate.cmd&rdquo; with content:</p>
+      <p><a href="https://github.com/rsotolongo/RS.Blog.Projects/tree/main/SigningAssemblies">Source code of support available at GitHub</a></p>
+<h2 id="net-core">.NET Core</h2>
+<p>Not all clients require to sign the assemblies of their applications but when its required, the task is not so easy as you can expect.</p>
+<p>In the case of .NET Core applications, we can achieve this just editing the project file (.csproj) adding the following code:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-XML" data-lang="XML"><span class="nt">&lt;Target</span> <span class="na">Name=</span><span class="s">&#34;BuildSigning&#34;</span> <span class="na">AfterTargets=</span><span class="s">&#34;AfterBuild&#34;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Exec</span> <span class="na">Command=</span><span class="s">&#34;SIGNING_COMMAND&#34;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/Target&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>As example <strong>SIGNING_COMMAND</strong> could be:</p>
+<p><em>&ldquo;C\Program Files (x86)\Windows Kits\10\bin\10.0.177630\x64\signtool.exe&rdquo;</em> <em>sign /f &ldquo;$(SolutionDir)certificate.pfx&rdquo; /p &ldquo;pass&amp;1234&rdquo; &ldquo;S(TargetDir)</em>.dll&rdquo;*</p>
+<p>We are using the certificate generated in this previous post: &ldquo;<a href="../generating-signature-certificates">Generating signature certificates</a>&rdquo;.</p>
+<p>This makes that after every build (regardless of configuration -Debug, Release, etc.-) library assemblies are signed at the end of the process. The post script signing continues working after builds but not after publishing. The result of the previous post script publishing a .NET Core application is &ldquo;curious&rdquo;:</p>
+<p>Assuming that publishing is based in &ldquo;Release&rdquo; configuration, the assemblies in &ldquo;Release&rdquo; folder are signed before copied into &ldquo;Publish&rdquo; temporary folder. Then, artifacts in &ldquo;Publish&rdquo; temporary folder are copied into &ldquo;Publish&rdquo; final destination. Finally, the assemblies in &ldquo;Release&rdquo; folder are re-signed again.</p>
+<p>Assemblies in &ldquo;Release&rdquo; folder are signed twice because for publishing functionality the macro S(TargetDir) continues having the value for the &ldquo;Release&rdquo; folder and not the &ldquo;Publish&rdquo; folder. One solution tested was changed the macro $(TargetDir) by the macro $(PublishDir) but it didn&rsquo;t work because that macro takes the value of the &ldquo;Publish&rdquo; temporary folder and not of the &ldquo;Publish&rdquo; final folder. The result is that assemblies in &ldquo;Release&rdquo; folder are not signed twice but assemblies in &ldquo;Publish&rdquo; folder are not signed either. Instead, assemblies in &ldquo;Publish&rdquo; temporary folder are signed after being already copied into &ldquo;Publish&rdquo; final folder.</p>
+<p>With this background, the best solution is to change the post build script to be a post publish script:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-XML" data-lang="XML"><span class="nt">&lt;Target</span> <span class="na">Name=</span><span class="s">&#34;PublishSigning&#34;</span> <span class="na">AfterTargets=</span><span class="s">&#34;AfterPublish&#34;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Exec</span> <span class="na">Command=</span><span class="s">&#34;SIGNING_COMMAND&#34;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/Target&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Changing <strong>SIGNING_COMMAND</strong> to:</p>
+<p><em>&ldquo;C:\Program Files (x86)\Windows Kits\10\bin\10.0.17763.0\x64\signtool.exe&rdquo; sign /f &ldquo;$(SolutionDir)certificate.pfx&rdquo; /p &ldquo;pass&amp;1234&rdquo; &ldquo;$(PublishUrl)</em>.dll&rdquo;*</p>
+<p>Notice the addition of <em>&ldquo;publish&quot;</em> after $(TargetDir) macro.</p>
+<p>This modification will work but of course only for publishing and not for every build. Nothing stops us to add both post scripts (build and/or publish) so assemblies will be signed in all cases, the only problem with this is that assemblies in &ldquo;Release&rdquo; folder will be signed-twice. That is not a big deal but is something to keep in mind.</p>
+<p>Another topic is the idle time while signing assemblies. Depending of the application being signed this process could takes considerable amount of time that is double in case of double signing or triple in case of using the two post scripts (Build and Publish). Because &ldquo;Publish&rdquo; is not used so often as &ldquo;Build&rdquo; that idle time is not a big deal except, we include a timestamp in the signature.</p>
+<p>Adding parameter <em>/t timeseverURL</em> to <strong>SIGNING_COMMAND</strong> could jump (as example) from 15 seconds to 2030 seconds (4.5 minutes) in case of an external time server like <a href="http://timestamp.comodoca.com/authenticode">http://timestamp.comodoca.com/authenticode</a>. If we use an internal time server this time could decrease significantly but its usage will depend if the execution security policy takes or not the timestamp in consideration.</p>
+<p>Finally let&rsquo;s analyze a sample for post publish script:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-XML" data-lang="XML"><span class="nt">&lt;Target</span> <span class="na">Name=</span><span class="s">&#34;PublishSigning&#34;</span> <span class="na">AfterTargets=</span><span class="s">&#34;AfterPublish&#34;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Message</span> <span class="na">Importance=</span><span class="s">&#34;high&#34;</span> <span class="na">Text=</span><span class="s">&#34;Signing published assemblies...&#34;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;Exec</span> <span class="na">Command=</span><span class="s">&#34;&amp;quot;C:\Program Files (x86)\Windows Kits\10\bin\10.0.17763.0\x64\signtool.exe&amp;quot; sign /f &amp;quot;$(SolutionDir)certificate.pfx&amp;quot; /p &amp;quot;pass&amp;amp;1234&amp;quot; &amp;quot;$(PublishUrl)*.dll&amp;quot; &amp;quot;$(PublishUrl)*.exe&amp;quot;&#34;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;Message</span> <span class="na">Importance=</span><span class="s">&#34;high&#34;</span> <span class="na">Text=</span><span class="s">&#34;Published assemblies signed...&#34;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/Target&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>To include starting and ending messages on build console is a good practice. All double quotes (&quot;) should be encoded to its HTML equivalent (<code>&amp;quot;</code>). As the symbol ampersand (&amp;) that coincidently is present on the certificate password, needs to be encoded as well (<code>&amp;amp;</code>). Not only library assemblies (DLL) are signed, executables (EXE) are signed too.</p>
+<p>Finally, something that requires to pay attention is the Windows SDK version (10.0.17763.0) because that depends of what is installed in the development computer but could be different for every team member. With all of this in mind other approach could be adopted bringing clarity and generality:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-XML" data-lang="XML"><span class="nt">&lt;Target</span> <span class="na">Name=</span><span class="s">&#34;PublishSigning&#34;</span> <span class="na">AfterTargets=</span><span class="s">&#34;AfterPublish&#34;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Exec</span> <span class="na">Command=</span><span class="s">&#34;$(SolutionDir)SignAssemblies.cmd $(SolutionDir) $(PublishUrl)&#34;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/Target&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Where file: &ldquo;SignAssemblies.cmd&rdquo; could be:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">ECHO Signing assemblies...
+
+&#34;C:\Program Files (x86)\Windows Kits\10\bin\10.0.17763.0\x64\signtool.exe&#34; sign /f &#34;%certificate.pfx&#34; /p &#34;pass&amp;1234&#34; &#34;%2*.dll&#34; &#34;%2*.exe&#34;
+
+ECHO Assemblies signed...
+</code></pre></td></tr></table>
+</div>
+</div><p>This still have the problem of the hard-coded SDK version but could be generalized as:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">ECHO Signing assemblies...
+
+SET basedir=C:\Program Files (x86)\Windows Kits\10\bin\
+SET newestSdkDir=10.0.17763.0
+FOR /F &#34;tokens=*&#34; %%a in (&#39;dir /b /on &#34;%baseDir%10*&#34;&#39;) DO SET newestSdkDir=%%a
+REM &#34;%baseDir%%newestSdkDir%\x64\signtool.exe&#34; sign /?
+&#34;%baseDir%%newestSdkDir%\x64\signtool.exe&#34; sign /f &#34;%1certificate.pfx&#34; /p &#34;pass&amp;1234&#34; &#34;%2*.dll&#34; &#34;%2*.exe&#34;
+
+ECHO Assemblies signed...
+</code></pre></td></tr></table>
+</div>
+</div><p>The SDK version is initialized as version 10.0.17763.0 (because is the latest I have installed in my computer at the time to be writing this post but could be any other version) and then iterates over all folders matching pattern &ldquo;10*&rdquo; in order to get latest version. There is a useful instruction that do nothing but if we substitute the **REM** by a **ECHO** we can see runtime information in the compilation traces. Notice how we removed the encoded characters because we moved into the command file (.cmd) and there is no need to used them there.</p>
+<p>Last, let&rsquo;s build an even more unified approach using more MSBuild tasks. We need to substitute the previous &ldquo;PublishSigning&rdquo; MSBuild target by the following code:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-XML" data-lang="XML"><span class="nt">&lt;Import</span> <span class="na">Project=</span><span class="s">&#34;..\SignAssemblies.targets&#34;</span> <span class="na">Condition=</span><span class="s">&#34;Exists(&#39;..\SignAssemblies.targets&#39;)&#34;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;Target</span> <span class="na">Name=</span><span class="s">&#34;PublishSigning&#34;</span> <span class="na">AfterTargets=</span><span class="s">&#34;AfterPublish&#34;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;MSBuild</span> <span class="na">Projects=</span><span class="s">&#34;$(MsBuildThisFile)&#34;</span> <span class="na">Targets=</span><span class="s">&#34;SignAssemblies&#34;</span> <span class="na">Properties=</span><span class="s">&#34;AssembliesPath=$(PublishUrl);AssembliesPattern=*.dll&#34;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;MSBuild</span> <span class="na">Projects=</span><span class="s">&#34;$(MsBuildThisFile)&#34;</span> <span class="na">Targets=</span><span class="s">&#34;SignAssemblies&#34;</span> <span class="na">Properties=</span><span class="s">&#34;AssembliesPath=$(PublishUrl);AssembliesPattern=*.exe&#34;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/Target&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Basically, including another external MSBuild target file and calling its main target passing &ldquo;AssembliesPath&rdquo; and &ldquo;AssembliesPattern&rdquo; parameters. This is because not all solutions generate library and executable assemblies at the same time. Now, the new &ldquo;SignAssemblies.targets&rdquo; file looks like:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -452,43 +576,125 @@ if (!doNotTrack) {
 </span><span class="lnt"> 8
 </span><span class="lnt"> 9
 </span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">MD Certificate
-CD Certificate
-
-ECHO authorityKeyIdentifier=keyid,issuer&gt;certificate.ext
-ECHO basicConstraints=CA:FALSE&gt;&gt;certificate.ext
-ECHO keyUsage=digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment&gt;&gt;certificate.ext
-ECHO subjectAltName=@alt_names&gt;&gt;certificate.ext
-ECHO.&gt;&gt;certificate.ext
-ECHO [alt_names]&gt;&gt;certificate.ext
-ECHO DNS.1=RS&gt;&gt;certificate.ext
-
-openssl.exe genrsa -des3 -passout pass:&#34;pass&amp;1234&#34; -out certificate.pass.key 2048
-openssl.exe rsa -passin pass:&#34;pass&amp;1234&#34; -in certificate.pass.key -out certificate.key
-openssl.exe req -new -key certificate.key -out certificate.csr
-openssl.exe x509 -req -sha256 -extfile certificate.ext -days 365 -in certificate.csr -signkey certificate.key -out certificate.crt
-openssl.exe pkcs12 -export -out certificate.pfx -inkey certificate.key -in certificate.crt
+<pre class="chroma"><code class="language-XML" data-lang="XML"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+<span class="nt">&lt;Project</span> <span class="na">xmlns=</span><span class="s">&#34;http://schemas.microsoft.com/developer/msbuild/2003&#34;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Target</span> <span class="na">Name=</span><span class="s">&#34;SignAssemblies&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Message</span> <span class="na">Importance=</span><span class="s">&#34;high&#34;</span> <span class="na">Text=</span><span class="s">&#34;Signing assemblies...&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Message</span> <span class="na">Importance=</span><span class="s">&#34;high&#34;</span> <span class="na">Text=</span><span class="s">&#34;Assemblies path: $(AssembliesPath)&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Message</span> <span class="na">Importance=</span><span class="s">&#34;high&#34;</span> <span class="na">Text=</span><span class="s">&#34;Assemblies pattern: $(AssembliesPattern)&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Exec</span> <span class="na">Command=</span><span class="s">&#34;$(SolutionDir)SignAssemblies.cmd $(SolutionDir) $(AssembliesPath)$(AssembliesPattern)&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Message</span> <span class="na">Importance=</span><span class="s">&#34;high&#34;</span> <span class="na">Text=</span><span class="s">&#34;Assemblies signed...&#34;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/Target&gt;</span>
+<span class="nt">&lt;/Project&gt;</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>Roughly we create a folder (called: &ldquo;Certificate&rdquo;) and make it the working directory. After we create a file writing its content line by line. Finally, in several steps, we use tool: &ldquo;openssl.exe&rdquo; to generate the certificate. Notice the double quotes surrounding the password value due to it contains the special character ampersand (&amp;). The source code for that file could be downloaded from <a href="https://gist.github.com/rsotolongo/80410cee05c26a7bcb17327d0c279b86">this GIST</a>.</p>
-<p>Assuming that we have copied it into folder: &ldquo;C:\Temp&rdquo;, let&rsquo;s see what it does through the analysis of figure 1 representing its execution.</p>
-<p><img src="/generating-signature-certificates/01.png" alt="Script execution"></p>
-<p>Figure 1: Script execution.</p>
-<p>The steps to pay more attention are indicated with red and yellow arrows while there are other optional steps indicated with blue arrows. The first red arrow is the common name that we choose for the certificate. This must to be the same value that we have to enter once the script asks for a value in the second red arrow.</p>
-<p>Yellow arrows are the password chosen for the certificate. While the first two values are specified in batch file: &ldquo;generateCertificate.cmd&rdquo;, the last two values have to be introduced manually when are requested. Tool: &ldquo;openssl.exe&rdquo; hides those values while are typed but they must to be match.</p>
-<p>Once all steps end successfully we can see the result in figure 2.</p>
-<p><img src="/generating-signature-certificates/02.png" alt="Resulting certificate"></p>
-<p>Figure 2: Resulting certificate.</p>
-<p>That is a certificate we can use to sign assemblies (a process I will explain in a later post).</p>
-<p><a href="https://gist.github.com/rsotolongo/80410cee05c26a7bcb17327d0c279b86">Source code of support available at GitHub</a></p>
+</div><p>File &ldquo;SignAssemblies.cmd&rdquo; remains almost identical with just one little modification (the pattern of files to be signed is passed from the calling task):</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">ECHO Signing assemblies...
+
+SET basedir=C:\Program Files (x86)\Windows Kits\10\bin\
+SET newestSdkDir=10.0.17763.0
+FOR /F &#34;tokens=*&#34; %%a in (&#39;dir /b /on &#34;%baseDir%10*&#34;&#39;) DO SET newestSdkDir=%%a
+REM &#34;%baseDir%%newestSdkDir%\x64\signtool.exe&#34; sign /?
+&#34;%baseDir%%newestSdkDir%\x64\signtool.exe&#34; sign /f &#34;%1certificate.pfx&#34; /p &#34;pass&amp;1234&#34; &#34;%2&#34;
+
+ECHO Assemblies signed...
+</code></pre></td></tr></table>
+</div>
+</div><p>In case we want to sign all assemblies also after build, we can add the following lines to the project file (.csproj) before or after previous &ldquo;PublishSigning&rdquo; target:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-XML" data-lang="XML"><span class="nt">&lt;Target</span> <span class="na">Name=</span><span class="s">&#34;BuildSigning&#34;</span> <span class="na">AfterTargets=</span><span class="s">&#34;AfterBuild&#34;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;MSBuild</span> <span class="na">Projects=</span><span class="s">&#34;$(MsBuildThisFile)&#34;</span> <span class="na">Targets=</span><span class="s">&#34;SignAssemblies&#34;</span> <span class="na">Properties=</span><span class="s">&#34;AssembliesPath=$(TargetDir);AssembliesPattern=*.dll&#34;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;MSBuild</span> <span class="na">Projects=</span><span class="s">&#34;$(MsBuildThisFile)&#34;</span> <span class="na">Targets=</span><span class="s">&#34;SignAssemblies&#34;</span> <span class="na">Properties=</span><span class="s">&#34;AssembliesPath=$(TargetDir);AssembliesPattern=*.exe&#34;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/Target&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="net-framework">.NET Framework</h2>
+<p>Things don&rsquo;t change drastically from .NET Core approach because we tried to be as generic as possible from the beginning. However, there are a few details to take in consideration.</p>
+<p>In .NET Framework application we can edit the Build Events in the project properties as is shown in figure 1.</p>
+<p><img src="/signing-assemblies/01.png" alt="Project build events"></p>
+<p>Figure 1: Project build events.</p>
+<p>This modifies the project file (.csproj) adding the following lines&hellip;</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-XML" data-lang="XML"><span class="nt">&lt;PropertyGroup&gt;</span>
+  <span class="nt">&lt;PostBuildEvent&gt;</span>
+    ECHO Test message...
+  <span class="nt">&lt;/PostBuildEvent&gt;</span>
+<span class="nt">&lt;/PropertyGroup&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>&hellip;where of course we can replace the ECHO command by the <strong>SIGNING_COMMAND</strong> from previous section. The result is very similar, assemblies get signed in the configuration folder (Debug. Release, etc.) but publishing feature continue having issues. If we check the published folder, we can verify that assemblies produced by the solution get signed while depending third party assemblies (like NuGet packages) are not signed by our certificate. They remain signed by their original signer or they are not signed at all. This is not what we need, we need all assemblies signed by our certificate preferably at publishing time in order to avoid manual signing before deployments.</p>
+<p>I tried to reuse the approach in the previous section for .NET Core but was not possible without modifications. I ended modifying manually the project file (.csproj) to add the following lines:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-XML" data-lang="XML"><span class="nt">&lt;Import</span> <span class="na">Project=</span><span class="s">&#34;..\SignAssemblies.targets&#34;</span> <span class="na">Condition=</span><span class="s">&#34;Exists(&#39;..\SignAssemblies.targets&#39;)&#34;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;Target</span> <span class="na">Name=</span><span class="s">&#34;PublishSigning&#34;</span> <span class="na">AfterTargets=</span><span class="s">&#34;GatherAllFilesToPublish&#34;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;MSBuild</span> <span class="na">Projects=</span><span class="s">&#34;$(MsBuildThisFile)&#34;</span> <span class="na">Targets=</span><span class="s">&#34;SignAssemblies&#34;</span> <span class="na">Properties=</span><span class="s">&#34;AssembliesPath=$(ProjectDir)$(WPPAllFilesinSingleFolder)\bin\;AssembliesPattern=*.dll&#34;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/Target&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Here we are specifying that we want to execute target: &ldquo;PublishSigning&rdquo; when everything is ready to be copied into the final &ldquo;Publish&rdquo; folder (target: &ldquo;GatherAllFilesToPublish&rdquo;). Very similar to what we did in .NET Core but changing the value for &ldquo;AssembliesPath&rdquo; parameter. With this approach all assemblies are signed just before everything is ready to be copied into the final &ldquo;Publish&rdquo; folder; from the &ldquo;Publish&rdquo; temporary folder to &ldquo;Publish&rdquo; final folder. There is no need to sign executable files because .NET Framework web applications don&rsquo;t generate .exe files.</p>
+<p>In case we want to sign all assemblies also after build, we can add the following lines to the project file (.csproj):</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-XML" data-lang="XML"><span class="nt">&lt;Target</span> <span class="na">Name=</span><span class="s">&#34;BuildSigning&#34;</span> <span class="na">AfterTargets=</span><span class="s">&#34;AfterBuild&#34;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;MSBuild</span> <span class="na">Projects=</span><span class="s">&#34;$(MsBuildThisFile)&#34;</span> <span class="na">Targets=</span><span class="s">&#34;SignAssemblies&#34;</span> <span class="na">Properties=</span><span class="s">&#34;AssembliesPath=$(TargetDir);AssembliesPattern=*.dll&#34;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/Target&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>I tried to include in file &ldquo;SignAssemblies.targets&rdquo; the calling &ldquo;PublishSigning&rdquo; target to simplify the manual modifications in the project fie (.csproj) and reuse across different solutions. Unfortunately, that is not a good idea because calling targets depends on parameters that are specific for the projects in development (Attribute: &ldquo;Properties&rdquo;). This looks more consistent and standardized.</p>
+<p>Ideal assemblies signing process could looks like:</p>
+<ol>
+<li>Copy and add certificate file: &ldquo;certificate.pfx&rdquo; to the solution.</li>
+<li>Copy and add batch fie: &ldquo;SignAssemblies.cmd&rdquo; To the solution.</li>
+<li>Copy and add MSBuild file &ldquo;SignAssemblies.targets&rdquo; to the solution.</li>
+<li>Modify project file (.csproj) to include file: &ldquo;SingAssemblies.targets&rdquo;.</li>
+<li>Modify project file (.csproj) to add calling targets: &ldquo;BuildSigning&rdquo;.</li>
+<li>Modify project file (.csproj) to add calling targets: &ldquo;PublishSigning&rdquo;.</li>
+</ol>
+<p>If file: &ldquo;SignAssemblies.targets&rdquo; uses file &ldquo;SignAssemblies.cmd&rdquo; in order to find the latest SDK installed, step 2 is not optional.</p>
+<p>Hopefully, this document helps to clarify the different options we have at the time to sign assemblies to comply with code execution security policies.</p>
+<p><a href="https://github.com/rsotolongo/RS.Blog.Projects/tree/main/SigningAssemblies">Source code of support available at GitHub</a></p>
 
     </div>
 
@@ -501,7 +707,8 @@ openssl.exe pkcs12 -export -out certificate.pfx -inkey certificate.key -in certi
 
     <footer class="post-footer">
       <div class="post-tags">
-          <a href="/tags/openssl/">OpenSSL</a>
+          <a href="/tags/visual-studio/">Visual Studio</a>
+          <a href="/tags/msbuild/">MSBuild</a>
           <a href="/tags/security/">security</a>
           
         </div>
@@ -509,22 +716,9 @@ openssl.exe pkcs12 -export -out certificate.pfx -inkey certificate.key -in certi
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/signing-assemblies/">
-            
-            <i class="iconfont">
-              <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="18" height="18">
-  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
-</svg>
-
-            </i>
-            <span class="prev-text nav-default">Signing assemblies</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
         
-          <a class="next" href="/post/deploying-nuget-packages/">
-            <span class="next-text nav-default">Deploying NuGet packages</span>
+          <a class="next" href="/post/generating-signature-certificates/">
+            <span class="next-text nav-default">Generating signature certificates</span>
             <span class="prev-text nav-mobile">Next</span>
             
             <i class="iconfont">

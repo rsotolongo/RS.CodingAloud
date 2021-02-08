@@ -6,10 +6,285 @@
     <description>Recent content on Programando en voz alta</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <lastBuildDate>Mon, 01 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 08 Feb 2021 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/es/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Firmando ensamblados</title>
+      <link>/es/post/signing-assemblies/</link>
+      <pubDate>Mon, 08 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/signing-assemblies/</guid>
+      
+        <description>&lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/SigningAssemblies&#34;&gt;Código fuente de apoyo disponible en GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;net-core&#34;&gt;.NET Core&lt;/h2&gt;
+&lt;p&gt;No todos los clientes requieren firmar los ensamblados de sus aplicaciones, pero cuando es necesario, la tarea no es tan fácil como cabría esperar.&lt;/p&gt;
+&lt;p&gt;En el caso de las aplicaciones .NET Core, podemos lograr esto simplemente editando el archivo del proyecto (.csproj) agregando el siguiente código:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;Target&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;BuildSigning&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;AfterTargets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AfterBuild&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;Exec&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Command=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;SIGNING_COMMAND&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/Target&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Como ejemplo, &lt;strong&gt;SIGNING_COMMAND&lt;/strong&gt; podría ser:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&amp;ldquo;C\Program Files (x86)\Windows Kits\10\bin\10.0.177630\x64\signtool.exe&amp;rdquo;&lt;/em&gt; &lt;em&gt;sign /f &amp;ldquo;$(SolutionDir)certificate.pfx&amp;rdquo; /p &amp;ldquo;pass&amp;amp;1234&amp;rdquo; &amp;ldquo;S(TargetDir)&lt;/em&gt;.dll&amp;rdquo;*&lt;/p&gt;
+&lt;p&gt;Estamos utilizando el certificado generado en este post anterior: &amp;ldquo;&lt;a href=&#34;../generating-signature-certificates&#34;&gt;Generando certificados de firma&lt;/a&gt;&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Esto hace que después de cada compilación (independientemente de la configuración -Debug, Release, etc.-) se firmen los ensamblados al final del proceso. La firma continúa funcionando después de las compilaciones, pero no después de la publicación. El resultado del script de publicación anterior que publica una aplicación .NET Core es &amp;ldquo;curioso&amp;rdquo;:&lt;/p&gt;
+&lt;p&gt;Suponiendo que la publicación se basa en la configuración de &amp;ldquo;Release&amp;rdquo;, los ensamblados en la carpeta &amp;ldquo;Release&amp;rdquo; se firman antes de copiarse en la carpeta temporal &amp;ldquo;Publish&amp;rdquo;. Luego, los artefactos en la carpeta temporal &amp;ldquo;Publish&amp;rdquo; se copian en el destino final &amp;ldquo;Publish&amp;rdquo;. Finalmente, los ensamblados en la carpeta &amp;ldquo;Release&amp;rdquo; se vuelven a firmar nuevamente.&lt;/p&gt;
+&lt;p&gt;Los ensamblados en la carpeta &amp;ldquo;Release&amp;rdquo; se firman dos veces porque para la funcionalidad de publicación, la macro $(TargetDir) sigue teniendo el valor para la carpeta &amp;ldquo;Release&amp;rdquo; y no la carpeta &amp;ldquo;Publish&amp;rdquo;. Una solución probada cambió la macro $(TargetDir) por la macro $(PublishDir) pero no funcionó porque esa macro toma el valor de la carpeta temporal &amp;ldquo;Publish&amp;rdquo; y no de la carpeta final &amp;ldquo;Publish&amp;rdquo;. El resultado es que los ensamblados de la carpeta &amp;ldquo;Release&amp;rdquo; no se firman dos veces, pero los ensamblados de la carpeta &amp;ldquo;Publish&amp;rdquo; tampoco están firmados. En cambio, los ensamblados en la carpeta temporal &amp;ldquo;Publish&amp;rdquo; se firman después de haber sido copiados en la carpeta final &amp;ldquo;Publish&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Con estos antecedentes, la mejor solución es cambiar el script de post compilación para que sea un script posterior a la publicación:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;Target&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;PublishSigning&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;AfterTargets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AfterPublish&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;Exec&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Command=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;SIGNING_COMMAND&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/Target&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Cambiando &lt;strong&gt;SIGNING_COMMAND&lt;/strong&gt; a:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&amp;ldquo;C:\Program Files (x86)\Windows Kits\10\bin\10.0.17763.0\x64\signtool.exe&amp;rdquo; sign /f &amp;ldquo;$(SolutionDir)certificate.pfx&amp;rdquo; /p &amp;ldquo;pass&amp;amp;1234&amp;rdquo; &amp;ldquo;$(PublishUrl)&lt;/em&gt;.dll&amp;rdquo;*&lt;/p&gt;
+&lt;p&gt;Observe la adición de &lt;em&gt;&amp;ldquo;publish&amp;quot;&lt;/em&gt; después de la macro $(TargetDir).&lt;/p&gt;
+&lt;p&gt;Esta modificación funcionará pero, por supuesto, solo para la publicación y no para todas las compilaciones. Nada nos detiene para agregar ambos scripts de publicación (compilar y/o publicar) para que los ensamblados se firmen en todos los casos, el único problema con esto es que los ensamblados en la carpeta &amp;ldquo;Release&amp;rdquo; se firmarán dos veces. Eso no es gran cosa, pero es algo a tener en cuenta.&lt;/p&gt;
+&lt;p&gt;Otro tema es el tiempo de inactividad durante la firma de ensamblados. Dependiendo de la aplicación que se esté firmando, este proceso puede llevar una cantidad considerable de tiempo que es el doble en caso de doble firma o el triple en caso de utilizar los dos scripts de publicación (Compilar y Publicar). Debido a que &amp;ldquo;Publicar&amp;rdquo; no se usa con tanta frecuencia como &amp;ldquo;Compilar&amp;rdquo;, el tiempo de inactividad no es un gran problema, excepto si incluimos una marca de tiempo en la firma.&lt;/p&gt;
+&lt;p&gt;Agregar el parámetro &lt;em&gt;/t timeseverURL&lt;/em&gt; to &lt;strong&gt;SIGNING_COMMAND&lt;/strong&gt; podría saltar (como ejemplo) de 15 segundos a 2030 segundos (4.5 minutos) en el caso de un servidor de tiempo externo como &lt;a href=&#34;http://timestamp.comodoca.com/authenticode&#34;&gt;http://timestamp.comodoca.com/authenticode&lt;/a&gt; . Si usamos un servidor de tiempo interno, este tiempo podría disminuir significativamente, pero su uso dependerá de si la política de seguridad de ejecución toma o no la marca de tiempo en consideración.&lt;/p&gt;
+&lt;p&gt;Finalmente, analicemos una muestra para el script de post publicación:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;Target&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;PublishSigning&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;AfterTargets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AfterPublish&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;Message&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Importance=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;high&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Text=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Firmando ensamblados publicados...&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;Exec&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Command=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;amp;quot;C:\Program Files (x86)\Windows Kits\10\bin\10.0.17763.0\x64\signtool.exe&amp;amp;quot; sign /f &amp;amp;quot;$(SolutionDir)certificate.pfx&amp;amp;quot; /p &amp;amp;quot;pass&amp;amp;amp;1234&amp;amp;quot; &amp;amp;quot;$(PublishUrl)*.dll&amp;amp;quot; &amp;amp;quot;$(PublishUrl)*.exe&amp;amp;quot;&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;Message&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Importance=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;high&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Text=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Ensamblados publicados firmados...&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/Target&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Incluir mensajes de inicio y finalización en la consola de compilación es una buena práctica. Todas las comillas dobles (&amp;quot;) deben codificarse en su equivalente HTML (&lt;code&gt;&amp;amp;quot;&lt;/code&gt;). El símbolo de conjunción (&amp;amp;) que coincidentemente está presente en la contraseña del certificado, también debe codificarse (&lt;code&gt;&amp;amp;amp;&lt;/code&gt;). No solo se firman los ensamblados de biblioteca (DLL), los ejecutables (EXE) también se firman.&lt;/p&gt;
+&lt;p&gt;Finalmente, algo a lo que hay que prestar atención es la versión del SDK de Windows (10.0.17763.0) porque eso depende de lo que esté instalado en la computadora de desarrollo pero podría ser diferente para cada miembro del equipo. Con todo esto en mente, se podría adoptar otro enfoque que aportara claridad y generalidad:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;Target&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;PublishSigning&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;AfterTargets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AfterPublish&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;Exec&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Command=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;$(SolutionDir)SignAssemblies.cmd $(SolutionDir) $(PublishUrl)&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/Target&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Donde el archivo: &amp;ldquo;SignAssemblies.cmd&amp;rdquo; podría ser:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;ECHO Firmando ensamblados...
+
+&amp;#34;C:\Program Files (x86)\Windows Kits\10\bin\10.0.17763.0\x64\signtool.exe&amp;#34; sign /f &amp;#34;%certificate.pfx&amp;#34; /p &amp;#34;pass&amp;amp;1234&amp;#34; &amp;#34;%2*.dll&amp;#34; &amp;#34;%2*.exe&amp;#34;
+
+ECHO Ensamblados firmados...
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Esto todavía tiene el problema de la versión del SDK codificada de forma rígida, pero podría generalizarse como:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;ECHO Firmando ensamblados...
+
+SET basedir=C:\Program Files (x86)\Windows Kits\10\bin\
+SET newestSdkDir=10.0.17763.0
+FOR /F &amp;#34;tokens=*&amp;#34; %%a in (&amp;#39;dir /b /on &amp;#34;%baseDir%10*&amp;#34;&amp;#39;) DO SET newestSdkDir=%%a
+REM &amp;#34;%baseDir%%newestSdkDir%\x64\signtool.exe&amp;#34; sign /?
+&amp;#34;%baseDir%%newestSdkDir%\x64\signtool.exe&amp;#34; sign /f &amp;#34;%1certificate.pfx&amp;#34; /p &amp;#34;pass&amp;amp;1234&amp;#34; &amp;#34;%2*.dll&amp;#34; &amp;#34;%2*.exe&amp;#34;
+
+ECHO Ensamblados firmados...
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;La versión del SDK se inicializa como la versión 10.0.17763.0 (porque es la última que he instalado en mi computadora en el momento de escribir esta publicación, pero podría ser cualquier otra versión) y luego itera sobre todas las carpetas que coinciden con el patrón &amp;ldquo;10*&amp;rdquo; en orden para obtener la última versión. Hay una instrucción útil que no hace nada, pero si sustituimos **REM** por **ECHO** podemos ver la información del tiempo de ejecución en las trazas de compilación. Observe cómo eliminamos los caracteres codificados porque los trasladamos al archivo de comando (.cmd) y no es necesario usarlos allí.&lt;/p&gt;
+&lt;p&gt;Por último, creemos un enfoque aún más unificado utilizando más tareas de MSBuild. Necesitamos sustituir el destino de MSBuild &amp;ldquo;PublishSigning&amp;rdquo; anterior por el siguiente código:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;Import&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Project=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;..\SignAssemblies.targets&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Condition=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Exists(&amp;#39;..\SignAssemblies.targets&amp;#39;)&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;Target&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;PublishSigning&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;AfterTargets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AfterPublish&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;MSBuild&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Projects=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;$(MsBuildThisFile)&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Targets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;SignAssemblies&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Properties=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AssembliesPath=$(PublishUrl);AssembliesPattern=*.dll&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;MSBuild&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Projects=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;$(MsBuildThisFile)&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Targets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;SignAssemblies&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Properties=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AssembliesPath=$(PublishUrl);AssembliesPattern=*.exe&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/Target&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Básicamente, se incluye otro archivo externo de MSBuild y se llama a su tarea principal pasando los parámetros &amp;ldquo;AssembliesPath&amp;rdquo; y &amp;ldquo;AssembliesPattern&amp;rdquo;. Esto se debe a que no todas las soluciones generan bibliotecas y ensamblados ejecutables al mismo tiempo. Ahora, el nuevo archivo &amp;ldquo;SignAssemblies.targets&amp;rdquo; se ve así:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;utf-8&amp;#34;?&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;Project&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;xmlns=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;http://schemas.microsoft.com/developer/msbuild/2003&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;Target&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;SignAssemblies&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;Message&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Importance=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;high&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Text=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Firmando ensamblados...&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;Message&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Importance=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;high&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Text=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Camino de los ensamblados: $(AssembliesPath)&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;Message&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Importance=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;high&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Text=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Patrón de los ensamblados: $(AssembliesPattern)&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;Exec&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Command=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;$(SolutionDir)SignAssemblies.cmd $(SolutionDir) $(AssembliesPath)$(AssembliesPattern)&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;Message&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Importance=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;high&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Text=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Ensamblados firmados...&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/Target&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/Project&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;El archivo &amp;ldquo;SignAssemblies.cmd&amp;rdquo; permanece casi idéntico con solo una pequeña modificación (el patrón de archivos a firmar se pasa desde la llamada a la tarea):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;ECHO Firmando ensamblados...
+
+SET basedir=C:\Program Files (x86)\Windows Kits\10\bin\
+SET newestSdkDir=10.0.17763.0
+FOR /F &amp;#34;tokens=*&amp;#34; %%a in (&amp;#39;dir /b /on &amp;#34;%baseDir%10*&amp;#34;&amp;#39;) DO SET newestSdkDir=%%a
+REM &amp;#34;%baseDir%%newestSdkDir%\x64\signtool.exe&amp;#34; sign /?
+&amp;#34;%baseDir%%newestSdkDir%\x64\signtool.exe&amp;#34; sign /f &amp;#34;%1certificate.pfx&amp;#34; /p &amp;#34;pass&amp;amp;1234&amp;#34; &amp;#34;%2&amp;#34;
+
+ECHO Ensamblados firmados...
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;En caso de que queramos firmar además todos los ensamblados después de la compilación, podemos agregar las siguientes líneas al archivo del proyecto (.csproj) antes o después del objetivo &amp;ldquo;PublishSigning&amp;rdquo; anterior:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;Target&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;BuildSigning&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;AfterTargets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AfterBuild&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;MSBuild&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Projects=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;$(MsBuildThisFile)&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Targets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;SignAssemblies&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Properties=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AssembliesPath=$(TargetDir);AssembliesPattern=*.dll&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;MSBuild&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Projects=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;$(MsBuildThisFile)&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Targets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;SignAssemblies&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Properties=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AssembliesPath=$(TargetDir);AssembliesPattern=*.exe&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/Target&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;net-framework&#34;&gt;.NET Framework&lt;/h2&gt;
+&lt;p&gt;Las cosas no cambian drásticamente desde el enfoque de .NET Core porque intentamos ser lo más genéricos posible desde el principio. Sin embargo, hay algunos detalles a tener en cuenta.&lt;/p&gt;
+&lt;p&gt;En la aplicación .NET Framework podemos editar los eventos de compilación en las propiedades del proyecto como se muestra en la figura 1.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/signing-assemblies/01.png&#34; alt=&#34;Project build events&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 1: Eventos de compilación del proyecto.&lt;/p&gt;
+&lt;p&gt;Esto modifica el archivo del proyecto (.csproj) agregando las siguientes líneas&amp;hellip;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;PropertyGroup&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;PostBuildEvent&amp;gt;&lt;/span&gt;
+    ECHO Test message...
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/PostBuildEvent&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/PropertyGroup&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&amp;hellip;donde, por supuesto, podemos reemplazar el comando ECHO por &lt;strong&gt;SIGNING_COMMAND&lt;/strong&gt; de la sección anterior. El resultado es muy similar, los ensamblados se firman en la carpeta de configuración (Debug. Release, etc.) pero la función de publicación sigue teniendo problemas. Si revisamos la carpeta publicada, podemos verificar que los ensamblados producidos por la solución se firmen mientras que los ensamblados dependientes de terceros (como los paquetes NuGet) no están firmados por nuestro certificado. Permanecen firmados por su firmante original o no están firmados en absoluto. Esto no es lo que necesitamos, necesitamos todos los ensamblados firmados por nuestro certificado preferiblemente en el momento de la publicación para evitar la firma manual antes de desplegar.&lt;/p&gt;
+&lt;p&gt;Intenté reutilizar el enfoque de la sección anterior para .NET Core, pero no fue posible sin modificaciones. Terminé de modificar manualmente el archivo del proyecto (.csproj) para agregar las siguientes líneas:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;Import&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Project=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;..\SignAssemblies.targets&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Condition=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Exists(&amp;#39;..\SignAssemblies.targets&amp;#39;)&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;Target&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;PublishSigning&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;AfterTargets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;GatherAllFilesToPublish&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;MSBuild&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Projects=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;$(MsBuildThisFile)&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Targets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;SignAssemblies&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Properties=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AssembliesPath=$(ProjectDir)$(WPPAllFilesinSingleFolder)\bin\;AssembliesPattern=*.dll&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/Target&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Aquí estamos especificando que queremos ejecutar target: &amp;ldquo;PublishSigning&amp;rdquo; cuando todo esté listo para ser copiado en la carpeta final &amp;ldquo;Publish&amp;rdquo; (tarea: &amp;ldquo;GatherAllFilesToPublish&amp;rdquo;). Muy similar a lo que hicimos en .NET Core pero cambiando el valor del parámetro &amp;ldquo;AssembliesPath&amp;rdquo;. Con este enfoque, todos los ensamblados se firman justo antes de que todo esté listo para copiarse en la carpeta &amp;ldquo;Publish&amp;rdquo; final; de la carpeta temporal &amp;ldquo;Publish&amp;rdquo; a la carpeta final &amp;ldquo;Publish&amp;rdquo;. No es necesario firmar archivos ejecutables porque las aplicaciones web de .NET Framework no generan archivos .EXE.&lt;/p&gt;
+&lt;p&gt;En caso de que queramos firmar todos los ensamblados también después de la compilación, podemos agregar las siguientes líneas al archivo del proyecto (.csproj):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;Target&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;BuildSigning&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;AfterTargets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AfterBuild&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;MSBuild&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Projects=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;$(MsBuildThisFile)&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Targets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;SignAssemblies&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Properties=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AssembliesPath=$(TargetDir);AssembliesPattern=*.dll&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/Target&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Traté de incluir en el archivo &amp;ldquo;SignAssemblies.targets&amp;rdquo; el objetivo de llamada &amp;ldquo;PublishSigning&amp;rdquo; para simplificar las modificaciones manuales en el archivo del proyecto (.csproj) y reutilizarlo en diferentes soluciones. Desafortunadamente, eso no es una buena idea porque los destinos de llamada dependen de parámetros que son específicos para los proyectos en desarrollo (Atributo: &amp;ldquo;Properties&amp;rdquo;). Esto parece más consistente y estandarizado.&lt;/p&gt;
+&lt;p&gt;El proceso de firma de ensamblados ideal podría verse así:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Copiar y agregar el archivo de certificado: &amp;ldquo;certificate.pfx&amp;rdquo; a la solución.&lt;/li&gt;
+&lt;li&gt;Copiar y agregar el archivo por lotes: &amp;ldquo;SignAssemblies.cmd&amp;rdquo; a la solución.&lt;/li&gt;
+&lt;li&gt;Copiar y agregar el archivo de MSBuild &amp;ldquo;SignAssemblies.targets&amp;rdquo; a la solución.&lt;/li&gt;
+&lt;li&gt;Modificar el archivo del proyecto (.csproj) para incluir el archivo: &amp;ldquo;SingAssemblies.targets&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Modificar el archivo del proyecto (.csproj) para agregar la llamada a la tarea: &amp;ldquo;BuildSigning&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Modificar el archivo del proyecto (.csproj) para agregar la llamada a la tarea: &amp;ldquo;PublishSigning&amp;rdquo;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Si el archivo: &amp;ldquo;SignAssemblies.targets&amp;rdquo; usa el archivo &amp;ldquo;SignAssemblies.cmd&amp;rdquo; para encontrar el último SDK instalado, el paso 2 no es opcional.&lt;/p&gt;
+&lt;p&gt;Con suerte, este documento ayuda a aclarar las diferentes opciones que tenemos a la hora de firmar ensamblados para cumplir con las políticas de seguridad de ejecución de código.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/SigningAssemblies&#34;&gt;Código fuente de apoyo disponible en GitHub&lt;/a&gt;&lt;/p&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>Generando certificados de firma</title>
@@ -1641,24 +1916,6 @@ Sin dejar de asemejarse con otros fanatismos (al menos en sus esencias fundament
 &lt;p&gt;Realmente creo que ninguno ganará pues los dos bandos tienen razón en muchas cosas y solo dejan de tenerla en pequeñas asperezas del modelo. Si de todas formas tuviera que vaticinar un ganador diría que será el que mejor logre adaptarse a la forma de ver las cosas del otro; pero más aun, si tuviera que concretar diría que el software propietario es el que pudiera hacerlo si hace bien las cosas. Motivos por los cuales me decido a decirlo es porque en la actualidad cuenta con la inmensa mayoría de aplicaciones ya desarrolladas y con un altísimo nivel de penetración en el mundo completo, esto hace que las compañías tengan un gran capital para invertir en hacerse cada día mejores (cosa muy importante).&lt;/p&gt;
 &lt;p&gt;¿Qué podría dar al traste con esta decisión? Que en vez de dedicarse a suavizar las licencias comerciales con las cuales se distribuyen sus productos, dediquen esfuerzos a atacar al bando contrario. El movimiento de software libre no se ha quedado con los brazos cruzados, pero tiene que cambiar radicalmente su forma de enfrentar las cosas. Aquellos que son seguidores de este movimiento no pueden ver, ni escuchar, ni tan siquiera imaginarse que lo que le estén mostrando o hablando &amp;ldquo;huela&amp;rdquo; a software propietario, porque ponen el plug a tierra y es como si no existiera la contraparte, es decir, solo lo de ellos es mejor y no tiene defectos algunos, es a esto precisamente a lo que me refiero. Que me disculpen los que no piensan así, pero en mi experiencia me ha tocado enfrentarme a muchas de estas personas.&lt;/p&gt;
 &lt;p&gt;En un principio y como fanático al fin del software propietario me enfrascaba en la más tediosa discusión por defender lo que tenía dentro de mí, esto fue así hasta que desperté de ese sueño. Hace falta que muchos más despierten. Actualmente hago igual que cuando alguien intenta demostrarme que Dios creó el mundo (que me disculpen los creyentes), acordamos no hablar de ese tema y seguir conversando de lo hermosa que es la vida.&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Herramientas para los blogs</title>
-      <link>/es/post/herramientas-para-blogs/</link>
-      <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/es/post/herramientas-para-blogs/</guid>
-      
-        <description>&lt;p&gt;No hay duda que la web revolucionó el mundo de la información a disposición de todos sus usuarios, pero por sus propias características tiene un gran inconveniente: sigue siendo el usuario el responsable de visitar expresamente los sitios de los que quiere nutrirse.&lt;/p&gt;
-&lt;p&gt;Cuando se visitan dos o tres sitios o se hace con poca frecuencia esto no interesa mucho, sin embargo, cuando se requiere informarse apenas se publique la información esto se convierte en un problema.&lt;/p&gt;
-&lt;p&gt;Es para ello que surgen los formatos de intercambio de informaciones RSS que no son más que ficheros XML que guardan, entre otras cosas, el encabezado de la información, el cuerpo, fecha, localización completa, entre otros campos. Este fichero de intercambio no es por gusto pues se brinda para que los usuarios necesitados de &amp;ldquo;estar en la última&amp;rdquo; utilicen un cliente al efecto. Dentro de los clientes más utilizados están el FeedReader y el RSSReader. Cada uno de ellos son capaces cada cierto tiempo de descargar los ficheros de los sitios que se tengan configurados y avisarles a los usuarios de las nuevas informaciones que hay publicadas con respecto a la vez anterior que se conectó.&lt;/p&gt;
-&lt;p&gt;Básicamente ese es el funcionamiento de estas herramientas. Existen varios formatos de estos ficheros de intercambio, ya habíamos dicho los RSS, pero también existen los CDF, cada uno con más de una versión. Existe otro formato de fichero que es una reunificación de los dos anteriores que como toda reunificación se ha convertido en una tercera variante. Como la conversión de uno a otro no es cosa difícil (apenas aplicar una transformación XSLT) por lo general los sitios y portales que brindan estas posibilidades ofertan los tres tipos de ficheros.&lt;/p&gt;
-&lt;p&gt;Son los blogs el tipo de sitio que más ha ayudado a proliferar estas tecnologías. Recordemos que los blogs se pueden ver como la versión digitalizada de un diario personal. Hoy por hoy constituyen precisamente los blogs la fuente número uno de publicaciones de científicos, programadores, filósofos, etc. En el mundo, todo profesional que se respeta tiene uno y sobre todas las cosas establece un compromiso para con sus suscriptores de mantenerlo actualizado constantemente.&lt;/p&gt;
-&lt;p&gt;Microsoft comprendió rápidamente lo antes expuesto y le ha incorporado la posibilidad de RSS al Internet Explorer 7 que pronto saldrá al mercado. Por su parte existe una extensión para Mozilla Firefox que permite lo mismo. Poco a poco pienso que se hará más común su integración con los restantes navegadores de Internet.&lt;/p&gt;
-&lt;p&gt;Yo comencé a utilizar el FeedReader apenas lo vi pues comprendí todo lo que podía ayudarme, al punto que lo instalé en las máquinas de los laboratorios docentes para que se utilizara. En mi máquina le configuré todos los sitios de los que asiduamente visito y más nunca tuve que ir a ellos a ver qué tenían de nuevo, el FeedReader cada cierto tiempo (por lo general una o dos horas) me avisaba. Luego de la reinstalación de los servidores en pos de insertarnos en RedUNIV se puso que la autentificación contra el proxy fuera integrada y ahí mismo dejó de funcionar esta útil herramienta, esperamos que en alguna versión superior tenga la posibilidad de autentificase por NTLM.&lt;/p&gt;
 </description>
       
     </item>

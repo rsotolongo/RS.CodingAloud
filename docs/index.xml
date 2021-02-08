@@ -6,10 +6,285 @@
     <description>Recent content on Coding Aloud</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 01 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 08 Feb 2021 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Signing assemblies</title>
+      <link>/post/signing-assemblies/</link>
+      <pubDate>Mon, 08 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/signing-assemblies/</guid>
+      
+        <description>&lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/SigningAssemblies&#34;&gt;Source code of support available at GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;net-core&#34;&gt;.NET Core&lt;/h2&gt;
+&lt;p&gt;Not all clients require to sign the assemblies of their applications but when its required, the task is not so easy as you can expect.&lt;/p&gt;
+&lt;p&gt;In the case of .NET Core applications, we can achieve this just editing the project file (.csproj) adding the following code:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;Target&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;BuildSigning&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;AfterTargets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AfterBuild&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;Exec&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Command=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;SIGNING_COMMAND&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/Target&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;As example &lt;strong&gt;SIGNING_COMMAND&lt;/strong&gt; could be:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&amp;ldquo;C\Program Files (x86)\Windows Kits\10\bin\10.0.177630\x64\signtool.exe&amp;rdquo;&lt;/em&gt; &lt;em&gt;sign /f &amp;ldquo;$(SolutionDir)certificate.pfx&amp;rdquo; /p &amp;ldquo;pass&amp;amp;1234&amp;rdquo; &amp;ldquo;S(TargetDir)&lt;/em&gt;.dll&amp;rdquo;*&lt;/p&gt;
+&lt;p&gt;We are using the certificate generated in this previous post: &amp;ldquo;&lt;a href=&#34;../generating-signature-certificates&#34;&gt;Generating signature certificates&lt;/a&gt;&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;This makes that after every build (regardless of configuration -Debug, Release, etc.-) library assemblies are signed at the end of the process. The post script signing continues working after builds but not after publishing. The result of the previous post script publishing a .NET Core application is &amp;ldquo;curious&amp;rdquo;:&lt;/p&gt;
+&lt;p&gt;Assuming that publishing is based in &amp;ldquo;Release&amp;rdquo; configuration, the assemblies in &amp;ldquo;Release&amp;rdquo; folder are signed before copied into &amp;ldquo;Publish&amp;rdquo; temporary folder. Then, artifacts in &amp;ldquo;Publish&amp;rdquo; temporary folder are copied into &amp;ldquo;Publish&amp;rdquo; final destination. Finally, the assemblies in &amp;ldquo;Release&amp;rdquo; folder are re-signed again.&lt;/p&gt;
+&lt;p&gt;Assemblies in &amp;ldquo;Release&amp;rdquo; folder are signed twice because for publishing functionality the macro S(TargetDir) continues having the value for the &amp;ldquo;Release&amp;rdquo; folder and not the &amp;ldquo;Publish&amp;rdquo; folder. One solution tested was changed the macro $(TargetDir) by the macro $(PublishDir) but it didn&amp;rsquo;t work because that macro takes the value of the &amp;ldquo;Publish&amp;rdquo; temporary folder and not of the &amp;ldquo;Publish&amp;rdquo; final folder. The result is that assemblies in &amp;ldquo;Release&amp;rdquo; folder are not signed twice but assemblies in &amp;ldquo;Publish&amp;rdquo; folder are not signed either. Instead, assemblies in &amp;ldquo;Publish&amp;rdquo; temporary folder are signed after being already copied into &amp;ldquo;Publish&amp;rdquo; final folder.&lt;/p&gt;
+&lt;p&gt;With this background, the best solution is to change the post build script to be a post publish script:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;Target&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;PublishSigning&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;AfterTargets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AfterPublish&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;Exec&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Command=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;SIGNING_COMMAND&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/Target&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Changing &lt;strong&gt;SIGNING_COMMAND&lt;/strong&gt; to:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&amp;ldquo;C:\Program Files (x86)\Windows Kits\10\bin\10.0.17763.0\x64\signtool.exe&amp;rdquo; sign /f &amp;ldquo;$(SolutionDir)certificate.pfx&amp;rdquo; /p &amp;ldquo;pass&amp;amp;1234&amp;rdquo; &amp;ldquo;$(PublishUrl)&lt;/em&gt;.dll&amp;rdquo;*&lt;/p&gt;
+&lt;p&gt;Notice the addition of &lt;em&gt;&amp;ldquo;publish&amp;quot;&lt;/em&gt; after $(TargetDir) macro.&lt;/p&gt;
+&lt;p&gt;This modification will work but of course only for publishing and not for every build. Nothing stops us to add both post scripts (build and/or publish) so assemblies will be signed in all cases, the only problem with this is that assemblies in &amp;ldquo;Release&amp;rdquo; folder will be signed-twice. That is not a big deal but is something to keep in mind.&lt;/p&gt;
+&lt;p&gt;Another topic is the idle time while signing assemblies. Depending of the application being signed this process could takes considerable amount of time that is double in case of double signing or triple in case of using the two post scripts (Build and Publish). Because &amp;ldquo;Publish&amp;rdquo; is not used so often as &amp;ldquo;Build&amp;rdquo; that idle time is not a big deal except, we include a timestamp in the signature.&lt;/p&gt;
+&lt;p&gt;Adding parameter &lt;em&gt;/t timeseverURL&lt;/em&gt; to &lt;strong&gt;SIGNING_COMMAND&lt;/strong&gt; could jump (as example) from 15 seconds to 2030 seconds (4.5 minutes) in case of an external time server like &lt;a href=&#34;http://timestamp.comodoca.com/authenticode&#34;&gt;http://timestamp.comodoca.com/authenticode&lt;/a&gt;. If we use an internal time server this time could decrease significantly but its usage will depend if the execution security policy takes or not the timestamp in consideration.&lt;/p&gt;
+&lt;p&gt;Finally let&amp;rsquo;s analyze a sample for post publish script:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;Target&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;PublishSigning&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;AfterTargets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AfterPublish&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;Message&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Importance=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;high&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Text=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Signing published assemblies...&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;Exec&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Command=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;amp;quot;C:\Program Files (x86)\Windows Kits\10\bin\10.0.17763.0\x64\signtool.exe&amp;amp;quot; sign /f &amp;amp;quot;$(SolutionDir)certificate.pfx&amp;amp;quot; /p &amp;amp;quot;pass&amp;amp;amp;1234&amp;amp;quot; &amp;amp;quot;$(PublishUrl)*.dll&amp;amp;quot; &amp;amp;quot;$(PublishUrl)*.exe&amp;amp;quot;&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;Message&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Importance=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;high&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Text=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Published assemblies signed...&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/Target&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;To include starting and ending messages on build console is a good practice. All double quotes (&amp;quot;) should be encoded to its HTML equivalent (&lt;code&gt;&amp;amp;quot;&lt;/code&gt;). As the symbol ampersand (&amp;amp;) that coincidently is present on the certificate password, needs to be encoded as well (&lt;code&gt;&amp;amp;amp;&lt;/code&gt;). Not only library assemblies (DLL) are signed, executables (EXE) are signed too.&lt;/p&gt;
+&lt;p&gt;Finally, something that requires to pay attention is the Windows SDK version (10.0.17763.0) because that depends of what is installed in the development computer but could be different for every team member. With all of this in mind other approach could be adopted bringing clarity and generality:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;Target&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;PublishSigning&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;AfterTargets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AfterPublish&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;Exec&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Command=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;$(SolutionDir)SignAssemblies.cmd $(SolutionDir) $(PublishUrl)&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/Target&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Where file: &amp;ldquo;SignAssemblies.cmd&amp;rdquo; could be:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;ECHO Signing assemblies...
+
+&amp;#34;C:\Program Files (x86)\Windows Kits\10\bin\10.0.17763.0\x64\signtool.exe&amp;#34; sign /f &amp;#34;%certificate.pfx&amp;#34; /p &amp;#34;pass&amp;amp;1234&amp;#34; &amp;#34;%2*.dll&amp;#34; &amp;#34;%2*.exe&amp;#34;
+
+ECHO Assemblies signed...
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;This still have the problem of the hard-coded SDK version but could be generalized as:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;ECHO Signing assemblies...
+
+SET basedir=C:\Program Files (x86)\Windows Kits\10\bin\
+SET newestSdkDir=10.0.17763.0
+FOR /F &amp;#34;tokens=*&amp;#34; %%a in (&amp;#39;dir /b /on &amp;#34;%baseDir%10*&amp;#34;&amp;#39;) DO SET newestSdkDir=%%a
+REM &amp;#34;%baseDir%%newestSdkDir%\x64\signtool.exe&amp;#34; sign /?
+&amp;#34;%baseDir%%newestSdkDir%\x64\signtool.exe&amp;#34; sign /f &amp;#34;%1certificate.pfx&amp;#34; /p &amp;#34;pass&amp;amp;1234&amp;#34; &amp;#34;%2*.dll&amp;#34; &amp;#34;%2*.exe&amp;#34;
+
+ECHO Assemblies signed...
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;The SDK version is initialized as version 10.0.17763.0 (because is the latest I have installed in my computer at the time to be writing this post but could be any other version) and then iterates over all folders matching pattern &amp;ldquo;10*&amp;rdquo; in order to get latest version. There is a useful instruction that do nothing but if we substitute the **REM** by a **ECHO** we can see runtime information in the compilation traces. Notice how we removed the encoded characters because we moved into the command file (.cmd) and there is no need to used them there.&lt;/p&gt;
+&lt;p&gt;Last, let&amp;rsquo;s build an even more unified approach using more MSBuild tasks. We need to substitute the previous &amp;ldquo;PublishSigning&amp;rdquo; MSBuild target by the following code:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;Import&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Project=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;..\SignAssemblies.targets&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Condition=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Exists(&amp;#39;..\SignAssemblies.targets&amp;#39;)&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;Target&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;PublishSigning&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;AfterTargets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AfterPublish&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;MSBuild&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Projects=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;$(MsBuildThisFile)&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Targets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;SignAssemblies&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Properties=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AssembliesPath=$(PublishUrl);AssembliesPattern=*.dll&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;MSBuild&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Projects=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;$(MsBuildThisFile)&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Targets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;SignAssemblies&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Properties=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AssembliesPath=$(PublishUrl);AssembliesPattern=*.exe&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/Target&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Basically, including another external MSBuild target file and calling its main target passing &amp;ldquo;AssembliesPath&amp;rdquo; and &amp;ldquo;AssembliesPattern&amp;rdquo; parameters. This is because not all solutions generate library and executable assemblies at the same time. Now, the new &amp;ldquo;SignAssemblies.targets&amp;rdquo; file looks like:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;utf-8&amp;#34;?&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;Project&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;xmlns=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;http://schemas.microsoft.com/developer/msbuild/2003&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;Target&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;SignAssemblies&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;Message&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Importance=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;high&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Text=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Signing assemblies...&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;Message&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Importance=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;high&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Text=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Assemblies path: $(AssembliesPath)&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;Message&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Importance=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;high&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Text=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Assemblies pattern: $(AssembliesPattern)&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;Exec&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Command=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;$(SolutionDir)SignAssemblies.cmd $(SolutionDir) $(AssembliesPath)$(AssembliesPattern)&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;Message&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Importance=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;high&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Text=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Assemblies signed...&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/Target&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/Project&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;File &amp;ldquo;SignAssemblies.cmd&amp;rdquo; remains almost identical with just one little modification (the pattern of files to be signed is passed from the calling task):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;ECHO Signing assemblies...
+
+SET basedir=C:\Program Files (x86)\Windows Kits\10\bin\
+SET newestSdkDir=10.0.17763.0
+FOR /F &amp;#34;tokens=*&amp;#34; %%a in (&amp;#39;dir /b /on &amp;#34;%baseDir%10*&amp;#34;&amp;#39;) DO SET newestSdkDir=%%a
+REM &amp;#34;%baseDir%%newestSdkDir%\x64\signtool.exe&amp;#34; sign /?
+&amp;#34;%baseDir%%newestSdkDir%\x64\signtool.exe&amp;#34; sign /f &amp;#34;%1certificate.pfx&amp;#34; /p &amp;#34;pass&amp;amp;1234&amp;#34; &amp;#34;%2&amp;#34;
+
+ECHO Assemblies signed...
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;In case we want to sign all assemblies also after build, we can add the following lines to the project file (.csproj) before or after previous &amp;ldquo;PublishSigning&amp;rdquo; target:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;Target&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;BuildSigning&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;AfterTargets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AfterBuild&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;MSBuild&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Projects=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;$(MsBuildThisFile)&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Targets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;SignAssemblies&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Properties=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AssembliesPath=$(TargetDir);AssembliesPattern=*.dll&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;MSBuild&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Projects=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;$(MsBuildThisFile)&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Targets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;SignAssemblies&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Properties=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AssembliesPath=$(TargetDir);AssembliesPattern=*.exe&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/Target&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;net-framework&#34;&gt;.NET Framework&lt;/h2&gt;
+&lt;p&gt;Things don&amp;rsquo;t change drastically from .NET Core approach because we tried to be as generic as possible from the beginning. However, there are a few details to take in consideration.&lt;/p&gt;
+&lt;p&gt;In .NET Framework application we can edit the Build Events in the project properties as is shown in figure 1.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/signing-assemblies/01.png&#34; alt=&#34;Project build events&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 1: Project build events.&lt;/p&gt;
+&lt;p&gt;This modifies the project file (.csproj) adding the following lines&amp;hellip;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;PropertyGroup&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;PostBuildEvent&amp;gt;&lt;/span&gt;
+    ECHO Test message...
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/PostBuildEvent&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/PropertyGroup&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&amp;hellip;where of course we can replace the ECHO command by the &lt;strong&gt;SIGNING_COMMAND&lt;/strong&gt; from previous section. The result is very similar, assemblies get signed in the configuration folder (Debug. Release, etc.) but publishing feature continue having issues. If we check the published folder, we can verify that assemblies produced by the solution get signed while depending third party assemblies (like NuGet packages) are not signed by our certificate. They remain signed by their original signer or they are not signed at all. This is not what we need, we need all assemblies signed by our certificate preferably at publishing time in order to avoid manual signing before deployments.&lt;/p&gt;
+&lt;p&gt;I tried to reuse the approach in the previous section for .NET Core but was not possible without modifications. I ended modifying manually the project file (.csproj) to add the following lines:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;Import&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Project=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;..\SignAssemblies.targets&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Condition=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Exists(&amp;#39;..\SignAssemblies.targets&amp;#39;)&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;Target&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;PublishSigning&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;AfterTargets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;GatherAllFilesToPublish&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;MSBuild&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Projects=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;$(MsBuildThisFile)&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Targets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;SignAssemblies&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Properties=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AssembliesPath=$(ProjectDir)$(WPPAllFilesinSingleFolder)\bin\;AssembliesPattern=*.dll&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/Target&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Here we are specifying that we want to execute target: &amp;ldquo;PublishSigning&amp;rdquo; when everything is ready to be copied into the final &amp;ldquo;Publish&amp;rdquo; folder (target: &amp;ldquo;GatherAllFilesToPublish&amp;rdquo;). Very similar to what we did in .NET Core but changing the value for &amp;ldquo;AssembliesPath&amp;rdquo; parameter. With this approach all assemblies are signed just before everything is ready to be copied into the final &amp;ldquo;Publish&amp;rdquo; folder; from the &amp;ldquo;Publish&amp;rdquo; temporary folder to &amp;ldquo;Publish&amp;rdquo; final folder. There is no need to sign executable files because .NET Framework web applications don&amp;rsquo;t generate .exe files.&lt;/p&gt;
+&lt;p&gt;In case we want to sign all assemblies also after build, we can add the following lines to the project file (.csproj):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;Target&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;BuildSigning&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;AfterTargets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AfterBuild&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;MSBuild&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Projects=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;$(MsBuildThisFile)&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Targets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;SignAssemblies&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Properties=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AssembliesPath=$(TargetDir);AssembliesPattern=*.dll&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/Target&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;I tried to include in file &amp;ldquo;SignAssemblies.targets&amp;rdquo; the calling &amp;ldquo;PublishSigning&amp;rdquo; target to simplify the manual modifications in the project fie (.csproj) and reuse across different solutions. Unfortunately, that is not a good idea because calling targets depends on parameters that are specific for the projects in development (Attribute: &amp;ldquo;Properties&amp;rdquo;). This looks more consistent and standardized.&lt;/p&gt;
+&lt;p&gt;Ideal assemblies signing process could looks like:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Copy and add certificate file: &amp;ldquo;certificate.pfx&amp;rdquo; to the solution.&lt;/li&gt;
+&lt;li&gt;Copy and add batch fie: &amp;ldquo;SignAssemblies.cmd&amp;rdquo; To the solution.&lt;/li&gt;
+&lt;li&gt;Copy and add MSBuild file &amp;ldquo;SignAssemblies.targets&amp;rdquo; to the solution.&lt;/li&gt;
+&lt;li&gt;Modify project file (.csproj) to include file: &amp;ldquo;SingAssemblies.targets&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Modify project file (.csproj) to add calling targets: &amp;ldquo;BuildSigning&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Modify project file (.csproj) to add calling targets: &amp;ldquo;PublishSigning&amp;rdquo;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If file: &amp;ldquo;SignAssemblies.targets&amp;rdquo; uses file &amp;ldquo;SignAssemblies.cmd&amp;rdquo; in order to find the latest SDK installed, step 2 is not optional.&lt;/p&gt;
+&lt;p&gt;Hopefully, this document helps to clarify the different options we have at the time to sign assemblies to comply with code execution security policies.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/SigningAssemblies&#34;&gt;Source code of support available at GitHub&lt;/a&gt;&lt;/p&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>Generating signature certificates</title>

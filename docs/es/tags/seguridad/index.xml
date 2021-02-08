@@ -6,7 +6,19 @@
     <description>Recent content in seguridad on Programando en voz alta</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <lastBuildDate>Mon, 01 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="/es/tags/seguridad/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 08 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="/es/tags/seguridad/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Firmando ensamblados</title>
+      <link>/es/post/signing-assemblies/</link>
+      <pubDate>Mon, 08 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/signing-assemblies/</guid>
+      <description>Código fuente de apoyo disponible en GitHub
+.NET Core No todos los clientes requieren firmar los ensamblados de sus aplicaciones, pero cuando es necesario, la tarea no es tan fácil como cabría esperar.
+En el caso de las aplicaciones .NET Core, podemos lograr esto simplemente editando el archivo del proyecto (.csproj) agregando el siguiente código:
+1 2 3  &amp;lt;Target Name=&amp;#34;BuildSigning&amp;#34; AfterTargets=&amp;#34;AfterBuild&amp;#34;&amp;gt; &amp;lt;Exec Command=&amp;#34;SIGNING_COMMAND&amp;#34; /&amp;gt; &amp;lt;/Target&amp;gt;   Como ejemplo, SIGNING_COMMAND podría ser:</description>
+    </item>
+    
     <item>
       <title>Generando certificados de firma</title>
       <link>/es/post/generating-signature-certificates/</link>

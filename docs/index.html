@@ -64,7 +64,7 @@
 <meta property="og:description" content="Hugo theme jane example site." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="/" />
-<meta property="og:updated_time" content="2021-02-01T00:00:00+00:00" /><meta property="og:site_name" content="Coding Aloud" />
+<meta property="og:updated_time" content="2021-02-08T00:00:00+00:00" /><meta property="og:site_name" content="Coding Aloud" />
 <meta itemprop="name" content="Coding Aloud">
 <meta itemprop="description" content="Hugo theme jane example site.">
 <meta name="twitter:card" content="summary"/>
@@ -387,6 +387,51 @@ if (!doNotTrack) {
   <header class="post-header">
     <h1 class="post-title">
       
+      <a class="post-link" href="/post/signing-assemblies/">Signing assemblies</a>
+    </h1>
+    
+<div class="post-meta">
+  
+  <div><a href="/es/post/signing-assemblies/">Leer en español: Firmando ensamblados</a></div>
+  
+</div>
+
+    <div class="post-meta">
+      <time datetime="2021-02-08" class="post-time">
+        2021-02-08
+      </time>
+      <div class="post-category">
+          <a href="/categories/development/"> Development </a>
+          
+        </div>
+      <span class="more-meta"> 1629 words </span>
+      <span class="more-meta"> 8 min read </span>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      Source code of support available at GitHub
+.NET Core Not all clients require to sign the assemblies of their applications but when its required, the task is not so easy as you can expect.
+In the case of .NET Core applications, we can achieve this just editing the project file (.csproj) adding the following code:
+1 2 3  &lt;Target Name=&#34;BuildSigning&#34; AfterTargets=&#34;AfterBuild&#34;&gt; &lt;Exec Command=&#34;SIGNING_COMMAND&#34; /&gt; &lt;/Target&gt;   As example SIGNING_COMMAND could be:
+    </div>
+    <div class="read-more">
+      <a href="/post/signing-assemblies/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
       <a class="post-link" href="/post/generating-signature-certificates/">Generating signature certificates</a>
     </h1>
     
@@ -559,50 +604,6 @@ As it could not be otherwise, figure 1 shows the first package you should add to
     </div>
     <div class="read-more">
       <a href="/post/using-octopus/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/stylecop-coding-style/">Coding style using StyleCop</a>
-    </h1>
-    
-<div class="post-meta">
-  
-  <div><a href="/es/post/estilo-de-c%C3%B3digo-usando-stylecop/">Leer en español: Estilizando códigos usando StyleCop</a></div>
-  
-</div>
-
-    <div class="post-meta">
-      <time datetime="2021-01-04" class="post-time">
-        2021-01-04
-      </time>
-      <div class="post-category">
-          <a href="/categories/development/"> Development </a>
-          
-        </div>
-      <span class="more-meta"> 1346 words </span>
-      <span class="more-meta"> 7 min read </span>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      A colleague ask me to share my experience coding with ReSharper and once he heard that I’m not use ReSharper he was even more curious about how I write source codes. Who knows me knows I love NuGet packages and be updated constantly, that’s why I found a very useful package that I install in all my projects as soon I start it.
-StyleCop.MSBuild
-StyleCop used to be a standalone application with integration with Visual Studio but that changed a while ago.
-    </div>
-    <div class="read-more">
-      <a href="/post/stylecop-coding-style/" class="read-more-link">Read more</a>
     </div>
     
   </div>

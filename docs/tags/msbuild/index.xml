@@ -6,7 +6,19 @@
     <description>Recent content in MSBuild on Coding Aloud</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 25 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/msbuild/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 08 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/msbuild/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Signing assemblies</title>
+      <link>/post/signing-assemblies/</link>
+      <pubDate>Mon, 08 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/signing-assemblies/</guid>
+      <description>Source code of support available at GitHub
+.NET Core Not all clients require to sign the assemblies of their applications but when its required, the task is not so easy as you can expect.
+In the case of .NET Core applications, we can achieve this just editing the project file (.csproj) adding the following code:
+1 2 3  &amp;lt;Target Name=&amp;#34;BuildSigning&amp;#34; AfterTargets=&amp;#34;AfterBuild&amp;#34;&amp;gt; &amp;lt;Exec Command=&amp;#34;SIGNING_COMMAND&amp;#34; /&amp;gt; &amp;lt;/Target&amp;gt;   As example SIGNING_COMMAND could be:</description>
+    </item>
+    
     <item>
       <title>Deploying NuGet packages</title>
       <link>/post/deploying-nuget-packages/</link>
