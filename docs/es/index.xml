@@ -6,10 +6,924 @@
     <description>Recent content on Programando en voz alta</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <lastBuildDate>Mon, 08 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/es/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Generando clientes de Swagger/OpenAPI</title>
+      <link>/es/post/generating-swagger-openapi-clients/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/generating-swagger-openapi-clients/</guid>
+      
+        <description>&lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/ConnectedServices&#34;&gt;Código fuente de apoyo disponible en GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Recientemente, estaba desarrollando una aplicación web .NET Core que necesita consumir una API desarrollada hace unos años usando ASP.NET WebAPI. Afortunadamente, esa API tenía Swagger integrado, así que pensé que podía ahorrar tiempo al no crear manualmente los instrumentos necesarios para las llamadas a la API (DTO, cliente, etc.) en su lugar podría utilizar la función &amp;ldquo;Servicios Conectados&amp;rdquo; de Visual Studio.&lt;/p&gt;
+&lt;p&gt;Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solución en este post. Reproduje un escenario simplificado como se puede ver en la figura 1 accediendo a Swagger UI a través de su URL: &amp;ldquo;http://localhost:5200/swagger&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generate-swagger-openapi-clients/01.png&#34; alt=&#34;IU de Swagger de FullAPI&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 1: IU de Swagger para API usando .NET Framework.&lt;/p&gt;
+&lt;p&gt;Básicamente, esta API tiene dos controladores que proporcionan dos métodos, cada uno con rutas diferentes pero intenciones equivalentes.&lt;/p&gt;
+&lt;p&gt;Accediendo a su documento de especificación: &amp;ldquo;http://localhost:5200/swagger/docs/v1&amp;rdquo; tenemos:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;  1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 39
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 40
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 41
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 42
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 43
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 44
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 45
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 46
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 47
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 48
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 49
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 50
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 51
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 52
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 53
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 54
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 55
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 56
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 57
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 58
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 59
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 60
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 61
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 62
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 63
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 64
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 65
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 66
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 67
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 68
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 69
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 70
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 71
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 72
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 73
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 74
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 75
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 76
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 77
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 78
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 79
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 80
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 81
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 82
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 83
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 84
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 85
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 86
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 87
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 88
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 89
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 90
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 91
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 92
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 93
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 94
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 95
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 96
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 97
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 98
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 99
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;100
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;101
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;102
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;103
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;104
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;105
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;106
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;107
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;108
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-JSON&#34; data-lang=&#34;JSON&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;#34;swagger&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;2.0&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;#34;info&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;#34;version&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;v1&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;#34;title&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;RS.Blog.Projects.ConnectedServices.FullAPI&amp;#34;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;#34;host&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;localhost:5200&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;#34;schemes&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+    &lt;span class=&#34;s2&#34;&gt;&amp;#34;http&amp;#34;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;#34;paths&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;#34;/api/first/number&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+      &lt;span class=&#34;nt&#34;&gt;&amp;#34;get&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;tags&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+          &lt;span class=&#34;s2&#34;&gt;&amp;#34;First&amp;#34;&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;operationId&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;First_NumberMethod&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;consumes&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[],&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;produces&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+          &lt;span class=&#34;s2&#34;&gt;&amp;#34;application/json&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+          &lt;span class=&#34;s2&#34;&gt;&amp;#34;text/json&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+          &lt;span class=&#34;s2&#34;&gt;&amp;#34;application/xml&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+          &lt;span class=&#34;s2&#34;&gt;&amp;#34;text/xml&amp;#34;&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;responses&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+          &lt;span class=&#34;nt&#34;&gt;&amp;#34;200&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+            &lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;OK&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+            &lt;span class=&#34;nt&#34;&gt;&amp;#34;schema&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+              &lt;span class=&#34;nt&#34;&gt;&amp;#34;format&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;int32&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+              &lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;integer&amp;#34;&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+          &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;#34;/api/first/string&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+      &lt;span class=&#34;nt&#34;&gt;&amp;#34;get&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;tags&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+          &lt;span class=&#34;s2&#34;&gt;&amp;#34;First&amp;#34;&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;operationId&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;First_StringMethod&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;consumes&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[],&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;produces&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+          &lt;span class=&#34;s2&#34;&gt;&amp;#34;application/json&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+          &lt;span class=&#34;s2&#34;&gt;&amp;#34;text/json&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+          &lt;span class=&#34;s2&#34;&gt;&amp;#34;application/xml&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+          &lt;span class=&#34;s2&#34;&gt;&amp;#34;text/xml&amp;#34;&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;responses&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+          &lt;span class=&#34;nt&#34;&gt;&amp;#34;200&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+            &lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;OK&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+            &lt;span class=&#34;nt&#34;&gt;&amp;#34;schema&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+              &lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;string&amp;#34;&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+          &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;#34;/api/second/number&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+      &lt;span class=&#34;nt&#34;&gt;&amp;#34;get&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;tags&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+          &lt;span class=&#34;s2&#34;&gt;&amp;#34;Second&amp;#34;&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;operationId&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Second_NumberMethod&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;consumes&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[],&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;produces&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+          &lt;span class=&#34;s2&#34;&gt;&amp;#34;application/json&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+          &lt;span class=&#34;s2&#34;&gt;&amp;#34;text/json&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+          &lt;span class=&#34;s2&#34;&gt;&amp;#34;application/xml&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+          &lt;span class=&#34;s2&#34;&gt;&amp;#34;text/xml&amp;#34;&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;responses&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+          &lt;span class=&#34;nt&#34;&gt;&amp;#34;200&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+            &lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;OK&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+            &lt;span class=&#34;nt&#34;&gt;&amp;#34;schema&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+              &lt;span class=&#34;nt&#34;&gt;&amp;#34;format&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;int32&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+              &lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;integer&amp;#34;&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+          &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;#34;/api/second/string&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+      &lt;span class=&#34;nt&#34;&gt;&amp;#34;get&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;tags&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+          &lt;span class=&#34;s2&#34;&gt;&amp;#34;Second&amp;#34;&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;operationId&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Second_StringMethod&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;consumes&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[],&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;produces&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+          &lt;span class=&#34;s2&#34;&gt;&amp;#34;application/json&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+          &lt;span class=&#34;s2&#34;&gt;&amp;#34;text/json&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+          &lt;span class=&#34;s2&#34;&gt;&amp;#34;application/xml&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+          &lt;span class=&#34;s2&#34;&gt;&amp;#34;text/xml&amp;#34;&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;responses&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+          &lt;span class=&#34;nt&#34;&gt;&amp;#34;200&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+            &lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;OK&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+            &lt;span class=&#34;nt&#34;&gt;&amp;#34;schema&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+              &lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;string&amp;#34;&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+          &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;#34;definitions&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Para simplificar la aplicación cliente, decidí reproducirla como una aplicación de consola .NET Core. Agregué una carpeta: &amp;ldquo;OpenAPI&amp;rdquo; para almacenar el documento de especificación anterior como: &amp;ldquo;FullAPI.json&amp;rdquo;. Desde la figura 2 hasta la figura 5 podemos ver cómo agregar un servicio conectado.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generate-swagger-openapi-clients/02.png&#34; alt=&#34;Agregar un servicio conectado&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 2: Agregar un servicio conectado.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generate-swagger-openapi-clients/03.png&#34; alt=&#34;Adición de una especificación OpenAPI&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 3: Agregar una especificación de OpenAPI.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generate-swagger-openapi-clients/04.png&#34; alt=&#34;Especificando los parámetros de generación del cliente&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 4: Especificación de los parámetros de generación de clientes.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generate-swagger-openapi-clients/05.png&#34; alt=&#34;Resultados de generación de clientes&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 5: Resultados de la generación de clientes.&lt;/p&gt;
+&lt;p&gt;Haga clic con el botón derecho en las dependencias del proyecto del cliente y seleccione: &amp;ldquo;Agregar Servicio Conectado&amp;rdquo;. Luego haga clic en el botón: &amp;ldquo;Agregar&amp;rdquo;. Seleccione &amp;ldquo;OpenAPI&amp;rdquo; y haga clic en el botón: &amp;ldquo;Siguiente&amp;rdquo;. Escriba el archivo de especificación (&amp;ldquo;OpenAPI\FullAPI.json&amp;rdquo;) y &amp;ldquo;FullAPI&amp;rdquo; como espacio de nombres para el cliente generado. Finalmente presione el botón: &amp;ldquo;Finalizar&amp;rdquo; y se generará el cliente mostrando los resultados en la siguiente pantalla. Este proceso agrega varias líneas de códigos al archivo del proyecto (.csproj) como se muestra a continuación:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;ItemGroup&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;OpenApiReference&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Include=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;OpenAPI\FullAPI.json&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Namespace=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;FullAPI&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;CodeGenerator&amp;gt;&lt;/span&gt;NSwagCSharp&lt;span class=&#34;nt&#34;&gt;&amp;lt;/CodeGenerator&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/OpenApiReference&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/ItemGroup&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;ItemGroup&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;PackageReference&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Include=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Microsoft.Extensions.ApiDescription.Client&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Version=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;3.0.0&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;PrivateAssets&amp;gt;&lt;/span&gt;all&lt;span class=&#34;nt&#34;&gt;&amp;lt;/PrivateAssets&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;IncludeAssets&amp;gt;&lt;/span&gt;runtime; build; native; contentfiles; analyzers; buildtransitive&lt;span class=&#34;nt&#34;&gt;&amp;lt;/IncludeAssets&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/PackageReference&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;PackageReference&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Include=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Newtonsoft.Json&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Version=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;12.0.2&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;PackageReference&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Include=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;NSwag.ApiDescription.Client&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Version=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;13.0.5&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;PrivateAssets&amp;gt;&lt;/span&gt;all&lt;span class=&#34;nt&#34;&gt;&amp;lt;/PrivateAssets&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;IncludeAssets&amp;gt;&lt;/span&gt;runtime; build; native; contentfiles; analyzers; buildtransitive&lt;span class=&#34;nt&#34;&gt;&amp;lt;/IncludeAssets&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/PackageReference&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/ItemGroup&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Una vez compilado, se crea un nuevo archivo llamado: &amp;ldquo;FullAPIClient.cs&amp;rdquo; en la carpeta &amp;ldquo;obj&amp;rdquo; dentro de la carpeta del proyecto. En este punto, el proyecto deja de compilarse correctamente debido a este archivo.&lt;/p&gt;
+&lt;p&gt;Demasiados errores, ¡Qué sorpresa! ¿Qué esta pasando y por qué? (figura 6).&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generate-swagger-openapi-clients/06.png&#34; alt=&#34;Errores de compilación de generación de clientes&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 6: Errores de compilación de generación de clientes.&lt;/p&gt;
+&lt;p&gt;La causa se muestra en la figura 7. El cliente se genera dos veces repitiendo sus campos internos.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generate-swagger-openapi-clients/07.png&#34; alt=&#34;Generación de clientes duplicados&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 7: Generación de clientes duplicados.&lt;/p&gt;
+&lt;p&gt;Me preguntaba por qué sucede esto; así que decidí analizar el código fuente del generador del cliente: &amp;ldquo;NSwag&amp;rdquo; en este caso (recuerda lo que se agregó al archivo del proyecto). El código fuente se almacena en GitHub en:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/RicoSuter/NSwag&#34;&gt;NSwag: La cadena de herramientas Swagger/OpenAPI para .NET, ASP.NET Core y TypeScript&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Al analizar el generador de clientes para C#, podemos encontrar que el valor predeterminado para el parámetro: &amp;ldquo;Operation Generation Mode&amp;rdquo; es &amp;ldquo;MultipleClientsFromOperationId&amp;rdquo; que se basa en el parámetro: &amp;ldquo;ClassName&amp;rdquo; que llega como vacío, por lo que la solución es especificarlo en los parámetros de generación del cliente en el archivo de proyecto (.csproj).&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;ItemGroup&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;OpenApiReference&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Include=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;OpenAPI\FullAPI.json&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Namespace=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;FullAPI&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;ClassName&amp;gt;&lt;/span&gt;{controller}Client&lt;span class=&#34;nt&#34;&gt;&amp;lt;/ClassName&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;CodeGenerator&amp;gt;&lt;/span&gt;NSwagCSharp&lt;span class=&#34;nt&#34;&gt;&amp;lt;/CodeGenerator&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/OpenApiReference&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/ItemGroup&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;El valor del nombre de clase es un patrón que incluye el nombre del controlador seguido de la palabra: &amp;ldquo;Client&amp;rdquo;. El nombre del controlador se toma del campo: &amp;ldquo;operationId&amp;rdquo; del archivo de especificación. El valor se divide por el carácter: &amp;ldquo;_&amp;rdquo; y el primer token se toma como nombre de cliente y el segundo token se toma como nombre de operación. Ejemplos: &amp;ldquo;Second_NumberMethod&amp;rdquo; crea el cliente: &amp;ldquo;SecondClient&amp;rdquo; con la operación: &amp;ldquo;NumberMethod&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;La Figura 8 muestra los nuevos clientes generados. Esta vez sin errores de compilación porque no se generó ningún cliente duplicado.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generate-swagger-openapi-clients/08.png&#34; alt=&#34;Nuevos clientes generados&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 8: Nuevos clientes generados.&lt;/p&gt;
+&lt;p&gt;Ahora, podemos consumir las operaciones de los clientes generados como muestra el siguiente código (archivo: &amp;ldquo;Program.cs&amp;rdquo;):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C#&#34; data-lang=&#34;C#&#34;&gt;&lt;span class=&#34;k&#34;&gt;using&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;using&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;System.Net.Http&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;RS.Blog.Projects.ConnectedServices.Client&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;internal&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Program&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+            &lt;span class=&#34;kt&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fullClient&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;HttpClient&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                &lt;span class=&#34;n&#34;&gt;BaseAddress&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Uri&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;http://localhost:5200&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+            &lt;span class=&#34;n&#34;&gt;FullAPI&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;FirstClient&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;operationFullFirstClient&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FullAPI&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;FirstClient&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fullClient&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+            &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;operationFullFirstNumberResult&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;operationFullFirstClient&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;NumberMethodAsync&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+            &lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;operationFullFirstStringResult&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;operationFullFirstClient&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;StringMethodAsync&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+            &lt;span class=&#34;n&#34;&gt;FullAPI&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SecondClient&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;operationFullSecondClient&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FullAPI&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SecondClient&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fullClient&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+            &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;operationFullSecondNumberResult&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;operationFullSecondClient&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;NumberMethodAsync&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+            &lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;operationFullSecondStringResult&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;operationFullSecondClient&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;StringMethodAsync&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Problema resuelto, pero mi curiosidad me hizo investigar un poco más y ver qué sucedía con una API creada usando .NET Core en lugar de usar .NET Framework. La Figura 9 muestra la API migrada. Básicamente, las mismas funcionalidades (controladores, métodos, rutas) pero basadas en .NET Core.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generate-swagger-openapi-clients/09.png&#34; alt=&#34;.NET Core API&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 9: API en .NET Core.&lt;/p&gt;
+&lt;p&gt;Accediendo a su documento de especificación: &amp;ldquo;http://localhost:5100/swagger/v1/swagger.json&amp;rdquo; tenemos:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;  1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 39
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 40
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 41
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 42
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 43
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 44
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 45
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 46
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 47
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 48
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 49
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 50
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 51
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 52
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 53
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 54
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 55
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 56
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 57
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 58
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 59
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 60
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 61
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 62
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 63
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 64
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 65
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 66
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 67
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 68
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 69
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 70
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 71
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 72
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 73
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 74
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 75
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 76
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 77
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 78
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 79
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 80
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 81
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 82
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 83
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 84
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 85
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 86
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 87
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 88
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 89
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 90
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 91
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 92
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 93
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 94
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 95
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 96
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 97
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 98
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 99
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;100
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;101
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;102
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;103
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;104
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;105
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;106
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;107
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;108
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;109
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;110
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;111
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;112
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;113
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;114
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;115
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;116
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;117
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;118
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;119
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;120
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;121
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;122
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;123
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;124
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;125
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;126
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;127
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;128
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;129
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;130
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;131
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;132
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;133
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-JSON&#34; data-lang=&#34;JSON&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;#34;openapi&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;3.0.1&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;#34;info&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+      &lt;span class=&#34;nt&#34;&gt;&amp;#34;title&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;ConnectedServices API&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+      &lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Description for ConnectedServices API.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+      &lt;span class=&#34;nt&#34;&gt;&amp;#34;version&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;v1&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;#34;paths&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+      &lt;span class=&#34;nt&#34;&gt;&amp;#34;/api/first/number&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;get&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+          &lt;span class=&#34;nt&#34;&gt;&amp;#34;tags&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+            &lt;span class=&#34;s2&#34;&gt;&amp;#34;First&amp;#34;&lt;/span&gt;
+          &lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+          &lt;span class=&#34;nt&#34;&gt;&amp;#34;responses&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+            &lt;span class=&#34;nt&#34;&gt;&amp;#34;200&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+              &lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Success&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+              &lt;span class=&#34;nt&#34;&gt;&amp;#34;content&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                &lt;span class=&#34;nt&#34;&gt;&amp;#34;text/plain&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                  &lt;span class=&#34;nt&#34;&gt;&amp;#34;schema&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                    &lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;integer&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+                    &lt;span class=&#34;nt&#34;&gt;&amp;#34;format&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;int32&amp;#34;&lt;/span&gt;
+                  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+                &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+                &lt;span class=&#34;nt&#34;&gt;&amp;#34;application/json&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                  &lt;span class=&#34;nt&#34;&gt;&amp;#34;schema&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                    &lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;integer&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+                    &lt;span class=&#34;nt&#34;&gt;&amp;#34;format&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;int32&amp;#34;&lt;/span&gt;
+                  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+                &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+                &lt;span class=&#34;nt&#34;&gt;&amp;#34;text/json&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                  &lt;span class=&#34;nt&#34;&gt;&amp;#34;schema&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                    &lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;integer&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+                    &lt;span class=&#34;nt&#34;&gt;&amp;#34;format&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;int32&amp;#34;&lt;/span&gt;
+                  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+                &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+              &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+          &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+      &lt;span class=&#34;nt&#34;&gt;&amp;#34;/api/first/string&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;get&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+          &lt;span class=&#34;nt&#34;&gt;&amp;#34;tags&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+            &lt;span class=&#34;s2&#34;&gt;&amp;#34;First&amp;#34;&lt;/span&gt;
+          &lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+          &lt;span class=&#34;nt&#34;&gt;&amp;#34;responses&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+            &lt;span class=&#34;nt&#34;&gt;&amp;#34;200&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+              &lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Success&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+              &lt;span class=&#34;nt&#34;&gt;&amp;#34;content&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                &lt;span class=&#34;nt&#34;&gt;&amp;#34;text/plain&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                  &lt;span class=&#34;nt&#34;&gt;&amp;#34;schema&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                    &lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;string&amp;#34;&lt;/span&gt;
+                  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+                &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+                &lt;span class=&#34;nt&#34;&gt;&amp;#34;application/json&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                  &lt;span class=&#34;nt&#34;&gt;&amp;#34;schema&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                    &lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;string&amp;#34;&lt;/span&gt;
+                  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+                &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+                &lt;span class=&#34;nt&#34;&gt;&amp;#34;text/json&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                  &lt;span class=&#34;nt&#34;&gt;&amp;#34;schema&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                    &lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;string&amp;#34;&lt;/span&gt;
+                  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+                &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+              &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+          &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+      &lt;span class=&#34;nt&#34;&gt;&amp;#34;/api/second/number&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;get&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+          &lt;span class=&#34;nt&#34;&gt;&amp;#34;tags&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+            &lt;span class=&#34;s2&#34;&gt;&amp;#34;Second&amp;#34;&lt;/span&gt;
+          &lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+          &lt;span class=&#34;nt&#34;&gt;&amp;#34;responses&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+            &lt;span class=&#34;nt&#34;&gt;&amp;#34;200&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+              &lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Success&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+              &lt;span class=&#34;nt&#34;&gt;&amp;#34;content&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                &lt;span class=&#34;nt&#34;&gt;&amp;#34;text/plain&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                  &lt;span class=&#34;nt&#34;&gt;&amp;#34;schema&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                    &lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;integer&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+                    &lt;span class=&#34;nt&#34;&gt;&amp;#34;format&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;int32&amp;#34;&lt;/span&gt;
+                  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+                &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+                &lt;span class=&#34;nt&#34;&gt;&amp;#34;application/json&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                  &lt;span class=&#34;nt&#34;&gt;&amp;#34;schema&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                    &lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;integer&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+                    &lt;span class=&#34;nt&#34;&gt;&amp;#34;format&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;int32&amp;#34;&lt;/span&gt;
+                  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+                &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+                &lt;span class=&#34;nt&#34;&gt;&amp;#34;text/json&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                  &lt;span class=&#34;nt&#34;&gt;&amp;#34;schema&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                    &lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;integer&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+                    &lt;span class=&#34;nt&#34;&gt;&amp;#34;format&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;int32&amp;#34;&lt;/span&gt;
+                  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+                &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+              &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+          &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+      &lt;span class=&#34;nt&#34;&gt;&amp;#34;/api/second/string&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;get&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+          &lt;span class=&#34;nt&#34;&gt;&amp;#34;tags&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+            &lt;span class=&#34;s2&#34;&gt;&amp;#34;Second&amp;#34;&lt;/span&gt;
+          &lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+          &lt;span class=&#34;nt&#34;&gt;&amp;#34;responses&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+            &lt;span class=&#34;nt&#34;&gt;&amp;#34;200&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+              &lt;span class=&#34;nt&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Success&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+              &lt;span class=&#34;nt&#34;&gt;&amp;#34;content&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                &lt;span class=&#34;nt&#34;&gt;&amp;#34;text/plain&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                  &lt;span class=&#34;nt&#34;&gt;&amp;#34;schema&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                    &lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;string&amp;#34;&lt;/span&gt;
+                  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+                &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+                &lt;span class=&#34;nt&#34;&gt;&amp;#34;application/json&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                  &lt;span class=&#34;nt&#34;&gt;&amp;#34;schema&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                    &lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;string&amp;#34;&lt;/span&gt;
+                  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+                &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+                &lt;span class=&#34;nt&#34;&gt;&amp;#34;text/json&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                  &lt;span class=&#34;nt&#34;&gt;&amp;#34;schema&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                    &lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;string&amp;#34;&lt;/span&gt;
+                  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+                &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+              &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+          &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;#34;components&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Lo primero que es diferente (y probablemente lo más importante) es el campo: &amp;ldquo;openapi&amp;rdquo; (anteriormente &amp;ldquo;swagger&amp;rdquo;) con la versión: &amp;ldquo;3.0.1&amp;rdquo; (anteriormente: &amp;ldquo;2.0&amp;rdquo;). Guardemos esta nueva especificación como: &amp;ldquo;CoreAPI.json&amp;rdquo; junto con la otra en la carpeta: &amp;ldquo;OpenAPI&amp;rdquo;. Ahora, generemos el cliente de la misma manera que lo hicimos para la API desarrollada en .NET Framework y veamos qué sucede. Las figuras del 10 al 14 muestran el proceso.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generate-swagger-openapi-clients/10.png&#34; alt=&#34;Agregar un servicio conectado&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 10: Agregar un servicio conectado.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generate-swagger-openapi-clients/11.png&#34; alt=&#34;Agregar una especificación de OpenAPI&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 11: Agregar una especificación de OpenAPI.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generate-swagger-openapi-clients/12.png&#34; alt=&#34;Especificando los parámetros de generación del cliente&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 12: Especificación de los parámetros de generación de clientes.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generate-swagger-openapi-clients/13.png&#34; alt=&#34;Resultados de la generación de clientes&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 13: Resultados de la generación de clientes.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generate-swagger-openapi-clients/14.png&#34; alt=&#34;Lista de servicios conectados&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 14: Lista de servicios conectados.&lt;/p&gt;
+&lt;p&gt;Se agrega una nueva sección al archivo del proyecto (.csproj) similar a la anterior:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;OpenApiReference&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Include=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;OpenAPI\CoreAPI.json&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;CodeGenerator=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;NSwagCSharp&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Namespace=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;CoreAPI&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Resultando en:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;ItemGroup&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;OpenApiReference&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Include=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;OpenAPI\CoreAPI.json&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;CodeGenerator=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;NSwagCSharp&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Namespace=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;CoreAPI&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;OpenApiReference&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Include=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;OpenAPI\FullAPI.json&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Namespace=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;FullAPI&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;ClassName&amp;gt;&lt;/span&gt;{controller}Client&lt;span class=&#34;nt&#34;&gt;&amp;lt;/ClassName&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;CodeGenerator&amp;gt;&lt;/span&gt;NSwagCSharp&lt;span class=&#34;nt&#34;&gt;&amp;lt;/CodeGenerator&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/OpenApiReference&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/ItemGroup&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;La solución se compila incluyendo el nuevo archivo generado: &amp;ldquo;CoreAPIClient.cs&amp;rdquo; en la carpeta: &amp;ldquo;obj&amp;rdquo; pero el código generado es diferente:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Solo hay una clase de cliente.&lt;/li&gt;
+&lt;li&gt;El constructor del cliente requiere la URL base.&lt;/li&gt;
+&lt;li&gt;Las operaciones tienen diferentes nombres.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;/generate-swagger-openapi-clients/15.png&#34; alt=&#34;Cliente generado para .NET Core API&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 15: Cliente generado para una API en .NET Core.&lt;/p&gt;
+&lt;p&gt;Analizando el archivo de especificación (&amp;ldquo;CoreAPI.json&amp;rdquo;) podemos notar que no hay campos: &amp;ldquo;operationId&amp;rdquo; y eso es importante para los nombres de clientes y operaciones. Entonces, si agregamos, de alguna manera, los identificadores de operación a cada operación, deberíamos resolver el primer y tercer problema.&lt;/p&gt;
+&lt;p&gt;Para agregar el campo: &amp;ldquo;operationId&amp;rdquo; al archivo de especificación, necesitamos agregar el atributo: &amp;ldquo;SwaggerOperation&amp;rdquo; a cada método de cada controlador. Ese atributo es parte del paquete NuGet: &amp;ldquo;Swashbuckle.AspNetCore.Annotations&amp;rdquo; que necesitamos instalar primero. El siguiente código muestra cómo usarlo:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C#&#34; data-lang=&#34;C#&#34;&gt;&lt;span class=&#34;k&#34;&gt;using&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;Microsoft.AspNetCore.Mvc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;using&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;Swashbuckle.AspNetCore.Annotations&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;RS.Blog.Projects.ConnectedServices.CoreAPI.Controllers&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;FirstController&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ControllerBase&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;na&#34;&gt;        [HttpGet, Route(&amp;#34;api/first/number&amp;#34;)]&lt;/span&gt;
+&lt;span class=&#34;na&#34;&gt;        [SwaggerOperation(OperationId = &amp;#34;First_NumberMethod&amp;#34;)]&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;NumberMethod&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+            &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;211&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;na&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;        [HttpGet, Route(&amp;#34;api/first/string&amp;#34;)]&lt;/span&gt;
+&lt;span class=&#34;na&#34;&gt;        [SwaggerOperation(OperationId = &amp;#34;First_StringMethod&amp;#34;)]&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;StringMethod&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+            &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Framework: Core, Controller: First, Method: String&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Con el uso de este atributo, el archivo de especificación agrega el campo: &amp;ldquo;operationId&amp;rdquo; pero luego el código no se compila debido al mismo primer problema: clientes duplicados. Necesitamos modificar los parámetros de generación de la misma manera que lo hicimos antes. El archivo del proyecto (.csproj) debería verse así:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;ItemGroup&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;OpenApiReference&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Include=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;OpenAPI\CoreAPI.json&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;CodeGenerator=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;NSwagCSharp&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Namespace=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;CoreAPI&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;ClassName&amp;gt;&lt;/span&gt;{controller}Client&lt;span class=&#34;nt&#34;&gt;&amp;lt;/ClassName&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/OpenApiReference&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;OpenApiReference&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Include=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;OpenAPI\FullAPI.json&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Namespace=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;FullAPI&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;ClassName&amp;gt;&lt;/span&gt;{controller}Client&lt;span class=&#34;nt&#34;&gt;&amp;lt;/ClassName&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;CodeGenerator&amp;gt;&lt;/span&gt;NSwagCSharp&lt;span class=&#34;nt&#34;&gt;&amp;lt;/CodeGenerator&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/OpenApiReference&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/ItemGroup&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Pero el código no compila. ¿Por qué, si hicimos exactamente lo que hicimos al generar clientes para la API en .NET Framework? La figura 16 muestra los errores.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generate-swagger-openapi-clients/16.png&#34; alt=&#34;Errores al generar clientes para .NET Core API&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 16: Errores al generar clientes para la API en .NET Core.&lt;/p&gt;
+&lt;p&gt;Tenga en cuenta que los errores están en los clientes generados anteriormente (archivo: &amp;ldquo;FullAPI.cs&amp;rdquo;). Bueno, esto se debe a un &lt;a href=&#34;https://github.com/dotnet/aspnetcore/issues/18204&#34;&gt;error bien conocido&lt;/a&gt; en NSwag CSharp Generator que está activo y debería resolverse en el futuro y tener una solución fácil. Modifiquemos una vez más el archivo del proyecto (.csproj):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;ItemGroup&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;OpenApiReference&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Include=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;OpenAPI\CoreAPI.json&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;CodeGenerator=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;NSwagCSharp&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Namespace=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;CoreAPI&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;ClassName&amp;gt;&lt;/span&gt;{controller}Client&lt;span class=&#34;nt&#34;&gt;&amp;lt;/ClassName&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/OpenApiReference&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;OpenApiReference&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Include=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;OpenAPI\FullAPI.json&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Namespace=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;FullAPI&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;ClassName&amp;gt;&lt;/span&gt;{controller}Client&lt;span class=&#34;nt&#34;&gt;&amp;lt;/ClassName&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;CodeGenerator&amp;gt;&lt;/span&gt;NSwagCSharp&lt;span class=&#34;nt&#34;&gt;&amp;lt;/CodeGenerator&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;Options&amp;gt;&lt;/span&gt;/GenerateExceptionClasses:false /ExceptionClass:&amp;#34;CoreAPI.ApiException&amp;#34;&lt;span class=&#34;nt&#34;&gt;&amp;lt;/Options&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/OpenApiReference&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/ItemGroup&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Hemos agregado la etiqueta: &amp;ldquo;Options&amp;rdquo; indicando no generar clases de excepciones porque esas clases ya están generadas en otro espacio de nombres. Esto se debe a que el orden para la generación de los clientes es importante y el primero que se inserta (el cliente de la API de .NET Core en este caso) genera las clases de excepción. Ahora la solución se compila con éxito, pero aún no hemos resuelto el segundo problema (se requiere la URL base en el constructor). Para solucionar esto, una vez más necesitamos modificar el archivo del proyecto (.csproj):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;ItemGroup&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;OpenApiReference&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Include=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;OpenAPI\CoreAPI.json&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;CodeGenerator=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;NSwagCSharp&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Namespace=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;CoreAPI&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;ClassName&amp;gt;&lt;/span&gt;{controller}Client&lt;span class=&#34;nt&#34;&gt;&amp;lt;/ClassName&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;Options&amp;gt;&lt;/span&gt;/UseBaseUrl:false&lt;span class=&#34;nt&#34;&gt;&amp;lt;/Options&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/OpenApiReference&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;OpenApiReference&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Include=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;OpenAPI\FullAPI.json&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Namespace=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;FullAPI&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;ClassName&amp;gt;&lt;/span&gt;{controller}Client&lt;span class=&#34;nt&#34;&gt;&amp;lt;/ClassName&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;CodeGenerator&amp;gt;&lt;/span&gt;NSwagCSharp&lt;span class=&#34;nt&#34;&gt;&amp;lt;/CodeGenerator&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;lt;Options&amp;gt;&lt;/span&gt;/GenerateExceptionClasses:false /ExceptionClass:&amp;#34;CoreAPI.ApiException&amp;#34;&lt;span class=&#34;nt&#34;&gt;&amp;lt;/Options&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/OpenApiReference&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/ItemGroup&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Observe que podemos lograr el mismo resultado sin modificar manualmente el archivo del proyecto (.csproj) si especificamos los valores para diferentes opciones en el parámetro: &amp;ldquo;Opciones adicionales de generación de código&amp;rdquo; en el cuadro de diálogo para agregar una nueva referencia del servicio OpenAPI (figuras 4 y 12).&lt;/p&gt;
+&lt;p&gt;En esta ocasión para el cliente de la API desarrollada en .NET Core hemos agregado la opción de no usar URL base. Ahora los clientes generados son casi idénticos y se pueden utilizar de forma muy similar:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-C#&#34; data-lang=&#34;C#&#34;&gt;&lt;span class=&#34;k&#34;&gt;using&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;using&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;System.Net.Http&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;RS.Blog.Projects.ConnectedServices.Client&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;internal&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Program&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+            &lt;span class=&#34;kt&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fullClient&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;HttpClient&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                &lt;span class=&#34;n&#34;&gt;BaseAddress&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Uri&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;http://localhost:5200&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+            &lt;span class=&#34;kt&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;operationFullFirstClient&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FullAPI&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;FirstClient&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fullClient&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+            &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;operationFullFirstNUmberResult&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;operationFullFirstClient&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;NumberMethodAsync&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+            &lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;operationFullFirstStringResult&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;operationFullFirstClient&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;StringMethodAsync&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+            &lt;span class=&#34;kt&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;operationFullSecondClient&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FullAPI&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SecondClient&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fullClient&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+            &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;operationFullSecondNumberResult&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;operationFullSecondClient&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;NumberMethodAsync&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+            &lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;operationFullSecondStringResult&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;operationFullSecondClient&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;StringMethodAsync&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+            &lt;span class=&#34;kt&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;coreClient&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;HttpClient&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                &lt;span class=&#34;n&#34;&gt;BaseAddress&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Uri&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;http://localhost:5100&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+            &lt;span class=&#34;kt&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;operationCoreFirstClient&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;CoreAPI&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;FirstClient&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;coreClient&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+            &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;operationCoreFirstNumberResult&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;operationCoreFirstClient&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;NumberMethodAsync&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+            &lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;operationCoreFirstStringResult&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;operationCoreFirstClient&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;StringMethodAsync&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+            &lt;span class=&#34;kt&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;operationCoreSecondClient&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;CoreAPI&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SecondClient&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;coreClient&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+            &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;operationCoreSecondNumberResult&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;operationCoreSecondClient&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;NumberMethodAsync&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+            &lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;operationCoreSecondStringResult&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;operationCoreSecondClient&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;StringMethodAsync&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;El archivo de proyecto del cliente (.csproj) hay comentado otro enfoque para hacer todo lo que hemos expuesto aquí sin la necesidad de campos de identificadores de operación. Basándonos en la ruta podemos utilizar la opción: &amp;ldquo;/OperationGenerationMode:MultipleClientsFromPathSegments&amp;rdquo; junto con otros parámetros interesantes como: &amp;ldquo;OutputPath&amp;rdquo;, y &amp;ldquo;SourceUri&amp;rdquo;.&lt;/p&gt;
+&lt;h3 id=&#34;resumen&#34;&gt;Resumen&lt;/h3&gt;
+&lt;p&gt;El identificador de operación (campo: &amp;ldquo;operationId&amp;rdquo;) es muy importante para la generación de clientes. Swagger 2.0 (más reciente para .NET Framework) lo genera para cada método, mientras que OpenAPI 3.x no lo genera. Se recomienda agregarlo manualmente usando el atributo: &amp;ldquo;SwaggerOperation&amp;rdquo;. La función &amp;ldquo;Servicios Conectados&amp;rdquo; de Visual Studio es una capacidad realmente buena que nos ahorra mucho tiempo una vez que sabemos cómo usarla correctamente, como hemos mostrado en esta publicación.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/ConnectedServices&#34;&gt;Código fuente de apoyo disponible en GitHub&lt;/a&gt;&lt;/p&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>Firmando ensamblados</title>
@@ -1898,24 +2812,6 @@ Hoy por hoy hay muchos profesionales que insisten en que los proyectos desarroll
 &lt;p&gt;Se hace insoportable el mantenimiento. La industria de software moderna exige cada vez más que las aplicaciones sean desarrolladas en tiempo record, cosa que es incomparable cuando se programa en ensamblador. En todos los casos me he referido a las aplicaciones empresariales tradicionales.&lt;/p&gt;
 &lt;p&gt;El ensamblador está condenado hoy en día para el desarrollo de firmware a muy bajo nivel para los dispositivos empotrados, por ejemplo: sistemas operativos para dispositivos móviles, equipos médicos, de telecomunicaciones, etc. Un buen amigo me dijo hace ya unos años que el programa que por sus características propias tuviera que implementar alguno de sus módulos en ensamblador, ese programa estaba mal diseñado; comparto con mi amigo esa verdad (si eso fue hace unos años ¿qué podremos pensar hoy?). Los Plan de Estudios &amp;ldquo;D&amp;rdquo; tiene esto muy en mente también y todo parece ser que se seguirá impartiendo conocimientos de ensamblador, pero a los niveles diferentes a los que se estaban dando.&lt;/p&gt;
 &lt;p&gt;El dilema está planteado por las características de las dos grandes plataformas de desarrollo de software actuales (Java y .NET) ninguna permite interactuar con el ensamblador, eliminándole al programador infinitas molestias. Si todo parece indicar que esto va a continuar en los próximos años entonces por qué torturarnos enseñando algo que poco a poco va a ir desapareciendo (Microsoft está llevando adelante un proyecto de un Sistema Operativo en C#).&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Fanatismos</title>
-      <link>/es/post/fanatismos/</link>
-      <pubDate>Wed, 16 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/es/post/fanatismos/</guid>
-      
-        <description>&lt;p&gt;Hay que ver que el ser humano, en su vano afán de querer tener siempre la razón, hace cosas increíbles. Una de ellas es aquella manía de empecinarse con algo (dígase objetos, conceptos, teorías, personas, etc.) que le hemos llamado fanatismo.&lt;/p&gt;
-&lt;p&gt;¿Alguien podrá decir que no es fanático a nada? Creo que no, pues ¿quién no se obsesionó con su primer amor? Existen varios tipos de fanatismos, el que se profesa por los objetos materiales, la religión, los equipos deportivos, etc. Pero no es de esos tipos de fanatismo a los que quiero referirme, sino a un tipo especial y que nos toca muy de cerca a todos los que de alguna manera desarrollamos nuestras vidas vinculadas a la computación, me refiero al fanatismo tecnológico.
-Sin dejar de asemejarse con otros fanatismos (al menos en sus esencias fundamentales), este es un poquito particular. Se puede ver aplicado en cualquier rama de la computación: filosofías, hardware, software, metodologías, sistemas operativos, servicios, servidores, etc. El más clásico y que ha tomado mucho auge en los últimos tiempos es aquel aplicado al software libre y al software propietario.&lt;/p&gt;
-&lt;p&gt;¿Quién tiene la razón? ¿Quién ganará la guerra? se preguntarán muchos imparciales que pueden ver el fenómeno desde las gradas. Los que están en cada bando, evidentemente confían e intentan asegurarse que serán ellos los ganadores con toda la razón de su parte. Ahora bien, para aquellos que, sin estar en las gradas, pero tampoco directamente en ningún equipo (donde creo que actualmente estoy) la respuesta a esas inquietudes parece ser la más lógica.&lt;/p&gt;
-&lt;p&gt;Realmente creo que ninguno ganará pues los dos bandos tienen razón en muchas cosas y solo dejan de tenerla en pequeñas asperezas del modelo. Si de todas formas tuviera que vaticinar un ganador diría que será el que mejor logre adaptarse a la forma de ver las cosas del otro; pero más aun, si tuviera que concretar diría que el software propietario es el que pudiera hacerlo si hace bien las cosas. Motivos por los cuales me decido a decirlo es porque en la actualidad cuenta con la inmensa mayoría de aplicaciones ya desarrolladas y con un altísimo nivel de penetración en el mundo completo, esto hace que las compañías tengan un gran capital para invertir en hacerse cada día mejores (cosa muy importante).&lt;/p&gt;
-&lt;p&gt;¿Qué podría dar al traste con esta decisión? Que en vez de dedicarse a suavizar las licencias comerciales con las cuales se distribuyen sus productos, dediquen esfuerzos a atacar al bando contrario. El movimiento de software libre no se ha quedado con los brazos cruzados, pero tiene que cambiar radicalmente su forma de enfrentar las cosas. Aquellos que son seguidores de este movimiento no pueden ver, ni escuchar, ni tan siquiera imaginarse que lo que le estén mostrando o hablando &amp;ldquo;huela&amp;rdquo; a software propietario, porque ponen el plug a tierra y es como si no existiera la contraparte, es decir, solo lo de ellos es mejor y no tiene defectos algunos, es a esto precisamente a lo que me refiero. Que me disculpen los que no piensan así, pero en mi experiencia me ha tocado enfrentarme a muchas de estas personas.&lt;/p&gt;
-&lt;p&gt;En un principio y como fanático al fin del software propietario me enfrascaba en la más tediosa discusión por defender lo que tenía dentro de mí, esto fue así hasta que desperté de ese sueño. Hace falta que muchos más despierten. Actualmente hago igual que cuando alguien intenta demostrarme que Dios creó el mundo (que me disculpen los creyentes), acordamos no hablar de ese tema y seguir conversando de lo hermosa que es la vida.&lt;/p&gt;
 </description>
       
     </item>

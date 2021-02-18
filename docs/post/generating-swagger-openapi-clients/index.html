@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Generating Swagger/OpenAPI clients - Coding Aloud</title>
+  
+<link rel="alternate" hreflang="es" href="/es/post/generating-swagger-openapi-clients/" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="Ricardo Sotolongo" />
+  <meta name="description" content="Source code of support available at GitHub
+Recently I was developing a .NET Core web application that needs to consume an API developed few years ago using ASP.NET WebAPI. Fortunately, that API have Swagger integrated, so I thought I can save time do not creating manually the instruments required to API calls (DTOs, client, etc.) instead using the &amp;ldquo;Connected Services&amp;rdquo; feature of Visual Studio.
+I got a big surprise that inspired me to share the experience and the solution in this post." />
+
+  <meta name="keywords" content="Hugo, theme, jane" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.79.1" />
+
+
+<link rel="canonical" href="/post/generating-swagger-openapi-clients/" />
+
+
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.fa3d941d1d0e0ddc985804227feabffea55c89883eb0af34e0532a7ae9135151.css" integrity="sha256-&#43;j2UHR0ODdyYWAQif&#43;q//qVciYg&#43;sK804FMqeukTUVE=" media="screen" crossorigin="anonymous">
+
+
+
+
+
+<meta property="og:title" content="Generating Swagger/OpenAPI clients" />
+<meta property="og:description" content="Source code of support available at GitHub
+Recently I was developing a .NET Core web application that needs to consume an API developed few years ago using ASP.NET WebAPI. Fortunately, that API have Swagger integrated, so I thought I can save time do not creating manually the instruments required to API calls (DTOs, client, etc.) instead using the &ldquo;Connected Services&rdquo; feature of Visual Studio.
+I got a big surprise that inspired me to share the experience and the solution in this post." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/generating-swagger-openapi-clients/" />
+<meta property="article:published_time" content="2021-02-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-02-15T00:00:00+00:00" /><meta property="og:site_name" content="Coding Aloud" />
+<meta itemprop="name" content="Generating Swagger/OpenAPI clients">
+<meta itemprop="description" content="Source code of support available at GitHub
+Recently I was developing a .NET Core web application that needs to consume an API developed few years ago using ASP.NET WebAPI. Fortunately, that API have Swagger integrated, so I thought I can save time do not creating manually the instruments required to API calls (DTOs, client, etc.) instead using the &ldquo;Connected Services&rdquo; feature of Visual Studio.
+I got a big surprise that inspired me to share the experience and the solution in this post.">
+<meta itemprop="datePublished" content="2021-02-15T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-02-15T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2303">
+
+
+
+<meta itemprop="keywords" content="Visual Studio,OpenAPI,Swagger,API," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Generating Swagger/OpenAPI clients"/>
+<meta name="twitter:description" content="Source code of support available at GitHub
+Recently I was developing a .NET Core web application that needs to consume an API developed few years ago using ASP.NET WebAPI. Fortunately, that API have Swagger integrated, so I thought I can save time do not creating manually the instruments required to API calls (DTOs, client, etc.) instead using the &ldquo;Connected Services&rdquo; feature of Visual Studio.
+I got a big surprise that inspired me to share the experience and the solution in this post."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-4387301-7', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Coding Aloud</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">Home</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">Archives</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/tags/">Tags</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">Categories</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://ricardosotolongo.com" rel="noopener" target="_blank">
+              RS
+              
+              <i class="iconfont">
+                <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M623.36 272.96 473.216 423.04C467.2 429.056 467.072 438.656 472.896 444.416c0 0-6.72-6.656 1.6 1.6C496.064 467.648 528.64 500.224 528.64 500.224 534.464 506.048 544 505.856 550.016 499.904l150.08-150.144 67.328 66.432c9.024 8.96 27.456 4.544 30.4-8.96 19.968-92.608 46.656-227.52 46.656-227.52 6.848-34.496-16.192-56.704-49.92-49.92 0 0-134.656 26.816-227.328 46.784C560.32 178.048 556.352 182.272 554.752 187.136c-3.2 6.208-3.008 14.208 3.776 20.992L623.36 272.96z"></path>
+  <path d="M841.152 457.152c-30.528 0-54.784 24.512-54.784 54.656l0 274.752L237.696 786.56 237.696 237.696l206.016 0c6.656 0 10.752 0 13.248 0C487.68 237.696 512 213.184 512 182.848 512 152.32 487.36 128 456.96 128L183.04 128C153.216 128 128 152.576 128 182.848c0 3.136 0.256 6.272 0.768 9.28C128.256 195.136 128 198.272 128 201.408l0 639.488c0 0.064 0 0.192 0 0.256 0 0.128 0 0.192 0 0.32 0 30.528 24.512 54.784 54.784 54.784l646.976 0c6.592 0 9.728 0 11.712 0 28.736 0 52.928-22.976 54.464-51.968C896 843.264 896 842.304 896 841.344l0-20.352L896 561.408 896 512.128C896 481.792 871.424 457.152 841.152 457.152z"></path>
+</svg>
+
+              </i>
+            </a>
+          
+        
+      </li>
+    <li class="mobile-menu-item">
+        
+        <div class="mobile-menu-parent mobile-menu-item-lang">
+          <span class="mobile-submenu-open"></span>
+          <a href="#">
+            
+            <i class="iconfont">
+              <svg height="16" width="16" version="1.1" viewBox="0 0 128 128">
+  <path d="m 64.719501,1.4279814 c -34.694029,0 -62.8192028,28.1251726 -62.8192028,62.8192016 0,34.694036 28.1251738,62.819207 62.8192028,62.819207 4.245691,0 8.392744,-0.42239 12.402214,-1.2253 -1.616124,-0.77296 -1.792473,-6.57213 -0.194346,-9.87848 1.779059,-3.68082 7.361625,-13.00555 1.840404,-16.134231 -5.521221,-3.12869 -3.98755,-4.53968 -7.361625,-8.15914 -3.374083,-3.61947 -1.994181,-4.16357 -2.208492,-5.09179 -0.736158,-3.19004 3.251385,-7.975096 3.435429,-8.465866 0.184043,-0.490781 0.184043,-2.331182 0.122689,-2.883308 -0.06131,-0.552125 -2.515051,-2.024446 -3.12852,-2.085791 -0.613469,-0.06133 -0.920209,0.98154 -1.77906,1.042896 -0.858856,0.06133 -4.601018,-2.269838 -5.39853,-2.883308 -0.797504,-0.61346 -1.165591,-2.085792 -2.269828,-3.190033 -1.104247,-1.104252 -1.226945,-0.24539 -2.944651,-0.920206 -1.717714,-0.674812 -7.238935,-2.69926 -11.471867,-4.416975 -4.23294,-1.717714 -4.601019,-4.125615 -4.662365,-5.827954 -0.06131,-1.702333 -2.57657,-4.171587 -3.756227,-5.950646 -1.179335,-1.77906 -1.396914,-4.232932 -1.826339,-3.680809 -0.429425,0.552114 2.208484,6.993538 1.77906,7.177582 -0.429425,0.184043 -1.349635,-1.77906 -2.576572,-3.374083 -1.226936,-1.595016 1.28829,-0.736159 -2.637915,-8.465864 -3.926198,-7.729705 1.226944,-11.671284 1.472324,-15.704806 0.24539,-4.033514 3.312738,1.472325 1.717715,-1.104238 -1.595016,-2.576571 0.122697,-7.975094 -1.104246,-9.938197 -1.226936,-1.963102 -8.220475,2.208492 -8.220475,2.208492 0.184036,-1.901758 6.134682,-5.153142 10.428966,-8.1591366 4.294277,-3.005996 6.91682,-0.674813 10.367621,0.4294236 3.450803,1.104246 3.680817,0.736167 2.515226,-0.368079 -1.165591,-1.1042446 0.49077,-1.6563686 3.190031,-1.2269356 2.699269,0.429425 3.435428,3.6808086 7.545669,3.3740746 4.110242,-0.306735 0.429425,0.797511 0.981548,1.840412 0.552123,1.042892 -0.613468,0.920202 -3.312729,2.760607 -2.699262,1.840403 0.06131,1.840403 4.846407,5.337177 4.785055,3.496773 3.312729,-2.331183 2.821952,-4.907753 -0.490777,-2.576563 3.496773,-0.552115 3.496773,-0.552115 2.944651,1.963094 2.400546,0.107972 4.547684,0.782784 2.147139,0.674814 7.967076,5.597286 7.967076,5.597286 -7.300273,3.98755 -2.699261,4.416975 -1.472325,5.337178 1.226937,0.920202 -2.515218,2.699261 -2.515218,2.699261 -1.53367,-1.53367 -1.779059,0.06131 -2.760614,0.613476 -0.981548,0.552115 -0.06131,1.963095 -0.06131,1.963095 -5.076415,0.797512 -3.926198,6.13469 -3.864852,7.422971 0.06131,1.288289 -3.251385,3.251384 -4.110242,5.091796 -0.858857,1.840405 2.208491,5.827948 0.613468,6.073336 -1.595016,0.24539 -3.190031,-6.011991 -11.778601,-3.680808 -2.589322,0.702954 -8.343174,3.680808 -5.275824,9.754153 3.06734,6.073336 8.15913,-1.717714 9.876843,-0.858857 1.717714,0.858857 -0.490778,4.72371 -0.122691,4.785055 0.368079,0.06131 4.8464,0.168662 5.09179,5.398522 0.245388,5.229868 6.809502,4.785065 8.220482,4.907755 1.410972,0.12269 6.134682,-3.864859 6.809502,-4.048894 0.674815,-0.184034 3.374076,-2.453876 9.263377,0.920195 5.889301,3.374089 8.895296,2.883308 10.919743,4.294285 2.02445,1.410987 0.61347,4.232939 2.51523,5.153134 1.90175,0.920217 9.50876,-0.306736 11.41051,2.821966 1.90176,3.1287 -7.8524,18.833491 -10.91974,20.551201 -3.06734,1.71772 -4.478321,5.64392 -7.545665,8.15913 -3.067349,2.51523 -7.361625,5.62854 -11.410522,8.03646 -3.583968,2.1311 -4.228845,5.949 -5.825333,7.15419 28.11404,-6.24545 49.13623,-31.328971 49.13623,-61.323497 0,-34.694029 -28.125171,-62.8192016 -62.819206,-62.8192016 z M 79.442753,60.382331 c -0.858857,0.245389 -2.637917,1.840405 -6.993547,-0.736166 -4.35563,-2.576564 -7.361625,-2.085794 -7.729705,-2.515218 0,0 -0.368079,-1.0429 1.533671,-1.226937 3.905098,-0.378065 8.833951,3.619464 9.938196,3.680809 1.104246,0.06131 1.656361,-1.104245 3.619464,-0.471631 1.963103,0.631953 0.490777,1.023755 -0.368079,1.269143 z M 58.891546,7.6853614 c -0.427786,-0.311152 0.354344,-0.669418 0.82058,-1.288281 0.269103,-0.357613 0.0695,-0.951289 0.406356,-1.28829 0.92021,-0.920203 5.459876,-2.208485 4.572225,0.306734 -0.887321,2.515226 -5.12434,2.760614 -5.799161,2.269837 z m 10.98109,7.9750936 c -1.533672,-0.06131 -5.14381,-0.442837 -4.478321,-1.104246 2.591952,-2.576563 -0.981548,-3.312729 -3.190039,-3.496766 -2.208485,-0.184043 -3.128687,-1.4109786 -2.02444,-1.5336776 1.104237,-0.12269 5.521213,0.06139 6.257379,0.6748206 0.736158,0.613469 4.723709,2.208485 4.969099,3.374076 0.24538,1.16559 0,2.147138 -1.533678,2.085793 z M 83.184914,15.23103 c -1.226943,0.981547 -7.400887,-3.521968 -8.588569,-4.539674 -5.153134,-4.4169746 -7.913742,-2.9446486 -8.995903,-3.6808086 -1.082485,-0.736166 -0.696897,-1.717713 0.959464,-3.190039 1.656369,-1.472325 6.318732,0.490778 9.017994,0.797512 2.699262,0.306734 5.827955,2.392527 5.889301,4.871925 0.06131,2.4792256 2.944649,4.7595296 1.717713,5.7410846 z" />
+</svg>
+
+            </i>
+            Language
+          </a>
+        </div>
+        <ul class="mobile-submenu-list">
+          
+            <li>
+              
+                <a href="/"><strong>English</strong></a>
+              
+            </li>
+          
+            <li>
+              
+                <a href="/es/">Español</a>
+              
+            </li>
+          
+        </ul>
+      </li>
+
+    
+  </ul>
+</nav>
+
+
+  
+    
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+  
+
+  
+
+  
+
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      Coding Aloud
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/">Home</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/post/">Archives</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/tags/">Tags</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="/categories/">Categories</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://ricardosotolongo.com" rel="noopener" target="_blank">
+              RS
+              
+              <i class="iconfont">
+                <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M623.36 272.96 473.216 423.04C467.2 429.056 467.072 438.656 472.896 444.416c0 0-6.72-6.656 1.6 1.6C496.064 467.648 528.64 500.224 528.64 500.224 534.464 506.048 544 505.856 550.016 499.904l150.08-150.144 67.328 66.432c9.024 8.96 27.456 4.544 30.4-8.96 19.968-92.608 46.656-227.52 46.656-227.52 6.848-34.496-16.192-56.704-49.92-49.92 0 0-134.656 26.816-227.328 46.784C560.32 178.048 556.352 182.272 554.752 187.136c-3.2 6.208-3.008 14.208 3.776 20.992L623.36 272.96z"></path>
+  <path d="M841.152 457.152c-30.528 0-54.784 24.512-54.784 54.656l0 274.752L237.696 786.56 237.696 237.696l206.016 0c6.656 0 10.752 0 13.248 0C487.68 237.696 512 213.184 512 182.848 512 152.32 487.36 128 456.96 128L183.04 128C153.216 128 128 152.576 128 182.848c0 3.136 0.256 6.272 0.768 9.28C128.256 195.136 128 198.272 128 201.408l0 639.488c0 0.064 0 0.192 0 0.256 0 0.128 0 0.192 0 0.32 0 30.528 24.512 54.784 54.784 54.784l646.976 0c6.592 0 9.728 0 11.712 0 28.736 0 52.928-22.976 54.464-51.968C896 843.264 896 842.304 896 841.344l0-20.352L896 561.408 896 512.128C896 481.792 871.424 457.152 841.152 457.152z"></path>
+</svg>
+
+              </i>
+            </a>
+          
+
+        
+
+      </li>
+    
+
+    
+    <li class="menu-item">
+        
+        <a class="menu-item-link menu-parent menu-item-lang" href="#">
+          
+          <i class="iconfont">
+            <svg height="16" width="16" version="1.1" viewBox="0 0 128 128">
+  <path d="m 64.719501,1.4279814 c -34.694029,0 -62.8192028,28.1251726 -62.8192028,62.8192016 0,34.694036 28.1251738,62.819207 62.8192028,62.819207 4.245691,0 8.392744,-0.42239 12.402214,-1.2253 -1.616124,-0.77296 -1.792473,-6.57213 -0.194346,-9.87848 1.779059,-3.68082 7.361625,-13.00555 1.840404,-16.134231 -5.521221,-3.12869 -3.98755,-4.53968 -7.361625,-8.15914 -3.374083,-3.61947 -1.994181,-4.16357 -2.208492,-5.09179 -0.736158,-3.19004 3.251385,-7.975096 3.435429,-8.465866 0.184043,-0.490781 0.184043,-2.331182 0.122689,-2.883308 -0.06131,-0.552125 -2.515051,-2.024446 -3.12852,-2.085791 -0.613469,-0.06133 -0.920209,0.98154 -1.77906,1.042896 -0.858856,0.06133 -4.601018,-2.269838 -5.39853,-2.883308 -0.797504,-0.61346 -1.165591,-2.085792 -2.269828,-3.190033 -1.104247,-1.104252 -1.226945,-0.24539 -2.944651,-0.920206 -1.717714,-0.674812 -7.238935,-2.69926 -11.471867,-4.416975 -4.23294,-1.717714 -4.601019,-4.125615 -4.662365,-5.827954 -0.06131,-1.702333 -2.57657,-4.171587 -3.756227,-5.950646 -1.179335,-1.77906 -1.396914,-4.232932 -1.826339,-3.680809 -0.429425,0.552114 2.208484,6.993538 1.77906,7.177582 -0.429425,0.184043 -1.349635,-1.77906 -2.576572,-3.374083 -1.226936,-1.595016 1.28829,-0.736159 -2.637915,-8.465864 -3.926198,-7.729705 1.226944,-11.671284 1.472324,-15.704806 0.24539,-4.033514 3.312738,1.472325 1.717715,-1.104238 -1.595016,-2.576571 0.122697,-7.975094 -1.104246,-9.938197 -1.226936,-1.963102 -8.220475,2.208492 -8.220475,2.208492 0.184036,-1.901758 6.134682,-5.153142 10.428966,-8.1591366 4.294277,-3.005996 6.91682,-0.674813 10.367621,0.4294236 3.450803,1.104246 3.680817,0.736167 2.515226,-0.368079 -1.165591,-1.1042446 0.49077,-1.6563686 3.190031,-1.2269356 2.699269,0.429425 3.435428,3.6808086 7.545669,3.3740746 4.110242,-0.306735 0.429425,0.797511 0.981548,1.840412 0.552123,1.042892 -0.613468,0.920202 -3.312729,2.760607 -2.699262,1.840403 0.06131,1.840403 4.846407,5.337177 4.785055,3.496773 3.312729,-2.331183 2.821952,-4.907753 -0.490777,-2.576563 3.496773,-0.552115 3.496773,-0.552115 2.944651,1.963094 2.400546,0.107972 4.547684,0.782784 2.147139,0.674814 7.967076,5.597286 7.967076,5.597286 -7.300273,3.98755 -2.699261,4.416975 -1.472325,5.337178 1.226937,0.920202 -2.515218,2.699261 -2.515218,2.699261 -1.53367,-1.53367 -1.779059,0.06131 -2.760614,0.613476 -0.981548,0.552115 -0.06131,1.963095 -0.06131,1.963095 -5.076415,0.797512 -3.926198,6.13469 -3.864852,7.422971 0.06131,1.288289 -3.251385,3.251384 -4.110242,5.091796 -0.858857,1.840405 2.208491,5.827948 0.613468,6.073336 -1.595016,0.24539 -3.190031,-6.011991 -11.778601,-3.680808 -2.589322,0.702954 -8.343174,3.680808 -5.275824,9.754153 3.06734,6.073336 8.15913,-1.717714 9.876843,-0.858857 1.717714,0.858857 -0.490778,4.72371 -0.122691,4.785055 0.368079,0.06131 4.8464,0.168662 5.09179,5.398522 0.245388,5.229868 6.809502,4.785065 8.220482,4.907755 1.410972,0.12269 6.134682,-3.864859 6.809502,-4.048894 0.674815,-0.184034 3.374076,-2.453876 9.263377,0.920195 5.889301,3.374089 8.895296,2.883308 10.919743,4.294285 2.02445,1.410987 0.61347,4.232939 2.51523,5.153134 1.90175,0.920217 9.50876,-0.306736 11.41051,2.821966 1.90176,3.1287 -7.8524,18.833491 -10.91974,20.551201 -3.06734,1.71772 -4.478321,5.64392 -7.545665,8.15913 -3.067349,2.51523 -7.361625,5.62854 -11.410522,8.03646 -3.583968,2.1311 -4.228845,5.949 -5.825333,7.15419 28.11404,-6.24545 49.13623,-31.328971 49.13623,-61.323497 0,-34.694029 -28.125171,-62.8192016 -62.819206,-62.8192016 z M 79.442753,60.382331 c -0.858857,0.245389 -2.637917,1.840405 -6.993547,-0.736166 -4.35563,-2.576564 -7.361625,-2.085794 -7.729705,-2.515218 0,0 -0.368079,-1.0429 1.533671,-1.226937 3.905098,-0.378065 8.833951,3.619464 9.938196,3.680809 1.104246,0.06131 1.656361,-1.104245 3.619464,-0.471631 1.963103,0.631953 0.490777,1.023755 -0.368079,1.269143 z M 58.891546,7.6853614 c -0.427786,-0.311152 0.354344,-0.669418 0.82058,-1.288281 0.269103,-0.357613 0.0695,-0.951289 0.406356,-1.28829 0.92021,-0.920203 5.459876,-2.208485 4.572225,0.306734 -0.887321,2.515226 -5.12434,2.760614 -5.799161,2.269837 z m 10.98109,7.9750936 c -1.533672,-0.06131 -5.14381,-0.442837 -4.478321,-1.104246 2.591952,-2.576563 -0.981548,-3.312729 -3.190039,-3.496766 -2.208485,-0.184043 -3.128687,-1.4109786 -2.02444,-1.5336776 1.104237,-0.12269 5.521213,0.06139 6.257379,0.6748206 0.736158,0.613469 4.723709,2.208485 4.969099,3.374076 0.24538,1.16559 0,2.147138 -1.533678,2.085793 z M 83.184914,15.23103 c -1.226943,0.981547 -7.400887,-3.521968 -8.588569,-4.539674 -5.153134,-4.4169746 -7.913742,-2.9446486 -8.995903,-3.6808086 -1.082485,-0.736166 -0.696897,-1.717713 0.959464,-3.190039 1.656369,-1.472325 6.318732,0.490778 9.017994,0.797512 2.699262,0.306734 5.827955,2.392527 5.889301,4.871925 0.06131,2.4792256 2.944649,4.7595296 1.717713,5.7410846 z" />
+</svg>
+
+          </i>
+          English
+        </a>
+        <ul class="submenu">
+          
+            
+          
+            
+              <li>
+                <a href="/es/">Español</a>
+              </li>
+            
+          
+        </ul>
+      </li>
+    
+
+    
+  </ul>
+</nav>
+
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <div id="content" class="content container">
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">Generating Swagger/OpenAPI clients</h1>
+      
+<div class="post-meta">
+  
+  <div><a href="/es/post/generating-swagger-openapi-clients/">Leer en español: Generando clientes de Swagger/OpenAPI</a></div>
+  
+</div>
+
+      <div class="post-meta">
+        <time datetime="2021-02-15" class="post-time">
+          2021-02-15
+        </time>
+        <div class="post-category">
+            <a href="/categories/development/"> Development </a>
+            
+          </div>
+        <span class="more-meta"> 2303 words </span>
+          <span class="more-meta"> 11 min read </span>
+
+        
+        
+
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+    
+    <div class="post-content">
+      <p><a href="https://github.com/rsotolongo/RS.Blog.Projects/tree/main/ConnectedServices">Source code of support available at GitHub</a></p>
+<p>Recently I was developing a .NET Core web application that needs to consume an API developed few years ago using ASP.NET WebAPI. Fortunately, that API have Swagger integrated, so I thought I can save time do not creating manually the instruments required to API calls (DTOs, client, etc.) instead using the &ldquo;Connected Services&rdquo; feature of Visual Studio.</p>
+<p>I got a big surprise that inspired me to share the experience and the solution in this post. I reproduced a simplified scenario as you can see in figure 1 accessing to Swagger UI through its URL: &ldquo;http://localhost:5200/swagger&rdquo;.</p>
+<p><img src="/generating-swagger-openapi-clients/01.png" alt="FullAPI Swagger UI"></p>
+<p>Figure 1: Swagger UI for API using .NET Framework.</p>
+<p>Basically, this API have two controllers providing two methods each with different routes but equivalent intentions.</p>
+<p>Accessing to its specification document: &ldquo;http://localhost:5200/swagger/docs/v1&rdquo; we have:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-JSON" data-lang="JSON"><span class="p">{</span>
+  <span class="nt">&#34;swagger&#34;</span><span class="p">:</span> <span class="s2">&#34;2.0&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;info&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;v1&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;title&#34;</span><span class="p">:</span> <span class="s2">&#34;RS.Blog.Projects.ConnectedServices.FullAPI&#34;</span>
+  <span class="p">},</span>
+  <span class="nt">&#34;host&#34;</span><span class="p">:</span> <span class="s2">&#34;localhost:5200&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;schemes&#34;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&#34;http&#34;</span>
+  <span class="p">],</span>
+  <span class="nt">&#34;paths&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;/api/first/number&#34;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&#34;get&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s2">&#34;First&#34;</span>
+        <span class="p">],</span>
+        <span class="nt">&#34;operationId&#34;</span><span class="p">:</span> <span class="s2">&#34;First_NumberMethod&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;consumes&#34;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="nt">&#34;produces&#34;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s2">&#34;application/json&#34;</span><span class="p">,</span>
+          <span class="s2">&#34;text/json&#34;</span><span class="p">,</span>
+          <span class="s2">&#34;application/xml&#34;</span><span class="p">,</span>
+          <span class="s2">&#34;text/xml&#34;</span>
+        <span class="p">],</span>
+        <span class="nt">&#34;responses&#34;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&#34;200&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;OK&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
+              <span class="nt">&#34;format&#34;</span><span class="p">:</span> <span class="s2">&#34;int32&#34;</span><span class="p">,</span>
+              <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;integer&#34;</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&#34;/api/first/string&#34;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&#34;get&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s2">&#34;First&#34;</span>
+        <span class="p">],</span>
+        <span class="nt">&#34;operationId&#34;</span><span class="p">:</span> <span class="s2">&#34;First_StringMethod&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;consumes&#34;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="nt">&#34;produces&#34;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s2">&#34;application/json&#34;</span><span class="p">,</span>
+          <span class="s2">&#34;text/json&#34;</span><span class="p">,</span>
+          <span class="s2">&#34;application/xml&#34;</span><span class="p">,</span>
+          <span class="s2">&#34;text/xml&#34;</span>
+        <span class="p">],</span>
+        <span class="nt">&#34;responses&#34;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&#34;200&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;OK&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
+              <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&#34;/api/second/number&#34;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&#34;get&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s2">&#34;Second&#34;</span>
+        <span class="p">],</span>
+        <span class="nt">&#34;operationId&#34;</span><span class="p">:</span> <span class="s2">&#34;Second_NumberMethod&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;consumes&#34;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="nt">&#34;produces&#34;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s2">&#34;application/json&#34;</span><span class="p">,</span>
+          <span class="s2">&#34;text/json&#34;</span><span class="p">,</span>
+          <span class="s2">&#34;application/xml&#34;</span><span class="p">,</span>
+          <span class="s2">&#34;text/xml&#34;</span>
+        <span class="p">],</span>
+        <span class="nt">&#34;responses&#34;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&#34;200&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;OK&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
+              <span class="nt">&#34;format&#34;</span><span class="p">:</span> <span class="s2">&#34;int32&#34;</span><span class="p">,</span>
+              <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;integer&#34;</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&#34;/api/second/string&#34;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&#34;get&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s2">&#34;Second&#34;</span>
+        <span class="p">],</span>
+        <span class="nt">&#34;operationId&#34;</span><span class="p">:</span> <span class="s2">&#34;Second_StringMethod&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;consumes&#34;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="nt">&#34;produces&#34;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s2">&#34;application/json&#34;</span><span class="p">,</span>
+          <span class="s2">&#34;text/json&#34;</span><span class="p">,</span>
+          <span class="s2">&#34;application/xml&#34;</span><span class="p">,</span>
+          <span class="s2">&#34;text/xml&#34;</span>
+        <span class="p">],</span>
+        <span class="nt">&#34;responses&#34;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&#34;200&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;OK&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
+              <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">&#34;definitions&#34;</span><span class="p">:</span> <span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>To simplify the client application, I decided to reproduce it as a .NET Core console application. I added a folder: &ldquo;OpenAPI&rdquo; to store the previous specification document as: &ldquo;FullAPI.json&rdquo;. From figure 2 until figure 5 we can see how to add a connected service.</p>
+<p><img src="/generating-swagger-openapi-clients/02.png" alt="Adding a Connected Service"></p>
+<p>Figure 2: Adding a Connected Service.</p>
+<p><img src="/generating-swagger-openapi-clients/03.png" alt="Adding an OpenAPI specification"></p>
+<p>Figure 3: Adding an OpenAPI specification.</p>
+<p><img src="/generating-swagger-openapi-clients/04.png" alt="Specifying client generation parameters"></p>
+<p>Figure 4: Specifying client generation parameters.</p>
+<p><img src="/generating-swagger-openapi-clients/05.png" alt="Client generation results"></p>
+<p>Figure 5: Client generation results.</p>
+<p>Right click on client project dependencies and select: &ldquo;Add Connect Service&rdquo;. Then click on button: &ldquo;Add&rdquo;. Select &ldquo;OpenAPI&rdquo; and click on button: &ldquo;Next&rdquo;. Type the specification file (&ldquo;OpenAPI\FullAPI.json&rdquo;) and &ldquo;FullAPI&rdquo; as the namespace for the generated client. Finally press button: &ldquo;Finish&rdquo; and client will be generated showing the results on next screen. This process adds several lines of codes into the project file (.csproj) as is shown next:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-XML" data-lang="XML"><span class="nt">&lt;ItemGroup&gt;</span>
+  <span class="nt">&lt;OpenApiReference</span> <span class="na">Include=</span><span class="s">&#34;OpenAPI\FullAPI.json&#34;</span> <span class="na">Namespace=</span><span class="s">&#34;FullAPI&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;CodeGenerator&gt;</span>NSwagCSharp<span class="nt">&lt;/CodeGenerator&gt;</span>
+  <span class="nt">&lt;/OpenApiReference&gt;</span>
+<span class="nt">&lt;/ItemGroup&gt;</span>
+
+<span class="nt">&lt;ItemGroup&gt;</span>
+  <span class="nt">&lt;PackageReference</span> <span class="na">Include=</span><span class="s">&#34;Microsoft.Extensions.ApiDescription.Client&#34;</span> <span class="na">Version=</span><span class="s">&#34;3.0.0&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;PrivateAssets&gt;</span>all<span class="nt">&lt;/PrivateAssets&gt;</span>
+    <span class="nt">&lt;IncludeAssets&gt;</span>runtime; build; native; contentfiles; analyzers; buildtransitive<span class="nt">&lt;/IncludeAssets&gt;</span>
+  <span class="nt">&lt;/PackageReference&gt;</span>
+  <span class="nt">&lt;PackageReference</span> <span class="na">Include=</span><span class="s">&#34;Newtonsoft.Json&#34;</span> <span class="na">Version=</span><span class="s">&#34;12.0.2&#34;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;PackageReference</span> <span class="na">Include=</span><span class="s">&#34;NSwag.ApiDescription.Client&#34;</span> <span class="na">Version=</span><span class="s">&#34;13.0.5&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;PrivateAssets&gt;</span>all<span class="nt">&lt;/PrivateAssets&gt;</span>
+    <span class="nt">&lt;IncludeAssets&gt;</span>runtime; build; native; contentfiles; analyzers; buildtransitive<span class="nt">&lt;/IncludeAssets&gt;</span>
+  <span class="nt">&lt;/PackageReference&gt;</span>
+<span class="nt">&lt;/ItemGroup&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Once is compiled, a new file called: &ldquo;FullAPIClient.cs&rdquo; is created in folder &ldquo;obj&rdquo; inside project folder. At this point, the project stops to build successfully due to this file.</p>
+<p>Too many errors, what a surprise! what is happening and why? (figure 6).</p>
+<p><img src="/generating-swagger-openapi-clients/06.png" alt="Client generation build errors"></p>
+<p>Figure 6: Client generation build errors.</p>
+<p>The cause is being shown in figure 7. The client is generated twice repeating their internal fields.</p>
+<p><img src="/generating-swagger-openapi-clients/07.png" alt="Duplicated client generation"></p>
+<p>Figure 7: Duplicated client generation.</p>
+<p>I was wonder about why this happens; so, I decided to analyze the source code of the client generator: &ldquo;NSwag&rdquo; in this case (remember what was added to the project file). The source code is stored in GitHub at:</p>
+<p><a href="https://github.com/RicoSuter/NSwag">NSwag: The Swagger/OpenAPI toolchain for .NET, ASP.NET Core and TypeScript</a></p>
+<p>Analyzing the C# client generator, we can find that the default value for parameter: &ldquo;Operation Generation Mode&rdquo; is &ldquo;MultipleClientsFromOperationId&rdquo; that relies on parameter: &ldquo;ClassName&rdquo; that arrives as empty, so the solution is to specify it on the client generation parameters on project file (.csproj).</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-XML" data-lang="XML"><span class="nt">&lt;ItemGroup&gt;</span>
+  <span class="nt">&lt;OpenApiReference</span> <span class="na">Include=</span><span class="s">&#34;OpenAPI\FullAPI.json&#34;</span> <span class="na">Namespace=</span><span class="s">&#34;FullAPI&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ClassName&gt;</span>{controller}Client<span class="nt">&lt;/ClassName&gt;</span>
+    <span class="nt">&lt;CodeGenerator&gt;</span>NSwagCSharp<span class="nt">&lt;/CodeGenerator&gt;</span>
+  <span class="nt">&lt;/OpenApiReference&gt;</span>
+<span class="nt">&lt;/ItemGroup&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Class name value is a pattern that includes the controller name followed by the word: &ldquo;Client&rdquo;. The controller name is taken from the field: &ldquo;operationId&rdquo; of the specification file. The value is divided by character: &ldquo;_&rdquo; and the first token is taken as client name and the second token is taken as the operation name. Examples: &ldquo;Second_NumberMethod&rdquo; creates the client: &ldquo;SecondClient&rdquo; with operation: &ldquo;NumberMethod&rdquo;.</p>
+<p>Figure 8 shows the new clients generated. This time free of build error because no duplicated client was generated.</p>
+<p><img src="/generating-swagger-openapi-clients/08.png" alt="New generated clients"></p>
+<p>Figure 8: New generated clients.</p>
+<p>Now, we can consume the operations from the generated clients as the following code shows (file: &ldquo;Program.cs&rdquo;):</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-C#" data-lang="C#"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Net.Http</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">RS.Blog.Projects.ConnectedServices.Client</span>
+<span class="p">{</span>
+    <span class="k">internal</span> <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">fullClient</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HttpClient</span>
+            <span class="p">{</span>
+                <span class="n">BaseAddress</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Uri</span><span class="p">(</span><span class="s">&#34;http://localhost:5200&#34;</span><span class="p">),</span>
+            <span class="p">};</span>
+            <span class="n">FullAPI</span><span class="p">.</span><span class="n">FirstClient</span> <span class="n">operationFullFirstClient</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FullAPI</span><span class="p">.</span><span class="n">FirstClient</span><span class="p">(</span><span class="n">fullClient</span><span class="p">);</span>
+            <span class="kt">int</span> <span class="n">operationFullFirstNumberResult</span> <span class="p">=</span> <span class="n">operationFullFirstClient</span><span class="p">.</span><span class="n">NumberMethodAsync</span><span class="p">().</span><span class="n">Result</span><span class="p">;</span>
+            <span class="kt">string</span> <span class="n">operationFullFirstStringResult</span> <span class="p">=</span> <span class="n">operationFullFirstClient</span><span class="p">.</span><span class="n">StringMethodAsync</span><span class="p">().</span><span class="n">Result</span><span class="p">;</span>
+            <span class="n">FullAPI</span><span class="p">.</span><span class="n">SecondClient</span> <span class="n">operationFullSecondClient</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FullAPI</span><span class="p">.</span><span class="n">SecondClient</span><span class="p">(</span><span class="n">fullClient</span><span class="p">);</span>
+            <span class="kt">int</span> <span class="n">operationFullSecondNumberResult</span> <span class="p">=</span> <span class="n">operationFullSecondClient</span><span class="p">.</span><span class="n">NumberMethodAsync</span><span class="p">().</span><span class="n">Result</span><span class="p">;</span>
+            <span class="kt">string</span> <span class="n">operationFullSecondStringResult</span> <span class="p">=</span> <span class="n">operationFullSecondClient</span><span class="p">.</span><span class="n">StringMethodAsync</span><span class="p">().</span><span class="n">Result</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Problem solved but my curiosity made me to research a little bit more and see what happened with an API created using .NET Core instead of using the .NET Framework. Figure 9 shows the migrated API. Basically, the same functionalities (controllers, methods, routes) but based on .NET Core.</p>
+<p><img src="/generating-swagger-openapi-clients/09.png" alt=".NET Core API"></p>
+<p>Figure 9: .NET Core API.</p>
+<p>Accessing to its specification document: &ldquo;http://localhost:5100/swagger/v1/swagger.json&rdquo; we have:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-JSON" data-lang="JSON"><span class="p">{</span>
+    <span class="nt">&#34;openapi&#34;</span><span class="p">:</span> <span class="s2">&#34;3.0.1&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;info&#34;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&#34;title&#34;</span><span class="p">:</span> <span class="s2">&#34;ConnectedServices API&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Description for ConnectedServices API.&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;v1&#34;</span>
+    <span class="p">},</span>
+    <span class="nt">&#34;paths&#34;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&#34;/api/first/number&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;get&#34;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&#34;First&#34;</span>
+          <span class="p">],</span>
+          <span class="nt">&#34;responses&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&#34;200&#34;</span><span class="p">:</span> <span class="p">{</span>
+              <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Success&#34;</span><span class="p">,</span>
+              <span class="nt">&#34;content&#34;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&#34;text/plain&#34;</span><span class="p">:</span> <span class="p">{</span>
+                  <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;integer&#34;</span><span class="p">,</span>
+                    <span class="nt">&#34;format&#34;</span><span class="p">:</span> <span class="s2">&#34;int32&#34;</span>
+                  <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="nt">&#34;application/json&#34;</span><span class="p">:</span> <span class="p">{</span>
+                  <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;integer&#34;</span><span class="p">,</span>
+                    <span class="nt">&#34;format&#34;</span><span class="p">:</span> <span class="s2">&#34;int32&#34;</span>
+                  <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="nt">&#34;text/json&#34;</span><span class="p">:</span> <span class="p">{</span>
+                  <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;integer&#34;</span><span class="p">,</span>
+                    <span class="nt">&#34;format&#34;</span><span class="p">:</span> <span class="s2">&#34;int32&#34;</span>
+                  <span class="p">}</span>
+                <span class="p">}</span>
+              <span class="p">}</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="nt">&#34;/api/first/string&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;get&#34;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&#34;First&#34;</span>
+          <span class="p">],</span>
+          <span class="nt">&#34;responses&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&#34;200&#34;</span><span class="p">:</span> <span class="p">{</span>
+              <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Success&#34;</span><span class="p">,</span>
+              <span class="nt">&#34;content&#34;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&#34;text/plain&#34;</span><span class="p">:</span> <span class="p">{</span>
+                  <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
+                  <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="nt">&#34;application/json&#34;</span><span class="p">:</span> <span class="p">{</span>
+                  <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
+                  <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="nt">&#34;text/json&#34;</span><span class="p">:</span> <span class="p">{</span>
+                  <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
+                  <span class="p">}</span>
+                <span class="p">}</span>
+              <span class="p">}</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="nt">&#34;/api/second/number&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;get&#34;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&#34;Second&#34;</span>
+          <span class="p">],</span>
+          <span class="nt">&#34;responses&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&#34;200&#34;</span><span class="p">:</span> <span class="p">{</span>
+              <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Success&#34;</span><span class="p">,</span>
+              <span class="nt">&#34;content&#34;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&#34;text/plain&#34;</span><span class="p">:</span> <span class="p">{</span>
+                  <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;integer&#34;</span><span class="p">,</span>
+                    <span class="nt">&#34;format&#34;</span><span class="p">:</span> <span class="s2">&#34;int32&#34;</span>
+                  <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="nt">&#34;application/json&#34;</span><span class="p">:</span> <span class="p">{</span>
+                  <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;integer&#34;</span><span class="p">,</span>
+                    <span class="nt">&#34;format&#34;</span><span class="p">:</span> <span class="s2">&#34;int32&#34;</span>
+                  <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="nt">&#34;text/json&#34;</span><span class="p">:</span> <span class="p">{</span>
+                  <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;integer&#34;</span><span class="p">,</span>
+                    <span class="nt">&#34;format&#34;</span><span class="p">:</span> <span class="s2">&#34;int32&#34;</span>
+                  <span class="p">}</span>
+                <span class="p">}</span>
+              <span class="p">}</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="nt">&#34;/api/second/string&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;get&#34;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&#34;Second&#34;</span>
+          <span class="p">],</span>
+          <span class="nt">&#34;responses&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&#34;200&#34;</span><span class="p">:</span> <span class="p">{</span>
+              <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Success&#34;</span><span class="p">,</span>
+              <span class="nt">&#34;content&#34;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&#34;text/plain&#34;</span><span class="p">:</span> <span class="p">{</span>
+                  <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
+                  <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="nt">&#34;application/json&#34;</span><span class="p">:</span> <span class="p">{</span>
+                  <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
+                  <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="nt">&#34;text/json&#34;</span><span class="p">:</span> <span class="p">{</span>
+                  <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
+                  <span class="p">}</span>
+                <span class="p">}</span>
+              <span class="p">}</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&#34;components&#34;</span><span class="p">:</span> <span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>The first thing that is different (and probably the most important one) is the field: &ldquo;openapi&rdquo; (previously &ldquo;swagger&rdquo;) with version: &ldquo;3.0.1&rdquo; (previously: &ldquo;2.0&rdquo;). Let&rsquo;s save this new specification as: &ldquo;CoreAPI.json&rdquo; together with the other one in folder: &ldquo;OpenAPI&rdquo;. Now, let&rsquo;s generate the client in the same way we did for API developed in .NET Framework and see what happens. Figures from 10 to 14 shows the process.</p>
+<p><img src="/generating-swagger-openapi-clients/10.png" alt="Adding a Connected Service"></p>
+<p>Figure 10: Adding a Connected Service.</p>
+<p><img src="/generating-swagger-openapi-clients/11.png" alt="Adding an OpenAPI specification"></p>
+<p>Figure 11: Adding an OpenAPI specification.</p>
+<p><img src="/generating-swagger-openapi-clients/12.png" alt="Specifying client generation parameters"></p>
+<p>Figure 12: Specifying client generation parameters.</p>
+<p><img src="/generating-swagger-openapi-clients/13.png" alt="Client generation results"></p>
+<p>Figure 13: Client generation results.</p>
+<p><img src="/generating-swagger-openapi-clients/14.png" alt="Connected Services list"></p>
+<p>Figure 14: Connected Services list.</p>
+<p>A new section is added to the project file (.csproj) similar to the previous one:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-XML" data-lang="XML"><span class="nt">&lt;OpenApiReference</span> <span class="na">Include=</span><span class="s">&#34;OpenAPI\CoreAPI.json&#34;</span> <span class="na">CodeGenerator=</span><span class="s">&#34;NSwagCSharp&#34;</span> <span class="na">Namespace=</span><span class="s">&#34;CoreAPI&#34;</span> <span class="nt">/&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Resulting in:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-XML" data-lang="XML"><span class="nt">&lt;ItemGroup&gt;</span>
+  <span class="nt">&lt;OpenApiReference</span> <span class="na">Include=</span><span class="s">&#34;OpenAPI\CoreAPI.json&#34;</span> <span class="na">CodeGenerator=</span><span class="s">&#34;NSwagCSharp&#34;</span> <span class="na">Namespace=</span><span class="s">&#34;CoreAPI&#34;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;OpenApiReference</span> <span class="na">Include=</span><span class="s">&#34;OpenAPI\FullAPI.json&#34;</span> <span class="na">Namespace=</span><span class="s">&#34;FullAPI&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ClassName&gt;</span>{controller}Client<span class="nt">&lt;/ClassName&gt;</span>
+    <span class="nt">&lt;CodeGenerator&gt;</span>NSwagCSharp<span class="nt">&lt;/CodeGenerator&gt;</span>
+  <span class="nt">&lt;/OpenApiReference&gt;</span>
+<span class="nt">&lt;/ItemGroup&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>The solution builds including the new generated file: &ldquo;CoreAPIClient.cs&rdquo; in folder: &ldquo;obj&rdquo; but the generated code is different:</p>
+<ol>
+<li>There is only one client class.</li>
+<li>The constructor for the client requires the base URL.</li>
+<li>Operations have different names.</li>
+</ol>
+<p><img src="/generating-swagger-openapi-clients/15.png" alt="Generated client for .NET Core API"></p>
+<p>Figure 15: Generated client for .NET Core API.</p>
+<p>Analyzing the specification file (&ldquo;CoreAPI.json&rdquo;) we can notice that there are no fields: &ldquo;operationId&rdquo; and that is important to client and operation names. So, if we add, somehow, the operation identifiers to each operation, should solve the first and third issue.</p>
+<p>To add the field: &ldquo;operationId&rdquo; to the specification file we need to add the attribute: &ldquo;SwaggerOperation&rdquo; to each method of each controller. That attribute is part of NuGet package: &ldquo;Swashbuckle.AspNetCore.Annotations&rdquo; that we need to install it first. The following code shows how to use it:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-C#" data-lang="C#"><span class="k">using</span> <span class="nn">Microsoft.AspNetCore.Mvc</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Swashbuckle.AspNetCore.Annotations</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">RS.Blog.Projects.ConnectedServices.CoreAPI.Controllers</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">FirstController</span> <span class="p">:</span> <span class="n">ControllerBase</span>
+    <span class="p">{</span>
+<span class="na">        [HttpGet, Route(&#34;api/first/number&#34;)]</span>
+<span class="na">        [SwaggerOperation(OperationId = &#34;First_NumberMethod&#34;)]</span>
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">NumberMethod</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="m">211</span><span class="p">;</span>
+        <span class="p">}</span>
+<span class="na">
+</span><span class="na">        [HttpGet, Route(&#34;api/first/string&#34;)]</span>
+<span class="na">        [SwaggerOperation(OperationId = &#34;First_StringMethod&#34;)]</span>
+        <span class="k">public</span> <span class="kt">string</span> <span class="n">StringMethod</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="s">&#34;Framework: Core, Controller: First, Method: String&#34;</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>With the usage of this attribute, the specification file adds field: &ldquo;operationId&rdquo; but then code don&rsquo;t compile due to the same first problem: duplicated clients. We need to modify the generation parameters in the same way we did before. The project file (.csproj) should looks like:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-XML" data-lang="XML"><span class="nt">&lt;ItemGroup&gt;</span>
+  <span class="nt">&lt;OpenApiReference</span> <span class="na">Include=</span><span class="s">&#34;OpenAPI\CoreAPI.json&#34;</span> <span class="na">CodeGenerator=</span><span class="s">&#34;NSwagCSharp&#34;</span> <span class="na">Namespace=</span><span class="s">&#34;CoreAPI&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ClassName&gt;</span>{controller}Client<span class="nt">&lt;/ClassName&gt;</span>
+  <span class="nt">&lt;/OpenApiReference&gt;</span>
+  <span class="nt">&lt;OpenApiReference</span> <span class="na">Include=</span><span class="s">&#34;OpenAPI\FullAPI.json&#34;</span> <span class="na">Namespace=</span><span class="s">&#34;FullAPI&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ClassName&gt;</span>{controller}Client<span class="nt">&lt;/ClassName&gt;</span>
+    <span class="nt">&lt;CodeGenerator&gt;</span>NSwagCSharp<span class="nt">&lt;/CodeGenerator&gt;</span>
+  <span class="nt">&lt;/OpenApiReference&gt;</span>
+<span class="nt">&lt;/ItemGroup&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>But, code doesn&rsquo;t build. Why, if we did exactly what we did generating clients for .NET Framework API? Figure 16 show the errors.</p>
+<p><img src="/generating-swagger-openapi-clients/16.png" alt="Errors generating clients for .NET Core API"></p>
+<p>Figure 16: Errors generating clients for .NET Core API.</p>
+<p>Notice that errors are in the previous generated clients (file: &ldquo;FullAPI.cs&rdquo;). Well, this is because a <a href="https://github.com/dotnet/aspnetcore/issues/18204">well-known bug</a> in NSwag CSharp Generator that is active and should be resolved in the future and have an easy solution. Let&rsquo;s modify once again the project file (.csproj):</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-XML" data-lang="XML"><span class="nt">&lt;ItemGroup&gt;</span>
+  <span class="nt">&lt;OpenApiReference</span> <span class="na">Include=</span><span class="s">&#34;OpenAPI\CoreAPI.json&#34;</span> <span class="na">CodeGenerator=</span><span class="s">&#34;NSwagCSharp&#34;</span> <span class="na">Namespace=</span><span class="s">&#34;CoreAPI&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ClassName&gt;</span>{controller}Client<span class="nt">&lt;/ClassName&gt;</span>
+  <span class="nt">&lt;/OpenApiReference&gt;</span>
+  <span class="nt">&lt;OpenApiReference</span> <span class="na">Include=</span><span class="s">&#34;OpenAPI\FullAPI.json&#34;</span> <span class="na">Namespace=</span><span class="s">&#34;FullAPI&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ClassName&gt;</span>{controller}Client<span class="nt">&lt;/ClassName&gt;</span>
+    <span class="nt">&lt;CodeGenerator&gt;</span>NSwagCSharp<span class="nt">&lt;/CodeGenerator&gt;</span>
+    <span class="nt">&lt;Options&gt;</span>/GenerateExceptionClasses:false /ExceptionClass:&#34;CoreAPI.ApiException&#34;<span class="nt">&lt;/Options&gt;</span>
+  <span class="nt">&lt;/OpenApiReference&gt;</span>
+<span class="nt">&lt;/ItemGroup&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>We have added the tag: &ldquo;Options&rdquo; indicating to not generate exceptions classes because those classes are already generated in another namespace. This is because the order for client generation matters and the first inserted (the .NET Core API client in this case) generates the exception classes. Now the solution build successfully but still we have not solved the second issue (base URL required in the constructor). To solve this, once again we need to modify the project file (.csproj):</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-XML" data-lang="XML"><span class="nt">&lt;ItemGroup&gt;</span>
+  <span class="nt">&lt;OpenApiReference</span> <span class="na">Include=</span><span class="s">&#34;OpenAPI\CoreAPI.json&#34;</span> <span class="na">CodeGenerator=</span><span class="s">&#34;NSwagCSharp&#34;</span> <span class="na">Namespace=</span><span class="s">&#34;CoreAPI&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ClassName&gt;</span>{controller}Client<span class="nt">&lt;/ClassName&gt;</span>
+    <span class="nt">&lt;Options&gt;</span>/UseBaseUrl:false<span class="nt">&lt;/Options&gt;</span>
+  <span class="nt">&lt;/OpenApiReference&gt;</span>
+  <span class="nt">&lt;OpenApiReference</span> <span class="na">Include=</span><span class="s">&#34;OpenAPI\FullAPI.json&#34;</span> <span class="na">Namespace=</span><span class="s">&#34;FullAPI&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ClassName&gt;</span>{controller}Client<span class="nt">&lt;/ClassName&gt;</span>
+    <span class="nt">&lt;CodeGenerator&gt;</span>NSwagCSharp<span class="nt">&lt;/CodeGenerator&gt;</span>
+    <span class="nt">&lt;Options&gt;</span>/GenerateExceptionClasses:false /ExceptionClass:&#34;CoreAPI.ApiException&#34;<span class="nt">&lt;/Options&gt;</span>
+  <span class="nt">&lt;/OpenApiReference&gt;</span>
+<span class="nt">&lt;/ItemGroup&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Notice that we can achieve the same result without modifying manually the project file (.csproj) if we specify the values for different options in the parameter: &ldquo;Additional code generation options&rdquo; in the dialog for add new OpenAPI service reference (figures 4 and 12).</p>
+<p>This time for the API client developed in .NET Core we have added the option to not use base URL. Now the generated clients are almost identical and can be used in a very similar way:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-C#" data-lang="C#"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Net.Http</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">RS.Blog.Projects.ConnectedServices.Client</span>
+<span class="p">{</span>
+    <span class="k">internal</span> <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">fullClient</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HttpClient</span>
+            <span class="p">{</span>
+                <span class="n">BaseAddress</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Uri</span><span class="p">(</span><span class="s">&#34;http://localhost:5200&#34;</span><span class="p">),</span>
+            <span class="p">};</span>
+            <span class="kt">var</span> <span class="n">operationFullFirstClient</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FullAPI</span><span class="p">.</span><span class="n">FirstClient</span><span class="p">(</span><span class="n">fullClient</span><span class="p">);</span>
+            <span class="kt">int</span> <span class="n">operationFullFirstNUmberResult</span> <span class="p">=</span> <span class="n">operationFullFirstClient</span><span class="p">.</span><span class="n">NumberMethodAsync</span><span class="p">().</span><span class="n">Result</span><span class="p">;</span>
+            <span class="kt">string</span> <span class="n">operationFullFirstStringResult</span> <span class="p">=</span> <span class="n">operationFullFirstClient</span><span class="p">.</span><span class="n">StringMethodAsync</span><span class="p">().</span><span class="n">Result</span><span class="p">;</span>
+            <span class="kt">var</span> <span class="n">operationFullSecondClient</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FullAPI</span><span class="p">.</span><span class="n">SecondClient</span><span class="p">(</span><span class="n">fullClient</span><span class="p">);</span>
+            <span class="kt">int</span> <span class="n">operationFullSecondNumberResult</span> <span class="p">=</span> <span class="n">operationFullSecondClient</span><span class="p">.</span><span class="n">NumberMethodAsync</span><span class="p">().</span><span class="n">Result</span><span class="p">;</span>
+            <span class="kt">string</span> <span class="n">operationFullSecondStringResult</span> <span class="p">=</span> <span class="n">operationFullSecondClient</span><span class="p">.</span><span class="n">StringMethodAsync</span><span class="p">().</span><span class="n">Result</span><span class="p">;</span>
+
+            <span class="kt">var</span> <span class="n">coreClient</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HttpClient</span>
+            <span class="p">{</span>
+                <span class="n">BaseAddress</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Uri</span><span class="p">(</span><span class="s">&#34;http://localhost:5100&#34;</span><span class="p">),</span>
+            <span class="p">};</span>
+            <span class="kt">var</span> <span class="n">operationCoreFirstClient</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CoreAPI</span><span class="p">.</span><span class="n">FirstClient</span><span class="p">(</span><span class="n">coreClient</span><span class="p">);</span>
+            <span class="kt">int</span> <span class="n">operationCoreFirstNumberResult</span> <span class="p">=</span> <span class="n">operationCoreFirstClient</span><span class="p">.</span><span class="n">NumberMethodAsync</span><span class="p">().</span><span class="n">Result</span><span class="p">;</span>
+            <span class="kt">string</span> <span class="n">operationCoreFirstStringResult</span> <span class="p">=</span> <span class="n">operationCoreFirstClient</span><span class="p">.</span><span class="n">StringMethodAsync</span><span class="p">().</span><span class="n">Result</span><span class="p">;</span>
+            <span class="kt">var</span> <span class="n">operationCoreSecondClient</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CoreAPI</span><span class="p">.</span><span class="n">SecondClient</span><span class="p">(</span><span class="n">coreClient</span><span class="p">);</span>
+            <span class="kt">int</span> <span class="n">operationCoreSecondNumberResult</span> <span class="p">=</span> <span class="n">operationCoreSecondClient</span><span class="p">.</span><span class="n">NumberMethodAsync</span><span class="p">().</span><span class="n">Result</span><span class="p">;</span>
+            <span class="kt">string</span> <span class="n">operationCoreSecondStringResult</span> <span class="p">=</span> <span class="n">operationCoreSecondClient</span><span class="p">.</span><span class="n">StringMethodAsync</span><span class="p">().</span><span class="n">Result</span><span class="p">;</span>
+
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>The client project file (.csproj) has commented out another approach to do all we have exposed here without the need of operation identifiers fields. Based on the route we can use the option: &ldquo;/OperationGenerationMode:MultipleClientsFromPathSegments&rdquo; together with another interesting parameters like: &ldquo;OutputPath&rdquo;, and &ldquo;SourceUri&rdquo;.</p>
+<h3 id="summary">Summary</h3>
+<p>The operation identifier (field: &ldquo;operationId&rdquo;) is a very important to clients generation. Swagger 2.0 (latest for .NET Framework) generates it for each method while OpenAPI 3.x don&rsquo;t generates it. It is recommended to add it manually using the attribute: &ldquo;SwaggerOperation&rdquo;. Visual Studio feature &ldquo;Connected Services&rdquo; is a really good capability that save us a lot of time once we know how to use it properly as we have shown in this post.</p>
+<p><a href="https://github.com/rsotolongo/RS.Blog.Projects/tree/main/ConnectedServices">Source code of support available at GitHub</a></p>
+
+    </div>
+
+    
+    
+
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/visual-studio/">Visual Studio</a>
+          <a href="/tags/openapi/">OpenAPI</a>
+          <a href="/tags/swagger/">Swagger</a>
+          <a href="/tags/api/">API</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/post/signing-assemblies/">
+            <span class="next-text nav-default">Signing assemblies</span>
+            <span class="prev-text nav-mobile">Next</span>
+            
+            <i class="iconfont">
+              <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+            </i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+
+  
+  
+  
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+    
+
+  
+
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="icon-links">
+  
+  
+    <a href="mailto:rsotolongo@ricardosotolongo.com" rel="me noopener" class="iconfont"
+      title="email" >
+      <svg class="icon" viewBox="0 0 1451 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="36" height="36">
+  <path d="M664.781909 681.472759 0 97.881301C0 3.997201 71.046997 0 71.046997 0L474.477909 0 961.649408 0 1361.641813 0C1361.641813 0 1432.688811 3.997201 1432.688811 97.881301L771.345323 681.472759C771.345323 681.472759 764.482731 685.154773 753.594283 688.65053L753.594283 688.664858C741.602731 693.493018 729.424896 695.068979 718.077952 694.839748 706.731093 695.068979 694.553173 693.493018 682.561621 688.664858L682.561621 688.65053C671.644501 685.140446 664.781909 681.472759 664.781909 681.472759L664.781909 681.472759ZM718.063616 811.603883C693.779541 811.016482 658.879232 802.205449 619.10784 767.734955 542.989056 701.759633 0 212.052267 0 212.052267L0 942.809523C0 942.809523 0 1024 83.726336 1024L682.532949 1024 753.579947 1024 1348.948139 1024C1432.688811 1024 1432.688811 942.809523 1432.688811 942.809523L1432.688811 212.052267C1432.688811 212.052267 893.138176 701.759633 817.019477 767.734955 777.248 802.205449 742.347691 811.03081 718.063616 811.603883L718.063616 811.603883Z"></path>
+</svg>
+
+    </a>
+  
+    <a href="https://stackoverflow.com/users/803188/ricardo-sotolongo" rel="me noopener" class="iconfont"
+      title="stack-overflow"  target="_blank"
+      >
+      <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="36" height="36">
+  <path d="M809.714286 932.571429l-638.857143 0 0-274.285714-91.428571 0 0 365.714286 821.714286 0 0-365.714286-91.428571 0 0 274.285714zm-538.285714-299.428571l18.857143-89.714286 447.428571 94.285714-18.857143 89.142857zm58.857143-213.714286l38.285714-83.428571 414.285714 193.714286-38.285714 82.857143zm114.857143-203.428571l58.285714-70.285714 350.857143 293.142857-58.285714 70.285714zm226.857143-216l272.571429 366.285714-73.142857 54.857143-272.571429-366.285714zm-410.285714 840.571429l0-90.857143 457.142857 0 0 90.857143-457.142857 0z"></path>
+</svg>
+
+    </a>
+  
+  
+  
+    <a href="https://linkedin.com/in/rsotolongo" rel="me noopener" class="iconfont"
+      title="linkedin"  target="_blank"
+      >
+      <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="33" height="33">
+  <path d="M872.405333 872.618667h-151.637333v-237.610667c0-56.661333-1.152-129.578667-79.018667-129.578667-79.061333 0-91.136 61.653333-91.136 125.397334v241.792H398.976V384h145.664v66.602667h1.962667c20.352-38.4 69.845333-78.933333 143.786666-78.933334 153.642667 0 182.058667 101.12 182.058667 232.746667v268.202667zM227.712 317.141333a87.978667 87.978667 0 0 1-88.021333-88.106666 88.064 88.064 0 1 1 88.021333 88.106666z m76.032 555.477334H151.68V384h152.064v488.618667zM948.266667 0H75.562667C33.792 0 0 33.024 0 73.770667v876.458666C0 991.018667 33.792 1024 75.562667 1024h872.576C989.866667 1024 1024 991.018667 1024 950.229333V73.770667C1024 33.024 989.866667 0 948.138667 0h0.128z"></path>
+</svg>
+
+    </a>
+  
+  
+    <a href="https://github.com/rsotolongo" rel="me noopener" class="iconfont"
+      title="github"  target="_blank"
+      >
+      <svg class="icon" style="" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="36" height="36">
+  <path d="M512 12.672c-282.88 0-512 229.248-512 512 0 226.261333 146.688 418.133333 350.08 485.76 25.6 4.821333 34.986667-11.008 34.986667-24.618667 0-12.16-0.426667-44.373333-0.64-87.04-142.421333 30.890667-172.458667-68.693333-172.458667-68.693333C188.672 770.986667 155.008 755.2 155.008 755.2c-46.378667-31.744 3.584-31.104 3.584-31.104 51.413333 3.584 78.421333 52.736 78.421333 52.736 45.653333 78.293333 119.850667 55.68 149.12 42.581333 4.608-33.109333 17.792-55.68 32.426667-68.48-113.706667-12.8-233.216-56.832-233.216-253.013333 0-55.893333 19.84-101.546667 52.693333-137.386667-5.76-12.928-23.04-64.981333 4.48-135.509333 0 0 42.88-13.738667 140.8 52.48 40.96-11.392 84.48-17.024 128-17.28 43.52 0.256 87.04 5.888 128 17.28 97.28-66.218667 140.16-52.48 140.16-52.48 27.52 70.528 10.24 122.581333 5.12 135.509333 32.64 35.84 52.48 81.493333 52.48 137.386667 0 196.693333-119.68 240-233.6 252.586667 17.92 15.36 34.56 46.762667 34.56 94.72 0 68.522667-0.64 123.562667-0.64 140.202666 0 13.44 8.96 29.44 35.2 24.32C877.44 942.592 1024 750.592 1024 524.672c0-282.752-229.248-512-512-512"></path>
+</svg>
+
+    </a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+<a href="/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
+    class="iconfont" title="rss" target="_blank">
+    <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="30" height="30">
+  <path d="M819.157333 1024C819.157333 574.592 449.408 204.8 0 204.8V0c561.706667 0 1024 462.293333 1024 1024h-204.842667zM140.416 743.04a140.8 140.8 0 0 1 140.501333 140.586667A140.928 140.928 0 0 1 140.074667 1024C62.72 1024 0 961.109333 0 883.626667s62.933333-140.544 140.416-140.586667zM678.784 1024h-199.04c0-263.210667-216.533333-479.786667-479.744-479.786667V345.173333c372.352 0 678.784 306.517333 678.784 678.826667z"></path>
+</svg>
+
+  </a>
+  
+</div>
+
+<div class="copyright">
+  <span class="copyright-year">
+    &copy;
+    
+      2020 -
+    2021<span class="author">
+        Ricardo Sotolongo
+        
+      </span></span>
+
+  
+  
+
+  
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont">
+        
+        <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+      </i>
+    </div>
+  </div>
+  
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/main.638251f4230630f0335d8c6748e53a96f94b72670920b60c09a56fdc8bece214.js" integrity="sha256-Y4JR9CMGMPAzXYxnSOU6lvlLcmcJILYMCaVv3Ivs4hQ=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/js/load-photoswipe.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -6,7 +6,18 @@
     <description>Recent content in Posts on Programando en voz alta</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <lastBuildDate>Mon, 08 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="/es/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="/es/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Generando clientes de Swagger/OpenAPI</title>
+      <link>/es/post/generating-swagger-openapi-clients/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/generating-swagger-openapi-clients/</guid>
+      <description>Código fuente de apoyo disponible en GitHub
+Recientemente, estaba desarrollando una aplicación web .NET Core que necesita consumir una API desarrollada hace unos años usando ASP.NET WebAPI. Afortunadamente, esa API tenía Swagger integrado, así que pensé que podía ahorrar tiempo al no crear manualmente los instrumentos necesarios para las llamadas a la API (DTO, cliente, etc.) en su lugar podría utilizar la función &amp;ldquo;Servicios Conectados&amp;rdquo; de Visual Studio.
+Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solución en este post.</description>
+    </item>
+    
     <item>
       <title>Firmando ensamblados</title>
       <link>/es/post/signing-assemblies/</link>
@@ -205,16 +216,6 @@ Serán por estas razones por las que nosotros los profesionales de la computaci�
       <guid>/es/post/futuro-del-ensamblador/</guid>
       <description>Si difícil fue en su tiempo programar en lenguaje de máquina, difícil fue también hacerlo en ensamblador, aunque todavía haya personas que no lo quieran reconocer. El lenguaje ensamblador constituyó un paso de adelanto indudable sobre su predecesor, pero no estaba extinto de problemas.
 Poco a poco fue tomando auge, pero a la vez fueron surgiendo nuevos lenguajes que se le superponían y a la vez acomodaban al programador. Esto no es más que parte de la lógica de la evolución de la programación.</description>
-    </item>
-    
-    <item>
-      <title>Fanatismos</title>
-      <link>/es/post/fanatismos/</link>
-      <pubDate>Wed, 16 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/es/post/fanatismos/</guid>
-      <description>Hay que ver que el ser humano, en su vano afán de querer tener siempre la razón, hace cosas increíbles. Una de ellas es aquella manía de empecinarse con algo (dígase objetos, conceptos, teorías, personas, etc.) que le hemos llamado fanatismo.
-¿Alguien podrá decir que no es fanático a nada? Creo que no, pues ¿quién no se obsesionó con su primer amor? Existen varios tipos de fanatismos, el que se profesa por los objetos materiales, la religión, los equipos deportivos, etc.</description>
     </item>
     
   </channel>

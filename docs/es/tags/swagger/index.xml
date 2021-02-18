@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Swagger on Programando en voz alta</title>
+    <link>/es/tags/swagger/</link>
+    <description>Recent content in Swagger on Programando en voz alta</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es</language>
+    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="/es/tags/swagger/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Generando clientes de Swagger/OpenAPI</title>
+      <link>/es/post/generating-swagger-openapi-clients/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/generating-swagger-openapi-clients/</guid>
+      <description>Código fuente de apoyo disponible en GitHub
+Recientemente, estaba desarrollando una aplicación web .NET Core que necesita consumir una API desarrollada hace unos años usando ASP.NET WebAPI. Afortunadamente, esa API tenía Swagger integrado, así que pensé que podía ahorrar tiempo al no crear manualmente los instrumentos necesarios para las llamadas a la API (DTO, cliente, etc.) en su lugar podría utilizar la función &amp;ldquo;Servicios Conectados&amp;rdquo; de Visual Studio.
+Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solución en este post.</description>
+    </item>
+    
+  </channel>
+</rss>

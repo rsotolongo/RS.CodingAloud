@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>API on Coding Aloud</title>
+    <link>/tags/api/</link>
+    <description>Recent content in API on Coding Aloud</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/api/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Generating Swagger/OpenAPI clients</title>
+      <link>/post/generating-swagger-openapi-clients/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/generating-swagger-openapi-clients/</guid>
+      <description>Source code of support available at GitHub
+Recently I was developing a .NET Core web application that needs to consume an API developed few years ago using ASP.NET WebAPI. Fortunately, that API have Swagger integrated, so I thought I can save time do not creating manually the instruments required to API calls (DTOs, client, etc.) instead using the &amp;ldquo;Connected Services&amp;rdquo; feature of Visual Studio.
+I got a big surprise that inspired me to share the experience and the solution in this post.</description>
+    </item>
+    
+  </channel>
+</rss>
