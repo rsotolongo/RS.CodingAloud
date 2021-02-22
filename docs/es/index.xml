@@ -6,10 +6,48 @@
     <description>Recent content on Programando en voz alta</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 22 Feb 2021 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/es/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Publicación inmediata</title>
+      <link>/es/post/immediate-publishing/</link>
+      <pubDate>Mon, 22 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/immediate-publishing/</guid>
+      
+        <description>&lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/ImmediatePublishing&#34;&gt;Código fuente de apoyo disponible en GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Érase una vez una solución, alojada en un proyecto de equipo en Team Foundation Services (TFS) que fue descargada por primera vez. Sabía que la solución compilaba y podía publicarse sin problemas de inmediato. Pero me llevé una sorpresa porque ambos procesos fallaron. La figura 1 muestra una estructura simplificada del proyecto.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/immediate-publishing/01.png&#34; alt=&#34;Estructura del proyecto&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 1: &amp;ldquo;Estructura del proyecto&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;La figura 2 muestra cómo se configuró el proyecto para generar su documentación:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/immediate-publishing/02.png&#34; alt=&#34;Generación de documentación del proyecto&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 2: &amp;ldquo;Generación de documentación del proyecto&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Una vez que intentamos construirlo obtenemos el error que se muestra en la figura 3.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/immediate-publishing/03.png&#34; alt=&#34;Resultado de la compilación del proyecto&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 3: &amp;ldquo;Resultado de la compilación del proyecto&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;El error se debe a que el archivo de documentación: &amp;ldquo;RS.Blog.Projects.ImmediatePublishing.Web.xml&amp;rdquo; es de solo lectura y no se puede sobrescribir. Este problema se puede resolver si pasamos por el sistema de archivos y eliminamos el atributo: &amp;ldquo;Solo lectura&amp;rdquo; de ese archivo. Esa es la solución a corto plazo porque si usted u otro miembro del equipo descargan la solución por primera vez, el atributo volverá a impedir que la solución compilación. La solución a largo plazo es excluir ese archivo del proyecto como se muestra en la figura 4.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/immediate-publishing/04.png&#34; alt=&#34;Exclusión del archivo de documentación del proyecto&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 4: &amp;ldquo;Exclusión del archivo de documentación del proyecto&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Este paso agrega un par de líneas al archivo del proyecto (.csproj) como muestra la figura 5:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/immediate-publishing/05.png&#34; alt=&#34;Contenido del archivo del proyecto&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 5: &amp;ldquo;Contenido del archivo del proyecto&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Ahora, la solución compila pero una vez que intentamos publicarla; no funciona. La figura 6 muestra el error.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/immediate-publishing/06.png&#34; alt=&#34;Error de pubicación&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 6: &amp;ldquo;Error de pubicación&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;En este caso, el error también está relacionado con el atributo: &amp;ldquo;Solo lectura&amp;rdquo; pero del archivo: &amp;ldquo;web.config&amp;rdquo;. Por lo general, publicamos aplicaciones en configuración: &amp;ldquo;Release&amp;rdquo; y las transformaciones de configuración para &amp;ldquo;web.config&amp;rdquo; no se pueden ejecutar. Una vez más, eliminando el atributo del archivo: &amp;ldquo;web.config&amp;rdquo; (figura 7) resolverá el problema y finalmente podremos publicar la aplicación de inmediato (figura 8).&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/immediate-publishing/07.png&#34; alt=&#34;Quitando el atributo &amp;lsquo;Solo lectura&amp;rsquo;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 7: &amp;ldquo;Quitando el atributo &amp;lsquo;Solo lectura&amp;rsquo;&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/immediate-publishing/08.png&#34; alt=&#34;Resultados de publicación&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 8: &amp;ldquo;Resultados de publicación&amp;rdquo;.&lt;/p&gt;
+&lt;h3 id=&#34;resumen&#34;&gt;Resumen&lt;/h3&gt;
+&lt;p&gt;La publicación de una aplicación inmediatamente después de descargarla por primera vez desde TFS requiere eliminar el atributo: &amp;ldquo;Solo lectura&amp;rdquo; del archivo: &amp;ldquo;web.config&amp;rdquo;. Si el proyecto también genera documentación, es mejor excluirlo del proyecto en lugar de eliminar el mismo atributo del archivo de documentación.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/ImmediatePublishing&#34;&gt;Código fuente de apoyo disponible en GitHub&lt;/a&gt;&lt;/p&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>Generando clientes de Swagger/OpenAPI</title>
@@ -2795,23 +2833,6 @@ Lo cierto es que hay protestas por todo el mundo tanto de detractores como de lo
 &lt;p&gt;En el caso particular de la carrera de Ingeniería Informática su currículo está muy pensado sobre todo a desarrollar desde cero (otro factor que influye en lo antes expuesto); por suerte los encargados de rediseñar su Plan de Estudios se dieron cuenta y entonces el nuevo Plan de Estudios &amp;ldquo;D&amp;rdquo; se enfocará más al reuso que a la reescritura de código. Otorgarle la confianza a lo que se lo merece en aras de ganar tiempo para otras cuestiones fundamentales del proceso de desarrollo de software. Las mentes tienen que cambiar, de lo contrario, jamás podremos hacer algo que esté al nivel de los estándares mundiales de hoy en día.&lt;/p&gt;
 &lt;p&gt;Para que se tenga un ejemplo de esto, alguien se ha preguntado el ¿por qué en Windows existe el Worpad si Microsoft Word es mejor por millas y millas de funcionalidad? Sencillamente por problemas de compatibilidad (al igual que hay dos copias del Notepad.exe) y alguien se ha preguntado ¿Por qué su tamaño es despreciable con respecto al Word, por qué tardó tanto en ser actualizado? Pues bien, en su momento era otra compañía su desarrolladora y decidieron hacerlo en Ensamblador a pesar de ya existir la API de Win32, cierto fue que permitía un buen número de funcionalidades de una manera muy eficaz (rapidez y consumo de memoria) pero su mantenimiento se hizo insoportable al punto de que tuvo que ser vendido a Microsoft.&lt;/p&gt;
 &lt;p&gt;Con esto no quiero decir que las cosas no se hagan eficientes, sino que hay que llegar a un balance entre lo eficiencia y la eficacia del proyecto, y me despido porque me estoy yendo del tema.&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>El futuro del Ensamblador</title>
-      <link>/es/post/futuro-del-ensamblador/</link>
-      <pubDate>Thu, 17 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/es/post/futuro-del-ensamblador/</guid>
-      
-        <description>&lt;p&gt;Si difícil fue en su tiempo programar en lenguaje de máquina, difícil fue también hacerlo en ensamblador, aunque todavía haya personas que no lo quieran reconocer. El lenguaje ensamblador constituyó un paso de adelanto indudable sobre su predecesor, pero no estaba extinto de problemas.&lt;/p&gt;
-&lt;p&gt;Poco a poco fue tomando auge, pero a la vez fueron surgiendo nuevos lenguajes que se le superponían y a la vez acomodaban al programador. Esto no es más que parte de la lógica de la evolución de la programación. A medida que estos nuevos lenguajes iban tomando auge, a la vez otros nuevos se desarrollaban y así sucesivamente.
-Hoy por hoy hay muchos profesionales que insisten en que los proyectos desarrollados en ensamblador son mejores que los que son desarrollados en lenguajes de alto nivel (Object Pascal, Java, C#, etc.) pues consumen menos espacio en disco, memoria cuando están ejecutándose y son extremadamente veloces. En cierta manera no es menos cierto lo que plantean, pero hay elementos que no tienen en cuenta. Con los estándares de desarrollo profesional de software del momento estos argumentos pierden importancia frente a otros como son (sobre todas las cosas) el tiempo de respuesta y completitud de los proyectos.&lt;/p&gt;
-&lt;p&gt;Se hace insoportable el mantenimiento. La industria de software moderna exige cada vez más que las aplicaciones sean desarrolladas en tiempo record, cosa que es incomparable cuando se programa en ensamblador. En todos los casos me he referido a las aplicaciones empresariales tradicionales.&lt;/p&gt;
-&lt;p&gt;El ensamblador está condenado hoy en día para el desarrollo de firmware a muy bajo nivel para los dispositivos empotrados, por ejemplo: sistemas operativos para dispositivos móviles, equipos médicos, de telecomunicaciones, etc. Un buen amigo me dijo hace ya unos años que el programa que por sus características propias tuviera que implementar alguno de sus módulos en ensamblador, ese programa estaba mal diseñado; comparto con mi amigo esa verdad (si eso fue hace unos años ¿qué podremos pensar hoy?). Los Plan de Estudios &amp;ldquo;D&amp;rdquo; tiene esto muy en mente también y todo parece ser que se seguirá impartiendo conocimientos de ensamblador, pero a los niveles diferentes a los que se estaban dando.&lt;/p&gt;
-&lt;p&gt;El dilema está planteado por las características de las dos grandes plataformas de desarrollo de software actuales (Java y .NET) ninguna permite interactuar con el ensamblador, eliminándole al programador infinitas molestias. Si todo parece indicar que esto va a continuar en los próximos años entonces por qué torturarnos enseñando algo que poco a poco va a ir desapareciendo (Microsoft está llevando adelante un proyecto de un Sistema Operativo en C#).&lt;/p&gt;
 </description>
       
     </item>

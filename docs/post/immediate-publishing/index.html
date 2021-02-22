@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="es" itemscope itemtype="http://schema.org/WebPage">
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Programando en voz alta</title>
+  <title>Immediate publishing - Coding Aloud</title>
   
-<link rel="alternate" hreflang="en" href="/" />
+<link rel="alternate" hreflang="es" href="/es/post/immediate-publishing/" />
 
 
 <meta name="renderer" content="webkit" />
@@ -25,7 +25,11 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Ricardo Sotolongo" />
-  <meta name="description" content="Hugo theme jane example site." />
+  <meta name="description" content="Source code of support available at GitHub
+Once upon a time, a solution hosted in Team Foundation Services (TFS) team project that I downloaded for the first time. I knew that solution build and could be published seamlessly right away. But I got a surprise because both processes failed. Figure 1 shows a simplified project structure.
+Figure 1: &amp;ldquo;Project structure&amp;rdquo;.
+Figure 2 shows how the project was configured to generate its documentation:" />
+
   <meta name="keywords" content="Hugo, theme, jane" />
 
 
@@ -36,8 +40,8 @@
 <meta name="generator" content="Hugo 0.79.1" />
 
 
-<link rel="canonical" href="/es/" />
-<link href="/es/index.xml" rel="alternate" type="application/rss+xml" title="Programando en voz alta" />
+<link rel="canonical" href="/post/immediate-publishing/" />
+
 
 
 
@@ -60,16 +64,33 @@
 
 
 
-<meta property="og:title" content="Programando en voz alta" />
-<meta property="og:description" content="Hugo theme jane example site." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="/es/" />
-<meta property="og:updated_time" content="2021-02-22T00:00:00+00:00" /><meta property="og:site_name" content="Programando en voz alta" />
-<meta itemprop="name" content="Programando en voz alta">
-<meta itemprop="description" content="Hugo theme jane example site.">
+<meta property="og:title" content="Immediate publishing" />
+<meta property="og:description" content="Source code of support available at GitHub
+Once upon a time, a solution hosted in Team Foundation Services (TFS) team project that I downloaded for the first time. I knew that solution build and could be published seamlessly right away. But I got a surprise because both processes failed. Figure 1 shows a simplified project structure.
+Figure 1: &ldquo;Project structure&rdquo;.
+Figure 2 shows how the project was configured to generate its documentation:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/immediate-publishing/" />
+<meta property="article:published_time" content="2021-02-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-02-22T00:00:00+00:00" /><meta property="og:site_name" content="Coding Aloud" />
+<meta itemprop="name" content="Immediate publishing">
+<meta itemprop="description" content="Source code of support available at GitHub
+Once upon a time, a solution hosted in Team Foundation Services (TFS) team project that I downloaded for the first time. I knew that solution build and could be published seamlessly right away. But I got a surprise because both processes failed. Figure 1 shows a simplified project structure.
+Figure 1: &ldquo;Project structure&rdquo;.
+Figure 2 shows how the project was configured to generate its documentation:">
+<meta itemprop="datePublished" content="2021-02-22T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-02-22T00:00:00+00:00" />
+<meta itemprop="wordCount" content="344">
+
+
+
+<meta itemprop="keywords" content="Visual Studio,MSBuild," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Programando en voz alta"/>
-<meta name="twitter:description" content="Hugo theme jane example site."/>
+<meta name="twitter:title" content="Immediate publishing"/>
+<meta name="twitter:description" content="Source code of support available at GitHub
+Once upon a time, a solution hosted in Team Foundation Services (TFS) team project that I downloaded for the first time. I knew that solution build and could be published seamlessly right away. But I got a surprise because both processes failed. Figure 1 shows a simplified project structure.
+Figure 1: &ldquo;Project structure&rdquo;.
+Figure 2 shows how the project was configured to generate its documentation:"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -98,7 +119,7 @@ if (!doNotTrack) {
 <body>
   <div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
-    <a href="/es/" class="logo">Programando en voz alta</a>
+    <a href="/" class="logo">Coding Aloud</a>
   </div>
   <div class="mobile-navbar-icon">
     <span></span>
@@ -112,28 +133,28 @@ if (!doNotTrack) {
         
           
           
-            <a class="menu-item-link" href="es/">Inicio</a>
+            <a class="menu-item-link" href="/">Home</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="es/post/">Archivos</a>
+            <a class="menu-item-link" href="/post/">Archives</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="es/tags/">Etiquetas</a>
+            <a class="menu-item-link" href="/tags/">Tags</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="es/categories/">Categorías</a>
+            <a class="menu-item-link" href="/categories/">Categories</a>
           
         
       </li><li class="mobile-menu-item">
@@ -168,20 +189,20 @@ if (!doNotTrack) {
 </svg>
 
             </i>
-            Lenguaje
+            Language
           </a>
         </div>
         <ul class="mobile-submenu-list">
           
             <li>
               
-                <a href="/">English</a>
+                <a href="/"><strong>English</strong></a>
               
             </li>
           
             <li>
               
-                <a href="/es/"><strong>Español</strong></a>
+                <a href="/es/">Español</a>
               
             </li>
           
@@ -259,9 +280,9 @@ if (!doNotTrack) {
 
   <header id="header" class="header container">
     <div class="logo-wrapper">
-  <a href="/es/" class="logo">
+  <a href="/" class="logo">
     
-      Programando en voz alta
+      Coding Aloud
     
   </a>
 </div>
@@ -274,7 +295,7 @@ if (!doNotTrack) {
         
           
           
-            <a class="menu-item-link" href="es/">Inicio</a>
+            <a class="menu-item-link" href="/">Home</a>
           
 
         
@@ -285,7 +306,7 @@ if (!doNotTrack) {
         
           
           
-            <a class="menu-item-link" href="es/post/">Archivos</a>
+            <a class="menu-item-link" href="/post/">Archives</a>
           
 
         
@@ -296,7 +317,7 @@ if (!doNotTrack) {
         
           
           
-            <a class="menu-item-link" href="es/tags/">Etiquetas</a>
+            <a class="menu-item-link" href="/tags/">Tags</a>
           
 
         
@@ -307,7 +328,7 @@ if (!doNotTrack) {
         
           
           
-            <a class="menu-item-link" href="es/categories/">Categorías</a>
+            <a class="menu-item-link" href="/categories/">Categories</a>
           
 
         
@@ -349,16 +370,16 @@ if (!doNotTrack) {
 </svg>
 
           </i>
-          Español
+          English
         </a>
         <ul class="submenu">
           
             
-              <li>
-                <a href="/">English</a>
-              </li>
-            
           
+            
+              <li>
+                <a href="/es/">Español</a>
+              </li>
             
           
         </ul>
@@ -375,301 +396,128 @@ if (!doNotTrack) {
     <main id="main" class="main bg-llight">
       <div class="content-wrapper">
         <div id="content" class="content container">
-          
-<section id="posts" class="posts">
-  
-  
+          <article class="post bg-white">
     
-  
-  
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
+    <header class="post-header">
+      <h1 class="post-title">Immediate publishing</h1>
       
-      <a class="post-link" href="/es/post/immediate-publishing/">Publicación inmediata</a>
-    </h1>
-    
 <div class="post-meta">
   
-  <div><a href="/post/immediate-publishing/">Read in English: Immediate publishing</a></div>
+  <div><a href="/es/post/immediate-publishing/">Leer en español: Publicación inmediata</a></div>
   
 </div>
 
-    <div class="post-meta">
-      <time datetime="2021-02-22" class="post-time">
-        2021-02-22
-      </time>
-      <div class="post-category">
-          <a href="/es/categories/desarrollo/"> Desarrollo </a>
+      <div class="post-meta">
+        <time datetime="2021-02-22" class="post-time">
+          2021-02-22
+        </time>
+        <div class="post-category">
+            <a href="/categories/development/"> Development </a>
+            
+          </div>
+        <span class="more-meta"> 344 words </span>
+          <span class="more-meta"> 2 min read </span>
+
+        
+        
+
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+    
+    <div class="post-content">
+      <p><a href="https://github.com/rsotolongo/RS.Blog.Projects/tree/main/ImmediatePublishing">Source code of support available at GitHub</a></p>
+<p>Once upon a time, a solution hosted in Team Foundation Services (TFS) team project that I downloaded for the first time. I knew that solution build and could be published seamlessly right away. But I got a surprise because both processes failed. Figure 1 shows a simplified project structure.</p>
+<p><img src="/immediate-publishing/01.png" alt="Project structure"></p>
+<p>Figure 1: &ldquo;Project structure&rdquo;.</p>
+<p>Figure 2 shows how the project was configured to generate its documentation:</p>
+<p><img src="/immediate-publishing/02.png" alt="Project documentation generation"></p>
+<p>Figure 2: &ldquo;Project documentation generation&rdquo;.</p>
+<p>Once we try to build it we get the error shown in figure 3.</p>
+<p><img src="/immediate-publishing/03.png" alt="Project build result"></p>
+<p>Figure 3: &ldquo;Project build result&rdquo;.</p>
+<p>The error is because the documentation file: &ldquo;RS.Blog.Projects.ImmediatePublishing.Web.xml&rdquo; is read-only and can&rsquo;t be overwritten. This problem can be solved if we go through the file system and remove the attribute: &ldquo;read-only&rdquo; from that file. That is the short-term solution because if you or another team member download the solution for the first time, it will have the attribute again impeding that solution build. The long term solution is to exclude that file from the project as figure 4.</p>
+<p><img src="/immediate-publishing/04.png" alt="Exclude documentation file from the project"></p>
+<p>Figure 4: &ldquo;Exclude documentation file from the project&rdquo;.</p>
+<p>This step adds a couple of lines into the project file (.csproj) as figure 5 shows:</p>
+<p><img src="/immediate-publishing/05.png" alt="Project file content"></p>
+<p>Figure 5: &ldquo;Project file content&rdquo;.</p>
+<p>Now, the solution builds but once we try to publish it; it doesn&rsquo;t work. Figure 6 shows the error.</p>
+<p><img src="/immediate-publishing/06.png" alt="Publishing error"></p>
+<p>Figure 6: &ldquo;Publishing error&rdquo;.</p>
+<p>In this case, the error is also related with the attribute: &ldquo;read-only&rdquo; but for file: &ldquo;web.config&rdquo;. Usually, we publish applications under configuration: &ldquo;Release&rdquo; and configuration transformation for &ldquo;web.config&rdquo; can&rsquo;t be executed. Once again, removing the attribute from the file: &ldquo;web.config&rdquo; (figure 7) will solve the problem and finally we can publish the application straight away (figure 8).</p>
+<p><img src="/immediate-publishing/07.png" alt="Removing &lsquo;read-only&rsquo; attribute"></p>
+<p>Figure 7: &ldquo;Removing &lsquo;read-only&rsquo; attribute&rdquo;.</p>
+<p><img src="/immediate-publishing/08.png" alt="Publishing result"></p>
+<p>Figure 8: &ldquo;Publishing result&rdquo;.</p>
+<h3 id="summary">Summary</h3>
+<p>Publishing an application immediately after downloaded for the first time from TFS requires to remove attribute: &ldquo;read-only&rdquo; from file: &ldquo;web.config&rdquo;. If the project also generates documentation is better to exclude it from the project instead of remove the same attribute from the documentation file.</p>
+<p><a href="https://github.com/rsotolongo/RS.Blog.Projects/tree/main/ImmediatePublishing">Source code of support available at GitHub</a></p>
+
+    </div>
+
+    
+    
+
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/visual-studio/">Visual Studio</a>
+          <a href="/tags/msbuild/">MSBuild</a>
           
         </div>
-      <span class="more-meta"> 377 palabras </span>
-      <span class="more-meta"> 2 min lectura </span>
+
       
-      
-      
-    </div>
-  </header>
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/post/generating-swagger-openapi-clients/">
+            <span class="next-text nav-default">Generating Swagger/OpenAPI clients</span>
+            <span class="prev-text nav-mobile">Next</span>
+            
+            <i class="iconfont">
+              <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+            </i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+
   
-  <div class="post-content">
+  
+  
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
     
-    <div class="post-summary">
-      Código fuente de apoyo disponible en GitHub
-Érase una vez una solución, alojada en un proyecto de equipo en Team Foundation Services (TFS) que fue descargada por primera vez. Sabía que la solución compilaba y podía publicarse sin problemas de inmediato. Pero me llevé una sorpresa porque ambos procesos fallaron. La figura 1 muestra una estructura simplificada del proyecto.
-Figura 1: &ldquo;Estructura del proyecto&rdquo;.
-La figura 2 muestra cómo se configuró el proyecto para generar su documentación:
-    </div>
-    <div class="read-more">
-      <a href="/es/post/immediate-publishing/" class="read-more-link">Leer más</a>
-    </div>
-    
-  </div>
-</article>
 
   
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/es/post/generating-swagger-openapi-clients/">Generando clientes de Swagger/OpenAPI</a>
-    </h1>
-    
-<div class="post-meta">
-  
-  <div><a href="/post/generating-swagger-openapi-clients/">Read in English: Generating Swagger/OpenAPI clients</a></div>
-  
-</div>
-
-    <div class="post-meta">
-      <time datetime="2021-02-15" class="post-time">
-        2021-02-15
-      </time>
-      <div class="post-category">
-          <a href="/es/categories/desarrollo/"> Desarrollo </a>
-          
-        </div>
-      <span class="more-meta"> 2409 palabras </span>
-      <span class="more-meta"> 12 min lectura </span>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      Código fuente de apoyo disponible en GitHub
-Recientemente, estaba desarrollando una aplicación web .NET Core que necesita consumir una API desarrollada hace unos años usando ASP.NET WebAPI. Afortunadamente, esa API tenía Swagger integrado, así que pensé que podía ahorrar tiempo al no crear manualmente los instrumentos necesarios para las llamadas a la API (DTO, cliente, etc.) en su lugar podría utilizar la función &ldquo;Servicios Conectados&rdquo; de Visual Studio.
-Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solución en este post.
-    </div>
-    <div class="read-more">
-      <a href="/es/post/generating-swagger-openapi-clients/" class="read-more-link">Leer más</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/es/post/signing-assemblies/">Firmando ensamblados</a>
-    </h1>
-    
-<div class="post-meta">
-  
-  <div><a href="/post/signing-assemblies/">Read in English: Signing assemblies</a></div>
-  
-</div>
-
-    <div class="post-meta">
-      <time datetime="2021-02-08" class="post-time">
-        2021-02-08
-      </time>
-      <div class="post-category">
-          <a href="/es/categories/desarrollo/"> Desarrollo </a>
-          
-        </div>
-      <span class="more-meta"> 1769 palabras </span>
-      <span class="more-meta"> 9 min lectura </span>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      Código fuente de apoyo disponible en GitHub
-.NET Core No todos los clientes requieren firmar los ensamblados de sus aplicaciones, pero cuando es necesario, la tarea no es tan fácil como cabría esperar.
-En el caso de las aplicaciones .NET Core, podemos lograr esto simplemente editando el archivo del proyecto (.csproj) agregando el siguiente código:
-1 2 3  &lt;Target Name=&#34;BuildSigning&#34; AfterTargets=&#34;AfterBuild&#34;&gt; &lt;Exec Command=&#34;SIGNING_COMMAND&#34; /&gt; &lt;/Target&gt;   Como ejemplo, SIGNING_COMMAND podría ser:
-    </div>
-    <div class="read-more">
-      <a href="/es/post/signing-assemblies/" class="read-more-link">Leer más</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/es/post/generating-signature-certificates/">Generando certificados de firma</a>
-    </h1>
-    
-<div class="post-meta">
-  
-  <div><a href="/post/generating-signature-certificates/">Read in English: Generating signature certificates</a></div>
-  
-</div>
-
-    <div class="post-meta">
-      <time datetime="2021-02-01" class="post-time">
-        2021-02-01
-      </time>
-      <div class="post-category">
-          <a href="/es/categories/desarrollo/"> Desarrollo </a>
-          
-        </div>
-      <span class="more-meta"> 418 palabras </span>
-      <span class="more-meta"> 2 min lectura </span>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      Código fuente de apoyo disponible en GitHub
-A veces, los ensamblados (ejecutables y bibliotecas) deben estar firmados y no tenemos un certificado disponible con fines de prueba. En este post pretendo mostrar cómo generar un certificado para firmar ensamblados.
-Primero, necesitamos instalar OpenSSL que podemos lograr siguiendo los pasos que se especifican en el siguiente enlace:
-Instalación de OpenSSL en Windows 10 y actualización de PATH
-En segundo lugar, creemos un archivo de secuencia de comandos por lotes llamado: &ldquo;generateCertificate.
-    </div>
-    <div class="read-more">
-      <a href="/es/post/generating-signature-certificates/" class="read-more-link">Leer más</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/es/post/deploying-nuget-packages/">Desplegando paquetes NuGet</a>
-    </h1>
-    
-<div class="post-meta">
-  
-  <div><a href="/post/deploying-nuget-packages/">Read in English: Deploying NuGet packages</a></div>
-  
-</div>
-
-    <div class="post-meta">
-      <time datetime="2021-01-25" class="post-time">
-        2021-01-25
-      </time>
-      <div class="post-category">
-          <a href="/es/categories/desarrollo/"> Desarrollo </a>
-          
-        </div>
-      <span class="more-meta"> 474 palabras </span>
-      <span class="more-meta"> 3 min lectura </span>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      Código fuente de apoyo disponible en GitHub
-En una publicación anterior vimos cómo: &ldquo;Crear paquetes NuGet&rdquo; pero el paso de despliegue aún era un proceso manual. Intentemos automatizar esto. La figura 1 muestra cómo generar un paquete NuGet para un proyecto de .NET Core (similar al enfoque mostrado anteriormente) utilizando las propiedades del proyecto.
-Figura 1: &ldquo;Creando un paquete NuGet&rdquo;.
-Esto agrega un par de líneas al archivo del proyecto (.
-    </div>
-    <div class="read-more">
-      <a href="/es/post/deploying-nuget-packages/" class="read-more-link">Leer más</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-</section>
-
-
-
-
-
-
-  
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-  <nav class="pagination">
-    <ul>
-      
-      <li  class="active" >
-        <a href="/es/">1</a>
-      </li>
-      
-      <li >
-        <a href="/es/page/2/">2</a>
-      </li>
-      
-      <li >
-        <a href="/es/page/3/">3</a>
-      </li>
-      
-      <li >
-        <a href="/es/page/4/">4</a>
-      </li>
-      
-      <li >
-        <a href="/es/page/5/">5</a>
-      </li>
-      
-      <li >
-        <a href="/es/page/6/">6</a>
-      </li>
-      
-      <li >
-        <a href="/es/page/7/">7</a>
-      </li>
-      
-    </ul>
-  </nav>
-
-  
-  
-
-
-
-
 
         </div>
       </div>
@@ -738,7 +586,7 @@ Esto agrega un par de líneas al archivo del proyecto (.
   
 
 
-<a href="/es/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
+<a href="/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
     class="iconfont" title="rss" target="_blank">
     <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"

@@ -6,7 +6,19 @@
     <description>Recent content in Posts on Programando en voz alta</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="/es/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 22 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="/es/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Publicación inmediata</title>
+      <link>/es/post/immediate-publishing/</link>
+      <pubDate>Mon, 22 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/immediate-publishing/</guid>
+      <description>Código fuente de apoyo disponible en GitHub
+Érase una vez una solución, alojada en un proyecto de equipo en Team Foundation Services (TFS) que fue descargada por primera vez. Sabía que la solución compilaba y podía publicarse sin problemas de inmediato. Pero me llevé una sorpresa porque ambos procesos fallaron. La figura 1 muestra una estructura simplificada del proyecto.
+Figura 1: &amp;ldquo;Estructura del proyecto&amp;rdquo;.
+La figura 2 muestra cómo se configuró el proyecto para generar su documentación:</description>
+    </item>
+    
     <item>
       <title>Generando clientes de Swagger/OpenAPI</title>
       <link>/es/post/generating-swagger-openapi-clients/</link>
@@ -206,16 +218,6 @@ No repetiré lo que ya dije una vez, esta vez me desenvolveré en la rama de mi 
       <guid>/es/post/reescribir-%C3%B3-reusar/</guid>
       <description>Hay veces que no nos damos cuenta de la existencia de delgadas líneas que existen entre cosas. Por otra parte, no sé por qué tenemos esa desconfianza en lo que otro hace. La reticencia al cambio es algo siempre presente en toda persona y es un mal muy difícil de arraigar, hay que ser un experto para lograr que se entiendan los cambios.
 Serán por estas razones por las que nosotros los profesionales de la computación cada vez que tenemos que desarrollar una aplicación pensamos seriamente codificarla desde cero, incluso a veces lo hacemos.</description>
-    </item>
-    
-    <item>
-      <title>El futuro del Ensamblador</title>
-      <link>/es/post/futuro-del-ensamblador/</link>
-      <pubDate>Thu, 17 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/es/post/futuro-del-ensamblador/</guid>
-      <description>Si difícil fue en su tiempo programar en lenguaje de máquina, difícil fue también hacerlo en ensamblador, aunque todavía haya personas que no lo quieran reconocer. El lenguaje ensamblador constituyó un paso de adelanto indudable sobre su predecesor, pero no estaba extinto de problemas.
-Poco a poco fue tomando auge, pero a la vez fueron surgiendo nuevos lenguajes que se le superponían y a la vez acomodaban al programador. Esto no es más que parte de la lógica de la evolución de la programación.</description>
     </item>
     
   </channel>

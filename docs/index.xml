@@ -6,10 +6,48 @@
     <description>Recent content on Coding Aloud</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 22 Feb 2021 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Immediate publishing</title>
+      <link>/post/immediate-publishing/</link>
+      <pubDate>Mon, 22 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/immediate-publishing/</guid>
+      
+        <description>&lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/ImmediatePublishing&#34;&gt;Source code of support available at GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Once upon a time, a solution hosted in Team Foundation Services (TFS) team project that I downloaded for the first time. I knew that solution build and could be published seamlessly right away. But I got a surprise because both processes failed. Figure 1 shows a simplified project structure.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/immediate-publishing/01.png&#34; alt=&#34;Project structure&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 1: &amp;ldquo;Project structure&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Figure 2 shows how the project was configured to generate its documentation:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/immediate-publishing/02.png&#34; alt=&#34;Project documentation generation&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 2: &amp;ldquo;Project documentation generation&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Once we try to build it we get the error shown in figure 3.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/immediate-publishing/03.png&#34; alt=&#34;Project build result&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 3: &amp;ldquo;Project build result&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;The error is because the documentation file: &amp;ldquo;RS.Blog.Projects.ImmediatePublishing.Web.xml&amp;rdquo; is read-only and can&amp;rsquo;t be overwritten. This problem can be solved if we go through the file system and remove the attribute: &amp;ldquo;read-only&amp;rdquo; from that file. That is the short-term solution because if you or another team member download the solution for the first time, it will have the attribute again impeding that solution build. The long term solution is to exclude that file from the project as figure 4.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/immediate-publishing/04.png&#34; alt=&#34;Exclude documentation file from the project&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 4: &amp;ldquo;Exclude documentation file from the project&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;This step adds a couple of lines into the project file (.csproj) as figure 5 shows:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/immediate-publishing/05.png&#34; alt=&#34;Project file content&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 5: &amp;ldquo;Project file content&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Now, the solution builds but once we try to publish it; it doesn&amp;rsquo;t work. Figure 6 shows the error.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/immediate-publishing/06.png&#34; alt=&#34;Publishing error&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 6: &amp;ldquo;Publishing error&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;In this case, the error is also related with the attribute: &amp;ldquo;read-only&amp;rdquo; but for file: &amp;ldquo;web.config&amp;rdquo;. Usually, we publish applications under configuration: &amp;ldquo;Release&amp;rdquo; and configuration transformation for &amp;ldquo;web.config&amp;rdquo; can&amp;rsquo;t be executed. Once again, removing the attribute from the file: &amp;ldquo;web.config&amp;rdquo; (figure 7) will solve the problem and finally we can publish the application straight away (figure 8).&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/immediate-publishing/07.png&#34; alt=&#34;Removing &amp;lsquo;read-only&amp;rsquo; attribute&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 7: &amp;ldquo;Removing &amp;lsquo;read-only&amp;rsquo; attribute&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/immediate-publishing/08.png&#34; alt=&#34;Publishing result&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figure 8: &amp;ldquo;Publishing result&amp;rdquo;.&lt;/p&gt;
+&lt;h3 id=&#34;summary&#34;&gt;Summary&lt;/h3&gt;
+&lt;p&gt;Publishing an application immediately after downloaded for the first time from TFS requires to remove attribute: &amp;ldquo;read-only&amp;rdquo; from file: &amp;ldquo;web.config&amp;rdquo;. If the project also generates documentation is better to exclude it from the project instead of remove the same attribute from the documentation file.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/ImmediatePublishing&#34;&gt;Source code of support available at GitHub&lt;/a&gt;&lt;/p&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>Generating Swagger/OpenAPI clients</title>
