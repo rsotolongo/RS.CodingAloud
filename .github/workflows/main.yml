@@ -1,0 +1,45 @@
+# Based on https://github.com/avinassh/hugo-publish/blob/master/action.yml
+name: 'Hugo Publish'
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+          fetch-depth: 0
+
+      - name: install hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: 'latest'
+
+      - name: setup
+        id: vars
+        run: |
+          echo "::set-output name=commit_msg::$(git log -1 --pretty=%B)"
+
+      - name: build
+        run: hugo
+
+      - name: commit
+        run: |
+          cd docs
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          if [ "`git status -s`" ]
+          then
+            git add --all
+            git commit -am "Published: ${{ steps.vars.outputs.commit_msg }}"
+          fi     
+
+      - name: deploy
+        run: git push --all
