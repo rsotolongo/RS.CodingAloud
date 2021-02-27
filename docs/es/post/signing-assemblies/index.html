@@ -37,7 +37,7 @@ En el caso de las aplicaciones .NET Core, podemos lograr esto simplemente editan
 
 
 
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.81.0" />
 
 
 <link rel="canonical" href="/es/post/signing-assemblies/" />
@@ -70,22 +70,18 @@ En el caso de las aplicaciones .NET Core, podemos lograr esto simplemente editan
 En el caso de las aplicaciones .NET Core, podemos lograr esto simplemente editando el archivo del proyecto (.csproj) agregando el siguiente código:
 1 2 3  &lt;Target Name=&#34;BuildSigning&#34; AfterTargets=&#34;AfterBuild&#34;&gt; &lt;Exec Command=&#34;SIGNING_COMMAND&#34; /&gt; &lt;/Target&gt;   Como ejemplo, SIGNING_COMMAND podría ser:" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/es/post/signing-assemblies/" />
-<meta property="article:published_time" content="2021-02-08T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-02-08T00:00:00+00:00" /><meta property="og:site_name" content="Programando en voz alta" />
+<meta property="og:url" content="/es/post/signing-assemblies/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-02-08T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2021-02-08T00:00:00&#43;00:00" /><meta property="og:site_name" content="Programando en voz alta" />
+
 <meta itemprop="name" content="Firmando ensamblados">
 <meta itemprop="description" content="Código fuente de apoyo disponible en GitHub
 .NET Core No todos los clientes requieren firmar los ensamblados de sus aplicaciones, pero cuando es necesario, la tarea no es tan fácil como cabría esperar.
 En el caso de las aplicaciones .NET Core, podemos lograr esto simplemente editando el archivo del proyecto (.csproj) agregando el siguiente código:
-1 2 3  &lt;Target Name=&#34;BuildSigning&#34; AfterTargets=&#34;AfterBuild&#34;&gt; &lt;Exec Command=&#34;SIGNING_COMMAND&#34; /&gt; &lt;/Target&gt;   Como ejemplo, SIGNING_COMMAND podría ser:">
-<meta itemprop="datePublished" content="2021-02-08T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2021-02-08T00:00:00+00:00" />
+1 2 3  &lt;Target Name=&#34;BuildSigning&#34; AfterTargets=&#34;AfterBuild&#34;&gt; &lt;Exec Command=&#34;SIGNING_COMMAND&#34; /&gt; &lt;/Target&gt;   Como ejemplo, SIGNING_COMMAND podría ser:"><meta itemprop="datePublished" content="2021-02-08T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2021-02-08T00:00:00&#43;00:00" />
 <meta itemprop="wordCount" content="1769">
-
-
-
-<meta itemprop="keywords" content="Visual Studio,MSBuild,seguridad," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="Visual Studio,MSBuild,seguridad," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Firmando ensamblados"/>
 <meta name="twitter:description" content="Código fuente de apoyo disponible en GitHub
 .NET Core No todos los clientes requieren firmar los ensamblados de sus aplicaciones, pero cuando es necesario, la tarea no es tan fácil como cabría esperar.
