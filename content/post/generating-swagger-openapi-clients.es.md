@@ -12,7 +12,7 @@ Recientemente, estaba desarrollando una aplicación web .NET Core que necesita c
 
 Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solución en este post. Reproduje un escenario simplificado como se puede ver en la figura 1 accediendo a Swagger UI a través de su URL: "http://localhost:5200/swagger".
 
-![IU de Swagger de FullAPI](/generate-swagger-openapi-clients/01.png)
+![IU de Swagger de FullAPI](/generating-swagger-openapi-clients/01.png)
 
 Figura 1: IU de Swagger para API usando .NET Framework.
 
