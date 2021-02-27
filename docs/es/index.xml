@@ -59,7 +59,7 @@
         <description>&lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/ConnectedServices&#34;&gt;Código fuente de apoyo disponible en GitHub&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Recientemente, estaba desarrollando una aplicación web .NET Core que necesita consumir una API desarrollada hace unos años usando ASP.NET WebAPI. Afortunadamente, esa API tenía Swagger integrado, así que pensé que podía ahorrar tiempo al no crear manualmente los instrumentos necesarios para las llamadas a la API (DTO, cliente, etc.) en su lugar podría utilizar la función &amp;ldquo;Servicios Conectados&amp;rdquo; de Visual Studio.&lt;/p&gt;
 &lt;p&gt;Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solución en este post. Reproduje un escenario simplificado como se puede ver en la figura 1 accediendo a Swagger UI a través de su URL: &amp;ldquo;http://localhost:5200/swagger&amp;rdquo;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/generate-swagger-openapi-clients/01.png&#34; alt=&#34;IU de Swagger de FullAPI&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generating-swagger-openapi-clients/01.png&#34; alt=&#34;IU de Swagger de FullAPI&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 1: IU de Swagger para API usando .NET Framework.&lt;/p&gt;
 &lt;p&gt;Básicamente, esta API tiene dos controladores que proporcionan dos métodos, cada uno con rutas diferentes pero intenciones equivalentes.&lt;/p&gt;
 &lt;p&gt;Accediendo a su documento de especificación: &amp;ldquo;http://localhost:5200/swagger/docs/v1&amp;rdquo; tenemos:&lt;/p&gt;
