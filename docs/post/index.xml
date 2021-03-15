@@ -6,7 +6,18 @@
     <description>Recent content in Posts on Coding Aloud</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 22 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 15 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Asynchronous commands</title>
+      <link>/post/asynchronous-commands/</link>
+      <pubDate>Mon, 15 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/asynchronous-commands/</guid>
+      <description>Source code of support available at GitHub
+Recently I had to implement a simple application with Windows Presentation Framework (WPF) using Model-View-ViewModel (MVVM) pattern. I got surprised when I noticed that there was not a simple solution out-of-the-box for bind asynchronous commands, so I decided to create my implementations for them.
+I also want genericity, so I started defining the most general interface that inheritance from ICommand (included in namespace: &amp;ldquo;System.</description>
+    </item>
+    
     <item>
       <title>Immediate publishing</title>
       <link>/post/immediate-publishing/</link>

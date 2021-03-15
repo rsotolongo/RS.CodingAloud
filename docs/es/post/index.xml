@@ -6,7 +6,18 @@
     <description>Recent content in Posts on Programando en voz alta</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <lastBuildDate>Mon, 22 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="/es/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 15 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="/es/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Comandos asíncronos</title>
+      <link>/es/post/asynchronous-commands/</link>
+      <pubDate>Mon, 15 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/asynchronous-commands/</guid>
+      <description>Código fuente de apoyo disponible en GitHub
+Recientemente tuve que implementar una aplicación simple con Windows Presentation Framework (WPF) usando el patrón Model-View-ViewModel (MVVM). Me sorprendí cuando noté que no había una solución simple lista para usar para enlazar comandos asíncronos, así que decidí crear mis implementaciones para ellos.
+También quiero ser genérico, así que comencé a definir la interfaz más general que hereda de ICommand (incluida en el espacio de nombres: &amp;ldquo;System.</description>
+    </item>
+    
     <item>
       <title>Publicación inmediata</title>
       <link>/es/post/immediate-publishing/</link>
@@ -208,16 +219,6 @@ Quise hacer esta breve introducción pues lo que quiero comentarles hoy se relac
       <guid>/es/post/amaos-todos/</guid>
       <description>Leyendo el título de este artículo pudieran pensar que se enfrentarán a un debate relacionado con la teología, pero no será así. Creo haber escrito antes algo sobre las diferencias entre profesionales de la computación y la semejanza que tienen sus discusiones con las que sostienen los creyentes con los no creyentes en Dios.
 No repetiré lo que ya dije una vez, esta vez me desenvolveré en la rama de mi profesión solamente.</description>
-    </item>
-    
-    <item>
-      <title>La delgada línea entre reescribir y reutilizar código</title>
-      <link>/es/post/reescribir-%C3%B3-reusar/</link>
-      <pubDate>Fri, 18 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/es/post/reescribir-%C3%B3-reusar/</guid>
-      <description>Hay veces que no nos damos cuenta de la existencia de delgadas líneas que existen entre cosas. Por otra parte, no sé por qué tenemos esa desconfianza en lo que otro hace. La reticencia al cambio es algo siempre presente en toda persona y es un mal muy difícil de arraigar, hay que ser un experto para lograr que se entiendan los cambios.
-Serán por estas razones por las que nosotros los profesionales de la computación cada vez que tenemos que desarrollar una aplicación pensamos seriamente codificarla desde cero, incluso a veces lo hacemos.</description>
     </item>
     
   </channel>

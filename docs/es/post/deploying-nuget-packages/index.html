@@ -443,7 +443,7 @@ if (!doNotTrack) {
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;Import</span> <span class="na">Project=</span><span class="s">&#34;..\DeployPackage.targets&#34;</span> <span class="na">Condition=</span><span class="s">&#34;Exists(&#39;..\DeployPackage.targets&#39;)&#34;</span> <span class="nt">/&gt;</span>
+<pre class="chroma"><code class="language-XML" data-lang="XML"><span class="nt">&lt;Import</span> <span class="na">Project=</span><span class="s">&#34;..\DeployPackage.targets&#34;</span> <span class="na">Condition=</span><span class="s">&#34;Exists(&#39;..\DeployPackage.targets&#39;)&#34;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;Target</span> <span class="na">Name=</span><span class="s">&#34;DeployingPackage&#34;</span> <span class="na">AfterTargets=</span><span class="s">&#34;GenerateNuspec&#34;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;MSBuild</span> <span class="na">Projects=</span><span class="s">&#34;$(MsBuildThisFile)&#34;</span> <span class="na">Targets=</span><span class="s">&#34;DeployPackage&#34;</span> <span class="na">Properties=</span><span class="s">&#34;PackageIdentifier=$(PackageId);PackageVersion=$(Version);DeployPackage=true&#34;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/Target&gt;</span>
@@ -474,7 +474,7 @@ if (!doNotTrack) {
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+<pre class="chroma"><code class="language-XML" data-lang="XML"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
 <span class="nt">&lt;Project</span> <span class="na">xmlns=</span><span class="s">&#34;http://schemas.microsoft.com/developer/msbuild/2003&#34;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;PropertyGroup&gt;</span>
     <span class="nt">&lt;DeployPackages</span> <span class="na">Condition=</span><span class="s">&#34;&#39;$(DeployPackages)&#39; == &#39;&#39;&#34;</span><span class="nt">&gt;</span>false<span class="nt">&lt;/DeployPackages&gt;</span>
