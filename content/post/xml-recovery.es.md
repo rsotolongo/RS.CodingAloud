@@ -87,7 +87,7 @@ No es objetivo de este artículo el cómo fueron trabajados los correos (para lo
 
 Figura 1: Ejemplo de XML generado.
 
-``` xml
+``` XML
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/TR/WD-xsl">
   <xsl:template match="/">
     <sqls>

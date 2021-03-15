@@ -22,7 +22,7 @@ Figura 2: "Propiedades del archivo de proyecto para crear el paquete NuGet".
 
 Mi enfoque también usa tagets de MSBuild. El primer paso es incluir el siguiente código en el archivo del proyecto (.csproj):
 
-``` xml
+``` XML
 <Import Project="..\DeployPackage.targets" Condition="Exists('..\DeployPackage.targets')" />
 <Target Name="DeployingPackage" AfterTargets="GenerateNuspec">
   <MSBuild Projects="$(MsBuildThisFile)" Targets="DeployPackage" Properties="PackageIdentifier=$(PackageId);PackageVersion=$(Version);DeployPackage=true" />
@@ -31,7 +31,7 @@ Mi enfoque también usa tagets de MSBuild. El primer paso es incluir el siguient
 
 Básicamente, importamos el archivo de tareas: "DeployPackage.targets" y llamamos a su tarea: "DeployPackage" pasando dos parámetros: "PackageIdentifier" y "PackageVersion". El contenido del archivo: "DeployPackage.targets" es:
 
-``` xml
+``` XML
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>

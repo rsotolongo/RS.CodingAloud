@@ -22,7 +22,7 @@ Figure 2: "Project file properties to create NuGet package".
 
 My approach also uses MSBuild targets. The first step is to include the following code into the project file (.csproj):
 
-``` xml
+``` XML
 <Import Project="..\DeployPackage.targets" Condition="Exists('..\DeployPackage.targets')" />
 <Target Name="DeployingPackage" AfterTargets="GenerateNuspec">
   <MSBuild Projects="$(MsBuildThisFile)" Targets="DeployPackage" Properties="PackageIdentifier=$(PackageId);PackageVersion=$(Version);DeployPackage=true" />
@@ -31,7 +31,7 @@ My approach also uses MSBuild targets. The first step is to include the followin
 
 Basically, we import the target file: "DeployPackage.targets" and calls its task: "DeployPackage" passing two parameters: "PackageIdentifier" and "PackageVersion". Content of file: "DeployPackage.targets" is:
 
-``` xml
+``` XML
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
