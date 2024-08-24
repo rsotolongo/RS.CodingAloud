@@ -6,13 +6,13 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-    
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           submodules: true
           fetch-depth: 0
@@ -25,7 +25,7 @@ jobs:
       - name: setup
         id: vars
         run: |
-          echo "::set-output name=commit_msg::$(git log -1 --pretty=%B)"
+          echo "{commit_msg}={$(git log -1 --pretty=%B)}"
 
       - name: build
         run: hugo
@@ -39,7 +39,7 @@ jobs:
           then
             git add --all
             git commit -am "Published: ${{ steps.vars.outputs.commit_msg }}"
-          fi     
+          fi
 
       - name: deploy
         run: git push --all
