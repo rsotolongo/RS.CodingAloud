@@ -101,7 +101,7 @@
 
 <!-- Analytics -->
 {{- if and (not hugo.IsServer) .Site.Config.Services.GoogleAnalytics.ID -}}
-  {{ partial "_internal/google_analytics_async.html" . }}
+  {{ partial "google_analytics_async.html" . }}
 {{- end -}}
 
 <!-- Custom head -->
