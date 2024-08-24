@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Calidad on Programando en voz alta</title>
-    <link>//localhost:1313/es/tags/calidad/</link>
+    <link>/es/tags/calidad/</link>
     <description>Recent content in Calidad on Programando en voz alta</description>
     <generator>Hugo</generator>
     <language>es</language>
     <lastBuildDate>Wed, 09 Dec 2020 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/es/tags/calidad/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/es/tags/calidad/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>No basta con solo construir</title>
-      <link>//localhost:1313/es/post/solo-desplegar-no-basta/</link>
+      <link>/es/post/solo-desplegar-no-basta/</link>
       <pubDate>Wed, 09 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/post/solo-desplegar-no-basta/</guid>
+      <guid>/es/post/solo-desplegar-no-basta/</guid>
       <description>La experiencia nos ha mostrado que la creación de un sitio web debe partir de una planeación, seguido por una construcción del sitio y posteriormente ejecutar un proceso de medición para garantizar que los resultados se cumplan. Sin embargo, en la práctica, tal vez por parecer muy fácil su construcción, o por la poca disponibilidad de tiempo se arranca por la construcción, obviando la planeación e impidiendo la medición.&#xA;La tecnología de Internet y en especial la tecnología web hace muy fácil la publicación de una aplicación, por lo que la planeación nos parece trivial.</description>
     </item>
   </channel>

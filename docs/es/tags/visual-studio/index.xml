@@ -2,59 +2,59 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Visual Studio on Programando en voz alta</title>
-    <link>//localhost:1313/es/tags/visual-studio/</link>
+    <link>/es/tags/visual-studio/</link>
     <description>Recent content in Visual Studio on Programando en voz alta</description>
     <generator>Hugo</generator>
     <language>es</language>
     <lastBuildDate>Mon, 22 Feb 2021 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/es/tags/visual-studio/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/es/tags/visual-studio/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Publicación inmediata</title>
-      <link>//localhost:1313/es/post/immediate-publishing/</link>
+      <link>/es/post/immediate-publishing/</link>
       <pubDate>Mon, 22 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/post/immediate-publishing/</guid>
+      <guid>/es/post/immediate-publishing/</guid>
       <description>Código fuente de apoyo disponible en GitHub&#xA;Érase una vez una solución, alojada en un proyecto de equipo en Team Foundation Services (TFS) que fue descargada por primera vez. Sabía que la solución compilaba y podía publicarse sin problemas de inmediato. Pero me llevé una sorpresa porque ambos procesos fallaron. La figura 1 muestra una estructura simplificada del proyecto.&#xA;Figura 1: &amp;ldquo;Estructura del proyecto&amp;rdquo;.&#xA;La figura 2 muestra cómo se configuró el proyecto para generar su documentación:</description>
     </item>
     <item>
       <title>Generando clientes de Swagger/OpenAPI</title>
-      <link>//localhost:1313/es/post/generating-swagger-openapi-clients/</link>
+      <link>/es/post/generating-swagger-openapi-clients/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/post/generating-swagger-openapi-clients/</guid>
+      <guid>/es/post/generating-swagger-openapi-clients/</guid>
       <description>Código fuente de apoyo disponible en GitHub&#xA;Recientemente, estaba desarrollando una aplicación web .NET Core que necesita consumir una API desarrollada hace unos años usando ASP.NET WebAPI. Afortunadamente, esa API tenía Swagger integrado, así que pensé que podía ahorrar tiempo al no crear manualmente los instrumentos necesarios para las llamadas a la API (DTO, cliente, etc.) en su lugar podría utilizar la función &amp;ldquo;Servicios Conectados&amp;rdquo; de Visual Studio.&#xA;Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solución en este post.</description>
     </item>
     <item>
       <title>Firmando ensamblados</title>
-      <link>//localhost:1313/es/post/signing-assemblies/</link>
+      <link>/es/post/signing-assemblies/</link>
       <pubDate>Mon, 08 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/post/signing-assemblies/</guid>
+      <guid>/es/post/signing-assemblies/</guid>
       <description>Código fuente de apoyo disponible en GitHub&#xA;.NET Core No todos los clientes requieren firmar los ensamblados de sus aplicaciones, pero cuando es necesario, la tarea no es tan fácil como cabría esperar.&#xA;En el caso de las aplicaciones .NET Core, podemos lograr esto simplemente editando el archivo del proyecto (.csproj) agregando el siguiente código:&#xA;1 2 3 &amp;lt;Target Name=&amp;#34;BuildSigning&amp;#34; AfterTargets=&amp;#34;AfterBuild&amp;#34;&amp;gt; &amp;lt;Exec Command=&amp;#34;SIGNING_COMMAND&amp;#34; /&amp;gt; &amp;lt;/Target&amp;gt; Como ejemplo, SIGNING_COMMAND podría ser:</description>
     </item>
     <item>
       <title>Desplegando paquetes NuGet</title>
-      <link>//localhost:1313/es/post/deploying-nuget-packages/</link>
+      <link>/es/post/deploying-nuget-packages/</link>
       <pubDate>Mon, 25 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/post/deploying-nuget-packages/</guid>
+      <guid>/es/post/deploying-nuget-packages/</guid>
       <description>Código fuente de apoyo disponible en GitHub&#xA;En una publicación anterior vimos cómo: &amp;ldquo;Crear paquetes NuGet&amp;rdquo; pero el paso de despliegue aún era un proceso manual. Intentemos automatizar esto. La figura 1 muestra cómo generar un paquete NuGet para un proyecto de .NET Core (similar al enfoque mostrado anteriormente) utilizando las propiedades del proyecto.&#xA;Figura 1: &amp;ldquo;Creando un paquete NuGet&amp;rdquo;.&#xA;Esto agrega un par de líneas al archivo del proyecto (.</description>
     </item>
     <item>
       <title>Creando paquetes NuGet</title>
-      <link>//localhost:1313/es/post/creando-paquetes-nuget/</link>
+      <link>/es/post/creando-paquetes-nuget/</link>
       <pubDate>Mon, 18 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/post/creando-paquetes-nuget/</guid>
+      <guid>/es/post/creando-paquetes-nuget/</guid>
       <description>Últimamente he estado involucrado en la creación de varios paquetes NuGet útiles para algunos portales que se están siendo desarrollando. Quiero compartir mis conocimientos en este tema.&#xA;Si estuviéramos desarrollando bibliotecas para .NET Core o .NET Standard, la vida sería fácil, como muestra La figura 1 a La figura 8.&#xA;Figura 1: &amp;ldquo;Creación de una nueva biblioteca de .NET Core&amp;rdquo;.&#xA;Figura 2: “Código predeterminado”.&#xA;Figura 3: &amp;ldquo;Resultados de la primera compilación&amp;rdquo;.</description>
     </item>
     <item>
       <title>Creando y desplegando aplicaciones usando Octopus</title>
-      <link>//localhost:1313/es/post/usando-octopus/</link>
+      <link>/es/post/usando-octopus/</link>
       <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/post/usando-octopus/</guid>
+      <guid>/es/post/usando-octopus/</guid>
       <description>Código fuente de apoyo disponible en GitHub&#xA;Desde hace un tiempo quería compartir mis experiencias automatizando los despliegues de productos con Octopus desde Visual Studio. Nuevamente, hagámoslo con un ejemplo.&#xA;Como no podía ser de otra manera, La figura 1 muestra el primer paquete que debes agregar a tu proyecto para poder crear paquetes Octopus listos para ser desplegados: &amp;ldquo;OctoPack&amp;rdquo;. La última versión del paquete disponible en el momento de este tutorial era la &amp;ldquo;3.</description>
     </item>
     <item>
       <title>Estilizando códigos usando StyleCop</title>
-      <link>//localhost:1313/es/post/estilo-de-c%C3%B3digo-usando-stylecop/</link>
+      <link>/es/post/estilo-de-c%C3%B3digo-usando-stylecop/</link>
       <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/post/estilo-de-c%C3%B3digo-usando-stylecop/</guid>
+      <guid>/es/post/estilo-de-c%C3%B3digo-usando-stylecop/</guid>
       <description>Un colega me pidió que compartiera mi experiencia programando con ReSharper y, una vez que se enteró de que no uso ReSharper, sintió aún más curiosidad por saber cómo escribo los códigos fuentes. Quien me conoce sabe que me encantan los paquetes NuGet y estar actualizado constantemente, por eso encontré un paquete muy útil que instalo en todos mis proyectos apenas los inicio.&#xA;StyleCop.MSBuild&#xA;StyleCop solía ser una aplicación independiente con integración con Visual Studio, pero eso cambió hace un tiempo.</description>
     </item>
   </channel>

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Coding Aloud</title>
-    <link>//localhost:1313/</link>
+    <link>/</link>
     <description>Recent content on Coding Aloud</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 15 Mar 2021 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Asynchronous commands</title>
-      <link>//localhost:1313/post/asynchronous-commands/</link>
+      <link>/post/asynchronous-commands/</link>
       <pubDate>Mon, 15 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/post/asynchronous-commands/</guid>
+      <guid>/post/asynchronous-commands/</guid>
       
         <description>&lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/AsyncCommands&#34;&gt;Source code of support available at GitHub&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Recently I had to implement a simple application with Windows Presentation Framework (WPF) using Model-View-ViewModel (MVVM) pattern. I got surprised when I noticed that there was not a simple solution out-of-the-box for bind asynchronous commands, so I decided to create my implementations for them.&lt;/p&gt;
@@ -644,34 +644,34 @@
     
     <item>
       <title>Immediate publishing</title>
-      <link>//localhost:1313/post/immediate-publishing/</link>
+      <link>/post/immediate-publishing/</link>
       <pubDate>Mon, 22 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/post/immediate-publishing/</guid>
+      <guid>/post/immediate-publishing/</guid>
       
         <description>&lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/ImmediatePublishing&#34;&gt;Source code of support available at GitHub&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Once upon a time, a solution hosted in Team Foundation Services (TFS) team project that I downloaded for the first time. I knew that solution build and could be published seamlessly right away. But I got a surprise because both processes failed. Figure 1 shows a simplified project structure.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Project structure&#34; src=&#34;//localhost:1313/immediate-publishing/01.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Project structure&#34; src=&#34;/immediate-publishing/01.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 1: &amp;ldquo;Project structure&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;Figure 2 shows how the project was configured to generate its documentation:&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Project documentation generation&#34; src=&#34;//localhost:1313/immediate-publishing/02.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Project documentation generation&#34; src=&#34;/immediate-publishing/02.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 2: &amp;ldquo;Project documentation generation&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;Once we try to build it we get the error shown in figure 3.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Project build result&#34; src=&#34;//localhost:1313/immediate-publishing/03.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Project build result&#34; src=&#34;/immediate-publishing/03.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 3: &amp;ldquo;Project build result&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;The error is because the documentation file: &amp;ldquo;RS.Blog.Projects.ImmediatePublishing.Web.xml&amp;rdquo; is read-only and can&amp;rsquo;t be overwritten. This problem can be solved if we go through the file system and remove the attribute: &amp;ldquo;read-only&amp;rdquo; from that file. That is the short-term solution because if you or another team member download the solution for the first time, it will have the attribute again impeding that solution build. The long term solution is to exclude that file from the project as figure 4.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Exclude documentation file from the project&#34; src=&#34;//localhost:1313/immediate-publishing/04.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Exclude documentation file from the project&#34; src=&#34;/immediate-publishing/04.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 4: &amp;ldquo;Exclude documentation file from the project&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;This step adds a couple of lines into the project file (.csproj) as figure 5 shows:&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Project file content&#34; src=&#34;//localhost:1313/immediate-publishing/05.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Project file content&#34; src=&#34;/immediate-publishing/05.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 5: &amp;ldquo;Project file content&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;Now, the solution builds but once we try to publish it; it doesn&amp;rsquo;t work. Figure 6 shows the error.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Publishing error&#34; src=&#34;//localhost:1313/immediate-publishing/06.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Publishing error&#34; src=&#34;/immediate-publishing/06.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 6: &amp;ldquo;Publishing error&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;In this case, the error is also related with the attribute: &amp;ldquo;read-only&amp;rdquo; but for file: &amp;ldquo;web.config&amp;rdquo;. Usually, we publish applications under configuration: &amp;ldquo;Release&amp;rdquo; and configuration transformation for &amp;ldquo;web.config&amp;rdquo; can&amp;rsquo;t be executed. Once again, removing the attribute from the file: &amp;ldquo;web.config&amp;rdquo; (figure 7) will solve the problem and finally we can publish the application straight away (figure 8).&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Removing &amp;lsquo;read-only&amp;rsquo; attribute&#34; src=&#34;//localhost:1313/immediate-publishing/07.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Removing &amp;lsquo;read-only&amp;rsquo; attribute&#34; src=&#34;/immediate-publishing/07.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 7: &amp;ldquo;Removing &amp;lsquo;read-only&amp;rsquo; attribute&amp;rdquo;.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Publishing result&#34; src=&#34;//localhost:1313/immediate-publishing/08.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Publishing result&#34; src=&#34;/immediate-publishing/08.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 8: &amp;ldquo;Publishing result&amp;rdquo;.&lt;/p&gt;
 &lt;h3 id=&#34;summary&#34;&gt;Summary&lt;/h3&gt;
 &lt;p&gt;Publishing an application immediately after downloaded for the first time from TFS requires to remove attribute: &amp;ldquo;read-only&amp;rdquo; from file: &amp;ldquo;web.config&amp;rdquo;. If the project also generates documentation is better to exclude it from the project instead of remove the same attribute from the documentation file.&lt;/p&gt;
@@ -682,15 +682,15 @@
     
     <item>
       <title>Generating Swagger/OpenAPI clients</title>
-      <link>//localhost:1313/post/generating-swagger-openapi-clients/</link>
+      <link>/post/generating-swagger-openapi-clients/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/post/generating-swagger-openapi-clients/</guid>
+      <guid>/post/generating-swagger-openapi-clients/</guid>
       
         <description>&lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/ConnectedServices&#34;&gt;Source code of support available at GitHub&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Recently I was developing a .NET Core web application that needs to consume an API developed few years ago using ASP.NET WebAPI. Fortunately, that API have Swagger integrated, so I thought I can save time do not creating manually the instruments required to API calls (DTOs, client, etc.) instead using the &amp;ldquo;Connected Services&amp;rdquo; feature of Visual Studio.&lt;/p&gt;
 &lt;p&gt;I got a big surprise that inspired me to share the experience and the solution in this post. I reproduced a simplified scenario as you can see in figure 1 accessing to Swagger UI through its URL: &amp;ldquo;http://localhost:5200/swagger&amp;rdquo;.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;FullAPI Swagger UI&#34; src=&#34;//localhost:1313/generating-swagger-openapi-clients/01.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;FullAPI Swagger UI&#34; src=&#34;/generating-swagger-openapi-clients/01.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 1: Swagger UI for API using .NET Framework.&lt;/p&gt;
 &lt;p&gt;Basically, this API have two controllers providing two methods each with different routes but equivalent intentions.&lt;/p&gt;
 &lt;p&gt;Accessing to its specification document: &amp;ldquo;http://localhost:5200/swagger/docs/v1&amp;rdquo; we have:&lt;/p&gt;
@@ -917,13 +917,13 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;To simplify the client application, I decided to reproduce it as a .NET Core console application. I added a folder: &amp;ldquo;OpenAPI&amp;rdquo; to store the previous specification document as: &amp;ldquo;FullAPI.json&amp;rdquo;. From figure 2 until figure 5 we can see how to add a connected service.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Adding a Connected Service&#34; src=&#34;//localhost:1313/generating-swagger-openapi-clients/02.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Adding a Connected Service&#34; src=&#34;/generating-swagger-openapi-clients/02.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 2: Adding a Connected Service.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Adding an OpenAPI specification&#34; src=&#34;//localhost:1313/generating-swagger-openapi-clients/03.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Adding an OpenAPI specification&#34; src=&#34;/generating-swagger-openapi-clients/03.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 3: Adding an OpenAPI specification.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Specifying client generation parameters&#34; src=&#34;//localhost:1313/generating-swagger-openapi-clients/04.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Specifying client generation parameters&#34; src=&#34;/generating-swagger-openapi-clients/04.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 4: Specifying client generation parameters.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Client generation results&#34; src=&#34;//localhost:1313/generating-swagger-openapi-clients/05.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Client generation results&#34; src=&#34;/generating-swagger-openapi-clients/05.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 5: Client generation results.&lt;/p&gt;
 &lt;p&gt;Right click on client project dependencies and select: &amp;ldquo;Add Connect Service&amp;rdquo;. Then click on button: &amp;ldquo;Add&amp;rdquo;. Select &amp;ldquo;OpenAPI&amp;rdquo; and click on button: &amp;ldquo;Next&amp;rdquo;. Type the specification file (&amp;ldquo;OpenAPI\FullAPI.json&amp;rdquo;) and &amp;ldquo;FullAPI&amp;rdquo; as the namespace for the generated client. Finally press button: &amp;ldquo;Finish&amp;rdquo; and client will be generated showing the results on next screen. This process adds several lines of codes into the project file (.csproj) as is shown next:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -968,10 +968,10 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Once is compiled, a new file called: &amp;ldquo;FullAPIClient.cs&amp;rdquo; is created in folder &amp;ldquo;obj&amp;rdquo; inside project folder. At this point, the project stops to build successfully due to this file.&lt;/p&gt;
 &lt;p&gt;Too many errors, what a surprise! what is happening and why? (figure 6).&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Client generation build errors&#34; src=&#34;//localhost:1313/generating-swagger-openapi-clients/06.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Client generation build errors&#34; src=&#34;/generating-swagger-openapi-clients/06.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 6: Client generation build errors.&lt;/p&gt;
 &lt;p&gt;The cause is being shown in figure 7. The client is generated twice repeating their internal fields.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Duplicated client generation&#34; src=&#34;//localhost:1313/generating-swagger-openapi-clients/07.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Duplicated client generation&#34; src=&#34;/generating-swagger-openapi-clients/07.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 7: Duplicated client generation.&lt;/p&gt;
 &lt;p&gt;I was wonder about why this happens; so, I decided to analyze the source code of the client generator: &amp;ldquo;NSwag&amp;rdquo; in this case (remember what was added to the project file). The source code is stored in GitHub at:&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/RicoSuter/NSwag&#34;&gt;NSwag: The Swagger/OpenAPI toolchain for .NET, ASP.NET Core and TypeScript&lt;/a&gt;&lt;/p&gt;
@@ -996,7 +996,7 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Class name value is a pattern that includes the controller name followed by the word: &amp;ldquo;Client&amp;rdquo;. The controller name is taken from the field: &amp;ldquo;operationId&amp;rdquo; of the specification file. The value is divided by character: &amp;ldquo;_&amp;rdquo; and the first token is taken as client name and the second token is taken as the operation name. Examples: &amp;ldquo;Second_NumberMethod&amp;rdquo; creates the client: &amp;ldquo;SecondClient&amp;rdquo; with operation: &amp;ldquo;NumberMethod&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;Figure 8 shows the new clients generated. This time free of build error because no duplicated client was generated.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;New generated clients&#34; src=&#34;//localhost:1313/generating-swagger-openapi-clients/08.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;New generated clients&#34; src=&#34;/generating-swagger-openapi-clients/08.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 8: New generated clients.&lt;/p&gt;
 &lt;p&gt;Now, we can consume the operations from the generated clients as the following code shows (file: &amp;ldquo;Program.cs&amp;rdquo;):&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -1050,7 +1050,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Problem solved but my curiosity made me to research a little bit more and see what happened with an API created using .NET Core instead of using the .NET Framework. Figure 9 shows the migrated API. Basically, the same functionalities (controllers, methods, routes) but based on .NET Core.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;.NET Core API&#34; src=&#34;//localhost:1313/generating-swagger-openapi-clients/09.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;.NET Core API&#34; src=&#34;/generating-swagger-openapi-clients/09.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 9: .NET Core API.&lt;/p&gt;
 &lt;p&gt;Accessing to its specification document: &amp;ldquo;http://localhost:5100/swagger/v1/swagger.json&amp;rdquo; we have:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -1326,15 +1326,15 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;The first thing that is different (and probably the most important one) is the field: &amp;ldquo;openapi&amp;rdquo; (previously &amp;ldquo;swagger&amp;rdquo;) with version: &amp;ldquo;3.0.1&amp;rdquo; (previously: &amp;ldquo;2.0&amp;rdquo;). Let&amp;rsquo;s save this new specification as: &amp;ldquo;CoreAPI.json&amp;rdquo; together with the other one in folder: &amp;ldquo;OpenAPI&amp;rdquo;. Now, let&amp;rsquo;s generate the client in the same way we did for API developed in .NET Framework and see what happens. Figures from 10 to 14 shows the process.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Adding a Connected Service&#34; src=&#34;//localhost:1313/generating-swagger-openapi-clients/10.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Adding a Connected Service&#34; src=&#34;/generating-swagger-openapi-clients/10.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 10: Adding a Connected Service.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Adding an OpenAPI specification&#34; src=&#34;//localhost:1313/generating-swagger-openapi-clients/11.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Adding an OpenAPI specification&#34; src=&#34;/generating-swagger-openapi-clients/11.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 11: Adding an OpenAPI specification.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Specifying client generation parameters&#34; src=&#34;//localhost:1313/generating-swagger-openapi-clients/12.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Specifying client generation parameters&#34; src=&#34;/generating-swagger-openapi-clients/12.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 12: Specifying client generation parameters.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Client generation results&#34; src=&#34;//localhost:1313/generating-swagger-openapi-clients/13.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Client generation results&#34; src=&#34;/generating-swagger-openapi-clients/13.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 13: Client generation results.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Connected Services list&#34; src=&#34;//localhost:1313/generating-swagger-openapi-clients/14.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Connected Services list&#34; src=&#34;/generating-swagger-openapi-clients/14.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 14: Connected Services list.&lt;/p&gt;
 &lt;p&gt;A new section is added to the project file (.csproj) similar to the previous one:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -1372,7 +1372,7 @@
 &lt;li&gt;The constructor for the client requires the base URL.&lt;/li&gt;
 &lt;li&gt;Operations have different names.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img alt=&#34;Generated client for .NET Core API&#34; src=&#34;//localhost:1313/generating-swagger-openapi-clients/15.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Generated client for .NET Core API&#34; src=&#34;/generating-swagger-openapi-clients/15.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 15: Generated client for .NET Core API.&lt;/p&gt;
 &lt;p&gt;Analyzing the specification file (&amp;ldquo;CoreAPI.json&amp;rdquo;) we can notice that there are no fields: &amp;ldquo;operationId&amp;rdquo; and that is important to client and operation names. So, if we add, somehow, the operation identifiers to each operation, should solve the first and third issue.&lt;/p&gt;
 &lt;p&gt;To add the field: &amp;ldquo;operationId&amp;rdquo; to the specification file we need to add the attribute: &amp;ldquo;SwaggerOperation&amp;rdquo; to each method of each controller. That attribute is part of NuGet package: &amp;ldquo;Swashbuckle.AspNetCore.Annotations&amp;rdquo; that we need to install it first. The following code shows how to use it:&lt;/p&gt;
@@ -1452,7 +1452,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;But, code doesn&amp;rsquo;t build. Why, if we did exactly what we did generating clients for .NET Framework API? Figure 16 show the errors.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Errors generating clients for .NET Core API&#34; src=&#34;//localhost:1313/generating-swagger-openapi-clients/16.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Errors generating clients for .NET Core API&#34; src=&#34;/generating-swagger-openapi-clients/16.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 16: Errors generating clients for .NET Core API.&lt;/p&gt;
 &lt;p&gt;Notice that errors are in the previous generated clients (file: &amp;ldquo;FullAPI.cs&amp;rdquo;). Well, this is because a &lt;a href=&#34;https://github.com/dotnet/aspnetcore/issues/18204&#34;&gt;well-known bug&lt;/a&gt; in NSwag CSharp Generator that is active and should be resolved in the future and have an easy solution. Let&amp;rsquo;s modify once again the project file (.csproj):&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -1596,10 +1596,10 @@
     
     <item>
       <title>Signing assemblies</title>
-      <link>//localhost:1313/post/signing-assemblies/</link>
+      <link>/post/signing-assemblies/</link>
       <pubDate>Mon, 08 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/post/signing-assemblies/</guid>
+      <guid>/post/signing-assemblies/</guid>
       
         <description>&lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/SigningAssemblies&#34;&gt;Source code of support available at GitHub&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;net-core&#34;&gt;.NET Core&lt;/h2&gt;
@@ -1803,7 +1803,7 @@
 &lt;/div&gt;&lt;h2 id=&#34;net-framework&#34;&gt;.NET Framework&lt;/h2&gt;
 &lt;p&gt;Things don&amp;rsquo;t change drastically from .NET Core approach because we tried to be as generic as possible from the beginning. However, there are a few details to take in consideration.&lt;/p&gt;
 &lt;p&gt;In .NET Framework application we can edit the Build Events in the project properties as is shown in figure 1.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Project build events&#34; src=&#34;//localhost:1313/signing-assemblies/01.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Project build events&#34; src=&#34;/signing-assemblies/01.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 1: Project build events.&lt;/p&gt;
 &lt;p&gt;This modifies the project file (.csproj) adding the following lines&amp;hellip;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -1871,10 +1871,10 @@
     
     <item>
       <title>Generating signature certificates</title>
-      <link>//localhost:1313/post/generating-signature-certificates/</link>
+      <link>/post/generating-signature-certificates/</link>
       <pubDate>Mon, 01 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/post/generating-signature-certificates/</guid>
+      <guid>/post/generating-signature-certificates/</guid>
       
         <description>&lt;p&gt;&lt;a href=&#34;https://gist.github.com/rsotolongo/80410cee05c26a7bcb17327d0c279b86&#34;&gt;Source code of support available at GitHub&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Sometimes assemblies (executables and libraries) are required to be sign and I don&amp;rsquo;t have a certificate available for test purpose. In this post I pretend to show how to generate a certificate to sign assemblies.&lt;/p&gt;
@@ -1921,12 +1921,12 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Roughly we create a folder (called: &amp;ldquo;Certificate&amp;rdquo;) and make it the working directory. After we create a file writing its content line by line. Finally, in several steps, we use tool: &amp;ldquo;openssl.exe&amp;rdquo; to generate the certificate. Notice the double quotes surrounding the password value due to it contains the special character ampersand (&amp;amp;). The source code for that file could be downloaded from &lt;a href=&#34;https://gist.github.com/rsotolongo/80410cee05c26a7bcb17327d0c279b86&#34;&gt;this GIST&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Assuming that we have copied it into folder: &amp;ldquo;C:\Temp&amp;rdquo;, let&amp;rsquo;s see what it does through the analysis of figure 1 representing its execution.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Script execution&#34; src=&#34;//localhost:1313/generating-signature-certificates/01.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Script execution&#34; src=&#34;/generating-signature-certificates/01.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 1: Script execution.&lt;/p&gt;
 &lt;p&gt;The steps to pay more attention are indicated with red and yellow arrows while there are other optional steps indicated with blue arrows. The first red arrow is the common name that we choose for the certificate. This must to be the same value that we have to enter once the script asks for a value in the second red arrow.&lt;/p&gt;
 &lt;p&gt;Yellow arrows are the password chosen for the certificate. While the first two values are specified in batch file: &amp;ldquo;generateCertificate.cmd&amp;rdquo;, the last two values have to be introduced manually when are requested. Tool: &amp;ldquo;openssl.exe&amp;rdquo; hides those values while are typed but they must to be match.&lt;/p&gt;
 &lt;p&gt;Once all steps end successfully we can see the result in figure 2.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Resulting certificate&#34; src=&#34;//localhost:1313/generating-signature-certificates/02.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Resulting certificate&#34; src=&#34;/generating-signature-certificates/02.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 2: Resulting certificate.&lt;/p&gt;
 &lt;p&gt;That is a certificate we can use to sign assemblies (a process I will explain in a later post).&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://gist.github.com/rsotolongo/80410cee05c26a7bcb17327d0c279b86&#34;&gt;Source code of support available at GitHub&lt;/a&gt;&lt;/p&gt;
@@ -1936,17 +1936,17 @@
     
     <item>
       <title>Deploying NuGet packages</title>
-      <link>//localhost:1313/post/deploying-nuget-packages/</link>
+      <link>/post/deploying-nuget-packages/</link>
       <pubDate>Mon, 25 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/post/deploying-nuget-packages/</guid>
+      <guid>/post/deploying-nuget-packages/</guid>
       
         <description>&lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/DeployPackages&#34;&gt;Source code of support available at GitHub&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;I a previous post we saw how to: &amp;ldquo;&lt;a href=&#34;../creating_nuget_packages&#34;&gt;Create NuGet packages&lt;/a&gt;&amp;rdquo; but the deployment step was still a manual process. Let&amp;rsquo;s try to automatize this. Figure 1 shows how to generate NuGet package for a .NET Core project (similar to the approach previously shown) using the project&amp;rsquo;s properties.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Creating NuGet package&#34; src=&#34;//localhost:1313/deploying-nuget-packages/01.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Creating NuGet package&#34; src=&#34;/deploying-nuget-packages/01.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 1: &amp;ldquo;Creating NuGet package&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;This adds a couple of lines into the project file (.csproj) as figure 2 shows:&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Project file properties to create NuGet package&#34; src=&#34;//localhost:1313/deploying-nuget-packages/02.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Project file properties to create NuGet package&#34; src=&#34;/deploying-nuget-packages/02.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 2: &amp;ldquo;Project file properties to create NuGet package&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;My approach also uses MSBuild targets. The first step is to include the following code into the project file (.csproj):&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -2015,10 +2015,10 @@
 &lt;p&gt;The task: &amp;ldquo;DeployPackage&amp;rdquo; (called from the project file) will be executed only if variables: &amp;ldquo;DeployPackage&amp;rdquo; or &amp;ldquo;DeployPackages&amp;rdquo; have value: &amp;ldquo;true&amp;rdquo;. Variable: &amp;ldquo;DeployPackage&amp;rdquo; is passed from the project file call and is designed to deploy only the NuGet package generated for that project. In the other hand, variable: &amp;ldquo;DeployPackages&amp;rdquo; is global to this file and is designed to deploy all packages generated in the solution (normally every project generates one different NuGet package). If this task matches the condition to be executed, it will execute its dependent task first.&lt;/p&gt;
 &lt;p&gt;Task: &amp;ldquo;DownloadNuget&amp;rdquo; provides package manager: &amp;ldquo;NuGet.exe&amp;rdquo; in order to not deal with installed tools, tool paths, development environment differences between team members, etc. Once this task finish, it returns to the execution of the task: &amp;ldquo;DeployPackage&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;Finally, the package manager tool is called with all required parameters. Figure 3 shows an example of execution.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Deployment result&#34; src=&#34;//localhost:1313/deploying-nuget-packages/03.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Deployment result&#34; src=&#34;/deploying-nuget-packages/03.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 3: &amp;ldquo;Deployment result&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;Figure 4 shows the deployed package.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Deployed package&#34; src=&#34;//localhost:1313/deploying-nuget-packages/04.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Deployed package&#34; src=&#34;/deploying-nuget-packages/04.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 4: &amp;ldquo;Deployed package&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;I hope these simple instructions help you to automate NuGet deployments.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/DeployPackages&#34;&gt;Source code of support available at GitHub&lt;/a&gt;&lt;/p&gt;
@@ -2028,49 +2028,49 @@
     
     <item>
       <title>Creating NuGet packages</title>
-      <link>//localhost:1313/post/creating-nuget-packages/</link>
+      <link>/post/creating-nuget-packages/</link>
       <pubDate>Mon, 18 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/post/creating-nuget-packages/</guid>
+      <guid>/post/creating-nuget-packages/</guid>
       
         <description>&lt;p&gt;Lately I have been involved in the creation of several NuGet packages useful for some portals being developed. I want to share my knowledge in this topic.&lt;/p&gt;
 &lt;p&gt;If we were developing libraries for .NET Core or .NET Standard life would be easy as figure 1 to figure 8 shows.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Creating a new .NET Core library&#34; src=&#34;//localhost:1313/creating-nuget-packages/01.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Creating a new .NET Core library&#34; src=&#34;/creating-nuget-packages/01.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 1: &amp;ldquo;Creating a new .NET Core library&amp;rdquo;.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Default code&#34; src=&#34;//localhost:1313/creating-nuget-packages/02.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Default code&#34; src=&#34;/creating-nuget-packages/02.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 2: &amp;ldquo;Default code&amp;rdquo;.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;First build results&#34; src=&#34;//localhost:1313/creating-nuget-packages/03.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;First build results&#34; src=&#34;/creating-nuget-packages/03.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 3: &amp;ldquo;First build results&amp;rdquo;.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Project properties&#34; src=&#34;//localhost:1313/creating-nuget-packages/04.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Project properties&#34; src=&#34;/creating-nuget-packages/04.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 4: &amp;ldquo;Project properties&amp;rdquo;.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Second build output&#34; src=&#34;//localhost:1313/creating-nuget-packages/05.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Second build output&#34; src=&#34;/creating-nuget-packages/05.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 5: &amp;ldquo;Second build output&amp;rdquo;.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Second build results&#34; src=&#34;//localhost:1313/creating-nuget-packages/06.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Second build results&#34; src=&#34;/creating-nuget-packages/06.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 6: &amp;ldquo;Second build results&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;But, life is not so easy and almost all our products use the .NET Framework (regular) meaning that Visual Studio don’t offer us such capabilities as figure 7 and 8 show.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;New .NET Framework Library&#34; src=&#34;//localhost:1313/creating-nuget-packages/07.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;New .NET Framework Library&#34; src=&#34;/creating-nuget-packages/07.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 7: &amp;ldquo;New .NET Framework Library&amp;rdquo;.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Library project properties&#34; src=&#34;//localhost:1313/creating-nuget-packages/08.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Library project properties&#34; src=&#34;/creating-nuget-packages/08.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 8: &amp;ldquo;Properties for this kind of projects don’t include the Package feature&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;So, what alternative we have? Actually few of them: use Octopus to generate the package but this tricky due to Octopus use a custom made build of NuGet.exe, so the generated structure could not match and involve much steps to obtained.&lt;/p&gt;
 &lt;p&gt;Other alternative is use &amp;ldquo;NuGet.exe&amp;rdquo; manually from the command line but this can be confusing and also involve many other steps to accomplish.&lt;/p&gt;
 &lt;p&gt;I said once but I like to repeat it, I love NuGet packages, so, why not use a NuGet package to generate NuGet packages? Well, it already exists and is very easy to use. The first step is to add the package: &amp;ldquo;CreateNewNuGetPackageFromProjectAfterEachBuild&amp;rdquo; to the project that we want to distribute as a NuGet package. Figure 9 shows an example.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Solution package management&#34; src=&#34;//localhost:1313/creating-nuget-packages/09.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Solution package management&#34; src=&#34;/creating-nuget-packages/09.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 9.&lt;/p&gt;
 &lt;p&gt;After been added this package creates a directory inside the project root called: &amp;ldquo;_CreateNewNuGetPackage&amp;rdquo; and pretty much that’s is all you need. Figure 10 shows the structure created.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Solution explorer&#34; src=&#34;//localhost:1313/creating-nuget-packages/10.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Solution explorer&#34; src=&#34;/creating-nuget-packages/10.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 10.&lt;/p&gt;
 &lt;p&gt;Once we build the project we can see the output in figure 11.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Third build output&#34; src=&#34;//localhost:1313/creating-nuget-packages/11.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Third build output&#34; src=&#34;/creating-nuget-packages/11.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 11.&lt;/p&gt;
 &lt;p&gt;Figure 12 shows the build results.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Third build results&#34; src=&#34;//localhost:1313/creating-nuget-packages/12.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Third build results&#34; src=&#34;/creating-nuget-packages/12.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 12.&lt;/p&gt;
 &lt;p&gt;Figure 13 shows the content of the generated package.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Package contents&#34; src=&#34;//localhost:1313/creating-nuget-packages/13.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Package contents&#34; src=&#34;/creating-nuget-packages/13.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 13.&lt;/p&gt;
 &lt;p&gt;Notice that metadata is basically extracted from the assembly info or auto generated (the build output also have logs about this). We can change this if we include a metadata file as Figure 14 shows.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Package metadata file&#34; src=&#34;//localhost:1313/creating-nuget-packages/14.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Package metadata file&#34; src=&#34;/creating-nuget-packages/14.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 14.&lt;/p&gt;
 &lt;p&gt;The content of this file depends of what you want for your package but as example:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -2108,43 +2108,43 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Now the build results looks like figure 15.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;First generated packages&#34; src=&#34;//localhost:1313/creating-nuget-packages/15.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;First generated packages&#34; src=&#34;/creating-nuget-packages/15.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 15.&lt;/p&gt;
 &lt;p&gt;Figure 16 shows the content of the new generated package, this time with more accurate metadata.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;First package contents&#34; src=&#34;//localhost:1313/creating-nuget-packages/16.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;First package contents&#34; src=&#34;/creating-nuget-packages/16.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 16.&lt;/p&gt;
 &lt;p&gt;At this point we were able to generate the package but what we really need is the possibility to consume it from another project. We need first to deploy it in an internal NuGet repository called: &amp;ldquo;McNuget&amp;rdquo;. Let’s explain how to do it.&lt;/p&gt;
 &lt;p&gt;First open &amp;ldquo;$(ProjectDir)_CreateNewNuGetPackage\Config1.ps1&amp;rdquo; and made the modifications highlighted in yellow color in figure 17.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Package generation configuration file&#34; src=&#34;//localhost:1313/creating-nuget-packages/17.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Package generation configuration file&#34; src=&#34;/creating-nuget-packages/17.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 17.&lt;/p&gt;
 &lt;p&gt;Basically we are specifying that in every build generate another package that contain all debug symbols including source codes to facilitate the debugging of this package. Do not append the configuration and platform used to build into the package name. Also we will eventually deploy this package to McNuget (I say eventually because is not automatic in every build) and the API for deploy into McNuget. This API was generated by the administrator of McNuget and sent it to us.&lt;/p&gt;
 &lt;p&gt;Figure 18 shows the result of the build.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Second generated packages&#34; src=&#34;//localhost:1313/creating-nuget-packages/18.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Second generated packages&#34; src=&#34;/creating-nuget-packages/18.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 18.&lt;/p&gt;
 &lt;p&gt;Notice the new two packages without the configuration and platform; one without debug symbols (same than figure 16) and other with symbols and source code as figure 19 shows.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Second package contents&#34; src=&#34;//localhost:1313/creating-nuget-packages/19.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Second package contents&#34; src=&#34;/creating-nuget-packages/19.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 19.&lt;/p&gt;
 &lt;p&gt;Is time to deploy the package into McNuget and to do this we need to execute &amp;ldquo;$(ProjectDir)_CreateNewNuGetPackage\RunMeToUploadNuGetPackage.cmd&amp;rdquo; as is shown in figure 20.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Package upload command&#34; src=&#34;//localhost:1313/creating-nuget-packages/20.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Package upload command&#34; src=&#34;/creating-nuget-packages/20.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 20.&lt;/p&gt;
 &lt;p&gt;Once is executed it will open a command line window and a dialog asking for the package to deploy as is shown in figure 21.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Package upload dialog&#34; src=&#34;//localhost:1313/creating-nuget-packages/21.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Package upload dialog&#34; src=&#34;/creating-nuget-packages/21.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 21.&lt;/p&gt;
 &lt;p&gt;Once the package is selected as is shown in figure 22…&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Package upload selection&#34; src=&#34;//localhost:1313/creating-nuget-packages/22.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Package upload selection&#34; src=&#34;/creating-nuget-packages/22.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 22.&lt;/p&gt;
 &lt;p&gt;…it ask for a confirmation as figure 23 shows. One valid point to mention is that McNuget repository could be not configured to allow deployments of packages containing debugging and source code symbols. So the only option we can deploy is the regular package.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Package upload confirmation&#34; src=&#34;//localhost:1313/creating-nuget-packages/23.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Package upload confirmation&#34; src=&#34;/creating-nuget-packages/23.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 23.&lt;/p&gt;
 &lt;p&gt;Once is accepted and if everything was OK, we should be able to see a screen similar to what figure 24 shows.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Package upload result&#34; src=&#34;//localhost:1313/creating-nuget-packages/24.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Package upload result&#34; src=&#34;/creating-nuget-packages/24.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 24.&lt;/p&gt;
 &lt;p&gt;Meaning that our package is in McNuget ready to be use. Let’s test it.&lt;/p&gt;
 &lt;p&gt;Figure 25 shows the package management for another project.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Project package management&#34; src=&#34;//localhost:1313/creating-nuget-packages/25.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Project package management&#34; src=&#34;/creating-nuget-packages/25.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 25.&lt;/p&gt;
 &lt;p&gt;Once the package is installed we can use its features. Figure 26 shows an example.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Package usage sample&#34; src=&#34;//localhost:1313/creating-nuget-packages/26.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Package usage sample&#34; src=&#34;/creating-nuget-packages/26.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 26.&lt;/p&gt;
 &lt;p&gt;One last observation, we have deploy the regular package because hypothetically McNuget don’t allow to deploy packages with debugging symbols; but we have deployed the version built in &amp;ldquo;Debug&amp;rdquo; mode and this is not good, we suppose to deploy the version built in &amp;ldquo;Release&amp;rdquo; mode and gain more performance.&lt;/p&gt;
 &lt;p&gt;This is everything I have to share with you today. Hopefully you find this guide useful for your projects once you want to generate NuGet packages.&lt;/p&gt;
@@ -2154,39 +2154,39 @@
     
     <item>
       <title>Creating and deploying releases using Octopus</title>
-      <link>//localhost:1313/post/using-octopus/</link>
+      <link>/post/using-octopus/</link>
       <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/post/using-octopus/</guid>
+      <guid>/post/using-octopus/</guid>
       
         <description>&lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/UsingOctopus&#34;&gt;Source code of support available at GitHub&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Since while ago I wanted to share my experiences automatizing the product releases with Octopus from Visual Studio. Again, let’s do it through an example.&lt;/p&gt;
 &lt;p&gt;As it could not be otherwise, figure 1 shows the first package you should add to your project in order to create Octopus packages ready to be deployed: &amp;ldquo;OctoPack&amp;rdquo;. The latest package version available at the time of this tutorial was the &amp;ldquo;3.6.1&amp;rdquo; but we installed the &amp;ldquo;3.6.0&amp;rdquo; on purpose in order to show the update process.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;OctoPack package&#34; src=&#34;//localhost:1313/using-octopus/01.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;OctoPack package&#34; src=&#34;/using-octopus/01.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 1.&lt;/p&gt;
 &lt;p&gt;Figure 2 show the second package that should be installed: &amp;ldquo;OctopusTool&amp;rdquo;. Same here, latest version available was the &amp;ldquo;4.17.0&amp;rdquo; but we installed the &amp;ldquo;4.15.7&amp;rdquo; with the same purpose.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;OctopusTool package&#34; src=&#34;//localhost:1313/using-octopus/02.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;OctopusTool package&#34; src=&#34;/using-octopus/02.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 2.&lt;/p&gt;
 &lt;p&gt;Once both packages are installed we can check the &amp;ldquo;packages&amp;rdquo; folder inside solution folder (C:\Temp\WebApplication1\packages) in this case. Figure 3 show the folder contents.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Installed packages&#34; src=&#34;//localhost:1313/using-octopus/03.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Installed packages&#34; src=&#34;/using-octopus/03.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 3.&lt;/p&gt;
 &lt;p&gt;Now start the funny steps. First, we need to open the project file (WebApplication1.csproj) in this case. At the end of the file we need to delete the &amp;ldquo;Import&amp;rdquo; task of &amp;ldquo;OctoPack.targets&amp;rdquo; from the NuGet package folder. This is VERY important step because have to be repeated every time &amp;ldquo;OctoPack&amp;rdquo; package is updated. Figure 4 show the line that needs to be deleted.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Project file content&#34; src=&#34;//localhost:1313/using-octopus/04.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Project file content&#34; src=&#34;/using-octopus/04.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 4.&lt;/p&gt;
 &lt;p&gt;Let’s explain a little bit deeper here. MSBuild will import and execute the targets of &amp;ldquo;OctoPack&amp;rdquo; in every build. If we keep that line the file that need to be modified is that one that is located in the package folder, meaning that normally is not part of the TFS controlled items and it will be loose in every package update. NuGet delete the old package folder once the new version is downloaded after an update. To avoid these rollbacks, and keep updated the packages at same time is good practice to delete this line and continue the process as I recommend in next steps.&lt;/p&gt;
 &lt;p&gt;Create a new folder inside the project to be deployed and copy the file &amp;ldquo;OctoPack.targets&amp;rdquo; to it. I usually call this folder &amp;ldquo;Deployment&amp;rdquo; and keep the file with the same name. I mean, copy &amp;ldquo;$(SolutionDir)\packages\OctoPack.X.Y.Z\build\OctoPack.targets&amp;rdquo; to &amp;ldquo;$(ProjectDir)\Deployment\OctoPack.targets&amp;rdquo; Figure 5 shows this step.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;OctoPack file tasks&#34; src=&#34;//localhost:1313/using-octopus/05.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;OctoPack file tasks&#34; src=&#34;/using-octopus/05.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 5.&lt;/p&gt;
 &lt;p&gt;In file: &amp;ldquo;OctoPack.targets&amp;rdquo; inside &amp;ldquo;Deployment&amp;rdquo; folder, we need to modify some fields and add few others.&lt;/p&gt;
 &lt;p&gt;The first two fields we need to modify are those that point to the Octopus libraries to execute the specified tasks. Figure 6 show it.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Imported tasks&#34; src=&#34;//localhost:1313/using-octopus/06.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Imported tasks&#34; src=&#34;/using-octopus/06.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 6.&lt;/p&gt;
 &lt;p&gt;Because we have moved the targets file we need to update those paths to the libraries inside the package folder. Because are inside the &amp;ldquo;Deployment&amp;rdquo; folder we need go up two levels until solution folder where &amp;ldquo;package&amp;rdquo; folder is. Notice that in every update of the &amp;ldquo;OctoPack&amp;rdquo; package, we need to update these paths.&lt;/p&gt;
 &lt;p&gt;After, we need to specify the value of the &amp;ldquo;OctoPackNuGetExePath&amp;rdquo; I like to use what is included in the package being used because Octopus use a custom-made version of NuGet.exe, so is better to use what is included in the package, for that reason: &amp;ldquo;..\packages\OctoPack.3.6.0\build\NuGet.exe&amp;rdquo; is a good value (notice that is depends of the package version too and we go up only one level because this is executed from the project root folder). Last variable to modify here is &amp;ldquo;OctoPackPublishPackageToFileShare&amp;rdquo; that should point into the shared directory where package will be copied to be deployed to Octopus. We normally use &amp;ldquo;\rant.com\Nuget&amp;rdquo;, so &amp;ldquo;\rant.com\Nuget\Portals.WebApplication1&amp;rdquo; is a good value for it. Figure 7 show the modifications.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Task configuration variable values&#34; src=&#34;//localhost:1313/using-octopus/07.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Task configuration variable values&#34; src=&#34;/using-octopus/07.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 7.&lt;/p&gt;
 &lt;p&gt;Now what we need to do is configure the project to execute the task once is build. Remember the line deleted in figure 4? We need to add a line there as is shown in figure 8.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Project file imported tasks&#34; src=&#34;//localhost:1313/using-octopus/08.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Project file imported tasks&#34; src=&#34;/using-octopus/08.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 8.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -2197,20 +2197,20 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Once this line is added we can build the solution but &amp;ldquo;\rant.com\Nuget\Portals.WebApplication1&amp;rdquo; continues being empty. Why? Because we need to change the value of variable &amp;ldquo;RunOctoPack&amp;rdquo; to &amp;ldquo;true&amp;rdquo; as figure 9 shows.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Execute task setting value&#34; src=&#34;//localhost:1313/using-octopus/09.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Execute task setting value&#34; src=&#34;/using-octopus/09.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 9.&lt;/p&gt;
 &lt;p&gt;Now, if we build again the solution we obtain the results shown in figure 10 and a package file in &amp;ldquo;\rant.com\Nuget\Portals.WebApplication1&amp;rdquo; as figure 11 shows.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;First compilation results&#34; src=&#34;//localhost:1313/using-octopus/10.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;First compilation results&#34; src=&#34;/using-octopus/10.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 10.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;First generated package&#34; src=&#34;//localhost:1313/using-octopus/11.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;First generated package&#34; src=&#34;/using-octopus/11.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 11.&lt;/p&gt;
 &lt;p&gt;So far so good except that no matter how many times we build, the package generated will be the same version: &amp;ldquo;1.0.0.0&amp;rdquo; that is not good for automatic Octopus releases. So, let’s fix this opening the file &amp;ldquo;AssemblyInfo.cs&amp;rdquo; inside &amp;ldquo;Properties&amp;rdquo; project directory and change the &amp;ldquo;AssemblyVersion&amp;rdquo; attribute from &amp;ldquo;1.0.0.0&amp;rdquo; to &amp;ldquo;1.0.*&amp;rdquo; as is shown in figure 12.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Assembly file information&#34; src=&#34;//localhost:1313/using-octopus/12.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Assembly file information&#34; src=&#34;/using-octopus/12.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 12.&lt;/p&gt;
 &lt;p&gt;Doing that we ensure that every build will have a different assembly version, meaning different Octopus release version that we will configure in the following steps. Please see figure 13 and 14 to notice the changes.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Second compilation results&#34; src=&#34;//localhost:1313/using-octopus/13.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Second compilation results&#34; src=&#34;/using-octopus/13.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 13.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Second generated package&#34; src=&#34;//localhost:1313/using-octopus/14.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Second generated package&#34; src=&#34;/using-octopus/14.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 14.&lt;/p&gt;
 &lt;p&gt;Let’s go again to file: &amp;ldquo;OctoPack.targets&amp;rdquo; and add the section highlighted in figure 15.&lt;/p&gt;
 &lt;p&gt;This region is totally new section that we should add in order to configure (not execute) automatic releases to Octopus. The code is:&lt;/p&gt;
@@ -2232,7 +2232,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;OctopusNotes&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Condition=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#39;$(OctopusNotes)&amp;#39; == &amp;#39;&amp;#39;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;New release sample notes.&lt;span class=&#34;nt&#34;&gt;&amp;lt;/OctopusNotes&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img alt=&#34;Release configuration settings&#34; src=&#34;//localhost:1313/using-octopus/15.png&#34;&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img alt=&#34;Release configuration settings&#34; src=&#34;/using-octopus/15.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 15.&lt;/p&gt;
 &lt;p&gt;Because this is executed from the project root folder, we need to go up only one level. The &amp;ldquo;OctoExePath&amp;rdquo; is the only one variable dependent of the path of the &amp;ldquo;OctopusTools&amp;rdquo; package. The variables &amp;ldquo;OctopusProject&amp;rdquo;, &amp;ldquo;OctopusEnvironment&amp;rdquo;, &amp;ldquo;OctopusPortal&amp;rdquo;, and &amp;ldquo;OctopusApiKey&amp;rdquo; depends of your project Octopus configuration but what I can say here is that normally we only release to &amp;ldquo;Development&amp;rdquo; environment and I’ll talk about the API variable after in this document. Finally, we specify the value for the release notes in the variable &amp;ldquo;OctopusNotes&amp;rdquo; that normally are included in the email sent by Octopus server once a new release finished to be deployed.&lt;/p&gt;
 &lt;p&gt;Once again, that region is only for configure variables related with Octopus for create releases. To actually create the releases, we need to add the following lines to the end of that file. Figure 16 shows the results.&lt;/p&gt;
@@ -2246,50 +2246,50 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;Exec&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Command=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;&amp;#34;$(OctoExePath)&amp;#34; create-release --server=&amp;#34;$(OctopusPortal)&amp;#34; --project=&amp;#34;$(OctopusProject)&amp;#34; --apikey=&amp;#34;$(OctopusApiKey)&amp;#34; --deployto=&amp;#34;$(OctopusEnvironment)&amp;#34; --version=$(OctoPackPackageVersion) --packageversion=$(OctoPackPackageVersion)&amp;#39;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Condition=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#39;$(OctoExePath)&amp;#39; != &amp;#39;&amp;#39;&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img alt=&#34;Release configuration tasks&#34; src=&#34;//localhost:1313/using-octopus/16.png&#34;&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img alt=&#34;Release configuration tasks&#34; src=&#34;/using-octopus/16.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 16.&lt;/p&gt;
 &lt;p&gt;Figure 17 show the build output, notice the highlighted section after the last message received in figure 10.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Third compilation output&#34; src=&#34;//localhost:1313/using-octopus/17.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Third compilation output&#34; src=&#34;/using-octopus/17.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 17.&lt;/p&gt;
 &lt;p&gt;If you open Octopus portal in your project after the build you can get something like what is shown in figure 18.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Octopus project portal&#34; src=&#34;//localhost:1313/using-octopus/18.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Octopus project portal&#34; src=&#34;/using-octopus/18.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 18.&lt;/p&gt;
 &lt;p&gt;So, with just a change of a word: &amp;ldquo;false&amp;rdquo; by &amp;ldquo;true&amp;rdquo; in variable &amp;ldquo;RunOctoPack&amp;rdquo; we achieved many results: An Octopus package ready for be deployed and an Octopus release with product deployed in the specified environment. The risk here is leave that variable as true and/or check-in it as true and make a release in every build. That happens but usually is not what I like to do, so I pay double attention before check-in changes in this file.&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s talk now about packages update. Figure 19 show the updates available.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Packages update&#34; src=&#34;//localhost:1313/using-octopus/19.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Packages update&#34; src=&#34;/using-octopus/19.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 19.&lt;/p&gt;
 &lt;p&gt;After update both packages, Visual Studio deletes the old versions as Figure 20 shows.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Updated package folders&#34; src=&#34;//localhost:1313/using-octopus/20.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Updated package folders&#34; src=&#34;/using-octopus/20.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 20.&lt;/p&gt;
 &lt;p&gt;Thanks that we are using the targets not from the package location but from inside project location, what we have to do is update all old version references to the new version references, meaning all &amp;ldquo;3.6.0&amp;rdquo; by &amp;ldquo;3.6.1&amp;rdquo; and all &amp;ldquo;4.15.7&amp;rdquo; by &amp;ldquo;4.17.0&amp;rdquo;. There are 3 places in &amp;ldquo;OctoPack.targets&amp;rdquo; for the first changes and only one place for the second change.&lt;/p&gt;
 &lt;p&gt;Figures 21 and 22 shows the respective places.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Updated creation task settings&#34; src=&#34;//localhost:1313/using-octopus/21.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Updated creation task settings&#34; src=&#34;/using-octopus/21.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 21.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Updated deployment task settings&#34; src=&#34;//localhost:1313/using-octopus/22.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Updated deployment task settings&#34; src=&#34;/using-octopus/22.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 22.&lt;/p&gt;
 &lt;p&gt;One more thing, the API value for Octopus releases can be generated accessing to the Octopus portal&amp;hellip;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;http://octopus.rant.com/Web/&#34;&gt;http://octopus.rant.com/Web/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&amp;hellip;and follow the steps in figure 23 to figure 26.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Octopus profile option&#34; src=&#34;//localhost:1313/using-octopus/23.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Octopus profile option&#34; src=&#34;/using-octopus/23.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 23.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Octopus profile settings&#34; src=&#34;//localhost:1313/using-octopus/24.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Octopus profile settings&#34; src=&#34;/using-octopus/24.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 24.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Octopus API key generation option&#34; src=&#34;//localhost:1313/using-octopus/25.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Octopus API key generation option&#34; src=&#34;/using-octopus/25.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 25.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Octopus API key generation result&#34; src=&#34;//localhost:1313/using-octopus/26.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Octopus API key generation result&#34; src=&#34;/using-octopus/26.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 26.&lt;/p&gt;
 &lt;p&gt;Is important that you save this key because as soon as you close this dialog, you will not be able to see that value again.&lt;/p&gt;
 &lt;p&gt;One last thing, some projects could bring new problems to the table because is they are being deployed by country: meaning different Octopus projects, environments, physical path, etc. So, the idea is to have multiple &amp;ldquo;.target&amp;rdquo; files in the &amp;ldquo;Deployment&amp;rdquo; folder and added in the same way we did in the &amp;ldquo;.csproj&amp;rdquo; file. Figure 27 and 28 shows an example.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Multi target files&#34; src=&#34;//localhost:1313/using-octopus/27.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Multi target files&#34; src=&#34;/using-octopus/27.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 27.&lt;/p&gt;
 &lt;p&gt;Targets for Chile and Brazil were added to deploy those respective instances.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Project file using multi-target&#34; src=&#34;//localhost:1313/using-octopus/28.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Project file using multi-target&#34; src=&#34;/using-octopus/28.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 28.&lt;/p&gt;
 &lt;p&gt;Here in the .csprj is important to have the first target create (let’s call it from now on the &amp;ldquo;general one&amp;rdquo; or &amp;ldquo;generic one&amp;rdquo; -OctoPack.targets-) as the last one in the list of targets imported.&lt;/p&gt;
 &lt;p&gt;Figures 29 and 30 shows the content of those new targets created.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;First specific target file&#34; src=&#34;//localhost:1313/using-octopus/29.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;First specific target file&#34; src=&#34;/using-octopus/29.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 29.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Second specific target file&#34; src=&#34;//localhost:1313/using-octopus/30.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Second specific target file&#34; src=&#34;/using-octopus/30.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 30.&lt;/p&gt;
 &lt;p&gt;Basically, both new targets are very small files sharing the same structure but with very specific values for the country instance.&lt;/p&gt;
 &lt;p&gt;RunOctoPack
@@ -2298,7 +2298,7 @@ OctopusNotes&lt;/p&gt;
 &lt;p&gt;They are the variables specific to the instance that should change the value at the time to deployment. All are controlled now using a new condition that depends of the value of a new variable introduced: &amp;ldquo;Deploy…&amp;rdquo; (&amp;ldquo;DeployBrazil&amp;rdquo; and &amp;ldquo;DeployChile&amp;rdquo; in the figures). Is valid to mention that is possible to include more variables as the version we want to use, etc.&lt;/p&gt;
 &lt;p&gt;This new variable is the only one what we should change if we decided to deploy that instance. For example, is I want to deploy Brazil instance I put the value of variable &amp;ldquo;DeployBazil&amp;rdquo; as &amp;ldquo;true&amp;rdquo; in file &amp;ldquo;OctoPack (Brazil).targets&amp;rdquo; and that will make &amp;ldquo;RunOctoPack&amp;rdquo; as true and &amp;ldquo;OctopusProject&amp;rdquo; as the name of Octopus project for Brazil instance. Because the target for Brazil is imported before the generic one in the .csproj file, once that target is executed in build time, it will deploy using those values specified.&lt;/p&gt;
 &lt;p&gt;Last but not less important, we must modify the generic target to delete the value for &amp;ldquo;OctopusProject&amp;rdquo;. See figure 31.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Updated release setting for multi-target&#34; src=&#34;//localhost:1313/using-octopus/31.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Updated release setting for multi-target&#34; src=&#34;/using-octopus/31.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 31.&lt;/p&gt;
 &lt;p&gt;I hope you enjoyed this guide and find it useful.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/UsingOctopus&#34;&gt;Source code of support available at GitHub&lt;/a&gt;&lt;/p&gt;
@@ -2308,21 +2308,21 @@ OctopusNotes&lt;/p&gt;
     
     <item>
       <title>Coding style using StyleCop</title>
-      <link>//localhost:1313/post/stylecop-coding-style/</link>
+      <link>/post/stylecop-coding-style/</link>
       <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/post/stylecop-coding-style/</guid>
+      <guid>/post/stylecop-coding-style/</guid>
       
         <description>&lt;p&gt;A colleague ask me to share my experience coding with ReSharper and once he heard that I’m not use ReSharper he was even more curious about how I write source codes. Who knows me knows I love NuGet packages and be updated constantly, that’s why I found a very useful package that I install in all my projects as soon I start it.&lt;/p&gt;
 &lt;p&gt;StyleCop.MSBuild&lt;/p&gt;
 &lt;p&gt;StyleCop used to be a standalone application with integration with Visual Studio but that changed a while ago. I’ll explain through an example. Let’s start creating a console application from scratch.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Console application&#34; src=&#34;//localhost:1313/stylecop-coding-style/01.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Console application&#34; src=&#34;/stylecop-coding-style/01.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 1 show a just created console application in Visual Studio.&lt;/p&gt;
 &lt;p&gt;Notice the 0 errors, 0 warnings, and 0 messages once is compiled. Let’s install the NuGet package and see what happens. Figure 2 shows the management of NuGet packages for the application.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Solution package management&#34; src=&#34;//localhost:1313/stylecop-coding-style/02.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Solution package management&#34; src=&#34;/stylecop-coding-style/02.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 2.&lt;/p&gt;
 &lt;p&gt;Figure 3 shows the results of the solution build once that package is installed.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;First build results&#34; src=&#34;//localhost:1313/stylecop-coding-style/03.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;First build results&#34; src=&#34;/stylecop-coding-style/03.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 3.&lt;/p&gt;
 &lt;p&gt;Notice the 11 warnings. My personal philosophy is deliver products with zero errors (that is logic because compilers and managers looks for it); zero warnings (few tools and people prevent you to deploy with warnings); and zero messages (practically nobody cares about this).&lt;/p&gt;
 &lt;p&gt;Most of the warnings received are self-explanatory and easy to fix. Let’s analyze them one by one.&lt;/p&gt;
@@ -2330,41 +2330,41 @@ OctopusNotes&lt;/p&gt;
 &lt;p&gt;The following five warnings are related with the fact that &amp;ldquo;using&amp;rdquo; statements should be inside the namespace and not outside as the template put it. The solution is obvious, just move the statements inside the namespace.&lt;/p&gt;
 &lt;p&gt;The following four warnings are related with the lack of documentation in the different code instruments: classes and methods in this case. Once the documentation are added the warnings disappear.&lt;/p&gt;
 &lt;p&gt;Figure 4 show the build result after applied the above fixes.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Second build results&#34; src=&#34;//localhost:1313/stylecop-coding-style/04.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Second build results&#34; src=&#34;/stylecop-coding-style/04.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 4.&lt;/p&gt;
 &lt;p&gt;Notice the new two warnings. At this point is good to mention that this is an iterative procedure until the goal (0 errors, 0 warnings, 0 messages). Also the not used &amp;ldquo;using&amp;rdquo; statements were deleted (those gray out). Figure 5 shows the new result once we fix these two warnings adding &amp;ldquo;public&amp;rdquo; modifier to the class and the method.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;First fix&#34; src=&#34;//localhost:1313/stylecop-coding-style/05.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;First fix&#34; src=&#34;/stylecop-coding-style/05.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 5.&lt;/p&gt;
 &lt;p&gt;Hurrah! We made it! But (there is always a but, right?), these is possible because the rule set that we have configured in the project to report warnings. So, let’s be more picky changing the rule set.&lt;/p&gt;
 &lt;p&gt;Figure 6 shows the project properties in the &amp;ldquo;Code Analysis&amp;rdquo; option. Notice the unselected checkbox: &amp;ldquo;Enable Code Analysis on Build&amp;rdquo; and the &amp;ldquo;Microsoft Managed Recommended Rules&amp;rdquo; in the Rule Set dropdown.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Project properties settings&#34; src=&#34;//localhost:1313/stylecop-coding-style/06.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Project properties settings&#34; src=&#34;/stylecop-coding-style/06.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 6.&lt;/p&gt;
 &lt;p&gt;If you enable the checkbox without install the NuGet package you will not receive any warnings and if also you change the rule set without install the NuGet package you will receive only 2 warnings also returned by the StyleCop package because what is does is add many more rules to the working set. That is the reason why I love to add it to my projects and not only use what is included in Visual Studio.&lt;/p&gt;
 &lt;p&gt;Figure 7 show the recommended options.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Recommended options&#34; src=&#34;//localhost:1313/stylecop-coding-style/07.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Recommended options&#34; src=&#34;/stylecop-coding-style/07.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 7.&lt;/p&gt;
 &lt;p&gt;Yes, &amp;ldquo;Microsoft All Rules&amp;rdquo;, more strict we are, better code we obtain if we follow the criteria to obtain at the end 0 errors, 0 warnings, and 0 messages.&lt;/p&gt;
 &lt;p&gt;Figure 8 shows the results of the build after the new options for code analysis.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Third build results&#34; src=&#34;//localhost:1313/stylecop-coding-style/08.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Third build results&#34; src=&#34;/stylecop-coding-style/08.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 8.&lt;/p&gt;
 &lt;p&gt;Six new warnings, time to start again. Uhmmm… The first two don’t have a file associated, how I can fix them? Well there is a solution. Right click in the code &amp;ldquo;CA2210&amp;rdquo; in this case, select the option for &amp;ldquo;Suppress&amp;rdquo; and then the option &amp;ldquo;In Suppression File&amp;rdquo; as is shown in figure 9.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Rule fix options&#34; src=&#34;//localhost:1313/stylecop-coding-style/09.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Rule fix options&#34; src=&#34;/stylecop-coding-style/09.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 9.&lt;/p&gt;
 &lt;p&gt;Once this option is selected a new file called &amp;ldquo;GlobalSuppressions.cs&amp;rdquo; is created in the root of the project as is shown in figure 10.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Rules suppressions file&#34; src=&#34;//localhost:1313/stylecop-coding-style/10.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Rules suppressions file&#34; src=&#34;/stylecop-coding-style/10.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 10.&lt;/p&gt;
 &lt;p&gt;At this point I would like to mention that there are occasions where you can suppress the warning in the suppression file and others directly in the source code. In the figure 10 there are still 5 more warnings to fix. My choices are suppress in global suppression file the first warning, and suppress in source code the fourth warning. To suppress in source code you should do almost the same: right click in the warning’s code, select &amp;ldquo;Suppression&amp;rdquo; option and then select option &amp;ldquo;In Source&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;This option adds an attribute above the method being reported containing the code to suppress the warning, similar to the code added into &amp;ldquo;GlobalSuppressions.cs&amp;rdquo; file.&lt;/p&gt;
 &lt;p&gt;The second warning can be fixed marking the &amp;ldquo;Main&amp;rdquo; method as &amp;ldquo;static&amp;rdquo;; while the third can be fixed removing the &amp;ldquo;args&amp;rdquo; parameter (and its documentation in the method comments). Finally the fifth warning can be fixed just correcting the spelling of the word. Yes, StyleCop also include spell checking, great isn’t?&lt;/p&gt;
 &lt;p&gt;Once all remaining warnings are addressed, we can build again and see what is reported this time, figure 11 show that.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Fourth build results&#34; src=&#34;//localhost:1313/stylecop-coding-style/11.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Fourth build results&#34; src=&#34;/stylecop-coding-style/11.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 11.&lt;/p&gt;
 &lt;p&gt;What? More warnings? Yes, remember that you added a new file: &amp;ldquo;GlobalSuppressions.cs&amp;rdquo; and that file enter to the loop to reports compilation warnings too. So, is time to fix the new reported warnings.&lt;/p&gt;
 &lt;p&gt;All suppressions trough code (source code of &amp;ldquo;GlobalSuppressions.cs&amp;rdquo; file or attributes in the code instruments) must to have a justification. I use my initials as justification as a way to tracking who decided to suppress this warning. That is how I fix the first and third warnings.&lt;/p&gt;
 &lt;p&gt;The second warning can be fix adding the header to the file &amp;ldquo;GlobalSuppressions.cs&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;The fourth warning ask for the use of &amp;ldquo;////&amp;rdquo; instead of &amp;ldquo;//&amp;rdquo; to start a source code comment. If you don’t like this option you can suppress globally in the &amp;ldquo;GlobalSuppressions.cs&amp;rdquo; file but I prefer to fix it changing the way of how I write comments.&lt;/p&gt;
 &lt;p&gt;Finally figure 12 show how the code looks at the end.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Final code&#34; src=&#34;//localhost:1313/stylecop-coding-style/12.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Final code&#34; src=&#34;/stylecop-coding-style/12.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figure 12.&lt;/p&gt;
 &lt;p&gt;First that all our goal is fulfilled: 0 errors, 0 warnings, and 0 messages. Second, our resulting code is beautiful and self-explanatory for future modifications as well as less entries in other security analysis tools as HP Fortify.&lt;/p&gt;
 &lt;p&gt;Is valid to mention that because this discipline requires to add comments in all instruments write all those comments manually is a tedious task. For that reason I also use another tool called &amp;ldquo;GhostDoc&amp;rdquo; that generate very accurate documentation depending of the context for the instrument being documented. The issue with this is that should be done one by one due to license limitation. Actually I use the free version but professional license allows to generate comments for a whole class, or file, or namespace in only one click or pressing &amp;ldquo;Shift + Ctrl + D&amp;rdquo; over the instrument. In the good news is that recently &amp;ldquo;GhostDoc&amp;rdquo; distributed a version using Visual Studio extension package and not the standalone application as it was, so the installation and updates become more ease.&lt;/p&gt;
@@ -2376,10 +2376,10 @@ OctopusNotes&lt;/p&gt;
     
     <item>
       <title>Welcome</title>
-      <link>//localhost:1313/post/welcome/</link>
+      <link>/post/welcome/</link>
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/post/welcome/</guid>
+      <guid>/post/welcome/</guid>
       
         <description>&lt;p&gt;I officially welcome you to my professional blog, I will try to write frequently about development technologies, programming languages, data structures, algorithms, among other topics related to this incredible technological world, always expressing my personal opinions.&lt;/p&gt;
 &lt;p&gt;I decided to start thanks to the fact that I felt the urgent need to write after accumulating experience developing software and constantly explaining over and over again the concepts, approaches, and solutions applied; together with Scott Hanselman&amp;rsquo;s recommendation to write an article about everything that cannot be explained in six sentences.&lt;/p&gt;
