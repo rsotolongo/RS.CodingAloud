@@ -2,150 +2,150 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Programando en voz alta</title>
-    <link>//localhost:1313/es/tags/</link>
+    <link>/es/tags/</link>
     <description>Recent content in Tags on Programando en voz alta</description>
     <generator>Hugo</generator>
     <language>es</language>
     <lastBuildDate>Mon, 15 Mar 2021 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/es/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/es/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Paralelismo</title>
-      <link>//localhost:1313/es/tags/paralelismo/</link>
+      <link>/es/tags/paralelismo/</link>
       <pubDate>Mon, 15 Mar 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/tags/paralelismo/</guid>
+      <guid>/es/tags/paralelismo/</guid>
       <description></description>
     </item>
     <item>
       <title>WPF</title>
-      <link>//localhost:1313/es/tags/wpf/</link>
+      <link>/es/tags/wpf/</link>
       <pubDate>Mon, 15 Mar 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/tags/wpf/</guid>
+      <guid>/es/tags/wpf/</guid>
       <description></description>
     </item>
     <item>
       <title>MSBuild</title>
-      <link>//localhost:1313/es/tags/msbuild/</link>
+      <link>/es/tags/msbuild/</link>
       <pubDate>Mon, 22 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/tags/msbuild/</guid>
+      <guid>/es/tags/msbuild/</guid>
       <description></description>
     </item>
     <item>
       <title>Visual Studio</title>
-      <link>//localhost:1313/es/tags/visual-studio/</link>
+      <link>/es/tags/visual-studio/</link>
       <pubDate>Mon, 22 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/tags/visual-studio/</guid>
+      <guid>/es/tags/visual-studio/</guid>
       <description></description>
     </item>
     <item>
       <title>API</title>
-      <link>//localhost:1313/es/tags/api/</link>
+      <link>/es/tags/api/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/tags/api/</guid>
+      <guid>/es/tags/api/</guid>
       <description></description>
     </item>
     <item>
       <title>OpenAPI</title>
-      <link>//localhost:1313/es/tags/openapi/</link>
+      <link>/es/tags/openapi/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/tags/openapi/</guid>
+      <guid>/es/tags/openapi/</guid>
       <description></description>
     </item>
     <item>
       <title>Swagger</title>
-      <link>//localhost:1313/es/tags/swagger/</link>
+      <link>/es/tags/swagger/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/tags/swagger/</guid>
+      <guid>/es/tags/swagger/</guid>
       <description></description>
     </item>
     <item>
       <title>Seguridad</title>
-      <link>//localhost:1313/es/tags/seguridad/</link>
+      <link>/es/tags/seguridad/</link>
       <pubDate>Mon, 08 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/tags/seguridad/</guid>
+      <guid>/es/tags/seguridad/</guid>
       <description></description>
     </item>
     <item>
       <title>OpenSSL</title>
-      <link>//localhost:1313/es/tags/openssl/</link>
+      <link>/es/tags/openssl/</link>
       <pubDate>Mon, 01 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/tags/openssl/</guid>
+      <guid>/es/tags/openssl/</guid>
       <description></description>
     </item>
     <item>
       <title>NuGet</title>
-      <link>//localhost:1313/es/tags/nuget/</link>
+      <link>/es/tags/nuget/</link>
       <pubDate>Mon, 25 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/tags/nuget/</guid>
+      <guid>/es/tags/nuget/</guid>
       <description></description>
     </item>
     <item>
       <title>Octopus</title>
-      <link>//localhost:1313/es/tags/octopus/</link>
+      <link>/es/tags/octopus/</link>
       <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/tags/octopus/</guid>
+      <guid>/es/tags/octopus/</guid>
       <description></description>
     </item>
     <item>
       <title>Análisis De Código</title>
-      <link>//localhost:1313/es/tags/an%C3%A1lisis-de-c%C3%B3digo/</link>
+      <link>/es/tags/an%C3%A1lisis-de-c%C3%B3digo/</link>
       <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/tags/an%C3%A1lisis-de-c%C3%B3digo/</guid>
+      <guid>/es/tags/an%C3%A1lisis-de-c%C3%B3digo/</guid>
       <description></description>
     </item>
     <item>
       <title>Código Fuente</title>
-      <link>//localhost:1313/es/tags/c%C3%B3digo-fuente/</link>
+      <link>/es/tags/c%C3%B3digo-fuente/</link>
       <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/tags/c%C3%B3digo-fuente/</guid>
+      <guid>/es/tags/c%C3%B3digo-fuente/</guid>
       <description></description>
     </item>
     <item>
       <title>ReSharper</title>
-      <link>//localhost:1313/es/tags/resharper/</link>
+      <link>/es/tags/resharper/</link>
       <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/tags/resharper/</guid>
+      <guid>/es/tags/resharper/</guid>
       <description></description>
     </item>
     <item>
       <title>StyleCop</title>
-      <link>//localhost:1313/es/tags/stylecop/</link>
+      <link>/es/tags/stylecop/</link>
       <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/tags/stylecop/</guid>
+      <guid>/es/tags/stylecop/</guid>
       <description></description>
     </item>
     <item>
       <title>Delphi</title>
-      <link>//localhost:1313/es/tags/delphi/</link>
+      <link>/es/tags/delphi/</link>
       <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/tags/delphi/</guid>
+      <guid>/es/tags/delphi/</guid>
       <description></description>
     </item>
     <item>
       <title>XML</title>
-      <link>//localhost:1313/es/tags/xml/</link>
+      <link>/es/tags/xml/</link>
       <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/tags/xml/</guid>
+      <guid>/es/tags/xml/</guid>
       <description></description>
     </item>
     <item>
       <title>Arquitectura</title>
-      <link>//localhost:1313/es/tags/arquitectura/</link>
+      <link>/es/tags/arquitectura/</link>
       <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/tags/arquitectura/</guid>
+      <guid>/es/tags/arquitectura/</guid>
       <description></description>
     </item>
     <item>
       <title>Filosofía</title>
-      <link>//localhost:1313/es/tags/filosof%C3%ADa/</link>
+      <link>/es/tags/filosof%C3%ADa/</link>
       <pubDate>Fri, 25 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/tags/filosof%C3%ADa/</guid>
+      <guid>/es/tags/filosof%C3%ADa/</guid>
       <description></description>
     </item>
     <item>
       <title>Internet</title>
-      <link>//localhost:1313/es/tags/internet/</link>
+      <link>/es/tags/internet/</link>
       <pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/tags/internet/</guid>
+      <guid>/es/tags/internet/</guid>
       <description></description>
     </item>
   </channel>
