@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Educación on Programando en voz alta</title>
-    <link>/es/tags/educaci%C3%B3n/</link>
+    <link>//localhost:1313/es/tags/educaci%C3%B3n/</link>
     <description>Recent content in Educación on Programando en voz alta</description>
     <generator>Hugo</generator>
     <language>es</language>
     <lastBuildDate>Fri, 11 Dec 2020 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/es/tags/educaci%C3%B3n/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/es/tags/educaci%C3%B3n/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Aspectos tener en cuenta a la hora de valorar el uso de Internet en la superación profesional</title>
-      <link>/es/post/superaci%C3%B3n-personal/</link>
+      <link>//localhost:1313/es/post/superaci%C3%B3n-personal/</link>
       <pubDate>Fri, 11 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>/es/post/superaci%C3%B3n-personal/</guid>
+      <guid>//localhost:1313/es/post/superaci%C3%B3n-personal/</guid>
       <description>Tengo pendiente una entrevista en la Televisión Avileña (TVA) en el programa Equilibrio de las 12 del día para conversar sobre Internet y superación profesional. Por eso es que no queriendo ir en blanco a esa entrevista decidí anotar los aspectos a mencionar en algún momento por su relevante importancia:&#xA;La superación profesional produce un alto grado de inserción laboral.&#xA;Internet hace suponer le eliminación de las barreras de movilidad geográfica, horarios fijos, y usar materiales de formación efectivos con bastante calidad didáctica.</description>
     </item>
     <item>
       <title>¿Quién es quién en los profesionales de la computación?</title>
-      <link>/es/post/profesionales-de-la-computaci%C3%B3n/</link>
+      <link>//localhost:1313/es/post/profesionales-de-la-computaci%C3%B3n/</link>
       <pubDate>Fri, 04 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>/es/post/profesionales-de-la-computaci%C3%B3n/</guid>
+      <guid>//localhost:1313/es/post/profesionales-de-la-computaci%C3%B3n/</guid>
       <description>No les miento si les cuento que durante muchos años viví engañado. Desde antes de entrar a estudiar la carrera de &amp;ldquo;Licenciatura en Ciencia de la Computación&amp;rdquo; (Cibernética, como todos la conocen) en la Universidad Central &amp;ldquo;Marta Abreu&amp;rdquo; de Las Villas, pensaba que los cibernéticos eran los que &amp;ldquo;diseñaban&amp;rdquo; los productos informáticos debido a sus conocimientos más profundos en materias de computación y que luego los informáticos se encargaban de &amp;ldquo;implementarlos&amp;rdquo;.</description>
     </item>
     <item>
       <title>¿Cibernéticos como Ingenieros?</title>
-      <link>/es/post/cibern%C3%A9ticos-como-ingenieros/</link>
+      <link>//localhost:1313/es/post/cibern%C3%A9ticos-como-ingenieros/</link>
       <pubDate>Thu, 03 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>/es/post/cibern%C3%A9ticos-como-ingenieros/</guid>
+      <guid>//localhost:1313/es/post/cibern%C3%A9ticos-como-ingenieros/</guid>
       <description>La pregunta que da título a esta redacción está muy acorde a las carreras universitarias que se cursan un Cuba: &amp;ldquo;Ciencia de la Computación&amp;rdquo; (más conocida por &amp;ldquo;Cibernética&amp;rdquo;) e &amp;ldquo;Informática&amp;rdquo;. La primera es una licenciatura mientras que la segunda es una ingeniería.&#xA;Si bien la Ingeniería Informática se ve mucho más ligada a la producción de software de gestión empresarial, no es menos cierto que existe una rama de la ingeniería que la computación no podía dejar de hacer uso de ella: la Ingeniería Inversa.</description>
     </item>
   </channel>

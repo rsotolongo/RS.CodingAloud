@@ -10,6 +10,11 @@
     font-size: $logo-font-size;
     font-family: $logo-font-family;
   }
+
+  .modernLogo {
+    font-size: $logo-font-size;
+    font-family: $global-serif-font-family;
+  }
 }
 
 @include max-screen() {

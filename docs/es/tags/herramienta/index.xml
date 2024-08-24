@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Herramienta on Programando en voz alta</title>
-    <link>/es/tags/herramienta/</link>
+    <link>//localhost:1313/es/tags/herramienta/</link>
     <description>Recent content in Herramienta on Programando en voz alta</description>
     <generator>Hugo</generator>
     <language>es</language>
     <lastBuildDate>Tue, 15 Dec 2020 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/es/tags/herramienta/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/es/tags/herramienta/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Herramientas para los blogs</title>
-      <link>/es/post/herramientas-para-blogs/</link>
+      <link>//localhost:1313/es/post/herramientas-para-blogs/</link>
       <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>/es/post/herramientas-para-blogs/</guid>
+      <guid>//localhost:1313/es/post/herramientas-para-blogs/</guid>
       <description>No hay duda que la web revolucionó el mundo de la información a disposición de todos sus usuarios, pero por sus propias características tiene un gran inconveniente: sigue siendo el usuario el responsable de visitar expresamente los sitios de los que quiere nutrirse.&#xA;Cuando se visitan dos o tres sitios o se hace con poca frecuencia esto no interesa mucho, sin embargo, cuando se requiere informarse apenas se publique la información esto se convierte en un problema.</description>
     </item>
   </channel>
