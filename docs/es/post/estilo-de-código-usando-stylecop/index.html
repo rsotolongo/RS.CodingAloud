@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="es" itemscope itemtype="http://schema.org/WebPage">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Estilizando códigos usando StyleCop - Programando en voz alta</title>
   
-<link rel="alternate" hreflang="en" href="/post/stylecop-coding-style/" />
+<link rel="alternate" hreflang="en" href="//localhost:1313/post/stylecop-coding-style/" />
 
 
 <meta name="renderer" content="webkit" />
@@ -24,7 +24,7 @@
 
 <meta name="mobile-web-app-capable" content="yes">
 
-<meta name="author" content="Ricardo Sotolongo" />
+
   <meta name="description" content="Un colega me pidió que compartiera mi experiencia programando con ReSharper y, una vez que se enteró de que no uso ReSharper, sintió aún más curiosidad por saber cómo escribo los códigos fuentes. Quien me conoce sabe que me encantan los paquetes NuGet y estar actualizado constantemente, por eso encontré un paquete muy útil que instalo en todos mis proyectos apenas los inicio.
 StyleCop.MSBuild
 StyleCop solía ser una aplicación independiente con integración con Visual Studio, pero eso cambió hace un tiempo." />
@@ -36,10 +36,10 @@ StyleCop solía ser una aplicación independiente con integración con Visual St
 
 
 
-<meta name="generator" content="Hugo 0.81.0" />
+<meta name="generator" content="Hugo 0.133.0" />
 
 
-<link rel="canonical" href="/es/post/estilo-de-c%C3%B3digo-usando-stylecop/" />
+<link rel="canonical" href="//localhost:1313/es/post/estilo-de-c%C3%B3digo-usando-stylecop/" />
 
 
 
@@ -57,32 +57,43 @@ StyleCop solía ser una aplicación independiente con integración con Visual St
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.fa3d941d1d0e0ddc985804227feabffea55c89883eb0af34e0532a7ae9135151.css" integrity="sha256-&#43;j2UHR0ODdyYWAQif&#43;q//qVciYg&#43;sK804FMqeukTUVE=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.444f741ba7b684e63dff9a3b61ec1fb750c9b563b5a0b64153f1af8025c5fac1.css" integrity="sha256-RE90G6e2hOY9/5o7Yewft1DJtWO1oLZBU/GvgCXF&#43;sE=" media="screen" crossorigin="anonymous">
 
 
 
 
 
-<meta property="og:title" content="Estilizando códigos usando StyleCop" />
-<meta property="og:description" content="Un colega me pidió que compartiera mi experiencia programando con ReSharper y, una vez que se enteró de que no uso ReSharper, sintió aún más curiosidad por saber cómo escribo los códigos fuentes. Quien me conoce sabe que me encantan los paquetes NuGet y estar actualizado constantemente, por eso encontré un paquete muy útil que instalo en todos mis proyectos apenas los inicio.
+
+<meta property="og:url" content="//localhost:1313/es/post/estilo-de-c%C3%B3digo-usando-stylecop/">
+  <meta property="og:site_name" content="Programando en voz alta">
+  <meta property="og:title" content="Estilizando códigos usando StyleCop">
+  <meta property="og:description" content="Un colega me pidió que compartiera mi experiencia programando con ReSharper y, una vez que se enteró de que no uso ReSharper, sintió aún más curiosidad por saber cómo escribo los códigos fuentes. Quien me conoce sabe que me encantan los paquetes NuGet y estar actualizado constantemente, por eso encontré un paquete muy útil que instalo en todos mis proyectos apenas los inicio.
 StyleCop.MSBuild
-StyleCop solía ser una aplicación independiente con integración con Visual Studio, pero eso cambió hace un tiempo." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/es/post/estilo-de-c%C3%B3digo-usando-stylecop/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2021-01-04T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2021-01-04T00:00:00&#43;00:00" /><meta property="og:site_name" content="Programando en voz alta" />
+StyleCop solía ser una aplicación independiente con integración con Visual Studio, pero eso cambió hace un tiempo.">
+  <meta property="og:locale" content="es">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2021-01-04T00:00:00+00:00">
+    <meta property="article:modified_time" content="2021-01-04T00:00:00+00:00">
+    <meta property="article:tag" content="ReSharper">
+    <meta property="article:tag" content="Visual Studio">
+    <meta property="article:tag" content="StyleCop">
+    <meta property="article:tag" content="Código Fuente">
+    <meta property="article:tag" content="Análisis De Código">
 
-<meta itemprop="name" content="Estilizando códigos usando StyleCop">
-<meta itemprop="description" content="Un colega me pidió que compartiera mi experiencia programando con ReSharper y, una vez que se enteró de que no uso ReSharper, sintió aún más curiosidad por saber cómo escribo los códigos fuentes. Quien me conoce sabe que me encantan los paquetes NuGet y estar actualizado constantemente, por eso encontré un paquete muy útil que instalo en todos mis proyectos apenas los inicio.
+  <meta itemprop="name" content="Estilizando códigos usando StyleCop">
+  <meta itemprop="description" content="Un colega me pidió que compartiera mi experiencia programando con ReSharper y, una vez que se enteró de que no uso ReSharper, sintió aún más curiosidad por saber cómo escribo los códigos fuentes. Quien me conoce sabe que me encantan los paquetes NuGet y estar actualizado constantemente, por eso encontré un paquete muy útil que instalo en todos mis proyectos apenas los inicio.
 StyleCop.MSBuild
-StyleCop solía ser una aplicación independiente con integración con Visual Studio, pero eso cambió hace un tiempo."><meta itemprop="datePublished" content="2021-01-04T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2021-01-04T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1421">
-<meta itemprop="keywords" content="ReSharper,Visual Studio,StyleCop,código fuente,análisis de código," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Estilizando códigos usando StyleCop"/>
-<meta name="twitter:description" content="Un colega me pidió que compartiera mi experiencia programando con ReSharper y, una vez que se enteró de que no uso ReSharper, sintió aún más curiosidad por saber cómo escribo los códigos fuentes. Quien me conoce sabe que me encantan los paquetes NuGet y estar actualizado constantemente, por eso encontré un paquete muy útil que instalo en todos mis proyectos apenas los inicio.
+StyleCop solía ser una aplicación independiente con integración con Visual Studio, pero eso cambió hace un tiempo.">
+  <meta itemprop="datePublished" content="2021-01-04T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2021-01-04T00:00:00+00:00">
+  <meta itemprop="wordCount" content="1421">
+  <meta itemprop="keywords" content="ReSharper,Visual Studio,StyleCop,Código Fuente,Análisis De Código">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Estilizando códigos usando StyleCop">
+  <meta name="twitter:description" content="Un colega me pidió que compartiera mi experiencia programando con ReSharper y, una vez que se enteró de que no uso ReSharper, sintió aún más curiosidad por saber cómo escribo los códigos fuentes. Quien me conoce sabe que me encantan los paquetes NuGet y estar actualizado constantemente, por eso encontré un paquete muy útil que instalo en todos mis proyectos apenas los inicio.
 StyleCop.MSBuild
-StyleCop solía ser una aplicación independiente con integración con Visual Studio, pero eso cambió hace un tiempo."/>
+StyleCop solía ser una aplicación independiente con integración con Visual Studio, pero eso cambió hace un tiempo.">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -93,17 +104,6 @@ StyleCop solía ser una aplicación independiente con integración con Visual St
   <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
 <![endif]-->
 
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-4387301-7', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
 
@@ -125,28 +125,28 @@ if (!doNotTrack) {
         
           
           
-            <a class="menu-item-link" href="es/">Inicio</a>
+            <a class="menu-item-link" href="//localhost:1313/es/">Inicio</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="es/post/">Archivos</a>
+            <a class="menu-item-link" href="//localhost:1313/es/post/">Archivos</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="es/tags/">Etiquetas</a>
+            <a class="menu-item-link" href="//localhost:1313/es/tags/">Etiquetas</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="es/categories/">Categorías</a>
+            <a class="menu-item-link" href="//localhost:1313/es/categories/">Categorías</a>
           
         
       </li><li class="mobile-menu-item">
@@ -188,13 +188,13 @@ if (!doNotTrack) {
           
             <li>
               
-                <a href="/">English</a>
+                <a href="//localhost:1313/">English</a>
               
             </li>
           
             <li>
               
-                <a href="/es/"><strong>Español</strong></a>
+                <a href="//localhost:1313/es/"><strong>Español</strong></a>
               
             </li>
           
@@ -287,7 +287,7 @@ if (!doNotTrack) {
         
           
           
-            <a class="menu-item-link" href="es/">Inicio</a>
+            <a class="menu-item-link" href="//localhost:1313/es/">Inicio</a>
           
 
         
@@ -298,7 +298,7 @@ if (!doNotTrack) {
         
           
           
-            <a class="menu-item-link" href="es/post/">Archivos</a>
+            <a class="menu-item-link" href="//localhost:1313/es/post/">Archivos</a>
           
 
         
@@ -309,7 +309,7 @@ if (!doNotTrack) {
         
           
           
-            <a class="menu-item-link" href="es/tags/">Etiquetas</a>
+            <a class="menu-item-link" href="//localhost:1313/es/tags/">Etiquetas</a>
           
 
         
@@ -320,7 +320,7 @@ if (!doNotTrack) {
         
           
           
-            <a class="menu-item-link" href="es/categories/">Categorías</a>
+            <a class="menu-item-link" href="//localhost:1313/es/categories/">Categorías</a>
           
 
         
@@ -368,7 +368,7 @@ if (!doNotTrack) {
           
             
               <li>
-                <a href="/">English</a>
+                <a href="//localhost:1313/">English</a>
               </li>
             
           
@@ -395,7 +395,7 @@ if (!doNotTrack) {
       
 <div class="post-meta">
   
-  <div><a href="/post/stylecop-coding-style/">Read in English: Coding style using StyleCop</a></div>
+  <div><a href="//localhost:1313/post/stylecop-coding-style/">Read in English: Coding style using StyleCop</a></div>
   
 </div>
 
@@ -404,7 +404,7 @@ if (!doNotTrack) {
           2021-01-04
         </time>
         <div class="post-category">
-            <a href="/es/categories/desarrollo/"> Desarrollo </a>
+            <a href="//localhost:1313/es/categories/desarrollo/"> Desarrollo </a>
             
           </div>
         <span class="more-meta"> 1421 palabras </span>
@@ -426,13 +426,13 @@ if (!doNotTrack) {
       <p>Un colega me pidió que compartiera mi experiencia programando con ReSharper y, una vez que se enteró de que no uso ReSharper, sintió aún más curiosidad por saber cómo escribo los códigos fuentes. Quien me conoce sabe que me encantan los paquetes NuGet y estar actualizado constantemente, por eso encontré un paquete muy útil que instalo en todos mis proyectos apenas los inicio.</p>
 <p>StyleCop.MSBuild</p>
 <p>StyleCop solía ser una aplicación independiente con integración con Visual Studio, pero eso cambió hace un tiempo. Lo explicaré con un ejemplo. Comencemos a crear una aplicación de consola desde cero.</p>
-<p><img src="/stylecop-coding-style/01.png" alt="Applicación de consola"></p>
+<p><img alt="Applicación de consola" src="/stylecop-coding-style/01.png"></p>
 <p>La figura 1 muestra una aplicación de consola recién creada en Visual Studio.</p>
 <p>Observe los 0 errores, 0 advertencias y 0 mensajes una vez que se compila. Instalemos el paquete NuGet y veamos qué sucede. La figura 2 muestra la administración de paquetes NuGet para la aplicación.</p>
-<p><img src="/stylecop-coding-style/02.png" alt="Administrador de paquetes de la solución"></p>
+<p><img alt="Administrador de paquetes de la solución" src="/stylecop-coding-style/02.png"></p>
 <p>Figura 2.</p>
 <p>La figura 3 muestra los resultados de la creación de la solución una vez que se instala ese paquete.</p>
-<p><img src="/stylecop-coding-style/03.png" alt="Primeros resultados de compilación"></p>
+<p><img alt="Primeros resultados de compilación" src="/stylecop-coding-style/03.png"></p>
 <p>Figura 3.</p>
 <p>Note las 11 advertencias. Mi filosofía personal es entregar productos sin errores (eso es lógico porque los compiladores y administradores lo buscan); cero advertencias (pocas herramientas y personas le impiden implementar con advertencias); y cero mensajes (prácticamente a nadie le importa esto).</p>
 <p>La mayoría de las advertencias recibidas se explican por sí mismas y son fáciles de solucionar. Analicémoslsas una por una.</p>
@@ -440,41 +440,41 @@ if (!doNotTrack) {
 <p>Las siguientes cinco advertencias están relacionadas con el hecho de que las declaraciones de &ldquo;uso&rdquo; deben estar dentro del espacio de nombres y no afuera, como dice la plantilla. La solución es obvia, simplemente mover las declaraciones dentro del espacio de nombres.</p>
 <p>Las siguientes cuatro advertencias están relacionadas con la falta de documentación en los diferentes instrumentos de código: clases y métodos en este caso. Una vez que se agrega la documentación, las advertencias desaparecen.</p>
 <p>La figura 4 muestra el resultado de la compilación después de aplicar las correcciones anteriores.</p>
-<p><img src="/stylecop-coding-style/04.png" alt="Segundos resultados de compilación"></p>
+<p><img alt="Segundos resultados de compilación" src="/stylecop-coding-style/04.png"></p>
 <p>Figura 4.</p>
 <p>Observe las dos nuevas advertencias. En este punto es bueno mencionar que este es un procedimiento iterativo hasta la meta (0 errores, 0 advertencias, 0 mensajes). También se eliminaron las declaraciones de &ldquo;uso&rdquo; no utilizadas (las que están en gris). La figura 5 muestra el nuevo resultado una vez que arreglamos estas dos advertencias agregando el modificador &ldquo;público&rdquo; a la clase y al método.</p>
-<p><img src="/stylecop-coding-style/05.png" alt="Primeros arreglos"></p>
+<p><img alt="Primeros arreglos" src="/stylecop-coding-style/05.png"></p>
 <p>Figura 5.</p>
 <p>¡Hurra! ¡Lo hicimos! Pero (siempre hay un pero, ¿no?), Esto es posible gracias al conjunto de reglas que hemos configurado en el proyecto para reportar advertencias. Entonces, seamos más exigentes al cambiar el conjunto de reglas.</p>
 <p>La figura 6 muestra las propiedades del proyecto en la opción &ldquo;Análisis de código&rdquo;. Observe la casilla de verificación no seleccionada: &ldquo;Habilitar análisis de código al compilar&rdquo; y las &ldquo;Reglas recomendadas administradas por Microsoft&rdquo; en el menú desplegable Conjunto de reglas.</p>
-<p><img src="/stylecop-coding-style/06.png" alt="Opciones de configuración del proyecto"></p>
+<p><img alt="Opciones de configuración del proyecto" src="/stylecop-coding-style/06.png"></p>
 <p>Figura 6.</p>
 <p>Si habilita la casilla de verificación sin instalar el paquete NuGet, no recibirá ninguna advertencia y si también cambia el conjunto de reglas sin instalar el paquete NuGet, recibirá solo 2 advertencias también devueltas por el paquete StyleCop porque lo que hace es agregar muchas más reglas al conjunto de trabajo. Esa es la razón por la que me encanta agregarlo a mis proyectos y no solo usar lo que está incluido en Visual Studio.</p>
 <p>La figura 7 muestra las opciones recomendadas.</p>
-<p><img src="/stylecop-coding-style/07.png" alt="Opciones recomendadas"></p>
+<p><img alt="Opciones recomendadas" src="/stylecop-coding-style/07.png"></p>
 <p>Figura 7.</p>
 <p>Sí, &ldquo;Microsoft All Rules&rdquo;, más estrictos somos, mejor código obtenemos si seguimos los criterios para obtener al final 0 errores, 0 advertencias y 0 mensajes.</p>
 <p>La figura 8 muestra los resultados de la compilación después de las nuevas opciones para el análisis de código.</p>
-<p><img src="/stylecop-coding-style/08.png" alt="Terceros resultados de compilación"></p>
+<p><img alt="Terceros resultados de compilación" src="/stylecop-coding-style/08.png"></p>
 <p>Figura 8.</p>
 <p>Seis nuevas advertencias, es hora de empezar de nuevo. Uhmmm&hellip; Los dos primeros no tienen un archivo asociado, ¿cómo puedo solucionarlos? Bueno, hay una solución. Haga clic derecho en el código &ldquo;CA2210&rdquo; en este caso, seleccione la opción de &ldquo;Suprimir&rdquo; y luego la opción &ldquo;En Archivo de Supresión&rdquo; como se muestra en La figura 9.</p>
-<p><img src="/stylecop-coding-style/09.png" alt="Opciones de reglas"></p>
+<p><img alt="Opciones de reglas" src="/stylecop-coding-style/09.png"></p>
 <p>Figura 9.</p>
 <p>Una vez seleccionada esta opción, se crea un nuevo archivo llamado &ldquo;GlobalSuppressions.cs&rdquo; en la raíz del proyecto como se muestra en La figura 10.</p>
-<p><img src="/stylecop-coding-style/10.png" alt="Archivo de supresión de reglas"></p>
+<p><img alt="Archivo de supresión de reglas" src="/stylecop-coding-style/10.png"></p>
 <p>Figura 10.</p>
 <p>En este punto, me gustaría mencionar que hay ocasiones en las que puede suprimir la advertencia en el archivo de supresión y otras directamente en el código fuente. En La figura 10 todavía hay 5 advertencias más para corregir. Mis opciones son suprimir en el archivo de supresión global la primera advertencia y suprimir en el código fuente la cuarta advertencia. Para suprimir el código fuente, debe hacer casi lo mismo: haga clic con el botón derecho en el código de la advertencia, seleccione la opción &ldquo;Supresión&rdquo; y luego seleccione la opción &ldquo;En fuente&rdquo;.</p>
 <p>Esta opción agrega un atributo sobre el método que se informa que contiene el código para suprimir la advertencia, similar al código agregado en el archivo &ldquo;GlobalSuppressions.cs&rdquo;.</p>
 <p>La segunda advertencia se puede arreglar marcando el método &ldquo;Principal&rdquo; como &ldquo;estático&rdquo;; mientras que el tercero se puede arreglar eliminando el parámetro &ldquo;args&rdquo; (y su documentación en los comentarios del método). Finalmente, la quinta advertencia se puede arreglar simplemente corrigiendo la ortografía de la palabra. Sí, StyleCop también incluye corrección ortográfica, ¿no es genial?</p>
 <p>Una vez que se abordan todas las advertencias restantes, podemos volver a compilar y ver lo que se informa esta vez, La figura 11 muestra eso.</p>
-<p><img src="/stylecop-coding-style/11.png" alt="Cuartos resultados de compilación"></p>
+<p><img alt="Cuartos resultados de compilación" src="/stylecop-coding-style/11.png"></p>
 <p>Figura 11.</p>
 <p>¿Qué? ¿Más advertencias? Sí, recuerde que agregó un nuevo archivo: &ldquo;GlobalSuppressions.cs&rdquo; y ese archivo ingresa al ciclo para reportar advertencias de compilación también. Entonces, es hora de corregir las nuevas advertencias informadas.</p>
 <p>Todas las supresiones a través del código (código fuente del archivo &ldquo;GlobalSuppressions.cs&rdquo; o atributos en los instrumentos de código) deben tener una justificación. Utilizo mis iniciales como justificación como una forma de rastrear quién decidió suprimir esta advertencia. Así es como soluciono la primera y tercera advertencias.</p>
 <p>La segunda advertencia se puede corregir agregando el encabezado al archivo &ldquo;GlobalSuppressions.cs&rdquo;.</p>
 <p>La cuarta advertencia solicita el uso de &ldquo;////&rdquo; en lugar de &ldquo;//&rdquo; para iniciar un comentario de código fuente. Si no le gusta esta opción, puede suprimir globalmente en el archivo &ldquo;GlobalSuppressions.cs&rdquo;, pero prefiero corregirlo cambiando la forma en que escribo los comentarios.</p>
 <p>Finalmente, La figura 12 muestra cómo se ve el código al final.</p>
-<p><img src="/stylecop-coding-style/12.png" alt="Código final"></p>
+<p><img alt="Código final" src="/stylecop-coding-style/12.png"></p>
 <p>Figura 12.</p>
 <p>Primero que se cumpla todo nuestro objetivo: 0 errores, 0 advertencias y 0 mensajes. En segundo lugar, nuestro código resultante es atractivo y se explica por sí mismo para futuras modificaciones, así como menos problemas reportados por otras herramientas de análisis de seguridad como HP Fortify.</p>
 <p>Es válido mencionar que debido a que esta disciplina requiere agregar comentarios en todos los instrumentos escribir todos esos comentarios manualmente es una tarea tediosa. Por esa razón también utilizo otra herramienta llamada &ldquo;GhostDoc&rdquo; que genera documentación muy precisa dependiendo del contexto del instrumento que se está documentando. El problema con esto es que debe hacerse uno por uno debido a la limitación de la licencia. En realidad, yo uso la versión gratuita, pero la licencia profesional permite generar comentarios para toda una clase, archivo o espacio de nombres con un solo clic o presionando &ldquo;Shift + Ctrl + D&rdquo; sobre el instrumento. La buena noticia es que recientemente &ldquo;GhostDoc&rdquo; distribuyó una versión usando el paquete de extensión de Visual Studio y no la aplicación independiente como estaba, por lo que la instalación y las actualizaciones se vuelven más fáciles.</p>
@@ -492,9 +492,11 @@ if (!doNotTrack) {
 
     <footer class="post-footer">
       <div class="post-tags">
-          <a href="/es/tags/resharper/">ReSharper</a>
-          <a href="/es/tags/visual-studio/">Visual Studio</a>
-          <a href="/es/tags/stylecop/">StyleCop</a>
+          <a href="//localhost:1313/es/tags/resharper/">ReSharper</a>
+          <a href="//localhost:1313/es/tags/visual-studio/">Visual Studio</a>
+          <a href="//localhost:1313/es/tags/stylecop/">StyleCop</a>
+          <a href="//localhost:1313/es/tags/c%C3%B3digo-fuente/">código fuente</a>
+          <a href="//localhost:1313/es/tags/an%C3%A1lisis-de-c%C3%B3digo/">análisis de código</a>
           
         </div>
 
@@ -532,8 +534,6 @@ if (!doNotTrack) {
     </footer>
   </article>
 
-  
-  
   
   
 
@@ -622,7 +622,7 @@ if (!doNotTrack) {
   
 
 
-<a href="/es/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
+<a href="//localhost:1313/es/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
     class="iconfont" title="rss" target="_blank">
     <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -639,10 +639,7 @@ if (!doNotTrack) {
     &copy;
     
       2020 -
-    2021<span class="author">
-        Ricardo Sotolongo
-        
-      </span></span>
+    2024</span>
 
   
   
@@ -671,7 +668,7 @@ if (!doNotTrack) {
 
 
 
-<script type="text/javascript" src="/js/main.638251f4230630f0335d8c6748e53a96f94b72670920b60c09a56fdc8bece214.js" integrity="sha256-Y4JR9CMGMPAzXYxnSOU6lvlLcmcJILYMCaVv3Ivs4hQ=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/main.dee43230127a73d039a734510fa896c89c3c7ce0cf0be0c7a7433f8fd69b76dc.js" integrity="sha256-3uQyMBJ6c9A5pzRRD6iWyJw8fODPC&#43;DHp0M/j9abdtw=" crossorigin="anonymous"></script>
 
 
 

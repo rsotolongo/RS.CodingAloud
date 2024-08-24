@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="es" itemscope itemtype="http://schema.org/WebPage">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Creando paquetes NuGet - Programando en voz alta</title>
   
-<link rel="alternate" hreflang="en" href="/post/creating-nuget-packages/" />
+<link rel="alternate" hreflang="en" href="//localhost:1313/post/creating-nuget-packages/" />
 
 
 <meta name="renderer" content="webkit" />
@@ -24,12 +24,12 @@
 
 <meta name="mobile-web-app-capable" content="yes">
 
-<meta name="author" content="Ricardo Sotolongo" />
+
   <meta name="description" content="Últimamente he estado involucrado en la creación de varios paquetes NuGet útiles para algunos portales que se están siendo desarrollando. Quiero compartir mis conocimientos en este tema.
 Si estuviéramos desarrollando bibliotecas para .NET Core o .NET Standard, la vida sería fácil, como muestra La figura 1 a La figura 8.
-Figura 1: &amp;ldquo;Creación de una nueva biblioteca de .NET Core&amp;rdquo;.
+Figura 1: &ldquo;Creación de una nueva biblioteca de .NET Core&rdquo;.
 Figura 2: “Código predeterminado”.
-Figura 3: &amp;ldquo;Resultados de la primera compilación&amp;rdquo;." />
+Figura 3: &ldquo;Resultados de la primera compilación&rdquo;." />
 
   <meta name="keywords" content="Hugo, theme, jane" />
 
@@ -38,10 +38,10 @@ Figura 3: &amp;ldquo;Resultados de la primera compilación&amp;rdquo;." />
 
 
 
-<meta name="generator" content="Hugo 0.81.0" />
+<meta name="generator" content="Hugo 0.133.0" />
 
 
-<link rel="canonical" href="/es/post/creando-paquetes-nuget/" />
+<link rel="canonical" href="//localhost:1313/es/post/creando-paquetes-nuget/" />
 
 
 
@@ -59,38 +59,47 @@ Figura 3: &amp;ldquo;Resultados de la primera compilación&amp;rdquo;." />
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.fa3d941d1d0e0ddc985804227feabffea55c89883eb0af34e0532a7ae9135151.css" integrity="sha256-&#43;j2UHR0ODdyYWAQif&#43;q//qVciYg&#43;sK804FMqeukTUVE=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.444f741ba7b684e63dff9a3b61ec1fb750c9b563b5a0b64153f1af8025c5fac1.css" integrity="sha256-RE90G6e2hOY9/5o7Yewft1DJtWO1oLZBU/GvgCXF&#43;sE=" media="screen" crossorigin="anonymous">
 
 
 
 
 
-<meta property="og:title" content="Creando paquetes NuGet" />
-<meta property="og:description" content="Últimamente he estado involucrado en la creación de varios paquetes NuGet útiles para algunos portales que se están siendo desarrollando. Quiero compartir mis conocimientos en este tema.
+
+<meta property="og:url" content="//localhost:1313/es/post/creando-paquetes-nuget/">
+  <meta property="og:site_name" content="Programando en voz alta">
+  <meta property="og:title" content="Creando paquetes NuGet">
+  <meta property="og:description" content="Últimamente he estado involucrado en la creación de varios paquetes NuGet útiles para algunos portales que se están siendo desarrollando. Quiero compartir mis conocimientos en este tema.
 Si estuviéramos desarrollando bibliotecas para .NET Core o .NET Standard, la vida sería fácil, como muestra La figura 1 a La figura 8.
-Figura 1: &ldquo;Creación de una nueva biblioteca de .NET Core&rdquo;.
+Figura 1: “Creación de una nueva biblioteca de .NET Core”.
 Figura 2: “Código predeterminado”.
-Figura 3: &ldquo;Resultados de la primera compilación&rdquo;." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/es/post/creando-paquetes-nuget/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2021-01-18T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2021-01-18T00:00:00&#43;00:00" /><meta property="og:site_name" content="Programando en voz alta" />
+Figura 3: “Resultados de la primera compilación”.">
+  <meta property="og:locale" content="es">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2021-01-18T00:00:00+00:00">
+    <meta property="article:modified_time" content="2021-01-18T00:00:00+00:00">
+    <meta property="article:tag" content="Visual Studio">
+    <meta property="article:tag" content="NuGet">
+    <meta property="article:tag" content="MSBuild">
 
-<meta itemprop="name" content="Creando paquetes NuGet">
-<meta itemprop="description" content="Últimamente he estado involucrado en la creación de varios paquetes NuGet útiles para algunos portales que se están siendo desarrollando. Quiero compartir mis conocimientos en este tema.
+  <meta itemprop="name" content="Creando paquetes NuGet">
+  <meta itemprop="description" content="Últimamente he estado involucrado en la creación de varios paquetes NuGet útiles para algunos portales que se están siendo desarrollando. Quiero compartir mis conocimientos en este tema.
 Si estuviéramos desarrollando bibliotecas para .NET Core o .NET Standard, la vida sería fácil, como muestra La figura 1 a La figura 8.
-Figura 1: &ldquo;Creación de una nueva biblioteca de .NET Core&rdquo;.
+Figura 1: “Creación de una nueva biblioteca de .NET Core”.
 Figura 2: “Código predeterminado”.
-Figura 3: &ldquo;Resultados de la primera compilación&rdquo;."><meta itemprop="datePublished" content="2021-01-18T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2021-01-18T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="923">
-<meta itemprop="keywords" content="Visual Studio,NuGet,MSBuild," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Creando paquetes NuGet"/>
-<meta name="twitter:description" content="Últimamente he estado involucrado en la creación de varios paquetes NuGet útiles para algunos portales que se están siendo desarrollando. Quiero compartir mis conocimientos en este tema.
+Figura 3: “Resultados de la primera compilación”.">
+  <meta itemprop="datePublished" content="2021-01-18T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2021-01-18T00:00:00+00:00">
+  <meta itemprop="wordCount" content="923">
+  <meta itemprop="keywords" content="Visual Studio,NuGet,MSBuild">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Creando paquetes NuGet">
+  <meta name="twitter:description" content="Últimamente he estado involucrado en la creación de varios paquetes NuGet útiles para algunos portales que se están siendo desarrollando. Quiero compartir mis conocimientos en este tema.
 Si estuviéramos desarrollando bibliotecas para .NET Core o .NET Standard, la vida sería fácil, como muestra La figura 1 a La figura 8.
-Figura 1: &ldquo;Creación de una nueva biblioteca de .NET Core&rdquo;.
+Figura 1: “Creación de una nueva biblioteca de .NET Core”.
 Figura 2: “Código predeterminado”.
-Figura 3: &ldquo;Resultados de la primera compilación&rdquo;."/>
+Figura 3: “Resultados de la primera compilación”.">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -101,17 +110,6 @@ Figura 3: &ldquo;Resultados de la primera compilación&rdquo;."/>
   <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
 <![endif]-->
 
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-4387301-7', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
 
@@ -133,28 +131,28 @@ if (!doNotTrack) {
         
           
           
-            <a class="menu-item-link" href="es/">Inicio</a>
+            <a class="menu-item-link" href="//localhost:1313/es/">Inicio</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="es/post/">Archivos</a>
+            <a class="menu-item-link" href="//localhost:1313/es/post/">Archivos</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="es/tags/">Etiquetas</a>
+            <a class="menu-item-link" href="//localhost:1313/es/tags/">Etiquetas</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="es/categories/">Categorías</a>
+            <a class="menu-item-link" href="//localhost:1313/es/categories/">Categorías</a>
           
         
       </li><li class="mobile-menu-item">
@@ -196,13 +194,13 @@ if (!doNotTrack) {
           
             <li>
               
-                <a href="/">English</a>
+                <a href="//localhost:1313/">English</a>
               
             </li>
           
             <li>
               
-                <a href="/es/"><strong>Español</strong></a>
+                <a href="//localhost:1313/es/"><strong>Español</strong></a>
               
             </li>
           
@@ -295,7 +293,7 @@ if (!doNotTrack) {
         
           
           
-            <a class="menu-item-link" href="es/">Inicio</a>
+            <a class="menu-item-link" href="//localhost:1313/es/">Inicio</a>
           
 
         
@@ -306,7 +304,7 @@ if (!doNotTrack) {
         
           
           
-            <a class="menu-item-link" href="es/post/">Archivos</a>
+            <a class="menu-item-link" href="//localhost:1313/es/post/">Archivos</a>
           
 
         
@@ -317,7 +315,7 @@ if (!doNotTrack) {
         
           
           
-            <a class="menu-item-link" href="es/tags/">Etiquetas</a>
+            <a class="menu-item-link" href="//localhost:1313/es/tags/">Etiquetas</a>
           
 
         
@@ -328,7 +326,7 @@ if (!doNotTrack) {
         
           
           
-            <a class="menu-item-link" href="es/categories/">Categorías</a>
+            <a class="menu-item-link" href="//localhost:1313/es/categories/">Categorías</a>
           
 
         
@@ -376,7 +374,7 @@ if (!doNotTrack) {
           
             
               <li>
-                <a href="/">English</a>
+                <a href="//localhost:1313/">English</a>
               </li>
             
           
@@ -403,7 +401,7 @@ if (!doNotTrack) {
       
 <div class="post-meta">
   
-  <div><a href="/post/creating-nuget-packages/">Read in English: Creating NuGet packages</a></div>
+  <div><a href="//localhost:1313/post/creating-nuget-packages/">Read in English: Creating NuGet packages</a></div>
   
 </div>
 
@@ -412,7 +410,7 @@ if (!doNotTrack) {
           2021-01-18
         </time>
         <div class="post-category">
-            <a href="/es/categories/desarrollo/"> Desarrollo </a>
+            <a href="//localhost:1313/es/categories/desarrollo/"> Desarrollo </a>
             
           </div>
         <span class="more-meta"> 923 palabras </span>
@@ -433,47 +431,47 @@ if (!doNotTrack) {
     <div class="post-content">
       <p>Últimamente he estado involucrado en la creación de varios paquetes NuGet útiles para algunos portales que se están siendo desarrollando. Quiero compartir mis conocimientos en este tema.</p>
 <p>Si estuviéramos desarrollando bibliotecas para .NET Core o .NET Standard, la vida sería fácil, como muestra La figura 1 a La figura 8.</p>
-<p><img src="/creating-nuget-packages/01.png" alt="Creación de una nueva biblioteca de .NET Core"></p>
+<p><img alt="Creación de una nueva biblioteca de .NET Core" src="/creating-nuget-packages/01.png"></p>
 <p>Figura 1: &ldquo;Creación de una nueva biblioteca de .NET Core&rdquo;.</p>
-<p><img src="/creating-nuget-packages/02.png" alt="Código predeterminado"></p>
+<p><img alt="Código predeterminado" src="/creating-nuget-packages/02.png"></p>
 <p>Figura 2: “Código predeterminado”.</p>
-<p><img src="/creating-nuget-packages/03.png" alt="Resultados de la primera compilación"></p>
+<p><img alt="Resultados de la primera compilación" src="/creating-nuget-packages/03.png"></p>
 <p>Figura 3: &ldquo;Resultados de la primera compilación&rdquo;.</p>
-<p><img src="/creating-nuget-packages/04.png" alt="Propiedades del proyecto"></p>
+<p><img alt="Propiedades del proyecto" src="/creating-nuget-packages/04.png"></p>
 <p>Figura 4: “Propiedades del proyecto”.</p>
-<p><img src="/creating-nuget-packages/05.png" alt="Salida de la segunda compilación"></p>
+<p><img alt="Salida de la segunda compilación" src="/creating-nuget-packages/05.png"></p>
 <p>Figura 5: &ldquo;Salida de la segunda compilación&rdquo;.</p>
-<p><img src="/creating-nuget-packages/06.png" alt="Resultados de la segunda compilación"></p>
+<p><img alt="Resultados de la segunda compilación" src="/creating-nuget-packages/06.png"></p>
 <p>Figura 6: &ldquo;Resultados de la segunda compilación&rdquo;.</p>
 <p>Pero la vida no es tan fácil y casi todos nuestros productos utilizan .NET Framework (normal), lo que significa que Visual Studio no nos ofrece las capacidades que se muestran en las figuras 7 y 8.</p>
-<p><img src="/creating-nuget-packages/07.png" alt="Nueva biblioteca de .NET Framework"></p>
+<p><img alt="Nueva biblioteca de .NET Framework" src="/creating-nuget-packages/07.png"></p>
 <p>Figura 7: “Nueva biblioteca de .NET Framework”.</p>
-<p><img src="/creating-nuget-packages/08.png" alt="Propiedades del proyecto biblioteca"></p>
+<p><img alt="Propiedades del proyecto biblioteca" src="/creating-nuget-packages/08.png"></p>
 <p>Figura 8: &ldquo;Las propiedades para este tipo de proyectos no incluyen la función Paquete&rdquo;.</p>
 <p>Entonces, ¿qué alternativa tenemos? En realidad, algunas de ellas: usan Octopus para generar el paquete, pero esto es complicado debido a que Octopus usa una compilación personalizada de NuGet.exe, por lo que la estructura generada puede no coincidir y su obtención implica muchos pasos.</p>
 <p>Otra alternativa es usar &ldquo;NuGet.exe&rdquo; manualmente desde la línea de comandos, pero esto puede ser confuso y también implica muchos otros pasos para realizar.</p>
 <p>Dije una vez pero me gusta repetirlo, me encantan los paquetes NuGet, entonces, ¿por qué no usar un paquete NuGet para generar paquetes NuGet? Bueno, ya existe y es muy fácil de usar. El primer paso es agregar el paquete: “CreateNewNuGetPackageFromProjectAfterEachBuild” al proyecto que queremos distribuir como un paquete NuGet. La figura 9 muestra un ejemplo.</p>
-<p><img src="/creating-nuget-packages/09.png" alt="Administrador de paquetes de la solución"></p>
+<p><img alt="Administrador de paquetes de la solución" src="/creating-nuget-packages/09.png"></p>
 <p>Figura 9.</p>
 <p>Una vez agregado, este paquete crea un subdirectorio dentro de la raíz del proyecto llamado: &ldquo;_CreateNewNuGetPackage&rdquo; y eso es todo lo que necesita. La figura 10 muestra la estructura creada.</p>
-<p><img src="/creating-nuget-packages/10.png" alt="Explorardor de la solución"></p>
+<p><img alt="Explorardor de la solución" src="/creating-nuget-packages/10.png"></p>
 <p>Figura 10.</p>
 <p>Una vez que compilamos el proyecto, podemos ver el resultado en La figura 11.</p>
-<p><img src="/creating-nuget-packages/11.png" alt="Salida de la tercera compilación"></p>
+<p><img alt="Salida de la tercera compilación" src="/creating-nuget-packages/11.png"></p>
 <p>Figura 11.</p>
 <p>La figura 12 muestra los resultados de la compilación.</p>
-<p><img src="/creating-nuget-packages/12.png" alt="Resultados de la tercera compilación"></p>
+<p><img alt="Resultados de la tercera compilación" src="/creating-nuget-packages/12.png"></p>
 <p>Figura 12.</p>
 <p>La figura 13 muestra el contenido del paquete generado.</p>
-<p><img src="/creating-nuget-packages/13.png" alt="Contenidos del paquete"></p>
+<p><img alt="Contenidos del paquete" src="/creating-nuget-packages/13.png"></p>
 <p>Figura 13.</p>
 <p>Tenga en cuenta que los metadatos se extraen básicamente de la información del ensamblado o se generan automáticamente (la salida de la compilación también tiene registros sobre esto). Podemos cambiar esto si incluimos un archivo de metadatos como muestra La figura 14.</p>
-<p><img src="/creating-nuget-packages/14.png" alt="Archivo de metadatos del paquete"></p>
+<p><img alt="Archivo de metadatos del paquete" src="/creating-nuget-packages/14.png"></p>
 <p>Figura 14.</p>
 <p>El contenido de este archivo depende de lo que desee para su paquete, pero como ejemplo:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -489,60 +487,60 @@ if (!doNotTrack) {
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-XML" data-lang="XML"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
-<span class="c">&lt;!-- 
-</span><span class="c">  For more info on this file format visit http://docs.nuget.org/docs/reference/nuspec-reference.
-</span><span class="c">--&gt;</span>
-<span class="nt">&lt;package</span> <span class="na">xmlns=</span><span class="s">&#34;http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd&#34;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;metadata&gt;</span>
-    <span class="nt">&lt;id&gt;</span>Portals.ClassLibrary1<span class="nt">&lt;/id&gt;</span>
-    <span class="nt">&lt;version&gt;</span>1.0.0<span class="nt">&lt;/version&gt;</span>
-    <span class="nt">&lt;authors&gt;</span>Portals Development<span class="nt">&lt;/authors&gt;</span>
-    <span class="nt">&lt;description&gt;</span>Class library to help portals development.<span class="nt">&lt;/description&gt;</span>
-    <span class="nt">&lt;language&gt;</span>en-US<span class="nt">&lt;/language&gt;</span>
-    <span class="nt">&lt;releaseNotes&gt;&lt;/releaseNotes&gt;</span>
-  <span class="nt">&lt;/metadata&gt;</span>
-<span class="nt">&lt;/package&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-XML" data-lang="XML"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!-- 
+</span></span></span><span class="line"><span class="cl"><span class="c">  For more info on this file format visit http://docs.nuget.org/docs/reference/nuspec-reference.
+</span></span></span><span class="line"><span class="cl"><span class="c">--&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;package</span> <span class="na">xmlns=</span><span class="s">&#34;http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;metadata&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;id&gt;</span>Portals.ClassLibrary1<span class="nt">&lt;/id&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;version&gt;</span>1.0.0<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;authors&gt;</span>Portals Development<span class="nt">&lt;/authors&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;description&gt;</span>Class library to help portals development.<span class="nt">&lt;/description&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;language&gt;</span>en-US<span class="nt">&lt;/language&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;releaseNotes&gt;&lt;/releaseNotes&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/metadata&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/package&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Ahora los resultados de la compilación se parecen a los de La figura 15.</p>
-<p><img src="/creating-nuget-packages/15.png" alt="Primeros paquetes generados"></p>
+<p><img alt="Primeros paquetes generados" src="/creating-nuget-packages/15.png"></p>
 <p>Figura 15.</p>
 <p>La figura 16 muestra el contenido del nuevo paquete generado, esta vez con metadatos más precisos.</p>
-<p><img src="/creating-nuget-packages/16.png" alt="Contenido del primer paquete"></p>
+<p><img alt="Contenido del primer paquete" src="/creating-nuget-packages/16.png"></p>
 <p>Figura 16.</p>
 <p>En este punto pudimos generar el paquete pero lo que realmente necesitamos es la posibilidad de consumirlo desde otro proyecto. Primero necesitamos implementarlo en un repositorio interno de NuGet llamado: &ldquo;McNuget&rdquo;. Expliquemos cómo hacerlo.</p>
 <p>Primero abra “$(ProjectDir)_CreateNewNuGetPackage\Config1.ps1” y realice las modificaciones resaltadas en color amarillo en La figura 17.</p>
-<p><img src="/creating-nuget-packages/17.png" alt="Archivo de configuración para la generación del paquete"></p>
+<p><img alt="Archivo de configuración para la generación del paquete" src="/creating-nuget-packages/17.png"></p>
 <p>Figura 17.</p>
 <p>Básicamente, estamos especificando que en cada compilación se genera otro paquete que contiene todos los símbolos de depuración, incluidos los códigos fuentes, para facilitar la depuración de este paquete. No agregue la configuración y la plataforma utilizadas para compilar en el nombre del paquete. Además, eventualmente implementaremos este paquete en McNuget (digo eventualmente porque no es automático en todas las compilaciones) y la API para implementar en McNuget. Esta API fue generada por el administrador de McNuget y nos la envió.</p>
 <p>La figura 18 muestra el resultado de la compilación.</p>
-<p><img src="/creating-nuget-packages/18.png" alt="Segundos paquetes generados"></p>
+<p><img alt="Segundos paquetes generados" src="/creating-nuget-packages/18.png"></p>
 <p>Figura 18.</p>
 <p>Observe los dos nuevos paquetes sin la configuración y la plataforma; uno sin símbolos de depuración (igual que en La figura 16) y otro con símbolos y código fuente como muestra La figura 19.</p>
-<p><img src="/creating-nuget-packages/19.png" alt="Contenido del segundo paquete"></p>
+<p><img alt="Contenido del segundo paquete" src="/creating-nuget-packages/19.png"></p>
 <p>Figura 19.</p>
 <p>Es hora de implementar el paquete en McNuget y para hacer esto necesitamos ejecutar “$(ProjectDir)_CreateNewNuGetPackage\RunMeToUploadNuGetPackage.cmd” como se muestra en La figura 20.</p>
-<p><img src="/creating-nuget-packages/20.png" alt="Comando para subir paquete"></p>
+<p><img alt="Comando para subir paquete" src="/creating-nuget-packages/20.png"></p>
 <p>Figura 20.</p>
 <p>Una vez ejecutado, se abrirá una ventana de línea de comandos y un cuadro de diálogo solicitando que el paquete se despliegue, como se muestra en La figura 21.</p>
-<p><img src="/creating-nuget-packages/21.png" alt="Diálogo para subir paquete"></p>
+<p><img alt="Diálogo para subir paquete" src="/creating-nuget-packages/21.png"></p>
 <p>Figura 21.</p>
 <p>Una vez que se selecciona el paquete como se muestra en La figura 22&hellip;</p>
-<p><img src="/creating-nuget-packages/22.png" alt="Selección para subir paquete"></p>
+<p><img alt="Selección para subir paquete" src="/creating-nuget-packages/22.png"></p>
 <p>Figura 22.</p>
 <p>&hellip;pide una confirmación como muestra La figura 23. Un punto válido para mencionar es que el repositorio de McNuget puede no estar configurado para permitir implementaciones de paquetes que contienen símbolos de código fuente y depuración. Entonces, la única opción que podemos despleguar es el paquete regular.</p>
-<p><img src="/creating-nuget-packages/23.png" alt="Confirmación de subida de paquete"></p>
+<p><img alt="Confirmación de subida de paquete" src="/creating-nuget-packages/23.png"></p>
 <p>Figura 23.</p>
 <p>Una vez aceptado y si todo ha ido bien, deberíamos poder ver una pantalla similar a la que muestra La figura 24.</p>
-<p><img src="/creating-nuget-packages/24.png" alt="Resultado de subida de paquete"></p>
+<p><img alt="Resultado de subida de paquete" src="/creating-nuget-packages/24.png"></p>
 <p>Figura 24.</p>
 <p>Lo que significa que nuestro paquete está en McNuget listo para usarse. Probémoslo.</p>
 <p>La figura 25 muestra la gestión de paquetes para otro proyecto.</p>
-<p><img src="/creating-nuget-packages/25.png" alt="Administrador de paquetes de proyecto"></p>
+<p><img alt="Administrador de paquetes de proyecto" src="/creating-nuget-packages/25.png"></p>
 <p>Figura 25.</p>
 <p>Una vez que el paquete está instalado, podemos usar sus características. La figura 26 muestra un ejemplo.</p>
-<p><img src="/creating-nuget-packages/26.png" alt="Ejemplo de uso de paquete"></p>
+<p><img alt="Ejemplo de uso de paquete" src="/creating-nuget-packages/26.png"></p>
 <p>Figura 26.</p>
 <p>Una última observación, hemos implementado el paquete regular porque hipotéticamente McNuget no permite implementar paquetes con símbolos de depuración; pero hemos desplegado la versión construida en modo &ldquo;Debug&rdquo; y esto no es bueno, debemos desplegar la versión construida en modo &ldquo;Release&rdquo; y ganar más rendimiento.</p>
 <p>Esto es todo lo que tengo que compartir con ustedes hoy. Espero que esta guía le resulte útil para sus proyectos una vez que desee generar paquetes NuGet.</p>
@@ -558,9 +556,9 @@ if (!doNotTrack) {
 
     <footer class="post-footer">
       <div class="post-tags">
-          <a href="/es/tags/visual-studio/">Visual Studio</a>
-          <a href="/es/tags/nuget/">NuGet</a>
-          <a href="/es/tags/msbuild/">MSBuild</a>
+          <a href="//localhost:1313/es/tags/visual-studio/">Visual Studio</a>
+          <a href="//localhost:1313/es/tags/nuget/">NuGet</a>
+          <a href="//localhost:1313/es/tags/msbuild/">MSBuild</a>
           
         </div>
 
@@ -598,8 +596,6 @@ if (!doNotTrack) {
     </footer>
   </article>
 
-  
-  
   
   
 
@@ -688,7 +684,7 @@ if (!doNotTrack) {
   
 
 
-<a href="/es/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
+<a href="//localhost:1313/es/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
     class="iconfont" title="rss" target="_blank">
     <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -705,10 +701,7 @@ if (!doNotTrack) {
     &copy;
     
       2020 -
-    2021<span class="author">
-        Ricardo Sotolongo
-        
-      </span></span>
+    2024</span>
 
   
   
@@ -737,7 +730,7 @@ if (!doNotTrack) {
 
 
 
-<script type="text/javascript" src="/js/main.638251f4230630f0335d8c6748e53a96f94b72670920b60c09a56fdc8bece214.js" integrity="sha256-Y4JR9CMGMPAzXYxnSOU6lvlLcmcJILYMCaVv3Ivs4hQ=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/main.dee43230127a73d039a734510fa896c89c3c7ce0cf0be0c7a7433f8fd69b76dc.js" integrity="sha256-3uQyMBJ6c9A5pzRRD6iWyJw8fODPC&#43;DHp0M/j9abdtw=" crossorigin="anonymous"></script>
 
 
 

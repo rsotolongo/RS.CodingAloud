@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>análisis de código on Programando en voz alta</title>
-    <link>/es/tags/an%C3%A1lisis-de-c%C3%B3digo/</link>
-    <description>Recent content in análisis de código on Programando en voz alta</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <title>Análisis De Código on Programando en voz alta</title>
+    <link>//localhost:1313/es/tags/an%C3%A1lisis-de-c%C3%B3digo/</link>
+    <description>Recent content in Análisis De Código on Programando en voz alta</description>
+    <generator>Hugo</generator>
     <language>es</language>
-    <lastBuildDate>Mon, 04 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/es/tags/an%C3%A1lisis-de-c%C3%B3digo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 04 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/es/tags/an%C3%A1lisis-de-c%C3%B3digo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Estilizando códigos usando StyleCop</title>
-      <link>/es/post/estilo-de-c%C3%B3digo-usando-stylecop/</link>
+      <link>//localhost:1313/es/post/estilo-de-c%C3%B3digo-usando-stylecop/</link>
       <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/es/post/estilo-de-c%C3%B3digo-usando-stylecop/</guid>
-      <description>Un colega me pidió que compartiera mi experiencia programando con ReSharper y, una vez que se enteró de que no uso ReSharper, sintió aún más curiosidad por saber cómo escribo los códigos fuentes. Quien me conoce sabe que me encantan los paquetes NuGet y estar actualizado constantemente, por eso encontré un paquete muy útil que instalo en todos mis proyectos apenas los inicio.
-StyleCop.MSBuild
-StyleCop solía ser una aplicación independiente con integración con Visual Studio, pero eso cambió hace un tiempo.</description>
+      <guid>//localhost:1313/es/post/estilo-de-c%C3%B3digo-usando-stylecop/</guid>
+      <description>Un colega me pidió que compartiera mi experiencia programando con ReSharper y, una vez que se enteró de que no uso ReSharper, sintió aún más curiosidad por saber cómo escribo los códigos fuentes. Quien me conoce sabe que me encantan los paquetes NuGet y estar actualizado constantemente, por eso encontré un paquete muy útil que instalo en todos mis proyectos apenas los inicio.&#xA;StyleCop.MSBuild&#xA;StyleCop solía ser una aplicación independiente con integración con Visual Studio, pero eso cambió hace un tiempo.</description>
     </item>
-    
   </channel>
 </rss>

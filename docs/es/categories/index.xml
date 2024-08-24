@@ -2,37 +2,32 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Programando en voz alta</title>
-    <link>/es/categories/</link>
+    <link>//localhost:1313/es/categories/</link>
     <description>Recent content in Categories on Programando en voz alta</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>es</language>
-    <lastBuildDate>Mon, 15 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="/es/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 15 Mar 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/es/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Desarrollo</title>
-      <link>/es/categories/desarrollo/</link>
+      <link>//localhost:1313/es/categories/desarrollo/</link>
       <pubDate>Mon, 15 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/es/categories/desarrollo/</guid>
+      <guid>//localhost:1313/es/categories/desarrollo/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>General</title>
-      <link>/es/categories/general/</link>
+      <link>//localhost:1313/es/categories/general/</link>
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/es/categories/general/</guid>
+      <guid>//localhost:1313/es/categories/general/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Memorias</title>
-      <link>/es/categories/memorias/</link>
+      <link>//localhost:1313/es/categories/memorias/</link>
       <pubDate>Thu, 31 Dec 2020 23:59:00 +0000</pubDate>
-      
-      <guid>/es/categories/memorias/</guid>
+      <guid>//localhost:1313/es/categories/memorias/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

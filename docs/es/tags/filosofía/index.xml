@@ -1,50 +1,40 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>filosofía on Programando en voz alta</title>
-    <link>/es/tags/filosof%C3%ADa/</link>
-    <description>Recent content in filosofía on Programando en voz alta</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <title>Filosofía on Programando en voz alta</title>
+    <link>//localhost:1313/es/tags/filosof%C3%ADa/</link>
+    <description>Recent content in Filosofía on Programando en voz alta</description>
+    <generator>Hugo</generator>
     <language>es</language>
-    <lastBuildDate>Fri, 25 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="/es/tags/filosof%C3%ADa/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 25 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/es/tags/filosof%C3%ADa/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Gobierno electrónico</title>
-      <link>/es/post/gobierno-electr%C3%B3nico/</link>
+      <link>//localhost:1313/es/post/gobierno-electr%C3%B3nico/</link>
       <pubDate>Fri, 25 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/es/post/gobierno-electr%C3%B3nico/</guid>
+      <guid>//localhost:1313/es/post/gobierno-electr%C3%B3nico/</guid>
       <description>Con la decisión de migrar todos sus sistemas y aplicaciones a Software Libre del gobierno alemán, hace ya uno tres años, estalló este fenómeno entre los diferentes países, llegando incluso a instancias particulares de ellos. Ejemplo de ello es España donde ya algunas de sus autonomías han tomado la misma decisión, otras no. Lo cierto es que hay protestas por todo el mundo tanto de detractores como de los que piensan igual.</description>
     </item>
-    
     <item>
       <title>Poniéndome al día</title>
-      <link>/es/post/poni%C3%A9ndonos-al-d%C3%ADa/</link>
+      <link>//localhost:1313/es/post/poni%C3%A9ndonos-al-d%C3%ADa/</link>
       <pubDate>Tue, 22 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/es/post/poni%C3%A9ndonos-al-d%C3%ADa/</guid>
-      <description>No voy a ponerme a relatar las vicisitudes que llevaron a que prácticamente no tenga Internet a mi disposición, porque sería aburrirlos en vano y al final lo más seguro es que no entenderían y todo quedará igual, así que para qué perder el tiempo entonces; aprovechémoslo en otras cuestiones más importantes.
-Quise hacer esta breve introducción pues lo que quiero comentarles hoy se relaciona con este hecho precisamente. El pasado domingo día 3 de diciembre, vine a la Universidad temprano pues estaba de guardia todo el día y aprovecharía Internet para ponerme al día y confeccionar una serie de documentos atrasados que tenía.</description>
+      <guid>//localhost:1313/es/post/poni%C3%A9ndonos-al-d%C3%ADa/</guid>
+      <description>No voy a ponerme a relatar las vicisitudes que llevaron a que prácticamente no tenga Internet a mi disposición, porque sería aburrirlos en vano y al final lo más seguro es que no entenderían y todo quedará igual, así que para qué perder el tiempo entonces; aprovechémoslo en otras cuestiones más importantes.&#xA;Quise hacer esta breve introducción pues lo que quiero comentarles hoy se relaciona con este hecho precisamente. El pasado domingo día 3 de diciembre, vine a la Universidad temprano pues estaba de guardia todo el día y aprovecharía Internet para ponerme al día y confeccionar una serie de documentos atrasados que tenía.</description>
     </item>
-    
     <item>
       <title>Amaos los unos a los otros</title>
-      <link>/es/post/amaos-todos/</link>
+      <link>//localhost:1313/es/post/amaos-todos/</link>
       <pubDate>Mon, 21 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/es/post/amaos-todos/</guid>
-      <description>Leyendo el título de este artículo pudieran pensar que se enfrentarán a un debate relacionado con la teología, pero no será así. Creo haber escrito antes algo sobre las diferencias entre profesionales de la computación y la semejanza que tienen sus discusiones con las que sostienen los creyentes con los no creyentes en Dios.
-No repetiré lo que ya dije una vez, esta vez me desenvolveré en la rama de mi profesión solamente.</description>
+      <guid>//localhost:1313/es/post/amaos-todos/</guid>
+      <description>Leyendo el título de este artículo pudieran pensar que se enfrentarán a un debate relacionado con la teología, pero no será así. Creo haber escrito antes algo sobre las diferencias entre profesionales de la computación y la semejanza que tienen sus discusiones con las que sostienen los creyentes con los no creyentes en Dios.&#xA;No repetiré lo que ya dije una vez, esta vez me desenvolveré en la rama de mi profesión solamente.</description>
     </item>
-    
     <item>
       <title>Fanatismos</title>
-      <link>/es/post/fanatismos/</link>
+      <link>//localhost:1313/es/post/fanatismos/</link>
       <pubDate>Wed, 16 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/es/post/fanatismos/</guid>
-      <description>Hay que ver que el ser humano, en su vano afán de querer tener siempre la razón, hace cosas increíbles. Una de ellas es aquella manía de empecinarse con algo (dígase objetos, conceptos, teorías, personas, etc.) que le hemos llamado fanatismo.
-¿Alguien podrá decir que no es fanático a nada? Creo que no, pues ¿quién no se obsesionó con su primer amor? Existen varios tipos de fanatismos, el que se profesa por los objetos materiales, la religión, los equipos deportivos, etc.</description>
+      <guid>//localhost:1313/es/post/fanatismos/</guid>
+      <description>Hay que ver que el ser humano, en su vano afán de querer tener siempre la razón, hace cosas increíbles. Una de ellas es aquella manía de empecinarse con algo (dígase objetos, conceptos, teorías, personas, etc.) que le hemos llamado fanatismo.&#xA;¿Alguien podrá decir que no es fanático a nada? Creo que no, pues ¿quién no se obsesionó con su primer amor? Existen varios tipos de fanatismos, el que se profesa por los objetos materiales, la religión, los equipos deportivos, etc.</description>
     </item>
-    
   </channel>
 </rss>

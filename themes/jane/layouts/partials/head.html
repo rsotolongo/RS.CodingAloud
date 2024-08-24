@@ -84,8 +84,8 @@
 {{ end }}
 
 {{/* NOTE: These Hugo Internal Templates can be found starting at https://github.com/spf13/hugo/blob/master/tpl/tplimpl/template_embedded.go#L158 */}}
-{{- template "_internal/opengraph.html" . -}}
-{{- template "_internal/google_news.html" . -}}
+{{- partial "opengraph.html" . -}}
+{{- partial "google_news.html" . -}}
 {{- template "_internal/schema.html" . -}}
 {{- template "_internal/twitter_cards.html" . -}}
 
@@ -100,8 +100,8 @@
 <![endif]-->` | safeHTML }}
 
 <!-- Analytics -->
-{{- if and (not .Site.IsServer) .Site.GoogleAnalytics -}}
-  {{ template "_internal/google_analytics_async.html" . }}
+{{- if and (not hugo.IsServer) .Site.GoogleAnalytics -}}
+  {{ partial "_internal/google_analytics_async.html" . }}
 {{- end -}}
 
 <!-- Custom head -->

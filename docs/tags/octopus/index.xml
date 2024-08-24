@@ -2,21 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Octopus on Coding Aloud</title>
-    <link>/tags/octopus/</link>
+    <link>//localhost:1313/tags/octopus/</link>
     <description>Recent content in Octopus on Coding Aloud</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 11 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/octopus/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 11 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/octopus/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Creating and deploying releases using Octopus</title>
-      <link>/post/using-octopus/</link>
+      <link>//localhost:1313/post/using-octopus/</link>
       <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/post/using-octopus/</guid>
-      <description>Source code of support available at GitHub
-Since while ago I wanted to share my experiences automatizing the product releases with Octopus from Visual Studio. Again, let’s do it through an example.
-As it could not be otherwise, figure 1 shows the first package you should add to your project in order to create Octopus packages ready to be deployed: &amp;ldquo;OctoPack&amp;rdquo;. The latest package version available at the time of this tutorial was the &amp;ldquo;3.</description>
+      <guid>//localhost:1313/post/using-octopus/</guid>
+      <description>Source code of support available at GitHub&#xA;Since while ago I wanted to share my experiences automatizing the product releases with Octopus from Visual Studio. Again, let’s do it through an example.&#xA;As it could not be otherwise, figure 1 shows the first package you should add to your project in order to create Octopus packages ready to be deployed: &amp;ldquo;OctoPack&amp;rdquo;. The latest package version available at the time of this tutorial was the &amp;ldquo;3.</description>
     </item>
-    
   </channel>
 </rss>

@@ -2,21 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Octopus on Programando en voz alta</title>
-    <link>/es/tags/octopus/</link>
+    <link>//localhost:1313/es/tags/octopus/</link>
     <description>Recent content in Octopus on Programando en voz alta</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>es</language>
-    <lastBuildDate>Mon, 11 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/es/tags/octopus/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 11 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/es/tags/octopus/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Creando y desplegando aplicaciones usando Octopus</title>
-      <link>/es/post/usando-octopus/</link>
+      <link>//localhost:1313/es/post/usando-octopus/</link>
       <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/es/post/usando-octopus/</guid>
-      <description>Código fuente de apoyo disponible en GitHub
-Desde hace un tiempo quería compartir mis experiencias automatizando los despliegues de productos con Octopus desde Visual Studio. Nuevamente, hagámoslo con un ejemplo.
-Como no podía ser de otra manera, La figura 1 muestra el primer paquete que debes agregar a tu proyecto para poder crear paquetes Octopus listos para ser desplegados: &amp;ldquo;OctoPack&amp;rdquo;. La última versión del paquete disponible en el momento de este tutorial era la &amp;ldquo;3.</description>
+      <guid>//localhost:1313/es/post/usando-octopus/</guid>
+      <description>Código fuente de apoyo disponible en GitHub&#xA;Desde hace un tiempo quería compartir mis experiencias automatizando los despliegues de productos con Octopus desde Visual Studio. Nuevamente, hagámoslo con un ejemplo.&#xA;Como no podía ser de otra manera, La figura 1 muestra el primer paquete que debes agregar a tu proyecto para poder crear paquetes Octopus listos para ser desplegados: &amp;ldquo;OctoPack&amp;rdquo;. La última versión del paquete disponible en el momento de este tutorial era la &amp;ldquo;3.</description>
     </item>
-    
   </channel>
 </rss>

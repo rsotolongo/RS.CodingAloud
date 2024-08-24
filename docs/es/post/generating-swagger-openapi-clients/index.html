@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="es" itemscope itemtype="http://schema.org/WebPage">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Generando clientes de Swagger/OpenAPI - Programando en voz alta</title>
   
-<link rel="alternate" hreflang="en" href="/post/generating-swagger-openapi-clients/" />
+<link rel="alternate" hreflang="en" href="//localhost:1313/post/generating-swagger-openapi-clients/" />
 
 
 <meta name="renderer" content="webkit" />
@@ -24,9 +24,9 @@
 
 <meta name="mobile-web-app-capable" content="yes">
 
-<meta name="author" content="Ricardo Sotolongo" />
+
   <meta name="description" content="Código fuente de apoyo disponible en GitHub
-Recientemente, estaba desarrollando una aplicación web .NET Core que necesita consumir una API desarrollada hace unos años usando ASP.NET WebAPI. Afortunadamente, esa API tenía Swagger integrado, así que pensé que podía ahorrar tiempo al no crear manualmente los instrumentos necesarios para las llamadas a la API (DTO, cliente, etc.) en su lugar podría utilizar la función &amp;ldquo;Servicios Conectados&amp;rdquo; de Visual Studio.
+Recientemente, estaba desarrollando una aplicación web .NET Core que necesita consumir una API desarrollada hace unos años usando ASP.NET WebAPI. Afortunadamente, esa API tenía Swagger integrado, así que pensé que podía ahorrar tiempo al no crear manualmente los instrumentos necesarios para las llamadas a la API (DTO, cliente, etc.) en su lugar podría utilizar la función &ldquo;Servicios Conectados&rdquo; de Visual Studio.
 Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solución en este post." />
 
   <meta name="keywords" content="Hugo, theme, jane" />
@@ -36,10 +36,10 @@ Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solu
 
 
 
-<meta name="generator" content="Hugo 0.81.0" />
+<meta name="generator" content="Hugo 0.133.0" />
 
 
-<link rel="canonical" href="/es/post/generating-swagger-openapi-clients/" />
+<link rel="canonical" href="//localhost:1313/es/post/generating-swagger-openapi-clients/" />
 
 
 
@@ -57,32 +57,42 @@ Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solu
 
 
 
-<link rel="stylesheet" href="/sass/jane.min.fa3d941d1d0e0ddc985804227feabffea55c89883eb0af34e0532a7ae9135151.css" integrity="sha256-&#43;j2UHR0ODdyYWAQif&#43;q//qVciYg&#43;sK804FMqeukTUVE=" media="screen" crossorigin="anonymous">
+<link rel="stylesheet" href="/sass/jane.min.444f741ba7b684e63dff9a3b61ec1fb750c9b563b5a0b64153f1af8025c5fac1.css" integrity="sha256-RE90G6e2hOY9/5o7Yewft1DJtWO1oLZBU/GvgCXF&#43;sE=" media="screen" crossorigin="anonymous">
 
 
 
 
 
-<meta property="og:title" content="Generando clientes de Swagger/OpenAPI" />
-<meta property="og:description" content="Código fuente de apoyo disponible en GitHub
-Recientemente, estaba desarrollando una aplicación web .NET Core que necesita consumir una API desarrollada hace unos años usando ASP.NET WebAPI. Afortunadamente, esa API tenía Swagger integrado, así que pensé que podía ahorrar tiempo al no crear manualmente los instrumentos necesarios para las llamadas a la API (DTO, cliente, etc.) en su lugar podría utilizar la función &ldquo;Servicios Conectados&rdquo; de Visual Studio.
-Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solución en este post." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/es/post/generating-swagger-openapi-clients/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2021-02-15T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2021-02-15T00:00:00&#43;00:00" /><meta property="og:site_name" content="Programando en voz alta" />
 
-<meta itemprop="name" content="Generando clientes de Swagger/OpenAPI">
-<meta itemprop="description" content="Código fuente de apoyo disponible en GitHub
-Recientemente, estaba desarrollando una aplicación web .NET Core que necesita consumir una API desarrollada hace unos años usando ASP.NET WebAPI. Afortunadamente, esa API tenía Swagger integrado, así que pensé que podía ahorrar tiempo al no crear manualmente los instrumentos necesarios para las llamadas a la API (DTO, cliente, etc.) en su lugar podría utilizar la función &ldquo;Servicios Conectados&rdquo; de Visual Studio.
-Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solución en este post."><meta itemprop="datePublished" content="2021-02-15T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2021-02-15T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="2409">
-<meta itemprop="keywords" content="Visual Studio,OpenAPI,Swagger,API," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Generando clientes de Swagger/OpenAPI"/>
-<meta name="twitter:description" content="Código fuente de apoyo disponible en GitHub
-Recientemente, estaba desarrollando una aplicación web .NET Core que necesita consumir una API desarrollada hace unos años usando ASP.NET WebAPI. Afortunadamente, esa API tenía Swagger integrado, así que pensé que podía ahorrar tiempo al no crear manualmente los instrumentos necesarios para las llamadas a la API (DTO, cliente, etc.) en su lugar podría utilizar la función &ldquo;Servicios Conectados&rdquo; de Visual Studio.
-Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solución en este post."/>
+<meta property="og:url" content="//localhost:1313/es/post/generating-swagger-openapi-clients/">
+  <meta property="og:site_name" content="Programando en voz alta">
+  <meta property="og:title" content="Generando clientes de Swagger/OpenAPI">
+  <meta property="og:description" content="Código fuente de apoyo disponible en GitHub
+Recientemente, estaba desarrollando una aplicación web .NET Core que necesita consumir una API desarrollada hace unos años usando ASP.NET WebAPI. Afortunadamente, esa API tenía Swagger integrado, así que pensé que podía ahorrar tiempo al no crear manualmente los instrumentos necesarios para las llamadas a la API (DTO, cliente, etc.) en su lugar podría utilizar la función “Servicios Conectados” de Visual Studio.
+Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solución en este post.">
+  <meta property="og:locale" content="es">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2021-02-15T00:00:00+00:00">
+    <meta property="article:modified_time" content="2021-02-15T00:00:00+00:00">
+    <meta property="article:tag" content="Visual Studio">
+    <meta property="article:tag" content="OpenAPI">
+    <meta property="article:tag" content="Swagger">
+    <meta property="article:tag" content="API">
+
+  <meta itemprop="name" content="Generando clientes de Swagger/OpenAPI">
+  <meta itemprop="description" content="Código fuente de apoyo disponible en GitHub
+Recientemente, estaba desarrollando una aplicación web .NET Core que necesita consumir una API desarrollada hace unos años usando ASP.NET WebAPI. Afortunadamente, esa API tenía Swagger integrado, así que pensé que podía ahorrar tiempo al no crear manualmente los instrumentos necesarios para las llamadas a la API (DTO, cliente, etc.) en su lugar podría utilizar la función “Servicios Conectados” de Visual Studio.
+Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solución en este post.">
+  <meta itemprop="datePublished" content="2021-02-15T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2021-02-15T00:00:00+00:00">
+  <meta itemprop="wordCount" content="2409">
+  <meta itemprop="keywords" content="Visual Studio,OpenAPI,Swagger,API">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Generando clientes de Swagger/OpenAPI">
+  <meta name="twitter:description" content="Código fuente de apoyo disponible en GitHub
+Recientemente, estaba desarrollando una aplicación web .NET Core que necesita consumir una API desarrollada hace unos años usando ASP.NET WebAPI. Afortunadamente, esa API tenía Swagger integrado, así que pensé que podía ahorrar tiempo al no crear manualmente los instrumentos necesarios para las llamadas a la API (DTO, cliente, etc.) en su lugar podría utilizar la función “Servicios Conectados” de Visual Studio.
+Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solución en este post.">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -93,17 +103,6 @@ Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solu
   <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
 <![endif]-->
 
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-4387301-7', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
 
@@ -125,28 +124,28 @@ if (!doNotTrack) {
         
           
           
-            <a class="menu-item-link" href="es/">Inicio</a>
+            <a class="menu-item-link" href="//localhost:1313/es/">Inicio</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="es/post/">Archivos</a>
+            <a class="menu-item-link" href="//localhost:1313/es/post/">Archivos</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="es/tags/">Etiquetas</a>
+            <a class="menu-item-link" href="//localhost:1313/es/tags/">Etiquetas</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="es/categories/">Categorías</a>
+            <a class="menu-item-link" href="//localhost:1313/es/categories/">Categorías</a>
           
         
       </li><li class="mobile-menu-item">
@@ -188,13 +187,13 @@ if (!doNotTrack) {
           
             <li>
               
-                <a href="/">English</a>
+                <a href="//localhost:1313/">English</a>
               
             </li>
           
             <li>
               
-                <a href="/es/"><strong>Español</strong></a>
+                <a href="//localhost:1313/es/"><strong>Español</strong></a>
               
             </li>
           
@@ -287,7 +286,7 @@ if (!doNotTrack) {
         
           
           
-            <a class="menu-item-link" href="es/">Inicio</a>
+            <a class="menu-item-link" href="//localhost:1313/es/">Inicio</a>
           
 
         
@@ -298,7 +297,7 @@ if (!doNotTrack) {
         
           
           
-            <a class="menu-item-link" href="es/post/">Archivos</a>
+            <a class="menu-item-link" href="//localhost:1313/es/post/">Archivos</a>
           
 
         
@@ -309,7 +308,7 @@ if (!doNotTrack) {
         
           
           
-            <a class="menu-item-link" href="es/tags/">Etiquetas</a>
+            <a class="menu-item-link" href="//localhost:1313/es/tags/">Etiquetas</a>
           
 
         
@@ -320,7 +319,7 @@ if (!doNotTrack) {
         
           
           
-            <a class="menu-item-link" href="es/categories/">Categorías</a>
+            <a class="menu-item-link" href="//localhost:1313/es/categories/">Categorías</a>
           
 
         
@@ -368,7 +367,7 @@ if (!doNotTrack) {
           
             
               <li>
-                <a href="/">English</a>
+                <a href="//localhost:1313/">English</a>
               </li>
             
           
@@ -395,7 +394,7 @@ if (!doNotTrack) {
       
 <div class="post-meta">
   
-  <div><a href="/post/generating-swagger-openapi-clients/">Read in English: Generating Swagger/OpenAPI clients</a></div>
+  <div><a href="//localhost:1313/post/generating-swagger-openapi-clients/">Read in English: Generating Swagger/OpenAPI clients</a></div>
   
 </div>
 
@@ -404,7 +403,7 @@ if (!doNotTrack) {
           2021-02-15
         </time>
         <div class="post-category">
-            <a href="/es/categories/desarrollo/"> Desarrollo </a>
+            <a href="//localhost:1313/es/categories/desarrollo/"> Desarrollo </a>
             
           </div>
         <span class="more-meta"> 2409 palabras </span>
@@ -426,13 +425,13 @@ if (!doNotTrack) {
       <p><a href="https://github.com/rsotolongo/RS.Blog.Projects/tree/main/ConnectedServices">Código fuente de apoyo disponible en GitHub</a></p>
 <p>Recientemente, estaba desarrollando una aplicación web .NET Core que necesita consumir una API desarrollada hace unos años usando ASP.NET WebAPI. Afortunadamente, esa API tenía Swagger integrado, así que pensé que podía ahorrar tiempo al no crear manualmente los instrumentos necesarios para las llamadas a la API (DTO, cliente, etc.) en su lugar podría utilizar la función &ldquo;Servicios Conectados&rdquo; de Visual Studio.</p>
 <p>Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solución en este post. Reproduje un escenario simplificado como se puede ver en la figura 1 accediendo a Swagger UI a través de su URL: &ldquo;http://localhost:5200/swagger&rdquo;.</p>
-<p><img src="/generating-swagger-openapi-clients/01.png" alt="IU de Swagger de FullAPI"></p>
+<p><img alt="IU de Swagger de FullAPI" src="/generating-swagger-openapi-clients/01.png"></p>
 <p>Figura 1: IU de Swagger para API usando .NET Framework.</p>
 <p>Básicamente, esta API tiene dos controladores que proporcionan dos métodos, cada uno con rutas diferentes pero intenciones equivalentes.</p>
 <p>Accediendo a su documento de especificación: &ldquo;http://localhost:5200/swagger/docs/v1&rdquo; tenemos:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">  1
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
 </span><span class="lnt">  2
 </span><span class="lnt">  3
 </span><span class="lnt">  4
@@ -542,129 +541,129 @@ if (!doNotTrack) {
 </span><span class="lnt">108
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-JSON" data-lang="JSON"><span class="p">{</span>
-  <span class="nt">&#34;swagger&#34;</span><span class="p">:</span> <span class="s2">&#34;2.0&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;info&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;v1&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;title&#34;</span><span class="p">:</span> <span class="s2">&#34;RS.Blog.Projects.ConnectedServices.FullAPI&#34;</span>
-  <span class="p">},</span>
-  <span class="nt">&#34;host&#34;</span><span class="p">:</span> <span class="s2">&#34;localhost:5200&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;schemes&#34;</span><span class="p">:</span> <span class="p">[</span>
-    <span class="s2">&#34;http&#34;</span>
-  <span class="p">],</span>
-  <span class="nt">&#34;paths&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;/api/first/number&#34;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&#34;get&#34;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="s2">&#34;First&#34;</span>
-        <span class="p">],</span>
-        <span class="nt">&#34;operationId&#34;</span><span class="p">:</span> <span class="s2">&#34;First_NumberMethod&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;consumes&#34;</span><span class="p">:</span> <span class="p">[],</span>
-        <span class="nt">&#34;produces&#34;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="s2">&#34;application/json&#34;</span><span class="p">,</span>
-          <span class="s2">&#34;text/json&#34;</span><span class="p">,</span>
-          <span class="s2">&#34;application/xml&#34;</span><span class="p">,</span>
-          <span class="s2">&#34;text/xml&#34;</span>
-        <span class="p">],</span>
-        <span class="nt">&#34;responses&#34;</span><span class="p">:</span> <span class="p">{</span>
-          <span class="nt">&#34;200&#34;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;OK&#34;</span><span class="p">,</span>
-            <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
-              <span class="nt">&#34;format&#34;</span><span class="p">:</span> <span class="s2">&#34;int32&#34;</span><span class="p">,</span>
-              <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;integer&#34;</span>
-            <span class="p">}</span>
-          <span class="p">}</span>
-        <span class="p">}</span>
-      <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nt">&#34;/api/first/string&#34;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&#34;get&#34;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="s2">&#34;First&#34;</span>
-        <span class="p">],</span>
-        <span class="nt">&#34;operationId&#34;</span><span class="p">:</span> <span class="s2">&#34;First_StringMethod&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;consumes&#34;</span><span class="p">:</span> <span class="p">[],</span>
-        <span class="nt">&#34;produces&#34;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="s2">&#34;application/json&#34;</span><span class="p">,</span>
-          <span class="s2">&#34;text/json&#34;</span><span class="p">,</span>
-          <span class="s2">&#34;application/xml&#34;</span><span class="p">,</span>
-          <span class="s2">&#34;text/xml&#34;</span>
-        <span class="p">],</span>
-        <span class="nt">&#34;responses&#34;</span><span class="p">:</span> <span class="p">{</span>
-          <span class="nt">&#34;200&#34;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;OK&#34;</span><span class="p">,</span>
-            <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
-              <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
-            <span class="p">}</span>
-          <span class="p">}</span>
-        <span class="p">}</span>
-      <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nt">&#34;/api/second/number&#34;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&#34;get&#34;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="s2">&#34;Second&#34;</span>
-        <span class="p">],</span>
-        <span class="nt">&#34;operationId&#34;</span><span class="p">:</span> <span class="s2">&#34;Second_NumberMethod&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;consumes&#34;</span><span class="p">:</span> <span class="p">[],</span>
-        <span class="nt">&#34;produces&#34;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="s2">&#34;application/json&#34;</span><span class="p">,</span>
-          <span class="s2">&#34;text/json&#34;</span><span class="p">,</span>
-          <span class="s2">&#34;application/xml&#34;</span><span class="p">,</span>
-          <span class="s2">&#34;text/xml&#34;</span>
-        <span class="p">],</span>
-        <span class="nt">&#34;responses&#34;</span><span class="p">:</span> <span class="p">{</span>
-          <span class="nt">&#34;200&#34;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;OK&#34;</span><span class="p">,</span>
-            <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
-              <span class="nt">&#34;format&#34;</span><span class="p">:</span> <span class="s2">&#34;int32&#34;</span><span class="p">,</span>
-              <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;integer&#34;</span>
-            <span class="p">}</span>
-          <span class="p">}</span>
-        <span class="p">}</span>
-      <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nt">&#34;/api/second/string&#34;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&#34;get&#34;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="s2">&#34;Second&#34;</span>
-        <span class="p">],</span>
-        <span class="nt">&#34;operationId&#34;</span><span class="p">:</span> <span class="s2">&#34;Second_StringMethod&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;consumes&#34;</span><span class="p">:</span> <span class="p">[],</span>
-        <span class="nt">&#34;produces&#34;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="s2">&#34;application/json&#34;</span><span class="p">,</span>
-          <span class="s2">&#34;text/json&#34;</span><span class="p">,</span>
-          <span class="s2">&#34;application/xml&#34;</span><span class="p">,</span>
-          <span class="s2">&#34;text/xml&#34;</span>
-        <span class="p">],</span>
-        <span class="nt">&#34;responses&#34;</span><span class="p">:</span> <span class="p">{</span>
-          <span class="nt">&#34;200&#34;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;OK&#34;</span><span class="p">,</span>
-            <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
-              <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
-            <span class="p">}</span>
-          <span class="p">}</span>
-        <span class="p">}</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">},</span>
-  <span class="nt">&#34;definitions&#34;</span><span class="p">:</span> <span class="p">{}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-JSON" data-lang="JSON"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;swagger&#34;</span><span class="p">:</span> <span class="s2">&#34;2.0&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;info&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;v1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;title&#34;</span><span class="p">:</span> <span class="s2">&#34;RS.Blog.Projects.ConnectedServices.FullAPI&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;host&#34;</span><span class="p">:</span> <span class="s2">&#34;localhost:5200&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;schemes&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;http&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">],</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;paths&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;/api/first/number&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;get&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">          <span class="s2">&#34;First&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;operationId&#34;</span><span class="p">:</span> <span class="s2">&#34;First_NumberMethod&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;consumes&#34;</span><span class="p">:</span> <span class="p">[],</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;produces&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">          <span class="s2">&#34;application/json&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="s2">&#34;text/json&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="s2">&#34;application/xml&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="s2">&#34;text/xml&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;responses&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;200&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;OK&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">              <span class="nt">&#34;format&#34;</span><span class="p">:</span> <span class="s2">&#34;int32&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;integer&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;/api/first/string&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;get&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">          <span class="s2">&#34;First&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;operationId&#34;</span><span class="p">:</span> <span class="s2">&#34;First_StringMethod&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;consumes&#34;</span><span class="p">:</span> <span class="p">[],</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;produces&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">          <span class="s2">&#34;application/json&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="s2">&#34;text/json&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="s2">&#34;application/xml&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="s2">&#34;text/xml&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;responses&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;200&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;OK&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">              <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;/api/second/number&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;get&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">          <span class="s2">&#34;Second&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;operationId&#34;</span><span class="p">:</span> <span class="s2">&#34;Second_NumberMethod&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;consumes&#34;</span><span class="p">:</span> <span class="p">[],</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;produces&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">          <span class="s2">&#34;application/json&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="s2">&#34;text/json&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="s2">&#34;application/xml&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="s2">&#34;text/xml&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;responses&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;200&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;OK&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">              <span class="nt">&#34;format&#34;</span><span class="p">:</span> <span class="s2">&#34;int32&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;integer&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;/api/second/string&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;get&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">          <span class="s2">&#34;Second&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;operationId&#34;</span><span class="p">:</span> <span class="s2">&#34;Second_StringMethod&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;consumes&#34;</span><span class="p">:</span> <span class="p">[],</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;produces&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">          <span class="s2">&#34;application/json&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="s2">&#34;text/json&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="s2">&#34;application/xml&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="s2">&#34;text/xml&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;responses&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;200&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;OK&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">              <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;definitions&#34;</span><span class="p">:</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Para simplificar la aplicación cliente, decidí reproducirla como una aplicación de consola .NET Core. Agregué una carpeta: &ldquo;OpenAPI&rdquo; para almacenar el documento de especificación anterior como: &ldquo;FullAPI.json&rdquo;. Desde la figura 2 hasta la figura 5 podemos ver cómo agregar un servicio conectado.</p>
-<p><img src="/generate-swagger-openapi-clients/02.png" alt="Agregar un servicio conectado"></p>
+<p><img alt="Agregar un servicio conectado" src="/generate-swagger-openapi-clients/02.png"></p>
 <p>Figura 2: Agregar un servicio conectado.</p>
-<p><img src="/generate-swagger-openapi-clients/03.png" alt="Adición de una especificación OpenAPI"></p>
+<p><img alt="Adición de una especificación OpenAPI" src="/generate-swagger-openapi-clients/03.png"></p>
 <p>Figura 3: Agregar una especificación de OpenAPI.</p>
-<p><img src="/generate-swagger-openapi-clients/04.png" alt="Especificando los parámetros de generación del cliente"></p>
+<p><img alt="Especificando los parámetros de generación del cliente" src="/generate-swagger-openapi-clients/04.png"></p>
 <p>Figura 4: Especificación de los parámetros de generación de clientes.</p>
-<p><img src="/generate-swagger-openapi-clients/05.png" alt="Resultados de generación de clientes"></p>
+<p><img alt="Resultados de generación de clientes" src="/generate-swagger-openapi-clients/05.png"></p>
 <p>Figura 5: Resultados de la generación de clientes.</p>
 <p>Haga clic con el botón derecho en las dependencias del proyecto del cliente y seleccione: &ldquo;Agregar Servicio Conectado&rdquo;. Luego haga clic en el botón: &ldquo;Agregar&rdquo;. Seleccione &ldquo;OpenAPI&rdquo; y haga clic en el botón: &ldquo;Siguiente&rdquo;. Escriba el archivo de especificación (&ldquo;OpenAPI\FullAPI.json&rdquo;) y &ldquo;FullAPI&rdquo; como espacio de nombres para el cliente generado. Finalmente presione el botón: &ldquo;Finalizar&rdquo; y se generará el cliente mostrando los resultados en la siguiente pantalla. Este proceso agrega varias líneas de códigos al archivo del proyecto (.csproj) como se muestra a continuación:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -683,38 +682,38 @@ if (!doNotTrack) {
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-XML" data-lang="XML"><span class="nt">&lt;ItemGroup&gt;</span>
-  <span class="nt">&lt;OpenApiReference</span> <span class="na">Include=</span><span class="s">&#34;OpenAPI\FullAPI.json&#34;</span> <span class="na">Namespace=</span><span class="s">&#34;FullAPI&#34;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;CodeGenerator&gt;</span>NSwagCSharp<span class="nt">&lt;/CodeGenerator&gt;</span>
-  <span class="nt">&lt;/OpenApiReference&gt;</span>
-<span class="nt">&lt;/ItemGroup&gt;</span>
-
-<span class="nt">&lt;ItemGroup&gt;</span>
-  <span class="nt">&lt;PackageReference</span> <span class="na">Include=</span><span class="s">&#34;Microsoft.Extensions.ApiDescription.Client&#34;</span> <span class="na">Version=</span><span class="s">&#34;3.0.0&#34;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;PrivateAssets&gt;</span>all<span class="nt">&lt;/PrivateAssets&gt;</span>
-    <span class="nt">&lt;IncludeAssets&gt;</span>runtime; build; native; contentfiles; analyzers; buildtransitive<span class="nt">&lt;/IncludeAssets&gt;</span>
-  <span class="nt">&lt;/PackageReference&gt;</span>
-  <span class="nt">&lt;PackageReference</span> <span class="na">Include=</span><span class="s">&#34;Newtonsoft.Json&#34;</span> <span class="na">Version=</span><span class="s">&#34;12.0.2&#34;</span> <span class="nt">/&gt;</span>
-  <span class="nt">&lt;PackageReference</span> <span class="na">Include=</span><span class="s">&#34;NSwag.ApiDescription.Client&#34;</span> <span class="na">Version=</span><span class="s">&#34;13.0.5&#34;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;PrivateAssets&gt;</span>all<span class="nt">&lt;/PrivateAssets&gt;</span>
-    <span class="nt">&lt;IncludeAssets&gt;</span>runtime; build; native; contentfiles; analyzers; buildtransitive<span class="nt">&lt;/IncludeAssets&gt;</span>
-  <span class="nt">&lt;/PackageReference&gt;</span>
-<span class="nt">&lt;/ItemGroup&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-XML" data-lang="XML"><span class="line"><span class="cl"><span class="nt">&lt;ItemGroup&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;OpenApiReference</span> <span class="na">Include=</span><span class="s">&#34;OpenAPI\FullAPI.json&#34;</span> <span class="na">Namespace=</span><span class="s">&#34;FullAPI&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;CodeGenerator&gt;</span>NSwagCSharp<span class="nt">&lt;/CodeGenerator&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/OpenApiReference&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/ItemGroup&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;ItemGroup&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;PackageReference</span> <span class="na">Include=</span><span class="s">&#34;Microsoft.Extensions.ApiDescription.Client&#34;</span> <span class="na">Version=</span><span class="s">&#34;3.0.0&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;PrivateAssets&gt;</span>all<span class="nt">&lt;/PrivateAssets&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;IncludeAssets&gt;</span>runtime; build; native; contentfiles; analyzers; buildtransitive<span class="nt">&lt;/IncludeAssets&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/PackageReference&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;PackageReference</span> <span class="na">Include=</span><span class="s">&#34;Newtonsoft.Json&#34;</span> <span class="na">Version=</span><span class="s">&#34;12.0.2&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;PackageReference</span> <span class="na">Include=</span><span class="s">&#34;NSwag.ApiDescription.Client&#34;</span> <span class="na">Version=</span><span class="s">&#34;13.0.5&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;PrivateAssets&gt;</span>all<span class="nt">&lt;/PrivateAssets&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;IncludeAssets&gt;</span>runtime; build; native; contentfiles; analyzers; buildtransitive<span class="nt">&lt;/IncludeAssets&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/PackageReference&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/ItemGroup&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Una vez compilado, se crea un nuevo archivo llamado: &ldquo;FullAPIClient.cs&rdquo; en la carpeta &ldquo;obj&rdquo; dentro de la carpeta del proyecto. En este punto, el proyecto deja de compilarse correctamente debido a este archivo.</p>
 <p>Demasiados errores, ¡Qué sorpresa! ¿Qué esta pasando y por qué? (figura 6).</p>
-<p><img src="/generate-swagger-openapi-clients/06.png" alt="Errores de compilación de generación de clientes"></p>
+<p><img alt="Errores de compilación de generación de clientes" src="/generate-swagger-openapi-clients/06.png"></p>
 <p>Figura 6: Errores de compilación de generación de clientes.</p>
 <p>La causa se muestra en la figura 7. El cliente se genera dos veces repitiendo sus campos internos.</p>
-<p><img src="/generate-swagger-openapi-clients/07.png" alt="Generación de clientes duplicados"></p>
+<p><img alt="Generación de clientes duplicados" src="/generate-swagger-openapi-clients/07.png"></p>
 <p>Figura 7: Generación de clientes duplicados.</p>
 <p>Me preguntaba por qué sucede esto; así que decidí analizar el código fuente del generador del cliente: &ldquo;NSwag&rdquo; en este caso (recuerda lo que se agregó al archivo del proyecto). El código fuente se almacena en GitHub en:</p>
 <p><a href="https://github.com/RicoSuter/NSwag">NSwag: La cadena de herramientas Swagger/OpenAPI para .NET, ASP.NET Core y TypeScript</a></p>
 <p>Al analizar el generador de clientes para C#, podemos encontrar que el valor predeterminado para el parámetro: &ldquo;Operation Generation Mode&rdquo; es &ldquo;MultipleClientsFromOperationId&rdquo; que se basa en el parámetro: &ldquo;ClassName&rdquo; que llega como vacío, por lo que la solución es especificarlo en los parámetros de generación del cliente en el archivo de proyecto (.csproj).</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -722,22 +721,22 @@ if (!doNotTrack) {
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-XML" data-lang="XML"><span class="nt">&lt;ItemGroup&gt;</span>
-  <span class="nt">&lt;OpenApiReference</span> <span class="na">Include=</span><span class="s">&#34;OpenAPI\FullAPI.json&#34;</span> <span class="na">Namespace=</span><span class="s">&#34;FullAPI&#34;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;ClassName&gt;</span>{controller}Client<span class="nt">&lt;/ClassName&gt;</span>
-    <span class="nt">&lt;CodeGenerator&gt;</span>NSwagCSharp<span class="nt">&lt;/CodeGenerator&gt;</span>
-  <span class="nt">&lt;/OpenApiReference&gt;</span>
-<span class="nt">&lt;/ItemGroup&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-XML" data-lang="XML"><span class="line"><span class="cl"><span class="nt">&lt;ItemGroup&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;OpenApiReference</span> <span class="na">Include=</span><span class="s">&#34;OpenAPI\FullAPI.json&#34;</span> <span class="na">Namespace=</span><span class="s">&#34;FullAPI&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;ClassName&gt;</span>{controller}Client<span class="nt">&lt;/ClassName&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;CodeGenerator&gt;</span>NSwagCSharp<span class="nt">&lt;/CodeGenerator&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/OpenApiReference&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/ItemGroup&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>El valor del nombre de clase es un patrón que incluye el nombre del controlador seguido de la palabra: &ldquo;Client&rdquo;. El nombre del controlador se toma del campo: &ldquo;operationId&rdquo; del archivo de especificación. El valor se divide por el carácter: &ldquo;_&rdquo; y el primer token se toma como nombre de cliente y el segundo token se toma como nombre de operación. Ejemplos: &ldquo;Second_NumberMethod&rdquo; crea el cliente: &ldquo;SecondClient&rdquo; con la operación: &ldquo;NumberMethod&rdquo;.</p>
 <p>La Figura 8 muestra los nuevos clientes generados. Esta vez sin errores de compilación porque no se generó ningún cliente duplicado.</p>
-<p><img src="/generate-swagger-openapi-clients/08.png" alt="Nuevos clientes generados"></p>
+<p><img alt="Nuevos clientes generados" src="/generate-swagger-openapi-clients/08.png"></p>
 <p>Figura 8: Nuevos clientes generados.</p>
 <p>Ahora, podemos consumir las operaciones de los clientes generados como muestra el siguiente código (archivo: &ldquo;Program.cs&rdquo;):</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -761,37 +760,37 @@ if (!doNotTrack) {
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C#" data-lang="C#"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Net.Http</span><span class="p">;</span>
-
-<span class="k">namespace</span> <span class="nn">RS.Blog.Projects.ConnectedServices.Client</span>
-<span class="p">{</span>
-    <span class="k">internal</span> <span class="k">class</span> <span class="nc">Program</span>
-    <span class="p">{</span>
-        <span class="k">private</span> <span class="k">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="kt">var</span> <span class="n">fullClient</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HttpClient</span>
-            <span class="p">{</span>
-                <span class="n">BaseAddress</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Uri</span><span class="p">(</span><span class="s">&#34;http://localhost:5200&#34;</span><span class="p">),</span>
-            <span class="p">};</span>
-            <span class="n">FullAPI</span><span class="p">.</span><span class="n">FirstClient</span> <span class="n">operationFullFirstClient</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FullAPI</span><span class="p">.</span><span class="n">FirstClient</span><span class="p">(</span><span class="n">fullClient</span><span class="p">);</span>
-            <span class="kt">int</span> <span class="n">operationFullFirstNumberResult</span> <span class="p">=</span> <span class="n">operationFullFirstClient</span><span class="p">.</span><span class="n">NumberMethodAsync</span><span class="p">().</span><span class="n">Result</span><span class="p">;</span>
-            <span class="kt">string</span> <span class="n">operationFullFirstStringResult</span> <span class="p">=</span> <span class="n">operationFullFirstClient</span><span class="p">.</span><span class="n">StringMethodAsync</span><span class="p">().</span><span class="n">Result</span><span class="p">;</span>
-            <span class="n">FullAPI</span><span class="p">.</span><span class="n">SecondClient</span> <span class="n">operationFullSecondClient</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FullAPI</span><span class="p">.</span><span class="n">SecondClient</span><span class="p">(</span><span class="n">fullClient</span><span class="p">);</span>
-            <span class="kt">int</span> <span class="n">operationFullSecondNumberResult</span> <span class="p">=</span> <span class="n">operationFullSecondClient</span><span class="p">.</span><span class="n">NumberMethodAsync</span><span class="p">().</span><span class="n">Result</span><span class="p">;</span>
-            <span class="kt">string</span> <span class="n">operationFullSecondStringResult</span> <span class="p">=</span> <span class="n">operationFullSecondClient</span><span class="p">.</span><span class="n">StringMethodAsync</span><span class="p">().</span><span class="n">Result</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C#" data-lang="C#"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Net.Http</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">RS.Blog.Projects.ConnectedServices.Client</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">internal</span> <span class="k">class</span> <span class="nc">Program</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">var</span> <span class="n">fullClient</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HttpClient</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">BaseAddress</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Uri</span><span class="p">(</span><span class="s">&#34;http://localhost:5200&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="p">};</span>
+</span></span><span class="line"><span class="cl">            <span class="n">FullAPI</span><span class="p">.</span><span class="n">FirstClient</span> <span class="n">operationFullFirstClient</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FullAPI</span><span class="p">.</span><span class="n">FirstClient</span><span class="p">(</span><span class="n">fullClient</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">operationFullFirstNumberResult</span> <span class="p">=</span> <span class="n">operationFullFirstClient</span><span class="p">.</span><span class="n">NumberMethodAsync</span><span class="p">().</span><span class="n">Result</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">string</span> <span class="n">operationFullFirstStringResult</span> <span class="p">=</span> <span class="n">operationFullFirstClient</span><span class="p">.</span><span class="n">StringMethodAsync</span><span class="p">().</span><span class="n">Result</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">FullAPI</span><span class="p">.</span><span class="n">SecondClient</span> <span class="n">operationFullSecondClient</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FullAPI</span><span class="p">.</span><span class="n">SecondClient</span><span class="p">(</span><span class="n">fullClient</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">operationFullSecondNumberResult</span> <span class="p">=</span> <span class="n">operationFullSecondClient</span><span class="p">.</span><span class="n">NumberMethodAsync</span><span class="p">().</span><span class="n">Result</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">string</span> <span class="n">operationFullSecondStringResult</span> <span class="p">=</span> <span class="n">operationFullSecondClient</span><span class="p">.</span><span class="n">StringMethodAsync</span><span class="p">().</span><span class="n">Result</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Problema resuelto, pero mi curiosidad me hizo investigar un poco más y ver qué sucedía con una API creada usando .NET Core en lugar de usar .NET Framework. La Figura 9 muestra la API migrada. Básicamente, las mismas funcionalidades (controladores, métodos, rutas) pero basadas en .NET Core.</p>
-<p><img src="/generate-swagger-openapi-clients/09.png" alt=".NET Core API"></p>
+<p><img alt=".NET Core API" src="/generate-swagger-openapi-clients/09.png"></p>
 <p>Figura 9: API en .NET Core.</p>
 <p>Accediendo a su documento de especificación: &ldquo;http://localhost:5100/swagger/v1/swagger.json&rdquo; tenemos:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">  1
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
 </span><span class="lnt">  2
 </span><span class="lnt">  3
 </span><span class="lnt">  4
@@ -926,165 +925,165 @@ if (!doNotTrack) {
 </span><span class="lnt">133
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-JSON" data-lang="JSON"><span class="p">{</span>
-    <span class="nt">&#34;openapi&#34;</span><span class="p">:</span> <span class="s2">&#34;3.0.1&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;info&#34;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&#34;title&#34;</span><span class="p">:</span> <span class="s2">&#34;ConnectedServices API&#34;</span><span class="p">,</span>
-      <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Description for ConnectedServices API.&#34;</span><span class="p">,</span>
-      <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;v1&#34;</span>
-    <span class="p">},</span>
-    <span class="nt">&#34;paths&#34;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&#34;/api/first/number&#34;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&#34;get&#34;</span><span class="p">:</span> <span class="p">{</span>
-          <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&#34;First&#34;</span>
-          <span class="p">],</span>
-          <span class="nt">&#34;responses&#34;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&#34;200&#34;</span><span class="p">:</span> <span class="p">{</span>
-              <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Success&#34;</span><span class="p">,</span>
-              <span class="nt">&#34;content&#34;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">&#34;text/plain&#34;</span><span class="p">:</span> <span class="p">{</span>
-                  <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;integer&#34;</span><span class="p">,</span>
-                    <span class="nt">&#34;format&#34;</span><span class="p">:</span> <span class="s2">&#34;int32&#34;</span>
-                  <span class="p">}</span>
-                <span class="p">},</span>
-                <span class="nt">&#34;application/json&#34;</span><span class="p">:</span> <span class="p">{</span>
-                  <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;integer&#34;</span><span class="p">,</span>
-                    <span class="nt">&#34;format&#34;</span><span class="p">:</span> <span class="s2">&#34;int32&#34;</span>
-                  <span class="p">}</span>
-                <span class="p">},</span>
-                <span class="nt">&#34;text/json&#34;</span><span class="p">:</span> <span class="p">{</span>
-                  <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;integer&#34;</span><span class="p">,</span>
-                    <span class="nt">&#34;format&#34;</span><span class="p">:</span> <span class="s2">&#34;int32&#34;</span>
-                  <span class="p">}</span>
-                <span class="p">}</span>
-              <span class="p">}</span>
-            <span class="p">}</span>
-          <span class="p">}</span>
-        <span class="p">}</span>
-      <span class="p">},</span>
-      <span class="nt">&#34;/api/first/string&#34;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&#34;get&#34;</span><span class="p">:</span> <span class="p">{</span>
-          <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&#34;First&#34;</span>
-          <span class="p">],</span>
-          <span class="nt">&#34;responses&#34;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&#34;200&#34;</span><span class="p">:</span> <span class="p">{</span>
-              <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Success&#34;</span><span class="p">,</span>
-              <span class="nt">&#34;content&#34;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">&#34;text/plain&#34;</span><span class="p">:</span> <span class="p">{</span>
-                  <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
-                  <span class="p">}</span>
-                <span class="p">},</span>
-                <span class="nt">&#34;application/json&#34;</span><span class="p">:</span> <span class="p">{</span>
-                  <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
-                  <span class="p">}</span>
-                <span class="p">},</span>
-                <span class="nt">&#34;text/json&#34;</span><span class="p">:</span> <span class="p">{</span>
-                  <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
-                  <span class="p">}</span>
-                <span class="p">}</span>
-              <span class="p">}</span>
-            <span class="p">}</span>
-          <span class="p">}</span>
-        <span class="p">}</span>
-      <span class="p">},</span>
-      <span class="nt">&#34;/api/second/number&#34;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&#34;get&#34;</span><span class="p">:</span> <span class="p">{</span>
-          <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&#34;Second&#34;</span>
-          <span class="p">],</span>
-          <span class="nt">&#34;responses&#34;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&#34;200&#34;</span><span class="p">:</span> <span class="p">{</span>
-              <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Success&#34;</span><span class="p">,</span>
-              <span class="nt">&#34;content&#34;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">&#34;text/plain&#34;</span><span class="p">:</span> <span class="p">{</span>
-                  <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;integer&#34;</span><span class="p">,</span>
-                    <span class="nt">&#34;format&#34;</span><span class="p">:</span> <span class="s2">&#34;int32&#34;</span>
-                  <span class="p">}</span>
-                <span class="p">},</span>
-                <span class="nt">&#34;application/json&#34;</span><span class="p">:</span> <span class="p">{</span>
-                  <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;integer&#34;</span><span class="p">,</span>
-                    <span class="nt">&#34;format&#34;</span><span class="p">:</span> <span class="s2">&#34;int32&#34;</span>
-                  <span class="p">}</span>
-                <span class="p">},</span>
-                <span class="nt">&#34;text/json&#34;</span><span class="p">:</span> <span class="p">{</span>
-                  <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;integer&#34;</span><span class="p">,</span>
-                    <span class="nt">&#34;format&#34;</span><span class="p">:</span> <span class="s2">&#34;int32&#34;</span>
-                  <span class="p">}</span>
-                <span class="p">}</span>
-              <span class="p">}</span>
-            <span class="p">}</span>
-          <span class="p">}</span>
-        <span class="p">}</span>
-      <span class="p">},</span>
-      <span class="nt">&#34;/api/second/string&#34;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&#34;get&#34;</span><span class="p">:</span> <span class="p">{</span>
-          <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&#34;Second&#34;</span>
-          <span class="p">],</span>
-          <span class="nt">&#34;responses&#34;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&#34;200&#34;</span><span class="p">:</span> <span class="p">{</span>
-              <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Success&#34;</span><span class="p">,</span>
-              <span class="nt">&#34;content&#34;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">&#34;text/plain&#34;</span><span class="p">:</span> <span class="p">{</span>
-                  <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
-                  <span class="p">}</span>
-                <span class="p">},</span>
-                <span class="nt">&#34;application/json&#34;</span><span class="p">:</span> <span class="p">{</span>
-                  <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
-                  <span class="p">}</span>
-                <span class="p">},</span>
-                <span class="nt">&#34;text/json&#34;</span><span class="p">:</span> <span class="p">{</span>
-                  <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
-                  <span class="p">}</span>
-                <span class="p">}</span>
-              <span class="p">}</span>
-            <span class="p">}</span>
-          <span class="p">}</span>
-        <span class="p">}</span>
-      <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nt">&#34;components&#34;</span><span class="p">:</span> <span class="p">{}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-JSON" data-lang="JSON"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;openapi&#34;</span><span class="p">:</span> <span class="s2">&#34;3.0.1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;info&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;title&#34;</span><span class="p">:</span> <span class="s2">&#34;ConnectedServices API&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Description for ConnectedServices API.&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;v1&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;paths&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;/api/first/number&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;get&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;First&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">],</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;responses&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;200&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">              <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Success&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="nt">&#34;content&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&#34;text/plain&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                  <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;integer&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&#34;format&#34;</span><span class="p">:</span> <span class="s2">&#34;int32&#34;</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="p">},</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&#34;application/json&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                  <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;integer&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&#34;format&#34;</span><span class="p">:</span> <span class="s2">&#34;int32&#34;</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="p">},</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&#34;text/json&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                  <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;integer&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&#34;format&#34;</span><span class="p">:</span> <span class="s2">&#34;int32&#34;</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">              <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;/api/first/string&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;get&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;First&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">],</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;responses&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;200&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">              <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Success&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="nt">&#34;content&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&#34;text/plain&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                  <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="p">},</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&#34;application/json&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                  <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="p">},</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&#34;text/json&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                  <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">              <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;/api/second/number&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;get&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;Second&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">],</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;responses&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;200&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">              <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Success&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="nt">&#34;content&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&#34;text/plain&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                  <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;integer&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&#34;format&#34;</span><span class="p">:</span> <span class="s2">&#34;int32&#34;</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="p">},</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&#34;application/json&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                  <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;integer&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&#34;format&#34;</span><span class="p">:</span> <span class="s2">&#34;int32&#34;</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="p">},</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&#34;text/json&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                  <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;integer&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&#34;format&#34;</span><span class="p">:</span> <span class="s2">&#34;int32&#34;</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">              <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;/api/second/string&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;get&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;Second&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">],</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;responses&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;200&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">              <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Success&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="nt">&#34;content&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&#34;text/plain&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                  <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="p">},</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&#34;application/json&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                  <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="p">},</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&#34;text/json&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                  <span class="nt">&#34;schema&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">              <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;components&#34;</span><span class="p">:</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Lo primero que es diferente (y probablemente lo más importante) es el campo: &ldquo;openapi&rdquo; (anteriormente &ldquo;swagger&rdquo;) con la versión: &ldquo;3.0.1&rdquo; (anteriormente: &ldquo;2.0&rdquo;). Guardemos esta nueva especificación como: &ldquo;CoreAPI.json&rdquo; junto con la otra en la carpeta: &ldquo;OpenAPI&rdquo;. Ahora, generemos el cliente de la misma manera que lo hicimos para la API desarrollada en .NET Framework y veamos qué sucede. Las figuras del 10 al 14 muestran el proceso.</p>
-<p><img src="/generate-swagger-openapi-clients/10.png" alt="Agregar un servicio conectado"></p>
+<p><img alt="Agregar un servicio conectado" src="/generate-swagger-openapi-clients/10.png"></p>
 <p>Figura 10: Agregar un servicio conectado.</p>
-<p><img src="/generate-swagger-openapi-clients/11.png" alt="Agregar una especificación de OpenAPI"></p>
+<p><img alt="Agregar una especificación de OpenAPI" src="/generate-swagger-openapi-clients/11.png"></p>
 <p>Figura 11: Agregar una especificación de OpenAPI.</p>
-<p><img src="/generate-swagger-openapi-clients/12.png" alt="Especificando los parámetros de generación del cliente"></p>
+<p><img alt="Especificando los parámetros de generación del cliente" src="/generate-swagger-openapi-clients/12.png"></p>
 <p>Figura 12: Especificación de los parámetros de generación de clientes.</p>
-<p><img src="/generate-swagger-openapi-clients/13.png" alt="Resultados de la generación de clientes"></p>
+<p><img alt="Resultados de la generación de clientes" src="/generate-swagger-openapi-clients/13.png"></p>
 <p>Figura 13: Resultados de la generación de clientes.</p>
-<p><img src="/generate-swagger-openapi-clients/14.png" alt="Lista de servicios conectados"></p>
+<p><img alt="Lista de servicios conectados" src="/generate-swagger-openapi-clients/14.png"></p>
 <p>Figura 14: Lista de servicios conectados.</p>
 <p>Se agrega una nueva sección al archivo del proyecto (.csproj) similar a la anterior:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-XML" data-lang="XML"><span class="nt">&lt;OpenApiReference</span> <span class="na">Include=</span><span class="s">&#34;OpenAPI\CoreAPI.json&#34;</span> <span class="na">CodeGenerator=</span><span class="s">&#34;NSwagCSharp&#34;</span> <span class="na">Namespace=</span><span class="s">&#34;CoreAPI&#34;</span> <span class="nt">/&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-XML" data-lang="XML"><span class="line"><span class="cl"><span class="nt">&lt;OpenApiReference</span> <span class="na">Include=</span><span class="s">&#34;OpenAPI\CoreAPI.json&#34;</span> <span class="na">CodeGenerator=</span><span class="s">&#34;NSwagCSharp&#34;</span> <span class="na">Namespace=</span><span class="s">&#34;CoreAPI&#34;</span> <span class="nt">/&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Resultando en:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1093,14 +1092,14 @@ if (!doNotTrack) {
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-XML" data-lang="XML"><span class="nt">&lt;ItemGroup&gt;</span>
-  <span class="nt">&lt;OpenApiReference</span> <span class="na">Include=</span><span class="s">&#34;OpenAPI\CoreAPI.json&#34;</span> <span class="na">CodeGenerator=</span><span class="s">&#34;NSwagCSharp&#34;</span> <span class="na">Namespace=</span><span class="s">&#34;CoreAPI&#34;</span> <span class="nt">/&gt;</span>
-  <span class="nt">&lt;OpenApiReference</span> <span class="na">Include=</span><span class="s">&#34;OpenAPI\FullAPI.json&#34;</span> <span class="na">Namespace=</span><span class="s">&#34;FullAPI&#34;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;ClassName&gt;</span>{controller}Client<span class="nt">&lt;/ClassName&gt;</span>
-    <span class="nt">&lt;CodeGenerator&gt;</span>NSwagCSharp<span class="nt">&lt;/CodeGenerator&gt;</span>
-  <span class="nt">&lt;/OpenApiReference&gt;</span>
-<span class="nt">&lt;/ItemGroup&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-XML" data-lang="XML"><span class="line"><span class="cl"><span class="nt">&lt;ItemGroup&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;OpenApiReference</span> <span class="na">Include=</span><span class="s">&#34;OpenAPI\CoreAPI.json&#34;</span> <span class="na">CodeGenerator=</span><span class="s">&#34;NSwagCSharp&#34;</span> <span class="na">Namespace=</span><span class="s">&#34;CoreAPI&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;OpenApiReference</span> <span class="na">Include=</span><span class="s">&#34;OpenAPI\FullAPI.json&#34;</span> <span class="na">Namespace=</span><span class="s">&#34;FullAPI&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;ClassName&gt;</span>{controller}Client<span class="nt">&lt;/ClassName&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;CodeGenerator&gt;</span>NSwagCSharp<span class="nt">&lt;/CodeGenerator&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/OpenApiReference&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/ItemGroup&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>La solución se compila incluyendo el nuevo archivo generado: &ldquo;CoreAPIClient.cs&rdquo; en la carpeta: &ldquo;obj&rdquo; pero el código generado es diferente:</p>
 <ol>
@@ -1108,13 +1107,13 @@ if (!doNotTrack) {
 <li>El constructor del cliente requiere la URL base.</li>
 <li>Las operaciones tienen diferentes nombres.</li>
 </ol>
-<p><img src="/generate-swagger-openapi-clients/15.png" alt="Cliente generado para .NET Core API"></p>
+<p><img alt="Cliente generado para .NET Core API" src="/generate-swagger-openapi-clients/15.png"></p>
 <p>Figura 15: Cliente generado para una API en .NET Core.</p>
 <p>Analizando el archivo de especificación (&ldquo;CoreAPI.json&rdquo;) podemos notar que no hay campos: &ldquo;operationId&rdquo; y eso es importante para los nombres de clientes y operaciones. Entonces, si agregamos, de alguna manera, los identificadores de operación a cada operación, deberíamos resolver el primer y tercer problema.</p>
 <p>Para agregar el campo: &ldquo;operationId&rdquo; al archivo de especificación, necesitamos agregar el atributo: &ldquo;SwaggerOperation&rdquo; a cada método de cada controlador. Ese atributo es parte del paquete NuGet: &ldquo;Swashbuckle.AspNetCore.Annotations&rdquo; que necesitamos instalar primero. El siguiente código muestra cómo usarlo:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1138,34 +1137,34 @@ if (!doNotTrack) {
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C#" data-lang="C#"><span class="k">using</span> <span class="nn">Microsoft.AspNetCore.Mvc</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">Swashbuckle.AspNetCore.Annotations</span><span class="p">;</span>
-
-<span class="k">namespace</span> <span class="nn">RS.Blog.Projects.ConnectedServices.CoreAPI.Controllers</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="k">class</span> <span class="nc">FirstController</span> <span class="p">:</span> <span class="n">ControllerBase</span>
-    <span class="p">{</span>
-<span class="na">        [HttpGet, Route(&#34;api/first/number&#34;)]</span>
-<span class="na">        [SwaggerOperation(OperationId = &#34;First_NumberMethod&#34;)]</span>
-        <span class="k">public</span> <span class="kt">int</span> <span class="n">NumberMethod</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="k">return</span> <span class="m">211</span><span class="p">;</span>
-        <span class="p">}</span>
-<span class="na">
-</span><span class="na">        [HttpGet, Route(&#34;api/first/string&#34;)]</span>
-<span class="na">        [SwaggerOperation(OperationId = &#34;First_StringMethod&#34;)]</span>
-        <span class="k">public</span> <span class="kt">string</span> <span class="n">StringMethod</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="k">return</span> <span class="s">&#34;Framework: Core, Controller: First, Method: String&#34;</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C#" data-lang="C#"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">Microsoft.AspNetCore.Mvc</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">Swashbuckle.AspNetCore.Annotations</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">RS.Blog.Projects.ConnectedServices.CoreAPI.Controllers</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">class</span> <span class="nc">FirstController</span> <span class="p">:</span> <span class="n">ControllerBase</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="na">        [HttpGet, Route(&#34;api/first/number&#34;)]</span>
+</span></span><span class="line"><span class="cl"><span class="na">        [SwaggerOperation(OperationId = &#34;First_NumberMethod&#34;)]</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="kt">int</span> <span class="n">NumberMethod</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="m">211</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">        [HttpGet, Route(&#34;api/first/string&#34;)]</span>
+</span></span><span class="line"><span class="cl"><span class="na">        [SwaggerOperation(OperationId = &#34;First_StringMethod&#34;)]</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="kt">string</span> <span class="n">StringMethod</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="s">&#34;Framework: Core, Controller: First, Method: String&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Con el uso de este atributo, el archivo de especificación agrega el campo: &ldquo;operationId&rdquo; pero luego el código no se compila debido al mismo primer problema: clientes duplicados. Necesitamos modificar los parámetros de generación de la misma manera que lo hicimos antes. El archivo del proyecto (.csproj) debería verse así:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1176,24 +1175,24 @@ if (!doNotTrack) {
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-XML" data-lang="XML"><span class="nt">&lt;ItemGroup&gt;</span>
-  <span class="nt">&lt;OpenApiReference</span> <span class="na">Include=</span><span class="s">&#34;OpenAPI\CoreAPI.json&#34;</span> <span class="na">CodeGenerator=</span><span class="s">&#34;NSwagCSharp&#34;</span> <span class="na">Namespace=</span><span class="s">&#34;CoreAPI&#34;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;ClassName&gt;</span>{controller}Client<span class="nt">&lt;/ClassName&gt;</span>
-  <span class="nt">&lt;/OpenApiReference&gt;</span>
-  <span class="nt">&lt;OpenApiReference</span> <span class="na">Include=</span><span class="s">&#34;OpenAPI\FullAPI.json&#34;</span> <span class="na">Namespace=</span><span class="s">&#34;FullAPI&#34;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;ClassName&gt;</span>{controller}Client<span class="nt">&lt;/ClassName&gt;</span>
-    <span class="nt">&lt;CodeGenerator&gt;</span>NSwagCSharp<span class="nt">&lt;/CodeGenerator&gt;</span>
-  <span class="nt">&lt;/OpenApiReference&gt;</span>
-<span class="nt">&lt;/ItemGroup&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-XML" data-lang="XML"><span class="line"><span class="cl"><span class="nt">&lt;ItemGroup&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;OpenApiReference</span> <span class="na">Include=</span><span class="s">&#34;OpenAPI\CoreAPI.json&#34;</span> <span class="na">CodeGenerator=</span><span class="s">&#34;NSwagCSharp&#34;</span> <span class="na">Namespace=</span><span class="s">&#34;CoreAPI&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;ClassName&gt;</span>{controller}Client<span class="nt">&lt;/ClassName&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/OpenApiReference&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;OpenApiReference</span> <span class="na">Include=</span><span class="s">&#34;OpenAPI\FullAPI.json&#34;</span> <span class="na">Namespace=</span><span class="s">&#34;FullAPI&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;ClassName&gt;</span>{controller}Client<span class="nt">&lt;/ClassName&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;CodeGenerator&gt;</span>NSwagCSharp<span class="nt">&lt;/CodeGenerator&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/OpenApiReference&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/ItemGroup&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Pero el código no compila. ¿Por qué, si hicimos exactamente lo que hicimos al generar clientes para la API en .NET Framework? La figura 16 muestra los errores.</p>
-<p><img src="/generate-swagger-openapi-clients/16.png" alt="Errores al generar clientes para .NET Core API"></p>
+<p><img alt="Errores al generar clientes para .NET Core API" src="/generate-swagger-openapi-clients/16.png"></p>
 <p>Figura 16: Errores al generar clientes para la API en .NET Core.</p>
 <p>Tenga en cuenta que los errores están en los clientes generados anteriormente (archivo: &ldquo;FullAPI.cs&rdquo;). Bueno, esto se debe a un <a href="https://github.com/dotnet/aspnetcore/issues/18204">error bien conocido</a> en NSwag CSharp Generator que está activo y debería resolverse en el futuro y tener una solución fácil. Modifiquemos una vez más el archivo del proyecto (.csproj):</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1205,22 +1204,22 @@ if (!doNotTrack) {
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-XML" data-lang="XML"><span class="nt">&lt;ItemGroup&gt;</span>
-  <span class="nt">&lt;OpenApiReference</span> <span class="na">Include=</span><span class="s">&#34;OpenAPI\CoreAPI.json&#34;</span> <span class="na">CodeGenerator=</span><span class="s">&#34;NSwagCSharp&#34;</span> <span class="na">Namespace=</span><span class="s">&#34;CoreAPI&#34;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;ClassName&gt;</span>{controller}Client<span class="nt">&lt;/ClassName&gt;</span>
-  <span class="nt">&lt;/OpenApiReference&gt;</span>
-  <span class="nt">&lt;OpenApiReference</span> <span class="na">Include=</span><span class="s">&#34;OpenAPI\FullAPI.json&#34;</span> <span class="na">Namespace=</span><span class="s">&#34;FullAPI&#34;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;ClassName&gt;</span>{controller}Client<span class="nt">&lt;/ClassName&gt;</span>
-    <span class="nt">&lt;CodeGenerator&gt;</span>NSwagCSharp<span class="nt">&lt;/CodeGenerator&gt;</span>
-    <span class="nt">&lt;Options&gt;</span>/GenerateExceptionClasses:false /ExceptionClass:&#34;CoreAPI.ApiException&#34;<span class="nt">&lt;/Options&gt;</span>
-  <span class="nt">&lt;/OpenApiReference&gt;</span>
-<span class="nt">&lt;/ItemGroup&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-XML" data-lang="XML"><span class="line"><span class="cl"><span class="nt">&lt;ItemGroup&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;OpenApiReference</span> <span class="na">Include=</span><span class="s">&#34;OpenAPI\CoreAPI.json&#34;</span> <span class="na">CodeGenerator=</span><span class="s">&#34;NSwagCSharp&#34;</span> <span class="na">Namespace=</span><span class="s">&#34;CoreAPI&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;ClassName&gt;</span>{controller}Client<span class="nt">&lt;/ClassName&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/OpenApiReference&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;OpenApiReference</span> <span class="na">Include=</span><span class="s">&#34;OpenAPI\FullAPI.json&#34;</span> <span class="na">Namespace=</span><span class="s">&#34;FullAPI&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;ClassName&gt;</span>{controller}Client<span class="nt">&lt;/ClassName&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;CodeGenerator&gt;</span>NSwagCSharp<span class="nt">&lt;/CodeGenerator&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Options&gt;</span>/GenerateExceptionClasses:false /ExceptionClass:&#34;CoreAPI.ApiException&#34;<span class="nt">&lt;/Options&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/OpenApiReference&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/ItemGroup&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Hemos agregado la etiqueta: &ldquo;Options&rdquo; indicando no generar clases de excepciones porque esas clases ya están generadas en otro espacio de nombres. Esto se debe a que el orden para la generación de los clientes es importante y el primero que se inserta (el cliente de la API de .NET Core en este caso) genera las clases de excepción. Ahora la solución se compila con éxito, pero aún no hemos resuelto el segundo problema (se requiere la URL base en el constructor). Para solucionar esto, una vez más necesitamos modificar el archivo del proyecto (.csproj):</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1233,24 +1232,24 @@ if (!doNotTrack) {
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-XML" data-lang="XML"><span class="nt">&lt;ItemGroup&gt;</span>
-  <span class="nt">&lt;OpenApiReference</span> <span class="na">Include=</span><span class="s">&#34;OpenAPI\CoreAPI.json&#34;</span> <span class="na">CodeGenerator=</span><span class="s">&#34;NSwagCSharp&#34;</span> <span class="na">Namespace=</span><span class="s">&#34;CoreAPI&#34;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;ClassName&gt;</span>{controller}Client<span class="nt">&lt;/ClassName&gt;</span>
-    <span class="nt">&lt;Options&gt;</span>/UseBaseUrl:false<span class="nt">&lt;/Options&gt;</span>
-  <span class="nt">&lt;/OpenApiReference&gt;</span>
-  <span class="nt">&lt;OpenApiReference</span> <span class="na">Include=</span><span class="s">&#34;OpenAPI\FullAPI.json&#34;</span> <span class="na">Namespace=</span><span class="s">&#34;FullAPI&#34;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;ClassName&gt;</span>{controller}Client<span class="nt">&lt;/ClassName&gt;</span>
-    <span class="nt">&lt;CodeGenerator&gt;</span>NSwagCSharp<span class="nt">&lt;/CodeGenerator&gt;</span>
-    <span class="nt">&lt;Options&gt;</span>/GenerateExceptionClasses:false /ExceptionClass:&#34;CoreAPI.ApiException&#34;<span class="nt">&lt;/Options&gt;</span>
-  <span class="nt">&lt;/OpenApiReference&gt;</span>
-<span class="nt">&lt;/ItemGroup&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-XML" data-lang="XML"><span class="line"><span class="cl"><span class="nt">&lt;ItemGroup&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;OpenApiReference</span> <span class="na">Include=</span><span class="s">&#34;OpenAPI\CoreAPI.json&#34;</span> <span class="na">CodeGenerator=</span><span class="s">&#34;NSwagCSharp&#34;</span> <span class="na">Namespace=</span><span class="s">&#34;CoreAPI&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;ClassName&gt;</span>{controller}Client<span class="nt">&lt;/ClassName&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Options&gt;</span>/UseBaseUrl:false<span class="nt">&lt;/Options&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/OpenApiReference&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;OpenApiReference</span> <span class="na">Include=</span><span class="s">&#34;OpenAPI\FullAPI.json&#34;</span> <span class="na">Namespace=</span><span class="s">&#34;FullAPI&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;ClassName&gt;</span>{controller}Client<span class="nt">&lt;/ClassName&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;CodeGenerator&gt;</span>NSwagCSharp<span class="nt">&lt;/CodeGenerator&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Options&gt;</span>/GenerateExceptionClasses:false /ExceptionClass:&#34;CoreAPI.ApiException&#34;<span class="nt">&lt;/Options&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/OpenApiReference&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/ItemGroup&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Observe que podemos lograr el mismo resultado sin modificar manualmente el archivo del proyecto (.csproj) si especificamos los valores para diferentes opciones en el parámetro: &ldquo;Opciones adicionales de generación de código&rdquo; en el cuadro de diálogo para agregar una nueva referencia del servicio OpenAPI (figuras 4 y 12).</p>
 <p>En esta ocasión para el cliente de la API desarrollada en .NET Core hemos agregado la opción de no usar URL base. Ahora los clientes generados son casi idénticos y se pueden utilizar de forma muy similar:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1286,41 +1285,41 @@ if (!doNotTrack) {
 </span><span class="lnt">34
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C#" data-lang="C#"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Net.Http</span><span class="p">;</span>
-
-<span class="k">namespace</span> <span class="nn">RS.Blog.Projects.ConnectedServices.Client</span>
-<span class="p">{</span>
-    <span class="k">internal</span> <span class="k">class</span> <span class="nc">Program</span>
-    <span class="p">{</span>
-        <span class="k">private</span> <span class="k">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="kt">var</span> <span class="n">fullClient</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HttpClient</span>
-            <span class="p">{</span>
-                <span class="n">BaseAddress</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Uri</span><span class="p">(</span><span class="s">&#34;http://localhost:5200&#34;</span><span class="p">),</span>
-            <span class="p">};</span>
-            <span class="kt">var</span> <span class="n">operationFullFirstClient</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FullAPI</span><span class="p">.</span><span class="n">FirstClient</span><span class="p">(</span><span class="n">fullClient</span><span class="p">);</span>
-            <span class="kt">int</span> <span class="n">operationFullFirstNUmberResult</span> <span class="p">=</span> <span class="n">operationFullFirstClient</span><span class="p">.</span><span class="n">NumberMethodAsync</span><span class="p">().</span><span class="n">Result</span><span class="p">;</span>
-            <span class="kt">string</span> <span class="n">operationFullFirstStringResult</span> <span class="p">=</span> <span class="n">operationFullFirstClient</span><span class="p">.</span><span class="n">StringMethodAsync</span><span class="p">().</span><span class="n">Result</span><span class="p">;</span>
-            <span class="kt">var</span> <span class="n">operationFullSecondClient</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FullAPI</span><span class="p">.</span><span class="n">SecondClient</span><span class="p">(</span><span class="n">fullClient</span><span class="p">);</span>
-            <span class="kt">int</span> <span class="n">operationFullSecondNumberResult</span> <span class="p">=</span> <span class="n">operationFullSecondClient</span><span class="p">.</span><span class="n">NumberMethodAsync</span><span class="p">().</span><span class="n">Result</span><span class="p">;</span>
-            <span class="kt">string</span> <span class="n">operationFullSecondStringResult</span> <span class="p">=</span> <span class="n">operationFullSecondClient</span><span class="p">.</span><span class="n">StringMethodAsync</span><span class="p">().</span><span class="n">Result</span><span class="p">;</span>
-
-            <span class="kt">var</span> <span class="n">coreClient</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HttpClient</span>
-            <span class="p">{</span>
-                <span class="n">BaseAddress</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Uri</span><span class="p">(</span><span class="s">&#34;http://localhost:5100&#34;</span><span class="p">),</span>
-            <span class="p">};</span>
-            <span class="kt">var</span> <span class="n">operationCoreFirstClient</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CoreAPI</span><span class="p">.</span><span class="n">FirstClient</span><span class="p">(</span><span class="n">coreClient</span><span class="p">);</span>
-            <span class="kt">int</span> <span class="n">operationCoreFirstNumberResult</span> <span class="p">=</span> <span class="n">operationCoreFirstClient</span><span class="p">.</span><span class="n">NumberMethodAsync</span><span class="p">().</span><span class="n">Result</span><span class="p">;</span>
-            <span class="kt">string</span> <span class="n">operationCoreFirstStringResult</span> <span class="p">=</span> <span class="n">operationCoreFirstClient</span><span class="p">.</span><span class="n">StringMethodAsync</span><span class="p">().</span><span class="n">Result</span><span class="p">;</span>
-            <span class="kt">var</span> <span class="n">operationCoreSecondClient</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CoreAPI</span><span class="p">.</span><span class="n">SecondClient</span><span class="p">(</span><span class="n">coreClient</span><span class="p">);</span>
-            <span class="kt">int</span> <span class="n">operationCoreSecondNumberResult</span> <span class="p">=</span> <span class="n">operationCoreSecondClient</span><span class="p">.</span><span class="n">NumberMethodAsync</span><span class="p">().</span><span class="n">Result</span><span class="p">;</span>
-            <span class="kt">string</span> <span class="n">operationCoreSecondStringResult</span> <span class="p">=</span> <span class="n">operationCoreSecondClient</span><span class="p">.</span><span class="n">StringMethodAsync</span><span class="p">().</span><span class="n">Result</span><span class="p">;</span>
-
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C#" data-lang="C#"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Net.Http</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">RS.Blog.Projects.ConnectedServices.Client</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">internal</span> <span class="k">class</span> <span class="nc">Program</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="kd">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">var</span> <span class="n">fullClient</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HttpClient</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">BaseAddress</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Uri</span><span class="p">(</span><span class="s">&#34;http://localhost:5200&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="p">};</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">var</span> <span class="n">operationFullFirstClient</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FullAPI</span><span class="p">.</span><span class="n">FirstClient</span><span class="p">(</span><span class="n">fullClient</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">operationFullFirstNUmberResult</span> <span class="p">=</span> <span class="n">operationFullFirstClient</span><span class="p">.</span><span class="n">NumberMethodAsync</span><span class="p">().</span><span class="n">Result</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">string</span> <span class="n">operationFullFirstStringResult</span> <span class="p">=</span> <span class="n">operationFullFirstClient</span><span class="p">.</span><span class="n">StringMethodAsync</span><span class="p">().</span><span class="n">Result</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">var</span> <span class="n">operationFullSecondClient</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FullAPI</span><span class="p">.</span><span class="n">SecondClient</span><span class="p">(</span><span class="n">fullClient</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">operationFullSecondNumberResult</span> <span class="p">=</span> <span class="n">operationFullSecondClient</span><span class="p">.</span><span class="n">NumberMethodAsync</span><span class="p">().</span><span class="n">Result</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">string</span> <span class="n">operationFullSecondStringResult</span> <span class="p">=</span> <span class="n">operationFullSecondClient</span><span class="p">.</span><span class="n">StringMethodAsync</span><span class="p">().</span><span class="n">Result</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="kt">var</span> <span class="n">coreClient</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HttpClient</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">BaseAddress</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Uri</span><span class="p">(</span><span class="s">&#34;http://localhost:5100&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="p">};</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">var</span> <span class="n">operationCoreFirstClient</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CoreAPI</span><span class="p">.</span><span class="n">FirstClient</span><span class="p">(</span><span class="n">coreClient</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">operationCoreFirstNumberResult</span> <span class="p">=</span> <span class="n">operationCoreFirstClient</span><span class="p">.</span><span class="n">NumberMethodAsync</span><span class="p">().</span><span class="n">Result</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">string</span> <span class="n">operationCoreFirstStringResult</span> <span class="p">=</span> <span class="n">operationCoreFirstClient</span><span class="p">.</span><span class="n">StringMethodAsync</span><span class="p">().</span><span class="n">Result</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">var</span> <span class="n">operationCoreSecondClient</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CoreAPI</span><span class="p">.</span><span class="n">SecondClient</span><span class="p">(</span><span class="n">coreClient</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">operationCoreSecondNumberResult</span> <span class="p">=</span> <span class="n">operationCoreSecondClient</span><span class="p">.</span><span class="n">NumberMethodAsync</span><span class="p">().</span><span class="n">Result</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">string</span> <span class="n">operationCoreSecondStringResult</span> <span class="p">=</span> <span class="n">operationCoreSecondClient</span><span class="p">.</span><span class="n">StringMethodAsync</span><span class="p">().</span><span class="n">Result</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>El archivo de proyecto del cliente (.csproj) hay comentado otro enfoque para hacer todo lo que hemos expuesto aquí sin la necesidad de campos de identificadores de operación. Basándonos en la ruta podemos utilizar la opción: &ldquo;/OperationGenerationMode:MultipleClientsFromPathSegments&rdquo; junto con otros parámetros interesantes como: &ldquo;OutputPath&rdquo;, y &ldquo;SourceUri&rdquo;.</p>
 <h3 id="resumen">Resumen</h3>
@@ -1338,10 +1337,10 @@ if (!doNotTrack) {
 
     <footer class="post-footer">
       <div class="post-tags">
-          <a href="/es/tags/visual-studio/">Visual Studio</a>
-          <a href="/es/tags/openapi/">OpenAPI</a>
-          <a href="/es/tags/swagger/">Swagger</a>
-          <a href="/es/tags/api/">API</a>
+          <a href="//localhost:1313/es/tags/visual-studio/">Visual Studio</a>
+          <a href="//localhost:1313/es/tags/openapi/">OpenAPI</a>
+          <a href="//localhost:1313/es/tags/swagger/">Swagger</a>
+          <a href="//localhost:1313/es/tags/api/">API</a>
           
         </div>
 
@@ -1379,8 +1378,6 @@ if (!doNotTrack) {
     </footer>
   </article>
 
-  
-  
   
   
 
@@ -1469,7 +1466,7 @@ if (!doNotTrack) {
   
 
 
-<a href="/es/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
+<a href="//localhost:1313/es/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
     class="iconfont" title="rss" target="_blank">
     <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -1486,10 +1483,7 @@ if (!doNotTrack) {
     &copy;
     
       2020 -
-    2021<span class="author">
-        Ricardo Sotolongo
-        
-      </span></span>
+    2024</span>
 
   
   
@@ -1518,7 +1512,7 @@ if (!doNotTrack) {
 
 
 
-<script type="text/javascript" src="/js/main.638251f4230630f0335d8c6748e53a96f94b72670920b60c09a56fdc8bece214.js" integrity="sha256-Y4JR9CMGMPAzXYxnSOU6lvlLcmcJILYMCaVv3Ivs4hQ=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/main.dee43230127a73d039a734510fa896c89c3c7ce0cf0be0c7a7433f8fd69b76dc.js" integrity="sha256-3uQyMBJ6c9A5pzRRD6iWyJw8fODPC&#43;DHp0M/j9abdtw=" crossorigin="anonymous"></script>
 
 
 

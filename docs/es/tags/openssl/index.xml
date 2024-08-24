@@ -2,23 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>OpenSSL on Programando en voz alta</title>
-    <link>/es/tags/openssl/</link>
+    <link>//localhost:1313/es/tags/openssl/</link>
     <description>Recent content in OpenSSL on Programando en voz alta</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>es</language>
-    <lastBuildDate>Mon, 01 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="/es/tags/openssl/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 01 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/es/tags/openssl/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Generando certificados de firma</title>
-      <link>/es/post/generating-signature-certificates/</link>
+      <link>//localhost:1313/es/post/generating-signature-certificates/</link>
       <pubDate>Mon, 01 Feb 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/es/post/generating-signature-certificates/</guid>
-      <description>Código fuente de apoyo disponible en GitHub
-A veces, los ensamblados (ejecutables y bibliotecas) deben estar firmados y no tenemos un certificado disponible con fines de prueba. En este post pretendo mostrar cómo generar un certificado para firmar ensamblados.
-Primero, necesitamos instalar OpenSSL que podemos lograr siguiendo los pasos que se especifican en el siguiente enlace:
-Instalación de OpenSSL en Windows 10 y actualización de PATH
-En segundo lugar, creemos un archivo de secuencia de comandos por lotes llamado: &amp;ldquo;generateCertificate.</description>
+      <guid>//localhost:1313/es/post/generating-signature-certificates/</guid>
+      <description>Código fuente de apoyo disponible en GitHub&#xA;A veces, los ensamblados (ejecutables y bibliotecas) deben estar firmados y no tenemos un certificado disponible con fines de prueba. En este post pretendo mostrar cómo generar un certificado para firmar ensamblados.&#xA;Primero, necesitamos instalar OpenSSL que podemos lograr siguiendo los pasos que se especifican en el siguiente enlace:&#xA;Instalación de OpenSSL en Windows 10 y actualización de PATH&#xA;En segundo lugar, creemos un archivo de secuencia de comandos por lotes llamado: &amp;ldquo;generateCertificate.</description>
     </item>
-    
   </channel>
 </rss>

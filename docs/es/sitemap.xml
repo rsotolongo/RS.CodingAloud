@@ -1,484 +1,484 @@
-<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
+<?xml-stylesheet type="text/xsl" href="//localhost:1313/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>/es/categories/</loc>
+    <loc>//localhost:1313/es/categories/</loc>
     <lastmod>2021-03-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/asynchronous-commands/</loc>
+    <loc>//localhost:1313/es/post/asynchronous-commands/</loc>
     <lastmod>2021-03-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/categories/desarrollo/</loc>
+    <loc>//localhost:1313/es/categories/desarrollo/</loc>
     <lastmod>2021-03-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/paralelismo/</loc>
+    <loc>//localhost:1313/es/tags/paralelismo/</loc>
     <lastmod>2021-03-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/</loc>
+    <loc>//localhost:1313/es/post/</loc>
     <lastmod>2021-03-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/</loc>
+    <loc>//localhost:1313/es/</loc>
     <lastmod>2021-03-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/</loc>
+    <loc>//localhost:1313/es/tags/</loc>
     <lastmod>2021-03-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/wpf/</loc>
+    <loc>//localhost:1313/es/tags/wpf/</loc>
     <lastmod>2021-03-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/msbuild/</loc>
+    <loc>//localhost:1313/es/tags/msbuild/</loc>
     <lastmod>2021-02-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/immediate-publishing/</loc>
+    <loc>//localhost:1313/es/post/immediate-publishing/</loc>
     <lastmod>2021-02-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/visual-studio/</loc>
+    <loc>//localhost:1313/es/tags/visual-studio/</loc>
     <lastmod>2021-02-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/api/</loc>
+    <loc>//localhost:1313/es/tags/api/</loc>
     <lastmod>2021-02-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/generating-swagger-openapi-clients/</loc>
+    <loc>//localhost:1313/es/post/generating-swagger-openapi-clients/</loc>
     <lastmod>2021-02-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/openapi/</loc>
+    <loc>//localhost:1313/es/tags/openapi/</loc>
     <lastmod>2021-02-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/swagger/</loc>
+    <loc>//localhost:1313/es/tags/swagger/</loc>
     <lastmod>2021-02-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/signing-assemblies/</loc>
+    <loc>//localhost:1313/es/post/signing-assemblies/</loc>
     <lastmod>2021-02-08T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/seguridad/</loc>
+    <loc>//localhost:1313/es/tags/seguridad/</loc>
     <lastmod>2021-02-08T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/generating-signature-certificates/</loc>
+    <loc>//localhost:1313/es/post/generating-signature-certificates/</loc>
     <lastmod>2021-02-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/openssl/</loc>
+    <loc>//localhost:1313/es/tags/openssl/</loc>
     <lastmod>2021-02-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/deploying-nuget-packages/</loc>
+    <loc>//localhost:1313/es/post/deploying-nuget-packages/</loc>
     <lastmod>2021-01-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/nuget/</loc>
+    <loc>//localhost:1313/es/tags/nuget/</loc>
     <lastmod>2021-01-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/creando-paquetes-nuget/</loc>
+    <loc>//localhost:1313/es/post/creando-paquetes-nuget/</loc>
     <lastmod>2021-01-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/usando-octopus/</loc>
+    <loc>//localhost:1313/es/post/usando-octopus/</loc>
     <lastmod>2021-01-11T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/octopus/</loc>
+    <loc>//localhost:1313/es/tags/octopus/</loc>
     <lastmod>2021-01-11T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/an%C3%A1lisis-de-c%C3%B3digo/</loc>
+    <loc>//localhost:1313/es/tags/an%C3%A1lisis-de-c%C3%B3digo/</loc>
     <lastmod>2021-01-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/c%C3%B3digo-fuente/</loc>
+    <loc>//localhost:1313/es/tags/c%C3%B3digo-fuente/</loc>
     <lastmod>2021-01-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/estilo-de-c%C3%B3digo-usando-stylecop/</loc>
+    <loc>//localhost:1313/es/post/estilo-de-c%C3%B3digo-usando-stylecop/</loc>
     <lastmod>2021-01-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/resharper/</loc>
+    <loc>//localhost:1313/es/tags/resharper/</loc>
     <lastmod>2021-01-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/stylecop/</loc>
+    <loc>//localhost:1313/es/tags/stylecop/</loc>
     <lastmod>2021-01-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/bienvenida/</loc>
+    <loc>//localhost:1313/es/post/bienvenida/</loc>
     <lastmod>2021-01-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/categories/general/</loc>
+    <loc>//localhost:1313/es/categories/general/</loc>
     <lastmod>2021-01-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/categories/memorias/</loc>
+    <loc>//localhost:1313/es/categories/memorias/</loc>
     <lastmod>2020-12-31T23:59:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/memorias/</loc>
+    <loc>//localhost:1313/es/post/memorias/</loc>
     <lastmod>2020-12-31T23:59:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/delphi/</loc>
+    <loc>//localhost:1313/es/tags/delphi/</loc>
     <lastmod>2020-12-31T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/recuperaci%C3%B3n-de-xml/</loc>
+    <loc>//localhost:1313/es/post/recuperaci%C3%B3n-de-xml/</loc>
     <lastmod>2020-12-31T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/xml/</loc>
+    <loc>//localhost:1313/es/tags/xml/</loc>
     <lastmod>2020-12-31T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/generaci%C3%B3n-de-xml/</loc>
+    <loc>//localhost:1313/es/post/generaci%C3%B3n-de-xml/</loc>
     <lastmod>2020-12-30T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/consideraciones-de-implementaci%C3%B3n/</loc>
+    <loc>//localhost:1313/es/post/consideraciones-de-implementaci%C3%B3n/</loc>
     <lastmod>2020-12-29T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/arquitectura/</loc>
+    <loc>//localhost:1313/es/tags/arquitectura/</loc>
     <lastmod>2020-12-29T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/consideraciones-de-dise%C3%B1o/</loc>
+    <loc>//localhost:1313/es/post/consideraciones-de-dise%C3%B1o/</loc>
     <lastmod>2020-12-28T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/filosof%C3%ADa/</loc>
+    <loc>//localhost:1313/es/tags/filosof%C3%ADa/</loc>
     <lastmod>2020-12-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/gobierno-electr%C3%B3nico/</loc>
+    <loc>//localhost:1313/es/post/gobierno-electr%C3%B3nico/</loc>
     <lastmod>2020-12-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/internet/</loc>
+    <loc>//localhost:1313/es/post/confianza-en-internet/</loc>
     <lastmod>2020-12-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/confianza-en-internet/</loc>
+    <loc>//localhost:1313/es/tags/internet/</loc>
     <lastmod>2020-12-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/ciencia/</loc>
+    <loc>//localhost:1313/es/tags/ciencia/</loc>
     <lastmod>2020-12-23T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/evento/</loc>
+    <loc>//localhost:1313/es/tags/evento/</loc>
     <lastmod>2020-12-23T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/isfuros-2006/</loc>
+    <loc>//localhost:1313/es/post/isfuros-2006/</loc>
     <lastmod>2020-12-23T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/poni%C3%A9ndonos-al-d%C3%ADa/</loc>
+    <loc>//localhost:1313/es/post/poni%C3%A9ndonos-al-d%C3%ADa/</loc>
     <lastmod>2020-12-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/amaos-todos/</loc>
+    <loc>//localhost:1313/es/post/amaos-todos/</loc>
     <lastmod>2020-12-21T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/reescribir-%C3%B3-reusar/</loc>
+    <loc>//localhost:1313/es/post/reescribir-%C3%B3-reusar/</loc>
     <lastmod>2020-12-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/futuro-del-ensamblador/</loc>
+    <loc>//localhost:1313/es/post/futuro-del-ensamblador/</loc>
     <lastmod>2020-12-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/fanatismos/</loc>
+    <loc>//localhost:1313/es/post/fanatismos/</loc>
     <lastmod>2020-12-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/blog/</loc>
+    <loc>//localhost:1313/es/tags/blog/</loc>
     <lastmod>2020-12-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/herramienta/</loc>
+    <loc>//localhost:1313/es/tags/herramienta/</loc>
     <lastmod>2020-12-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/herramientas-para-blogs/</loc>
+    <loc>//localhost:1313/es/post/herramientas-para-blogs/</loc>
     <lastmod>2020-12-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/borland/</loc>
+    <loc>//localhost:1313/es/post/borland/</loc>
     <lastmod>2020-12-14T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/compa%C3%B1%C3%ADa/</loc>
+    <loc>//localhost:1313/es/tags/compa%C3%B1%C3%ADa/</loc>
     <lastmod>2020-12-14T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/superaci%C3%B3n-personal/</loc>
+    <loc>//localhost:1313/es/post/superaci%C3%B3n-personal/</loc>
     <lastmod>2020-12-11T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/educaci%C3%B3n/</loc>
+    <loc>//localhost:1313/es/tags/educaci%C3%B3n/</loc>
     <lastmod>2020-12-11T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/programaci%C3%B3n-elegante/</loc>
+    <loc>//localhost:1313/es/post/programaci%C3%B3n-elegante/</loc>
     <lastmod>2020-12-10T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/calidad/</loc>
+    <loc>//localhost:1313/es/tags/calidad/</loc>
     <lastmod>2020-12-09T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/solo-desplegar-no-basta/</loc>
+    <loc>//localhost:1313/es/post/solo-desplegar-no-basta/</loc>
     <lastmod>2020-12-09T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/objetos-duros-objetos-blandos/</loc>
+    <loc>//localhost:1313/es/post/objetos-duros-objetos-blandos/</loc>
     <lastmod>2020-12-08T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/encapsulamiento-vs-c%C3%B3digo-abierto/</loc>
+    <loc>//localhost:1313/es/post/encapsulamiento-vs-c%C3%B3digo-abierto/</loc>
     <lastmod>2020-12-07T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/profesionales-de-la-computaci%C3%B3n/</loc>
+    <loc>//localhost:1313/es/post/profesionales-de-la-computaci%C3%B3n/</loc>
     <lastmod>2020-12-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/cibern%C3%A9ticos-como-ingenieros/</loc>
+    <loc>//localhost:1313/es/post/cibern%C3%A9ticos-como-ingenieros/</loc>
     <lastmod>2020-12-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/validaci%C3%B3n-de-datos/</loc>
+    <loc>//localhost:1313/es/post/validaci%C3%B3n-de-datos/</loc>
     <lastmod>2020-12-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/apuntes-ingenier%C3%ADa-software/</loc>
+    <loc>//localhost:1313/es/post/apuntes-ingenier%C3%ADa-software/</loc>
     <lastmod>2020-12-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/complejidad/</loc>
+    <loc>//localhost:1313/es/tags/complejidad/</loc>
     <lastmod>2020-12-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

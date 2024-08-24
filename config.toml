@@ -32,9 +32,6 @@ defaultContentLanguage = "en"           # Default language to use
 #[languages.en]
 #  languageCode = "en"
 
-[author]                  # essential                     # 必需
-  name = "Ricardo Sotolongo"
-
 [sitemap]                 # essential                     # 必需
   changefreq = "weekly"
   priority = 0.5
@@ -123,6 +120,9 @@ defaultContentLanguage = "en"           # Default language to use
 
   # add custom info on the footer.   # 添加备案信息
   # customFooter = "京ICP备10000000号-1"
+
+  [params.author]
+    name = "Ricardo Sotolongo"
 
   [params.publicCDN]        # load these files from public cdn                          # 启用公共CDN，需自行定义
     enable = false
