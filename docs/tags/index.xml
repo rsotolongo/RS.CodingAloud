@@ -2,115 +2,115 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Coding Aloud</title>
-    <link>/tags/</link>
+    <link>//localhost:1313/tags/</link>
     <description>Recent content in Tags on Coding Aloud</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Mon, 15 Mar 2021 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Parallelism</title>
-      <link>/tags/parallelism/</link>
+      <link>//localhost:1313/tags/parallelism/</link>
       <pubDate>Mon, 15 Mar 2021 00:00:00 +0000</pubDate>
-      <guid>/tags/parallelism/</guid>
+      <guid>//localhost:1313/tags/parallelism/</guid>
       <description></description>
     </item>
     <item>
       <title>WPF</title>
-      <link>/tags/wpf/</link>
+      <link>//localhost:1313/tags/wpf/</link>
       <pubDate>Mon, 15 Mar 2021 00:00:00 +0000</pubDate>
-      <guid>/tags/wpf/</guid>
+      <guid>//localhost:1313/tags/wpf/</guid>
       <description></description>
     </item>
     <item>
       <title>MSBuild</title>
-      <link>/tags/msbuild/</link>
+      <link>//localhost:1313/tags/msbuild/</link>
       <pubDate>Mon, 22 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>/tags/msbuild/</guid>
+      <guid>//localhost:1313/tags/msbuild/</guid>
       <description></description>
     </item>
     <item>
       <title>Visual Studio</title>
-      <link>/tags/visual-studio/</link>
+      <link>//localhost:1313/tags/visual-studio/</link>
       <pubDate>Mon, 22 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>/tags/visual-studio/</guid>
+      <guid>//localhost:1313/tags/visual-studio/</guid>
       <description></description>
     </item>
     <item>
       <title>API</title>
-      <link>/tags/api/</link>
+      <link>//localhost:1313/tags/api/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>/tags/api/</guid>
+      <guid>//localhost:1313/tags/api/</guid>
       <description></description>
     </item>
     <item>
       <title>OpenAPI</title>
-      <link>/tags/openapi/</link>
+      <link>//localhost:1313/tags/openapi/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>/tags/openapi/</guid>
+      <guid>//localhost:1313/tags/openapi/</guid>
       <description></description>
     </item>
     <item>
       <title>Swagger</title>
-      <link>/tags/swagger/</link>
+      <link>//localhost:1313/tags/swagger/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>/tags/swagger/</guid>
+      <guid>//localhost:1313/tags/swagger/</guid>
       <description></description>
     </item>
     <item>
       <title>Security</title>
-      <link>/tags/security/</link>
+      <link>//localhost:1313/tags/security/</link>
       <pubDate>Mon, 08 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>/tags/security/</guid>
+      <guid>//localhost:1313/tags/security/</guid>
       <description></description>
     </item>
     <item>
       <title>OpenSSL</title>
-      <link>/tags/openssl/</link>
+      <link>//localhost:1313/tags/openssl/</link>
       <pubDate>Mon, 01 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>/tags/openssl/</guid>
+      <guid>//localhost:1313/tags/openssl/</guid>
       <description></description>
     </item>
     <item>
       <title>NuGet</title>
-      <link>/tags/nuget/</link>
+      <link>//localhost:1313/tags/nuget/</link>
       <pubDate>Mon, 25 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>/tags/nuget/</guid>
+      <guid>//localhost:1313/tags/nuget/</guid>
       <description></description>
     </item>
     <item>
       <title>Octopus</title>
-      <link>/tags/octopus/</link>
+      <link>//localhost:1313/tags/octopus/</link>
       <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>/tags/octopus/</guid>
+      <guid>//localhost:1313/tags/octopus/</guid>
       <description></description>
     </item>
     <item>
       <title>Code Analysis</title>
-      <link>/tags/code-analysis/</link>
+      <link>//localhost:1313/tags/code-analysis/</link>
       <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>/tags/code-analysis/</guid>
+      <guid>//localhost:1313/tags/code-analysis/</guid>
       <description></description>
     </item>
     <item>
       <title>ReSharper</title>
-      <link>/tags/resharper/</link>
+      <link>//localhost:1313/tags/resharper/</link>
       <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>/tags/resharper/</guid>
+      <guid>//localhost:1313/tags/resharper/</guid>
       <description></description>
     </item>
     <item>
       <title>Source Code</title>
-      <link>/tags/source-code/</link>
+      <link>//localhost:1313/tags/source-code/</link>
       <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>/tags/source-code/</guid>
+      <guid>//localhost:1313/tags/source-code/</guid>
       <description></description>
     </item>
     <item>
       <title>StyleCop</title>
-      <link>/tags/stylecop/</link>
+      <link>//localhost:1313/tags/stylecop/</link>
       <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>/tags/stylecop/</guid>
+      <guid>//localhost:1313/tags/stylecop/</guid>
       <description></description>
     </item>
   </channel>

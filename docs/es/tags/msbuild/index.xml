@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>MSBuild on Programando en voz alta</title>
-    <link>/es/tags/msbuild/</link>
+    <link>//localhost:1313/es/tags/msbuild/</link>
     <description>Recent content in MSBuild on Programando en voz alta</description>
     <generator>Hugo</generator>
     <language>es</language>
     <lastBuildDate>Mon, 22 Feb 2021 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/es/tags/msbuild/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/es/tags/msbuild/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Publicación inmediata</title>
-      <link>/es/post/immediate-publishing/</link>
+      <link>//localhost:1313/es/post/immediate-publishing/</link>
       <pubDate>Mon, 22 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>/es/post/immediate-publishing/</guid>
+      <guid>//localhost:1313/es/post/immediate-publishing/</guid>
       <description>Código fuente de apoyo disponible en GitHub&#xA;Érase una vez una solución, alojada en un proyecto de equipo en Team Foundation Services (TFS) que fue descargada por primera vez. Sabía que la solución compilaba y podía publicarse sin problemas de inmediato. Pero me llevé una sorpresa porque ambos procesos fallaron. La figura 1 muestra una estructura simplificada del proyecto.&#xA;Figura 1: &amp;ldquo;Estructura del proyecto&amp;rdquo;.&#xA;La figura 2 muestra cómo se configuró el proyecto para generar su documentación:</description>
     </item>
     <item>
       <title>Firmando ensamblados</title>
-      <link>/es/post/signing-assemblies/</link>
+      <link>//localhost:1313/es/post/signing-assemblies/</link>
       <pubDate>Mon, 08 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>/es/post/signing-assemblies/</guid>
+      <guid>//localhost:1313/es/post/signing-assemblies/</guid>
       <description>Código fuente de apoyo disponible en GitHub&#xA;.NET Core No todos los clientes requieren firmar los ensamblados de sus aplicaciones, pero cuando es necesario, la tarea no es tan fácil como cabría esperar.&#xA;En el caso de las aplicaciones .NET Core, podemos lograr esto simplemente editando el archivo del proyecto (.csproj) agregando el siguiente código:&#xA;1 2 3 &amp;lt;Target Name=&amp;#34;BuildSigning&amp;#34; AfterTargets=&amp;#34;AfterBuild&amp;#34;&amp;gt; &amp;lt;Exec Command=&amp;#34;SIGNING_COMMAND&amp;#34; /&amp;gt; &amp;lt;/Target&amp;gt; Como ejemplo, SIGNING_COMMAND podría ser:</description>
     </item>
     <item>
       <title>Desplegando paquetes NuGet</title>
-      <link>/es/post/deploying-nuget-packages/</link>
+      <link>//localhost:1313/es/post/deploying-nuget-packages/</link>
       <pubDate>Mon, 25 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>/es/post/deploying-nuget-packages/</guid>
+      <guid>//localhost:1313/es/post/deploying-nuget-packages/</guid>
       <description>Código fuente de apoyo disponible en GitHub&#xA;En una publicación anterior vimos cómo: &amp;ldquo;Crear paquetes NuGet&amp;rdquo; pero el paso de despliegue aún era un proceso manual. Intentemos automatizar esto. La figura 1 muestra cómo generar un paquete NuGet para un proyecto de .NET Core (similar al enfoque mostrado anteriormente) utilizando las propiedades del proyecto.&#xA;Figura 1: &amp;ldquo;Creando un paquete NuGet&amp;rdquo;.&#xA;Esto agrega un par de líneas al archivo del proyecto (.</description>
     </item>
     <item>
       <title>Creando paquetes NuGet</title>
-      <link>/es/post/creando-paquetes-nuget/</link>
+      <link>//localhost:1313/es/post/creando-paquetes-nuget/</link>
       <pubDate>Mon, 18 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>/es/post/creando-paquetes-nuget/</guid>
+      <guid>//localhost:1313/es/post/creando-paquetes-nuget/</guid>
       <description>Últimamente he estado involucrado en la creación de varios paquetes NuGet útiles para algunos portales que se están siendo desarrollando. Quiero compartir mis conocimientos en este tema.&#xA;Si estuviéramos desarrollando bibliotecas para .NET Core o .NET Standard, la vida sería fácil, como muestra La figura 1 a La figura 8.&#xA;Figura 1: &amp;ldquo;Creación de una nueva biblioteca de .NET Core&amp;rdquo;.&#xA;Figura 2: “Código predeterminado”.&#xA;Figura 3: &amp;ldquo;Resultados de la primera compilación&amp;rdquo;.</description>
     </item>
   </channel>

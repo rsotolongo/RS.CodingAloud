@@ -2,52 +2,52 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Arquitectura on Programando en voz alta</title>
-    <link>/es/tags/arquitectura/</link>
+    <link>//localhost:1313/es/tags/arquitectura/</link>
     <description>Recent content in Arquitectura on Programando en voz alta</description>
     <generator>Hugo</generator>
     <language>es</language>
     <lastBuildDate>Tue, 29 Dec 2020 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/es/tags/arquitectura/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/es/tags/arquitectura/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Algunas consideraciones de Implementación</title>
-      <link>/es/post/consideraciones-de-implementaci%C3%B3n/</link>
+      <link>//localhost:1313/es/post/consideraciones-de-implementaci%C3%B3n/</link>
       <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>/es/post/consideraciones-de-implementaci%C3%B3n/</guid>
+      <guid>//localhost:1313/es/post/consideraciones-de-implementaci%C3%B3n/</guid>
       <description>Creemos que es necesario comenzar este artículo sugiriendo la introducción de tres técnicas que, si bien no son nuevas, sí constituyen buenas prácticas dentro del desarrollo organizado de software.&#xA;El acoplamiento de módulos, la compilación, la producción de ejecutables, la generación de reportes y la creación y restauración de copias de seguridad en la producción de sistemas informáticos constituyen tareas perfectamente automatizables. Las ventajas que puede traer el uso de esta técnica están estrechamente relacionadas con el tiempo total de desarrollo de los sistemas informáticos.</description>
     </item>
     <item>
       <title>Algunas consideraciones de Diseño</title>
-      <link>/es/post/consideraciones-de-dise%C3%B1o/</link>
+      <link>//localhost:1313/es/post/consideraciones-de-dise%C3%B1o/</link>
       <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>/es/post/consideraciones-de-dise%C3%B1o/</guid>
+      <guid>//localhost:1313/es/post/consideraciones-de-dise%C3%B1o/</guid>
       <description>Dentro de las etapas en que se divide el ciclo de vida del desarrollo de software, el Diseño es considerada como la más importante. Se ha calculado que puede llegar a ocupar hasta un treinta y cinco por ciento del total de tiempo. Es por ello que abordaremos el tema para dar algunas consideraciones generales que siempre son válidas a tener en cuenta, sea cual sea el tipo de aplicación a desarrollar.</description>
     </item>
     <item>
       <title>La delgada línea entre reescribir y reutilizar código</title>
-      <link>/es/post/reescribir-%C3%B3-reusar/</link>
+      <link>//localhost:1313/es/post/reescribir-%C3%B3-reusar/</link>
       <pubDate>Fri, 18 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>/es/post/reescribir-%C3%B3-reusar/</guid>
+      <guid>//localhost:1313/es/post/reescribir-%C3%B3-reusar/</guid>
       <description>Hay veces que no nos damos cuenta de la existencia de delgadas líneas que existen entre cosas. Por otra parte, no sé por qué tenemos esa desconfianza en lo que otro hace. La reticencia al cambio es algo siempre presente en toda persona y es un mal muy difícil de arraigar, hay que ser un experto para lograr que se entiendan los cambios.&#xA;Serán por estas razones por las que nosotros los profesionales de la computación cada vez que tenemos que desarrollar una aplicación pensamos seriamente codificarla desde cero, incluso a veces lo hacemos.</description>
     </item>
     <item>
       <title>El futuro del Ensamblador</title>
-      <link>/es/post/futuro-del-ensamblador/</link>
+      <link>//localhost:1313/es/post/futuro-del-ensamblador/</link>
       <pubDate>Thu, 17 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>/es/post/futuro-del-ensamblador/</guid>
+      <guid>//localhost:1313/es/post/futuro-del-ensamblador/</guid>
       <description>Si difícil fue en su tiempo programar en lenguaje de máquina, difícil fue también hacerlo en ensamblador, aunque todavía haya personas que no lo quieran reconocer. El lenguaje ensamblador constituyó un paso de adelanto indudable sobre su predecesor, pero no estaba extinto de problemas.&#xA;Poco a poco fue tomando auge, pero a la vez fueron surgiendo nuevos lenguajes que se le superponían y a la vez acomodaban al programador. Esto no es más que parte de la lógica de la evolución de la programación.</description>
     </item>
     <item>
       <title>Objetos ‘duros’ y ‘blandos’</title>
-      <link>/es/post/objetos-duros-objetos-blandos/</link>
+      <link>//localhost:1313/es/post/objetos-duros-objetos-blandos/</link>
       <pubDate>Tue, 08 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>/es/post/objetos-duros-objetos-blandos/</guid>
+      <guid>//localhost:1313/es/post/objetos-duros-objetos-blandos/</guid>
       <description>Hace unos días cuando les aclaraba unas dudas a unos estudiantes hice alusión a dos tipos de objetos tal vez no muy &amp;ldquo;difundidos&amp;rdquo; (al menos por la terminología): &amp;ldquo;objetos duros&amp;rdquo; y &amp;ldquo;objetos blandos&amp;rdquo;. Unos minutos después se me acercó un profesor muy estimado por mí a hacerme la pregunta de qué significaba en realidad aquello de &amp;ldquo;objetos duros&amp;rdquo; y &amp;ldquo;objetos blandos&amp;rdquo; y me aconsejó (en un marcado tono jodedor) que me cuidara de la dureza de los mismos no fuera a ser que alguno se escapara de la computadora y me golpeara.</description>
     </item>
     <item>
       <title>Encapsulamiento vs. Código Abierto</title>
-      <link>/es/post/encapsulamiento-vs-c%C3%B3digo-abierto/</link>
+      <link>//localhost:1313/es/post/encapsulamiento-vs-c%C3%B3digo-abierto/</link>
       <pubDate>Mon, 07 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>/es/post/encapsulamiento-vs-c%C3%B3digo-abierto/</guid>
+      <guid>//localhost:1313/es/post/encapsulamiento-vs-c%C3%B3digo-abierto/</guid>
       <description>No es de un partido de béisbol ni de una pelea de boxeo de lo que se trata este artículo sino de una duda que quisiera compartir con ustedes. Ante todo, quiero aclarar que no tengo nada en contra del Código Abierto (OS del inglés Open Source) a pesar de ser un fiel defensor de los productos Microsoft.&#xA;Precisamente fue Bill Gates el que en un comunicado a la comunidad de usuarios y desarrolladores de software lanza un llamado a la reflexión sobre la &amp;ldquo;piratería&amp;rdquo; iniciando así el fenómeno de licenciamiento de software.</description>
     </item>
   </channel>

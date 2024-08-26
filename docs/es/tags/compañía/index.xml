@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Compañía on Programando en voz alta</title>
-    <link>/es/tags/compa%C3%B1%C3%ADa/</link>
+    <link>//localhost:1313/es/tags/compa%C3%B1%C3%ADa/</link>
     <description>Recent content in Compañía on Programando en voz alta</description>
     <generator>Hugo</generator>
     <language>es</language>
     <lastBuildDate>Mon, 14 Dec 2020 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/es/tags/compa%C3%B1%C3%ADa/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/es/tags/compa%C3%B1%C3%ADa/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Borland Co.</title>
-      <link>/es/post/borland/</link>
+      <link>//localhost:1313/es/post/borland/</link>
       <pubDate>Mon, 14 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>/es/post/borland/</guid>
+      <guid>//localhost:1313/es/post/borland/</guid>
       <description>Es increíble cómo las malas estrategias de negocio llevan a convertir a una empresa líder mundial en herramientas de desarrollo en una empresa de retaguardia tecnológica. Específicamente me refiero a Borland Company.&#xA;Borland surgió allá por los lejanos años 80 como desarrolladora de los mejores compiladores del lenguaje Pascal y luego de sus ambientes de desarrollo Turbo Pascal (Microsoft en su momento lanzó en Microsoft Pascal que fue todo un fracaso).</description>
     </item>
   </channel>
