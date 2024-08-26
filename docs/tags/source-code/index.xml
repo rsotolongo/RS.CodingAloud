@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Source Code on Coding Aloud</title>
-    <link>//localhost:1313/tags/source-code/</link>
+    <link>/tags/source-code/</link>
     <description>Recent content in Source Code on Coding Aloud</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Mon, 04 Jan 2021 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/tags/source-code/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/source-code/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Coding style using StyleCop</title>
-      <link>//localhost:1313/post/stylecop-coding-style/</link>
+      <link>/post/stylecop-coding-style/</link>
       <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/post/stylecop-coding-style/</guid>
+      <guid>/post/stylecop-coding-style/</guid>
       <description>A colleague ask me to share my experience coding with ReSharper and once he heard that I’m not use ReSharper he was even more curious about how I write source codes. Who knows me knows I love NuGet packages and be updated constantly, that’s why I found a very useful package that I install in all my projects as soon I start it.&#xA;StyleCop.MSBuild&#xA;StyleCop used to be a standalone application with integration with Visual Studio but that changed a while ago.</description>
     </item>
   </channel>

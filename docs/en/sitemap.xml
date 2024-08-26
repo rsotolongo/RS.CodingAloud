@@ -1,218 +1,218 @@
-<?xml-stylesheet type="text/xsl" href="//localhost:1313/sitemap.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>//localhost:1313/post/asynchronous-commands/</loc>
+    <loc>/post/asynchronous-commands/</loc>
     <lastmod>2021-03-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>//localhost:1313/categories/</loc>
+    <loc>/categories/</loc>
     <lastmod>2021-03-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>//localhost:1313/</loc>
+    <loc>/</loc>
     <lastmod>2021-03-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>//localhost:1313/categories/development/</loc>
+    <loc>/categories/development/</loc>
     <lastmod>2021-03-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>//localhost:1313/tags/parallelism/</loc>
+    <loc>/tags/parallelism/</loc>
     <lastmod>2021-03-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>//localhost:1313/post/</loc>
+    <loc>/post/</loc>
     <lastmod>2021-03-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>//localhost:1313/tags/</loc>
+    <loc>/tags/</loc>
     <lastmod>2021-03-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>//localhost:1313/tags/wpf/</loc>
+    <loc>/tags/wpf/</loc>
     <lastmod>2021-03-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>//localhost:1313/post/immediate-publishing/</loc>
+    <loc>/post/immediate-publishing/</loc>
     <lastmod>2021-02-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>//localhost:1313/tags/msbuild/</loc>
+    <loc>/tags/msbuild/</loc>
     <lastmod>2021-02-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>//localhost:1313/tags/visual-studio/</loc>
+    <loc>/tags/visual-studio/</loc>
     <lastmod>2021-02-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>//localhost:1313/tags/api/</loc>
+    <loc>/tags/api/</loc>
     <lastmod>2021-02-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>//localhost:1313/post/generating-swagger-openapi-clients/</loc>
+    <loc>/post/generating-swagger-openapi-clients/</loc>
     <lastmod>2021-02-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>//localhost:1313/tags/openapi/</loc>
+    <loc>/tags/openapi/</loc>
     <lastmod>2021-02-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>//localhost:1313/tags/swagger/</loc>
+    <loc>/tags/swagger/</loc>
     <lastmod>2021-02-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>//localhost:1313/tags/security/</loc>
+    <loc>/tags/security/</loc>
     <lastmod>2021-02-08T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>//localhost:1313/post/signing-assemblies/</loc>
+    <loc>/post/signing-assemblies/</loc>
     <lastmod>2021-02-08T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>//localhost:1313/post/generating-signature-certificates/</loc>
+    <loc>/post/generating-signature-certificates/</loc>
     <lastmod>2021-02-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>//localhost:1313/tags/openssl/</loc>
+    <loc>/tags/openssl/</loc>
     <lastmod>2021-02-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>//localhost:1313/post/deploying-nuget-packages/</loc>
+    <loc>/post/deploying-nuget-packages/</loc>
     <lastmod>2021-01-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>//localhost:1313/tags/nuget/</loc>
+    <loc>/tags/nuget/</loc>
     <lastmod>2021-01-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>//localhost:1313/post/creating-nuget-packages/</loc>
+    <loc>/post/creating-nuget-packages/</loc>
     <lastmod>2021-01-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>//localhost:1313/post/using-octopus/</loc>
+    <loc>/post/using-octopus/</loc>
     <lastmod>2021-01-11T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>//localhost:1313/tags/octopus/</loc>
+    <loc>/tags/octopus/</loc>
     <lastmod>2021-01-11T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>//localhost:1313/tags/code-analysis/</loc>
+    <loc>/tags/code-analysis/</loc>
     <lastmod>2021-01-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>//localhost:1313/post/stylecop-coding-style/</loc>
+    <loc>/post/stylecop-coding-style/</loc>
     <lastmod>2021-01-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>//localhost:1313/tags/resharper/</loc>
+    <loc>/tags/resharper/</loc>
     <lastmod>2021-01-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>//localhost:1313/tags/source-code/</loc>
+    <loc>/tags/source-code/</loc>
     <lastmod>2021-01-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>//localhost:1313/tags/stylecop/</loc>
+    <loc>/tags/stylecop/</loc>
     <lastmod>2021-01-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>//localhost:1313/categories/general/</loc>
+    <loc>/categories/general/</loc>
     <lastmod>2021-01-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>//localhost:1313/post/welcome/</loc>
+    <loc>/post/welcome/</loc>
     <lastmod>2021-01-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

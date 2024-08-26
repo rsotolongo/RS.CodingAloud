@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>WPF on Programando en voz alta</title>
-    <link>//localhost:1313/es/tags/wpf/</link>
+    <link>/es/tags/wpf/</link>
     <description>Recent content in WPF on Programando en voz alta</description>
     <generator>Hugo</generator>
     <language>es</language>
     <lastBuildDate>Mon, 15 Mar 2021 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/es/tags/wpf/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/es/tags/wpf/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Comandos asíncronos</title>
-      <link>//localhost:1313/es/post/asynchronous-commands/</link>
+      <link>/es/post/asynchronous-commands/</link>
       <pubDate>Mon, 15 Mar 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/post/asynchronous-commands/</guid>
+      <guid>/es/post/asynchronous-commands/</guid>
       <description>Código fuente de apoyo disponible en GitHub&#xA;Recientemente tuve que implementar una aplicación simple con Windows Presentation Framework (WPF) usando el patrón Model-View-ViewModel (MVVM). Me sorprendí cuando noté que no había una solución simple lista para usar para enlazar comandos asíncronos, así que decidí crear mis implementaciones para ellos.&#xA;También quiero ser genérico, así que comencé a definir la interfaz más general que hereda de ICommand (incluida en el espacio de nombres: &amp;ldquo;System.</description>
     </item>
   </channel>

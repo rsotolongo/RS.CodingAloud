@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>MSBuild on Coding Aloud</title>
-    <link>//localhost:1313/tags/msbuild/</link>
+    <link>/tags/msbuild/</link>
     <description>Recent content in MSBuild on Coding Aloud</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Mon, 22 Feb 2021 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/tags/msbuild/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/msbuild/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Immediate publishing</title>
-      <link>//localhost:1313/post/immediate-publishing/</link>
+      <link>/post/immediate-publishing/</link>
       <pubDate>Mon, 22 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/post/immediate-publishing/</guid>
+      <guid>/post/immediate-publishing/</guid>
       <description>Source code of support available at GitHub&#xA;Once upon a time, a solution hosted in Team Foundation Services (TFS) team project that I downloaded for the first time. I knew that solution build and could be published seamlessly right away. But I got a surprise because both processes failed. Figure 1 shows a simplified project structure.&#xA;Figure 1: &amp;ldquo;Project structure&amp;rdquo;.&#xA;Figure 2 shows how the project was configured to generate its documentation:</description>
     </item>
     <item>
       <title>Signing assemblies</title>
-      <link>//localhost:1313/post/signing-assemblies/</link>
+      <link>/post/signing-assemblies/</link>
       <pubDate>Mon, 08 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/post/signing-assemblies/</guid>
+      <guid>/post/signing-assemblies/</guid>
       <description>Source code of support available at GitHub&#xA;.NET Core Not all clients require to sign the assemblies of their applications but when its required, the task is not so easy as you can expect.&#xA;In the case of .NET Core applications, we can achieve this just editing the project file (.csproj) adding the following code:&#xA;1 2 3 &amp;lt;Target Name=&amp;#34;BuildSigning&amp;#34; AfterTargets=&amp;#34;AfterBuild&amp;#34;&amp;gt; &amp;lt;Exec Command=&amp;#34;SIGNING_COMMAND&amp;#34; /&amp;gt; &amp;lt;/Target&amp;gt; As example SIGNING_COMMAND could be:</description>
     </item>
     <item>
       <title>Deploying NuGet packages</title>
-      <link>//localhost:1313/post/deploying-nuget-packages/</link>
+      <link>/post/deploying-nuget-packages/</link>
       <pubDate>Mon, 25 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/post/deploying-nuget-packages/</guid>
+      <guid>/post/deploying-nuget-packages/</guid>
       <description>Source code of support available at GitHub&#xA;I a previous post we saw how to: &amp;ldquo;Create NuGet packages&amp;rdquo; but the deployment step was still a manual process. Let&amp;rsquo;s try to automatize this. Figure 1 shows how to generate NuGet package for a .NET Core project (similar to the approach previously shown) using the project&amp;rsquo;s properties.&#xA;Figure 1: &amp;ldquo;Creating NuGet package&amp;rdquo;.&#xA;This adds a couple of lines into the project file (.</description>
     </item>
     <item>
       <title>Creating NuGet packages</title>
-      <link>//localhost:1313/post/creating-nuget-packages/</link>
+      <link>/post/creating-nuget-packages/</link>
       <pubDate>Mon, 18 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/post/creating-nuget-packages/</guid>
+      <guid>/post/creating-nuget-packages/</guid>
       <description>Lately I have been involved in the creation of several NuGet packages useful for some portals being developed. I want to share my knowledge in this topic.&#xA;If we were developing libraries for .NET Core or .NET Standard life would be easy as figure 1 to figure 8 shows.&#xA;Figure 1: &amp;ldquo;Creating a new .NET Core library&amp;rdquo;.&#xA;Figure 2: &amp;ldquo;Default code&amp;rdquo;.&#xA;Figure 3: &amp;ldquo;First build results&amp;rdquo;.&#xA;Figure 4: &amp;ldquo;Project properties&amp;rdquo;.</description>
     </item>
   </channel>

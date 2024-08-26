@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>NuGet on Coding Aloud</title>
-    <link>//localhost:1313/tags/nuget/</link>
+    <link>/tags/nuget/</link>
     <description>Recent content in NuGet on Coding Aloud</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Mon, 25 Jan 2021 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/tags/nuget/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/nuget/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Deploying NuGet packages</title>
-      <link>//localhost:1313/post/deploying-nuget-packages/</link>
+      <link>/post/deploying-nuget-packages/</link>
       <pubDate>Mon, 25 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/post/deploying-nuget-packages/</guid>
+      <guid>/post/deploying-nuget-packages/</guid>
       <description>Source code of support available at GitHub&#xA;I a previous post we saw how to: &amp;ldquo;Create NuGet packages&amp;rdquo; but the deployment step was still a manual process. Let&amp;rsquo;s try to automatize this. Figure 1 shows how to generate NuGet package for a .NET Core project (similar to the approach previously shown) using the project&amp;rsquo;s properties.&#xA;Figure 1: &amp;ldquo;Creating NuGet package&amp;rdquo;.&#xA;This adds a couple of lines into the project file (.</description>
     </item>
     <item>
       <title>Creating NuGet packages</title>
-      <link>//localhost:1313/post/creating-nuget-packages/</link>
+      <link>/post/creating-nuget-packages/</link>
       <pubDate>Mon, 18 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/post/creating-nuget-packages/</guid>
+      <guid>/post/creating-nuget-packages/</guid>
       <description>Lately I have been involved in the creation of several NuGet packages useful for some portals being developed. I want to share my knowledge in this topic.&#xA;If we were developing libraries for .NET Core or .NET Standard life would be easy as figure 1 to figure 8 shows.&#xA;Figure 1: &amp;ldquo;Creating a new .NET Core library&amp;rdquo;.&#xA;Figure 2: &amp;ldquo;Default code&amp;rdquo;.&#xA;Figure 3: &amp;ldquo;First build results&amp;rdquo;.&#xA;Figure 4: &amp;ldquo;Project properties&amp;rdquo;.</description>
     </item>
   </channel>

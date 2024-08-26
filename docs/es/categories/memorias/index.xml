@@ -2,150 +2,150 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Memorias on Programando en voz alta</title>
-    <link>//localhost:1313/es/categories/memorias/</link>
+    <link>/es/categories/memorias/</link>
     <description>Recent content in Memorias on Programando en voz alta</description>
     <generator>Hugo</generator>
     <language>es</language>
     <lastBuildDate>Thu, 31 Dec 2020 23:59:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/es/categories/memorias/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/es/categories/memorias/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Memorias</title>
-      <link>//localhost:1313/es/post/memorias/</link>
+      <link>/es/post/memorias/</link>
       <pubDate>Thu, 31 Dec 2020 23:59:00 +0000</pubDate>
-      <guid>//localhost:1313/es/post/memorias/</guid>
+      <guid>/es/post/memorias/</guid>
       <description>Esta primera entrada es para listar todos los artículos previamente publicados en un antiguo blog que inicié en el 2006 cuando era profesor de la Universidad de Ciego de Ávila. Volviendo a leerlos, noto mucha ingenuidad, e imprecisiones pero quiero recordar que en aquel entonces mi acceso a Internet era muy limitado y mi experiencia profesional apenas comenzaba.&#xA;Creo que hay muchas cosas que siguen siendo válidas hoy en día y pueden servir de ayuda todavía.</description>
     </item>
     <item>
       <title>Recuperar XML desde Delphi</title>
-      <link>//localhost:1313/es/post/recuperaci%C3%B3n-de-xml/</link>
+      <link>/es/post/recuperaci%C3%B3n-de-xml/</link>
       <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/post/recuperaci%C3%B3n-de-xml/</guid>
+      <guid>/es/post/recuperaci%C3%B3n-de-xml/</guid>
       <description>En un artículo anterior vimos una solución a la generación de XML (Lenguaje de Marcas Extendido, siglas en inglés) desde el ambiente de desarrollo Borland Delphi; en este veremos como podemos capturar y utilizar dicho XML para otros usos.&#xA;Para ello nos remitiremos a la misma agencia noticiosa deportiva en la cual nos basamos anteriormente, donde se pretendía cubrir las diferentes competiciones de un evento enviando las noticias y resultados a través de una aplicación diseñada por sus programadores.</description>
     </item>
     <item>
       <title>Generar XML desde Delphi</title>
-      <link>//localhost:1313/es/post/generaci%C3%B3n-de-xml/</link>
+      <link>/es/post/generaci%C3%B3n-de-xml/</link>
       <pubDate>Wed, 30 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/post/generaci%C3%B3n-de-xml/</guid>
+      <guid>/es/post/generaci%C3%B3n-de-xml/</guid>
       <description>En números anteriores de esta revista salió un artículo acerca de cómo generar XML (Lenguaje de Marcas Extendido –siglas en inglés) proveniente de una forma de HTML (Lenguaje de Marcado de Hipertexto –siglas en inglés) desde ASP (Active Server Pages) con la ayuda del objeto del sistema de ficheros (FileSystemObject). En este artículo veremos cómo hacerlo desde Delphi aprovechando algunas de las incontables ventajas de este ambiente de desarrollo.&#xA;Recordemos primeramente que XML es un subconjunto de SGML (Lenguaje de Marcado Generalizado Estándar) y más que un simple lenguaje de marcas como su nombre sugiere es un meta-lenguaje que nos permite definir lenguajes de marcado adecuados a usos determinados y que está llamado a ser el nuevo ASCII debido a su fácil confección, transmisión y comprensión.</description>
     </item>
     <item>
       <title>Algunas consideraciones de Implementación</title>
-      <link>//localhost:1313/es/post/consideraciones-de-implementaci%C3%B3n/</link>
+      <link>/es/post/consideraciones-de-implementaci%C3%B3n/</link>
       <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/post/consideraciones-de-implementaci%C3%B3n/</guid>
+      <guid>/es/post/consideraciones-de-implementaci%C3%B3n/</guid>
       <description>Creemos que es necesario comenzar este artículo sugiriendo la introducción de tres técnicas que, si bien no son nuevas, sí constituyen buenas prácticas dentro del desarrollo organizado de software.&#xA;El acoplamiento de módulos, la compilación, la producción de ejecutables, la generación de reportes y la creación y restauración de copias de seguridad en la producción de sistemas informáticos constituyen tareas perfectamente automatizables. Las ventajas que puede traer el uso de esta técnica están estrechamente relacionadas con el tiempo total de desarrollo de los sistemas informáticos.</description>
     </item>
     <item>
       <title>Algunas consideraciones de Diseño</title>
-      <link>//localhost:1313/es/post/consideraciones-de-dise%C3%B1o/</link>
+      <link>/es/post/consideraciones-de-dise%C3%B1o/</link>
       <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/post/consideraciones-de-dise%C3%B1o/</guid>
+      <guid>/es/post/consideraciones-de-dise%C3%B1o/</guid>
       <description>Dentro de las etapas en que se divide el ciclo de vida del desarrollo de software, el Diseño es considerada como la más importante. Se ha calculado que puede llegar a ocupar hasta un treinta y cinco por ciento del total de tiempo. Es por ello que abordaremos el tema para dar algunas consideraciones generales que siempre son válidas a tener en cuenta, sea cual sea el tipo de aplicación a desarrollar.</description>
     </item>
     <item>
       <title>Gobierno electrónico</title>
-      <link>//localhost:1313/es/post/gobierno-electr%C3%B3nico/</link>
+      <link>/es/post/gobierno-electr%C3%B3nico/</link>
       <pubDate>Fri, 25 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/post/gobierno-electr%C3%B3nico/</guid>
+      <guid>/es/post/gobierno-electr%C3%B3nico/</guid>
       <description>Con la decisión de migrar todos sus sistemas y aplicaciones a Software Libre del gobierno alemán, hace ya uno tres años, estalló este fenómeno entre los diferentes países, llegando incluso a instancias particulares de ellos. Ejemplo de ello es España donde ya algunas de sus autonomías han tomado la misma decisión, otras no. Lo cierto es que hay protestas por todo el mundo tanto de detractores como de los que piensan igual.</description>
     </item>
     <item>
       <title>¿Se puede confiar ciegamente en Internet?</title>
-      <link>//localhost:1313/es/post/confianza-en-internet/</link>
+      <link>/es/post/confianza-en-internet/</link>
       <pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/post/confianza-en-internet/</guid>
+      <guid>/es/post/confianza-en-internet/</guid>
       <description>Internet se ha convertido poco a poco en la herramienta más útil del quehacer diario de las personas para un sin número de tareas que van desde la investigación científica hasta las compras y el ocio. Es por ello que constituye una fuente invaluable de conocimientos, pero ojo, no todo lo que brilla es oro.&#xA;En varias ocasiones he leído como se descubren cosas insólitas que suceden en Internet, como la publicación de cómo confeccionar artefactos explosivos o de cómo se ponen de acuerdo miembros de sectas para suicidarse masivamente, etc.</description>
     </item>
     <item>
       <title>ISFUROS 2006</title>
-      <link>//localhost:1313/es/post/isfuros-2006/</link>
+      <link>/es/post/isfuros-2006/</link>
       <pubDate>Wed, 23 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/post/isfuros-2006/</guid>
+      <guid>/es/post/isfuros-2006/</guid>
       <description>He estado tan ocupado en tareas aledañas que poco a poco fue pasando el tiempo y ni cuenta me di de que llevaba meses sin escribir nada, luego caí en un vacío profesional que no me incitaba a redactar nada hasta hoy mismo que luego de participar en el ISFUROS me llamé yo mismo a reflexionar y no dejar pasar inadvertido el evento.&#xA;El International International Symposium on Fuzzy and Rough Sets (ISFUROS) fue un evento que se desarrolló en la UCLV del 4 al 6 de Diciembre del 2006.</description>
     </item>
     <item>
       <title>Poniéndome al día</title>
-      <link>//localhost:1313/es/post/poni%C3%A9ndonos-al-d%C3%ADa/</link>
+      <link>/es/post/poni%C3%A9ndonos-al-d%C3%ADa/</link>
       <pubDate>Tue, 22 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/post/poni%C3%A9ndonos-al-d%C3%ADa/</guid>
+      <guid>/es/post/poni%C3%A9ndonos-al-d%C3%ADa/</guid>
       <description>No voy a ponerme a relatar las vicisitudes que llevaron a que prácticamente no tenga Internet a mi disposición, porque sería aburrirlos en vano y al final lo más seguro es que no entenderían y todo quedará igual, así que para qué perder el tiempo entonces; aprovechémoslo en otras cuestiones más importantes.&#xA;Quise hacer esta breve introducción pues lo que quiero comentarles hoy se relaciona con este hecho precisamente. El pasado domingo día 3 de diciembre, vine a la Universidad temprano pues estaba de guardia todo el día y aprovecharía Internet para ponerme al día y confeccionar una serie de documentos atrasados que tenía.</description>
     </item>
     <item>
       <title>Amaos los unos a los otros</title>
-      <link>//localhost:1313/es/post/amaos-todos/</link>
+      <link>/es/post/amaos-todos/</link>
       <pubDate>Mon, 21 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/post/amaos-todos/</guid>
+      <guid>/es/post/amaos-todos/</guid>
       <description>Leyendo el título de este artículo pudieran pensar que se enfrentarán a un debate relacionado con la teología, pero no será así. Creo haber escrito antes algo sobre las diferencias entre profesionales de la computación y la semejanza que tienen sus discusiones con las que sostienen los creyentes con los no creyentes en Dios.&#xA;No repetiré lo que ya dije una vez, esta vez me desenvolveré en la rama de mi profesión solamente.</description>
     </item>
     <item>
       <title>La delgada línea entre reescribir y reutilizar código</title>
-      <link>//localhost:1313/es/post/reescribir-%C3%B3-reusar/</link>
+      <link>/es/post/reescribir-%C3%B3-reusar/</link>
       <pubDate>Fri, 18 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/post/reescribir-%C3%B3-reusar/</guid>
+      <guid>/es/post/reescribir-%C3%B3-reusar/</guid>
       <description>Hay veces que no nos damos cuenta de la existencia de delgadas líneas que existen entre cosas. Por otra parte, no sé por qué tenemos esa desconfianza en lo que otro hace. La reticencia al cambio es algo siempre presente en toda persona y es un mal muy difícil de arraigar, hay que ser un experto para lograr que se entiendan los cambios.&#xA;Serán por estas razones por las que nosotros los profesionales de la computación cada vez que tenemos que desarrollar una aplicación pensamos seriamente codificarla desde cero, incluso a veces lo hacemos.</description>
     </item>
     <item>
       <title>El futuro del Ensamblador</title>
-      <link>//localhost:1313/es/post/futuro-del-ensamblador/</link>
+      <link>/es/post/futuro-del-ensamblador/</link>
       <pubDate>Thu, 17 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/post/futuro-del-ensamblador/</guid>
+      <guid>/es/post/futuro-del-ensamblador/</guid>
       <description>Si difícil fue en su tiempo programar en lenguaje de máquina, difícil fue también hacerlo en ensamblador, aunque todavía haya personas que no lo quieran reconocer. El lenguaje ensamblador constituyó un paso de adelanto indudable sobre su predecesor, pero no estaba extinto de problemas.&#xA;Poco a poco fue tomando auge, pero a la vez fueron surgiendo nuevos lenguajes que se le superponían y a la vez acomodaban al programador. Esto no es más que parte de la lógica de la evolución de la programación.</description>
     </item>
     <item>
       <title>Fanatismos</title>
-      <link>//localhost:1313/es/post/fanatismos/</link>
+      <link>/es/post/fanatismos/</link>
       <pubDate>Wed, 16 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/post/fanatismos/</guid>
+      <guid>/es/post/fanatismos/</guid>
       <description>Hay que ver que el ser humano, en su vano afán de querer tener siempre la razón, hace cosas increíbles. Una de ellas es aquella manía de empecinarse con algo (dígase objetos, conceptos, teorías, personas, etc.) que le hemos llamado fanatismo.&#xA;¿Alguien podrá decir que no es fanático a nada? Creo que no, pues ¿quién no se obsesionó con su primer amor? Existen varios tipos de fanatismos, el que se profesa por los objetos materiales, la religión, los equipos deportivos, etc.</description>
     </item>
     <item>
       <title>Herramientas para los blogs</title>
-      <link>//localhost:1313/es/post/herramientas-para-blogs/</link>
+      <link>/es/post/herramientas-para-blogs/</link>
       <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/post/herramientas-para-blogs/</guid>
+      <guid>/es/post/herramientas-para-blogs/</guid>
       <description>No hay duda que la web revolucionó el mundo de la información a disposición de todos sus usuarios, pero por sus propias características tiene un gran inconveniente: sigue siendo el usuario el responsable de visitar expresamente los sitios de los que quiere nutrirse.&#xA;Cuando se visitan dos o tres sitios o se hace con poca frecuencia esto no interesa mucho, sin embargo, cuando se requiere informarse apenas se publique la información esto se convierte en un problema.</description>
     </item>
     <item>
       <title>Borland Co.</title>
-      <link>//localhost:1313/es/post/borland/</link>
+      <link>/es/post/borland/</link>
       <pubDate>Mon, 14 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/post/borland/</guid>
+      <guid>/es/post/borland/</guid>
       <description>Es increíble cómo las malas estrategias de negocio llevan a convertir a una empresa líder mundial en herramientas de desarrollo en una empresa de retaguardia tecnológica. Específicamente me refiero a Borland Company.&#xA;Borland surgió allá por los lejanos años 80 como desarrolladora de los mejores compiladores del lenguaje Pascal y luego de sus ambientes de desarrollo Turbo Pascal (Microsoft en su momento lanzó en Microsoft Pascal que fue todo un fracaso).</description>
     </item>
     <item>
       <title>Aspectos tener en cuenta a la hora de valorar el uso de Internet en la superación profesional</title>
-      <link>//localhost:1313/es/post/superaci%C3%B3n-personal/</link>
+      <link>/es/post/superaci%C3%B3n-personal/</link>
       <pubDate>Fri, 11 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/post/superaci%C3%B3n-personal/</guid>
+      <guid>/es/post/superaci%C3%B3n-personal/</guid>
       <description>Tengo pendiente una entrevista en la Televisión Avileña (TVA) en el programa Equilibrio de las 12 del día para conversar sobre Internet y superación profesional. Por eso es que no queriendo ir en blanco a esa entrevista decidí anotar los aspectos a mencionar en algún momento por su relevante importancia:&#xA;La superación profesional produce un alto grado de inserción laboral.&#xA;Internet hace suponer le eliminación de las barreras de movilidad geográfica, horarios fijos, y usar materiales de formación efectivos con bastante calidad didáctica.</description>
     </item>
     <item>
       <title>La elegancia de la programación</title>
-      <link>//localhost:1313/es/post/programaci%C3%B3n-elegante/</link>
+      <link>/es/post/programaci%C3%B3n-elegante/</link>
       <pubDate>Thu, 10 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/post/programaci%C3%B3n-elegante/</guid>
+      <guid>/es/post/programaci%C3%B3n-elegante/</guid>
       <description>Si está pensando que este artículo versa sobre un sistema para vestir o ver mejor está totalmente equivocado, veremos elegancia, pero en este caso del código escrito en un lenguaje de programación. Hay quienes piensan que eso no es necesario, que el código es obvio independientemente de su estructura. Craso error, es muy, pero muy importante escribir código de una forma estructurada.&#xA;Es verdad que existen herramientas formateadoras de códigos llamadas &amp;ldquo;Identadores&amp;rdquo; como DelForEx para Delphi que una vez escrito el código en la más absoluta oscuridad estructural posible y con apenas presionar una combinación de teclas es capaz de estructurarlo y quedar como un &amp;ldquo;pincel&amp;rdquo; (con opciones de personalizar todos los parámetros posibles); pero esta no es la cuestión, no se equivocó el que dijo que el hábito hace al monje.</description>
     </item>
     <item>
       <title>No basta con solo construir</title>
-      <link>//localhost:1313/es/post/solo-desplegar-no-basta/</link>
+      <link>/es/post/solo-desplegar-no-basta/</link>
       <pubDate>Wed, 09 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/post/solo-desplegar-no-basta/</guid>
+      <guid>/es/post/solo-desplegar-no-basta/</guid>
       <description>La experiencia nos ha mostrado que la creación de un sitio web debe partir de una planeación, seguido por una construcción del sitio y posteriormente ejecutar un proceso de medición para garantizar que los resultados se cumplan. Sin embargo, en la práctica, tal vez por parecer muy fácil su construcción, o por la poca disponibilidad de tiempo se arranca por la construcción, obviando la planeación e impidiendo la medición.&#xA;La tecnología de Internet y en especial la tecnología web hace muy fácil la publicación de una aplicación, por lo que la planeación nos parece trivial.</description>
     </item>
     <item>
       <title>Objetos ‘duros’ y ‘blandos’</title>
-      <link>//localhost:1313/es/post/objetos-duros-objetos-blandos/</link>
+      <link>/es/post/objetos-duros-objetos-blandos/</link>
       <pubDate>Tue, 08 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/post/objetos-duros-objetos-blandos/</guid>
+      <guid>/es/post/objetos-duros-objetos-blandos/</guid>
       <description>Hace unos días cuando les aclaraba unas dudas a unos estudiantes hice alusión a dos tipos de objetos tal vez no muy &amp;ldquo;difundidos&amp;rdquo; (al menos por la terminología): &amp;ldquo;objetos duros&amp;rdquo; y &amp;ldquo;objetos blandos&amp;rdquo;. Unos minutos después se me acercó un profesor muy estimado por mí a hacerme la pregunta de qué significaba en realidad aquello de &amp;ldquo;objetos duros&amp;rdquo; y &amp;ldquo;objetos blandos&amp;rdquo; y me aconsejó (en un marcado tono jodedor) que me cuidara de la dureza de los mismos no fuera a ser que alguno se escapara de la computadora y me golpeara.</description>
     </item>
     <item>
       <title>Encapsulamiento vs. Código Abierto</title>
-      <link>//localhost:1313/es/post/encapsulamiento-vs-c%C3%B3digo-abierto/</link>
+      <link>/es/post/encapsulamiento-vs-c%C3%B3digo-abierto/</link>
       <pubDate>Mon, 07 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/es/post/encapsulamiento-vs-c%C3%B3digo-abierto/</guid>
+      <guid>/es/post/encapsulamiento-vs-c%C3%B3digo-abierto/</guid>
       <description>No es de un partido de béisbol ni de una pelea de boxeo de lo que se trata este artículo sino de una duda que quisiera compartir con ustedes. Ante todo, quiero aclarar que no tengo nada en contra del Código Abierto (OS del inglés Open Source) a pesar de ser un fiel defensor de los productos Microsoft.&#xA;Precisamente fue Bill Gates el que en un comunicado a la comunidad de usuarios y desarrolladores de software lanza un llamado a la reflexión sobre la &amp;ldquo;piratería&amp;rdquo; iniciando así el fenómeno de licenciamiento de software.</description>
     </item>
   </channel>

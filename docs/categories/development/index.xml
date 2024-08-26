@@ -2,73 +2,73 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Development on Coding Aloud</title>
-    <link>//localhost:1313/categories/development/</link>
+    <link>/categories/development/</link>
     <description>Recent content in Development on Coding Aloud</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Mon, 15 Mar 2021 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/categories/development/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/categories/development/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Asynchronous commands</title>
-      <link>//localhost:1313/post/asynchronous-commands/</link>
+      <link>/post/asynchronous-commands/</link>
       <pubDate>Mon, 15 Mar 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/post/asynchronous-commands/</guid>
+      <guid>/post/asynchronous-commands/</guid>
       <description>Source code of support available at GitHub&#xA;Recently I had to implement a simple application with Windows Presentation Framework (WPF) using Model-View-ViewModel (MVVM) pattern. I got surprised when I noticed that there was not a simple solution out-of-the-box for bind asynchronous commands, so I decided to create my implementations for them.&#xA;I also want genericity, so I started defining the most general interface that inheritance from ICommand (included in namespace: &amp;ldquo;System.</description>
     </item>
     <item>
       <title>Immediate publishing</title>
-      <link>//localhost:1313/post/immediate-publishing/</link>
+      <link>/post/immediate-publishing/</link>
       <pubDate>Mon, 22 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/post/immediate-publishing/</guid>
+      <guid>/post/immediate-publishing/</guid>
       <description>Source code of support available at GitHub&#xA;Once upon a time, a solution hosted in Team Foundation Services (TFS) team project that I downloaded for the first time. I knew that solution build and could be published seamlessly right away. But I got a surprise because both processes failed. Figure 1 shows a simplified project structure.&#xA;Figure 1: &amp;ldquo;Project structure&amp;rdquo;.&#xA;Figure 2 shows how the project was configured to generate its documentation:</description>
     </item>
     <item>
       <title>Generating Swagger/OpenAPI clients</title>
-      <link>//localhost:1313/post/generating-swagger-openapi-clients/</link>
+      <link>/post/generating-swagger-openapi-clients/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/post/generating-swagger-openapi-clients/</guid>
+      <guid>/post/generating-swagger-openapi-clients/</guid>
       <description>Source code of support available at GitHub&#xA;Recently I was developing a .NET Core web application that needs to consume an API developed few years ago using ASP.NET WebAPI. Fortunately, that API have Swagger integrated, so I thought I can save time do not creating manually the instruments required to API calls (DTOs, client, etc.) instead using the &amp;ldquo;Connected Services&amp;rdquo; feature of Visual Studio.&#xA;I got a big surprise that inspired me to share the experience and the solution in this post.</description>
     </item>
     <item>
       <title>Signing assemblies</title>
-      <link>//localhost:1313/post/signing-assemblies/</link>
+      <link>/post/signing-assemblies/</link>
       <pubDate>Mon, 08 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/post/signing-assemblies/</guid>
+      <guid>/post/signing-assemblies/</guid>
       <description>Source code of support available at GitHub&#xA;.NET Core Not all clients require to sign the assemblies of their applications but when its required, the task is not so easy as you can expect.&#xA;In the case of .NET Core applications, we can achieve this just editing the project file (.csproj) adding the following code:&#xA;1 2 3 &amp;lt;Target Name=&amp;#34;BuildSigning&amp;#34; AfterTargets=&amp;#34;AfterBuild&amp;#34;&amp;gt; &amp;lt;Exec Command=&amp;#34;SIGNING_COMMAND&amp;#34; /&amp;gt; &amp;lt;/Target&amp;gt; As example SIGNING_COMMAND could be:</description>
     </item>
     <item>
       <title>Generating signature certificates</title>
-      <link>//localhost:1313/post/generating-signature-certificates/</link>
+      <link>/post/generating-signature-certificates/</link>
       <pubDate>Mon, 01 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/post/generating-signature-certificates/</guid>
+      <guid>/post/generating-signature-certificates/</guid>
       <description>Source code of support available at GitHub&#xA;Sometimes assemblies (executables and libraries) are required to be sign and I don&amp;rsquo;t have a certificate available for test purpose. In this post I pretend to show how to generate a certificate to sign assemblies.&#xA;First, we need to install OpenSSL that we can achive following the steps specified in the next link:&#xA;Installing OpenSSL on Windows 10 and updating PATH&#xA;Second, let&amp;rsquo;s create a batch script file called: &amp;ldquo;generateCertificate.</description>
     </item>
     <item>
       <title>Deploying NuGet packages</title>
-      <link>//localhost:1313/post/deploying-nuget-packages/</link>
+      <link>/post/deploying-nuget-packages/</link>
       <pubDate>Mon, 25 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/post/deploying-nuget-packages/</guid>
+      <guid>/post/deploying-nuget-packages/</guid>
       <description>Source code of support available at GitHub&#xA;I a previous post we saw how to: &amp;ldquo;Create NuGet packages&amp;rdquo; but the deployment step was still a manual process. Let&amp;rsquo;s try to automatize this. Figure 1 shows how to generate NuGet package for a .NET Core project (similar to the approach previously shown) using the project&amp;rsquo;s properties.&#xA;Figure 1: &amp;ldquo;Creating NuGet package&amp;rdquo;.&#xA;This adds a couple of lines into the project file (.</description>
     </item>
     <item>
       <title>Creating NuGet packages</title>
-      <link>//localhost:1313/post/creating-nuget-packages/</link>
+      <link>/post/creating-nuget-packages/</link>
       <pubDate>Mon, 18 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/post/creating-nuget-packages/</guid>
+      <guid>/post/creating-nuget-packages/</guid>
       <description>Lately I have been involved in the creation of several NuGet packages useful for some portals being developed. I want to share my knowledge in this topic.&#xA;If we were developing libraries for .NET Core or .NET Standard life would be easy as figure 1 to figure 8 shows.&#xA;Figure 1: &amp;ldquo;Creating a new .NET Core library&amp;rdquo;.&#xA;Figure 2: &amp;ldquo;Default code&amp;rdquo;.&#xA;Figure 3: &amp;ldquo;First build results&amp;rdquo;.&#xA;Figure 4: &amp;ldquo;Project properties&amp;rdquo;.</description>
     </item>
     <item>
       <title>Creating and deploying releases using Octopus</title>
-      <link>//localhost:1313/post/using-octopus/</link>
+      <link>/post/using-octopus/</link>
       <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/post/using-octopus/</guid>
+      <guid>/post/using-octopus/</guid>
       <description>Source code of support available at GitHub&#xA;Since while ago I wanted to share my experiences automatizing the product releases with Octopus from Visual Studio. Again, let’s do it through an example.&#xA;As it could not be otherwise, figure 1 shows the first package you should add to your project in order to create Octopus packages ready to be deployed: &amp;ldquo;OctoPack&amp;rdquo;. The latest package version available at the time of this tutorial was the &amp;ldquo;3.</description>
     </item>
     <item>
       <title>Coding style using StyleCop</title>
-      <link>//localhost:1313/post/stylecop-coding-style/</link>
+      <link>/post/stylecop-coding-style/</link>
       <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/post/stylecop-coding-style/</guid>
+      <guid>/post/stylecop-coding-style/</guid>
       <description>A colleague ask me to share my experience coding with ReSharper and once he heard that I’m not use ReSharper he was even more curious about how I write source codes. Who knows me knows I love NuGet packages and be updated constantly, that’s why I found a very useful package that I install in all my projects as soon I start it.&#xA;StyleCop.MSBuild&#xA;StyleCop used to be a standalone application with integration with Visual Studio but that changed a while ago.</description>
     </item>
   </channel>
