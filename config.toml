@@ -6,7 +6,6 @@ theme = "jane"
 publishDir = "docs"
 
 hasCJKLanguage = true     # has chinese/japanese/korean ? # 自动检测是否包含 中文\日文\韩文
-paginate = 5              # Number of articles displayed on the homepage # 首页每页显示的文章数
 rssLimit = 20             # Limit Entry Count to Rss file # 限制 Rss 文章输出数量
 disqusShortname = ""      # disqus_shortname
 googleAnalytics = "G-9N89YNW26T"      # G-XXXXXXXXXX
@@ -31,6 +30,9 @@ PygmentsOptions = "linenos=table"
 defaultContentLanguage = "en"           # Default language to use
 #[languages.en]
 #  languageCode = "en"
+
+[pagination]
+  pagerSize = 5
 
 [sitemap]                 # essential                     # 必需
   changefreq = "weekly"
