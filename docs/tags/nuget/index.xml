@@ -13,14 +13,14 @@
       <link>/post/deploying-nuget-packages/</link>
       <pubDate>Mon, 25 Jan 2021 00:00:00 +0000</pubDate>
       <guid>/post/deploying-nuget-packages/</guid>
-      <description>Source code of support available at GitHub&#xA;I a previous post we saw how to: &amp;ldquo;Create NuGet packages&amp;rdquo; but the deployment step was still a manual process. Let&amp;rsquo;s try to automatize this. Figure 1 shows how to generate NuGet package for a .NET Core project (similar to the approach previously shown) using the project&amp;rsquo;s properties.&#xA;Figure 1: &amp;ldquo;Creating NuGet package&amp;rdquo;.&#xA;This adds a couple of lines into the project file (.</description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/DeployPackages&#34;&gt;Source code of support available at GitHub&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;I a previous post we saw how to: &amp;ldquo;&lt;a href=&#34;../creating_nuget_packages&#34;&gt;Create NuGet packages&lt;/a&gt;&amp;rdquo; but the deployment step was still a manual process. Let&amp;rsquo;s try to automatize this. Figure 1 shows how to generate NuGet package for a .NET Core project (similar to the approach previously shown) using the project&amp;rsquo;s properties.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;/deploying-nuget-packages/01.png&#34; alt=&#34;Creating NuGet package&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Figure 1: &amp;ldquo;Creating NuGet package&amp;rdquo;.&lt;/p&gt;&#xA;&lt;p&gt;This adds a couple of lines into the project file (.csproj) as figure 2 shows:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Creating NuGet packages</title>
       <link>/post/creating-nuget-packages/</link>
       <pubDate>Mon, 18 Jan 2021 00:00:00 +0000</pubDate>
       <guid>/post/creating-nuget-packages/</guid>
-      <description>Lately I have been involved in the creation of several NuGet packages useful for some portals being developed. I want to share my knowledge in this topic.&#xA;If we were developing libraries for .NET Core or .NET Standard life would be easy as figure 1 to figure 8 shows.&#xA;Figure 1: &amp;ldquo;Creating a new .NET Core library&amp;rdquo;.&#xA;Figure 2: &amp;ldquo;Default code&amp;rdquo;.&#xA;Figure 3: &amp;ldquo;First build results&amp;rdquo;.&#xA;Figure 4: &amp;ldquo;Project properties&amp;rdquo;.</description>
+      <description>&lt;p&gt;Lately I have been involved in the creation of several NuGet packages useful for some portals being developed. I want to share my knowledge in this topic.&lt;/p&gt;&#xA;&lt;p&gt;If we were developing libraries for .NET Core or .NET Standard life would be easy as figure 1 to figure 8 shows.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/01.png&#34; alt=&#34;Creating a new .NET Core library&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Figure 1: &amp;ldquo;Creating a new .NET Core library&amp;rdquo;.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/02.png&#34; alt=&#34;Default code&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Figure 2: &amp;ldquo;Default code&amp;rdquo;.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/03.png&#34; alt=&#34;First build results&#34;&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -28,7 +28,8 @@
   <meta name="description" content="Código fuente de apoyo disponible en GitHub
 En una publicación anterior vimos cómo: &ldquo;Crear paquetes NuGet&rdquo; pero el paso de despliegue aún era un proceso manual. Intentemos automatizar esto. La figura 1 muestra cómo generar un paquete NuGet para un proyecto de .NET Core (similar al enfoque mostrado anteriormente) utilizando las propiedades del proyecto.
 Figura 1: &ldquo;Creando un paquete NuGet&rdquo;.
-Esto agrega un par de líneas al archivo del proyecto (." />
+Esto agrega un par de líneas al archivo del proyecto (.csproj) como muestra la figura 2:
+" />
 
   <meta name="keywords" content="Hugo, theme, jane" />
 
@@ -37,7 +38,7 @@ Esto agrega un par de líneas al archivo del proyecto (." />
 
 
 
-<meta name="generator" content="Hugo 0.133.0" />
+<meta name="generator" content="Hugo 0.144.1" />
 
 
 <link rel="canonical" href="/es/post/deploying-nuget-packages/" />
@@ -71,7 +72,7 @@ Esto agrega un par de líneas al archivo del proyecto (." />
   <meta property="og:description" content="Código fuente de apoyo disponible en GitHub
 En una publicación anterior vimos cómo: “Crear paquetes NuGet” pero el paso de despliegue aún era un proceso manual. Intentemos automatizar esto. La figura 1 muestra cómo generar un paquete NuGet para un proyecto de .NET Core (similar al enfoque mostrado anteriormente) utilizando las propiedades del proyecto.
 Figura 1: “Creando un paquete NuGet”.
-Esto agrega un par de líneas al archivo del proyecto (.">
+Esto agrega un par de líneas al archivo del proyecto (.csproj) como muestra la figura 2:">
   <meta property="og:locale" content="es">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
@@ -85,7 +86,7 @@ Esto agrega un par de líneas al archivo del proyecto (.">
   <meta itemprop="description" content="Código fuente de apoyo disponible en GitHub
 En una publicación anterior vimos cómo: “Crear paquetes NuGet” pero el paso de despliegue aún era un proceso manual. Intentemos automatizar esto. La figura 1 muestra cómo generar un paquete NuGet para un proyecto de .NET Core (similar al enfoque mostrado anteriormente) utilizando las propiedades del proyecto.
 Figura 1: “Creando un paquete NuGet”.
-Esto agrega un par de líneas al archivo del proyecto (.">
+Esto agrega un par de líneas al archivo del proyecto (.csproj) como muestra la figura 2:">
   <meta itemprop="datePublished" content="2021-01-25T00:00:00+00:00">
   <meta itemprop="dateModified" content="2021-01-25T00:00:00+00:00">
   <meta itemprop="wordCount" content="474">
@@ -95,7 +96,7 @@ Esto agrega un par de líneas al archivo del proyecto (.">
   <meta name="twitter:description" content="Código fuente de apoyo disponible en GitHub
 En una publicación anterior vimos cómo: “Crear paquetes NuGet” pero el paso de despliegue aún era un proceso manual. Intentemos automatizar esto. La figura 1 muestra cómo generar un paquete NuGet para un proyecto de .NET Core (similar al enfoque mostrado anteriormente) utilizando las propiedades del proyecto.
 Figura 1: “Creando un paquete NuGet”.
-Esto agrega un par de líneas al archivo del proyecto (.">
+Esto agrega un par de líneas al archivo del proyecto (.csproj) como muestra la figura 2:">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -438,10 +439,10 @@ Esto agrega un par de líneas al archivo del proyecto (.">
     <div class="post-content">
       <p><a href="https://github.com/rsotolongo/RS.Blog.Projects/tree/main/DeployPackages">Código fuente de apoyo disponible en GitHub</a></p>
 <p>En una publicación anterior vimos cómo: &ldquo;<a href="../create_nuget_packages">Crear paquetes NuGet</a>&rdquo; pero el paso de despliegue aún era un proceso manual. Intentemos automatizar esto. La figura 1 muestra cómo generar un paquete NuGet para un proyecto de .NET Core (similar al enfoque mostrado anteriormente) utilizando las propiedades del proyecto.</p>
-<p><img alt="Creando un paquete NuGet" src="/deploying-nuget-packages/01.png"></p>
+<p><img src="/deploying-nuget-packages/01.png" alt="Creando un paquete NuGet"></p>
 <p>Figura 1: &ldquo;Creando un paquete NuGet&rdquo;.</p>
 <p>Esto agrega un par de líneas al archivo del proyecto (.csproj) como muestra la figura 2:</p>
-<p><img alt="Propiedades del archivo de proyecto para crear el paquete NuGet" src="/deploying-nuget-packages/02.png"></p>
+<p><img src="/deploying-nuget-packages/02.png" alt="Propiedades del archivo de proyecto para crear el paquete NuGet"></p>
 <p>Figura 2: &ldquo;Propiedades del archivo de proyecto para crear el paquete NuGet&rdquo;.</p>
 <p>Mi enfoque también usa tagets de MSBuild. El primer paso es incluir el siguiente código en el archivo del proyecto (.csproj):</p>
 <div class="highlight"><div class="chroma">
@@ -510,10 +511,10 @@ Esto agrega un par de líneas al archivo del proyecto (.">
 <p>La tarea: &ldquo;DeployPackage&rdquo; (llamada desde el archivo del proyecto) se ejecutará solo si las variables: &ldquo;DeployPackage&rdquo; o &ldquo;DeployPackages&rdquo; tienen el valor: &ldquo;true&rdquo;. La variable: &ldquo;DeployPackage&rdquo; se pasa desde la llamada en el archivo del proyecto y está diseñada para desplegar solo el paquete NuGet generado para ese proyecto. Por otro lado, la variable: &ldquo;DeployPackages&rdquo; es global para este archivo y está diseñada para desplegar todos los paquetes generados en la solución (normalmente cada proyecto genera un paquete NuGet diferente). Si esta tarea cumple con la condición de ejecución, se ejecutará primero su tarea dependiente.</p>
 <p>La tarea: &ldquo;DownloadNuget&rdquo; proporciona un administrador de paquetes: &ldquo;NuGet.exe&rdquo; para no lidiar con herramientas instaladas, rutas de herramientas, diferencias en el entorno de desarrollo entre los miembros del equipo, etc. Una vez finalizada esta tarea, vuelve a la ejecución de la tarea: &ldquo;DeployPackage&rdquo;.</p>
 <p>Finalmente, se llama a la herramienta del administrador de paquetes con todos los parámetros requeridos. La figura 3 muestra un ejemplo de ejecución.</p>
-<p><img alt="Resultado del despliegue" src="/deploying-nuget-packages/03.png"></p>
+<p><img src="/deploying-nuget-packages/03.png" alt="Resultado del despliegue"></p>
 <p>Figura 3: &ldquo;Resultado del despliegue&rdquo;.</p>
 <p>la figura 4 muestra el paquete desplegado.</p>
-<p><img alt="Paquete desplegado" src="/deploying-nuget-packages/04.png"></p>
+<p><img src="/deploying-nuget-packages/04.png" alt="Paquete desplegado"></p>
 <p>Figura 4: &ldquo;Paquete desplegado&rdquo;.</p>
 <p>Espero que estas siemples instrucciones le ayuden a automatizar los despliegues de paquetes NuGet.</p>
 <p><a href="https://github.com/rsotolongo/RS.Blog.Projects/tree/main/DeployPackages">Código fuente de apoyo disponible en GitHub</a></p>
@@ -674,7 +675,7 @@ Esto agrega un par de líneas al archivo del proyecto (.">
     &copy;
     
       2020 -
-    2024</span>
+    2025</span>
 
   
   

@@ -29,7 +29,8 @@
 A veces, los ensamblados (ejecutables y bibliotecas) deben estar firmados y no tenemos un certificado disponible con fines de prueba. En este post pretendo mostrar cómo generar un certificado para firmar ensamblados.
 Primero, necesitamos instalar OpenSSL que podemos lograr siguiendo los pasos que se especifican en el siguiente enlace:
 Instalación de OpenSSL en Windows 10 y actualización de PATH
-En segundo lugar, creemos un archivo de secuencia de comandos por lotes llamado: &ldquo;generateCertificate." />
+En segundo lugar, creemos un archivo de secuencia de comandos por lotes llamado: &ldquo;generateCertificate.cmd&rdquo; con contenido:
+" />
 
   <meta name="keywords" content="Hugo, theme, jane" />
 
@@ -38,7 +39,7 @@ En segundo lugar, creemos un archivo de secuencia de comandos por lotes llamado:
 
 
 
-<meta name="generator" content="Hugo 0.133.0" />
+<meta name="generator" content="Hugo 0.144.1" />
 
 
 <link rel="canonical" href="/es/post/generating-signature-certificates/" />
@@ -73,7 +74,7 @@ En segundo lugar, creemos un archivo de secuencia de comandos por lotes llamado:
 A veces, los ensamblados (ejecutables y bibliotecas) deben estar firmados y no tenemos un certificado disponible con fines de prueba. En este post pretendo mostrar cómo generar un certificado para firmar ensamblados.
 Primero, necesitamos instalar OpenSSL que podemos lograr siguiendo los pasos que se especifican en el siguiente enlace:
 Instalación de OpenSSL en Windows 10 y actualización de PATH
-En segundo lugar, creemos un archivo de secuencia de comandos por lotes llamado: “generateCertificate.">
+En segundo lugar, creemos un archivo de secuencia de comandos por lotes llamado: “generateCertificate.cmd” con contenido:">
   <meta property="og:locale" content="es">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
@@ -87,7 +88,7 @@ En segundo lugar, creemos un archivo de secuencia de comandos por lotes llamado:
 A veces, los ensamblados (ejecutables y bibliotecas) deben estar firmados y no tenemos un certificado disponible con fines de prueba. En este post pretendo mostrar cómo generar un certificado para firmar ensamblados.
 Primero, necesitamos instalar OpenSSL que podemos lograr siguiendo los pasos que se especifican en el siguiente enlace:
 Instalación de OpenSSL en Windows 10 y actualización de PATH
-En segundo lugar, creemos un archivo de secuencia de comandos por lotes llamado: “generateCertificate.">
+En segundo lugar, creemos un archivo de secuencia de comandos por lotes llamado: “generateCertificate.cmd” con contenido:">
   <meta itemprop="datePublished" content="2021-02-01T00:00:00+00:00">
   <meta itemprop="dateModified" content="2021-02-01T00:00:00+00:00">
   <meta itemprop="wordCount" content="418">
@@ -98,7 +99,7 @@ En segundo lugar, creemos un archivo de secuencia de comandos por lotes llamado:
 A veces, los ensamblados (ejecutables y bibliotecas) deben estar firmados y no tenemos un certificado disponible con fines de prueba. En este post pretendo mostrar cómo generar un certificado para firmar ensamblados.
 Primero, necesitamos instalar OpenSSL que podemos lograr siguiendo los pasos que se especifican en el siguiente enlace:
 Instalación de OpenSSL en Windows 10 y actualización de PATH
-En segundo lugar, creemos un archivo de secuencia de comandos por lotes llamado: “generateCertificate.">
+En segundo lugar, creemos un archivo de secuencia de comandos por lotes llamado: “generateCertificate.cmd” con contenido:">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -484,12 +485,12 @@ En segundo lugar, creemos un archivo de secuencia de comandos por lotes llamado:
 </div>
 </div><p>Básicamente creamos una carpeta (llamada: &ldquo;Certificate&rdquo;) y la convertimos en el directorio de trabajo. Después creamos un archivo escribiendo su contenido línea por línea. Finalmente, en varios pasos, usamos la herramienta: &ldquo;openssl.exe&rdquo; para generar el certificado. Observe las comillas dobles que rodean el valor de la contraseña debido a que contiene el carácter especial de conjunción (&amp;). El código fuente de ese archivo se puede descargar desde <a href="https://gist.github.com/rsotolongo/80410cee05c26a7bcb17327d0c279b86">este GIST</a>.</p>
 <p>Suponiendo que lo hemos copiado en la carpeta: &ldquo;C:\Temp&rdquo;, veamos qué hace a través del análisis de la figura 1 que representa su ejecución.</p>
-<p><img alt="Ejecución de la secuencia de comandos" src="/generating-signature-certificates/01.png"></p>
+<p><img src="/generating-signature-certificates/01.png" alt="Ejecución de la secuencia de comandos"></p>
 <p>Figura 1: Ejecución de la secuencia de comandos.</p>
 <p>Los pasos a prestar más atención se indican con flechas rojas y amarillas, mientras que hay otros pasos opcionales indicados con flechas azules. La primera flecha roja es el nombre común que elegimos para el certificado. Este debe ser el mismo valor que tenemos que ingresar una vez que la secuencia de comandos solicita un valor en la segunda flecha roja.</p>
 <p>Las flechas amarillas son la contraseña elegida para el certificado. Si bien los dos primeros valores se especifican en el archivo por lotes: &ldquo;generateCertificate.cmd&rdquo;, los dos últimos valores deben introducirse manualmente cuando se soliciten. La herramienta: &ldquo;openssl.exe&rdquo; oculta esos valores mientras se escriben, pero deben coincidir.</p>
 <p>Una vez que todos los pasos terminan con éxito, podemos ver el resultado en la figura 2.</p>
-<p><img alt="Certificado resultante" src="/generating-signature-certificates/02.png"></p>
+<p><img src="/generating-signature-certificates/02.png" alt="Certificado resultante"></p>
 <p>Figura 2: Certificado resultante.</p>
 <p>Ese es un certificado que podemos usar para firmar ensamblados (un proceso que explicaré en una publicación posterior).</p>
 <p><a href="https://gist.github.com/rsotolongo/80410cee05c26a7bcb17327d0c279b86">Código fuente de apoyo disponible en GitHub</a></p>
@@ -649,7 +650,7 @@ En segundo lugar, creemos un archivo de secuencia de comandos por lotes llamado:
     &copy;
     
       2020 -
-    2024</span>
+    2025</span>
 
   
   

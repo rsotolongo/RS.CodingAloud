@@ -6,10 +6,38 @@
     <description>Recent content on Programando en voz alta</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <lastBuildDate>Mon, 15 Mar 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 17 Feb 2025 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/es/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Valor insensitivo en la QueryString</title>
+      <link>/es/post/insensitive-query-string-value/</link>
+      <pubDate>Mon, 17 Feb 2025 00:00:00 +0000</pubDate>
+      
+      <guid>/es/post/insensitive-query-string-value/</guid>
+      
+        <description>&lt;p&gt;Recientemente tuve una situación donde necesitaba en el cliente el valor de un parámetro específico de la query string del pedido y necesitaba estar completamente seguro de que podría encontrar el parámetro sin importar si estuviese en mayúsculas, minúsculas o cualquier combinación de estas. Con ese propósito cree la siguiente función en TypeScript:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-TypeScript&#34; data-lang=&#34;TypeScript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kr&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;getInsensitiveQueryStringValue&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;queryParams&lt;/span&gt;: &lt;span class=&#34;kt&#34;&gt;Params&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;paramKey&lt;/span&gt;: &lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;keys&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Object&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;keys&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;queryParams&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;key&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;kr&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;keys&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;find&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;item&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;item&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;toLowerCase&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;paramKey&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;toLowerCase&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;());&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;key&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;queryParams&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+      
+    </item>
     
     <item>
       <title>Comandos asíncronos</title>
@@ -651,27 +679,27 @@
       
         <description>&lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/ImmediatePublishing&#34;&gt;Código fuente de apoyo disponible en GitHub&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Érase una vez una solución, alojada en un proyecto de equipo en Team Foundation Services (TFS) que fue descargada por primera vez. Sabía que la solución compilaba y podía publicarse sin problemas de inmediato. Pero me llevé una sorpresa porque ambos procesos fallaron. La figura 1 muestra una estructura simplificada del proyecto.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Estructura del proyecto&#34; src=&#34;/immediate-publishing/01.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/immediate-publishing/01.png&#34; alt=&#34;Estructura del proyecto&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 1: &amp;ldquo;Estructura del proyecto&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;La figura 2 muestra cómo se configuró el proyecto para generar su documentación:&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Generación de documentación del proyecto&#34; src=&#34;/immediate-publishing/02.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/immediate-publishing/02.png&#34; alt=&#34;Generación de documentación del proyecto&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 2: &amp;ldquo;Generación de documentación del proyecto&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;Una vez que intentamos construirlo obtenemos el error que se muestra en la figura 3.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Resultado de la compilación del proyecto&#34; src=&#34;/immediate-publishing/03.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/immediate-publishing/03.png&#34; alt=&#34;Resultado de la compilación del proyecto&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 3: &amp;ldquo;Resultado de la compilación del proyecto&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;El error se debe a que el archivo de documentación: &amp;ldquo;RS.Blog.Projects.ImmediatePublishing.Web.xml&amp;rdquo; es de solo lectura y no se puede sobrescribir. Este problema se puede resolver si pasamos por el sistema de archivos y eliminamos el atributo: &amp;ldquo;Solo lectura&amp;rdquo; de ese archivo. Esa es la solución a corto plazo porque si usted u otro miembro del equipo descargan la solución por primera vez, el atributo volverá a impedir que la solución compilación. La solución a largo plazo es excluir ese archivo del proyecto como se muestra en la figura 4.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Exclusión del archivo de documentación del proyecto&#34; src=&#34;/immediate-publishing/04.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/immediate-publishing/04.png&#34; alt=&#34;Exclusión del archivo de documentación del proyecto&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 4: &amp;ldquo;Exclusión del archivo de documentación del proyecto&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;Este paso agrega un par de líneas al archivo del proyecto (.csproj) como muestra la figura 5:&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Contenido del archivo del proyecto&#34; src=&#34;/immediate-publishing/05.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/immediate-publishing/05.png&#34; alt=&#34;Contenido del archivo del proyecto&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 5: &amp;ldquo;Contenido del archivo del proyecto&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;Ahora, la solución compila pero una vez que intentamos publicarla; no funciona. La figura 6 muestra el error.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Error de pubicación&#34; src=&#34;/immediate-publishing/06.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/immediate-publishing/06.png&#34; alt=&#34;Error de pubicación&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 6: &amp;ldquo;Error de pubicación&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;En este caso, el error también está relacionado con el atributo: &amp;ldquo;Solo lectura&amp;rdquo; pero del archivo: &amp;ldquo;web.config&amp;rdquo;. Por lo general, publicamos aplicaciones en configuración: &amp;ldquo;Release&amp;rdquo; y las transformaciones de configuración para &amp;ldquo;web.config&amp;rdquo; no se pueden ejecutar. Una vez más, eliminando el atributo del archivo: &amp;ldquo;web.config&amp;rdquo; (figura 7) resolverá el problema y finalmente podremos publicar la aplicación de inmediato (figura 8).&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Quitando el atributo &amp;lsquo;Solo lectura&amp;rsquo;&#34; src=&#34;/immediate-publishing/07.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/immediate-publishing/07.png&#34; alt=&#34;Quitando el atributo ‘Solo lectura’&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 7: &amp;ldquo;Quitando el atributo &amp;lsquo;Solo lectura&amp;rsquo;&amp;rdquo;.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Resultados de publicación&#34; src=&#34;/immediate-publishing/08.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/immediate-publishing/08.png&#34; alt=&#34;Resultados de publicación&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 8: &amp;ldquo;Resultados de publicación&amp;rdquo;.&lt;/p&gt;
 &lt;h3 id=&#34;resumen&#34;&gt;Resumen&lt;/h3&gt;
 &lt;p&gt;La publicación de una aplicación inmediatamente después de descargarla por primera vez desde TFS requiere eliminar el atributo: &amp;ldquo;Solo lectura&amp;rdquo; del archivo: &amp;ldquo;web.config&amp;rdquo;. Si el proyecto también genera documentación, es mejor excluirlo del proyecto en lugar de eliminar el mismo atributo del archivo de documentación.&lt;/p&gt;
@@ -690,7 +718,7 @@
         <description>&lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/ConnectedServices&#34;&gt;Código fuente de apoyo disponible en GitHub&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Recientemente, estaba desarrollando una aplicación web .NET Core que necesita consumir una API desarrollada hace unos años usando ASP.NET WebAPI. Afortunadamente, esa API tenía Swagger integrado, así que pensé que podía ahorrar tiempo al no crear manualmente los instrumentos necesarios para las llamadas a la API (DTO, cliente, etc.) en su lugar podría utilizar la función &amp;ldquo;Servicios Conectados&amp;rdquo; de Visual Studio.&lt;/p&gt;
 &lt;p&gt;Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solución en este post. Reproduje un escenario simplificado como se puede ver en la figura 1 accediendo a Swagger UI a través de su URL: &amp;ldquo;http://localhost:5200/swagger&amp;rdquo;.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;IU de Swagger de FullAPI&#34; src=&#34;/generating-swagger-openapi-clients/01.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generating-swagger-openapi-clients/01.png&#34; alt=&#34;IU de Swagger de FullAPI&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 1: IU de Swagger para API usando .NET Framework.&lt;/p&gt;
 &lt;p&gt;Básicamente, esta API tiene dos controladores que proporcionan dos métodos, cada uno con rutas diferentes pero intenciones equivalentes.&lt;/p&gt;
 &lt;p&gt;Accediendo a su documento de especificación: &amp;ldquo;http://localhost:5200/swagger/docs/v1&amp;rdquo; tenemos:&lt;/p&gt;
@@ -917,13 +945,13 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Para simplificar la aplicación cliente, decidí reproducirla como una aplicación de consola .NET Core. Agregué una carpeta: &amp;ldquo;OpenAPI&amp;rdquo; para almacenar el documento de especificación anterior como: &amp;ldquo;FullAPI.json&amp;rdquo;. Desde la figura 2 hasta la figura 5 podemos ver cómo agregar un servicio conectado.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Agregar un servicio conectado&#34; src=&#34;/generate-swagger-openapi-clients/02.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generate-swagger-openapi-clients/02.png&#34; alt=&#34;Agregar un servicio conectado&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 2: Agregar un servicio conectado.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Adición de una especificación OpenAPI&#34; src=&#34;/generate-swagger-openapi-clients/03.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generate-swagger-openapi-clients/03.png&#34; alt=&#34;Adición de una especificación OpenAPI&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 3: Agregar una especificación de OpenAPI.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Especificando los parámetros de generación del cliente&#34; src=&#34;/generate-swagger-openapi-clients/04.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generate-swagger-openapi-clients/04.png&#34; alt=&#34;Especificando los parámetros de generación del cliente&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 4: Especificación de los parámetros de generación de clientes.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Resultados de generación de clientes&#34; src=&#34;/generate-swagger-openapi-clients/05.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generate-swagger-openapi-clients/05.png&#34; alt=&#34;Resultados de generación de clientes&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 5: Resultados de la generación de clientes.&lt;/p&gt;
 &lt;p&gt;Haga clic con el botón derecho en las dependencias del proyecto del cliente y seleccione: &amp;ldquo;Agregar Servicio Conectado&amp;rdquo;. Luego haga clic en el botón: &amp;ldquo;Agregar&amp;rdquo;. Seleccione &amp;ldquo;OpenAPI&amp;rdquo; y haga clic en el botón: &amp;ldquo;Siguiente&amp;rdquo;. Escriba el archivo de especificación (&amp;ldquo;OpenAPI\FullAPI.json&amp;rdquo;) y &amp;ldquo;FullAPI&amp;rdquo; como espacio de nombres para el cliente generado. Finalmente presione el botón: &amp;ldquo;Finalizar&amp;rdquo; y se generará el cliente mostrando los resultados en la siguiente pantalla. Este proceso agrega varias líneas de códigos al archivo del proyecto (.csproj) como se muestra a continuación:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -968,10 +996,10 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Una vez compilado, se crea un nuevo archivo llamado: &amp;ldquo;FullAPIClient.cs&amp;rdquo; en la carpeta &amp;ldquo;obj&amp;rdquo; dentro de la carpeta del proyecto. En este punto, el proyecto deja de compilarse correctamente debido a este archivo.&lt;/p&gt;
 &lt;p&gt;Demasiados errores, ¡Qué sorpresa! ¿Qué esta pasando y por qué? (figura 6).&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Errores de compilación de generación de clientes&#34; src=&#34;/generate-swagger-openapi-clients/06.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generate-swagger-openapi-clients/06.png&#34; alt=&#34;Errores de compilación de generación de clientes&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 6: Errores de compilación de generación de clientes.&lt;/p&gt;
 &lt;p&gt;La causa se muestra en la figura 7. El cliente se genera dos veces repitiendo sus campos internos.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Generación de clientes duplicados&#34; src=&#34;/generate-swagger-openapi-clients/07.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generate-swagger-openapi-clients/07.png&#34; alt=&#34;Generación de clientes duplicados&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 7: Generación de clientes duplicados.&lt;/p&gt;
 &lt;p&gt;Me preguntaba por qué sucede esto; así que decidí analizar el código fuente del generador del cliente: &amp;ldquo;NSwag&amp;rdquo; en este caso (recuerda lo que se agregó al archivo del proyecto). El código fuente se almacena en GitHub en:&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/RicoSuter/NSwag&#34;&gt;NSwag: La cadena de herramientas Swagger/OpenAPI para .NET, ASP.NET Core y TypeScript&lt;/a&gt;&lt;/p&gt;
@@ -996,7 +1024,7 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;El valor del nombre de clase es un patrón que incluye el nombre del controlador seguido de la palabra: &amp;ldquo;Client&amp;rdquo;. El nombre del controlador se toma del campo: &amp;ldquo;operationId&amp;rdquo; del archivo de especificación. El valor se divide por el carácter: &amp;ldquo;_&amp;rdquo; y el primer token se toma como nombre de cliente y el segundo token se toma como nombre de operación. Ejemplos: &amp;ldquo;Second_NumberMethod&amp;rdquo; crea el cliente: &amp;ldquo;SecondClient&amp;rdquo; con la operación: &amp;ldquo;NumberMethod&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;La Figura 8 muestra los nuevos clientes generados. Esta vez sin errores de compilación porque no se generó ningún cliente duplicado.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Nuevos clientes generados&#34; src=&#34;/generate-swagger-openapi-clients/08.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generate-swagger-openapi-clients/08.png&#34; alt=&#34;Nuevos clientes generados&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 8: Nuevos clientes generados.&lt;/p&gt;
 &lt;p&gt;Ahora, podemos consumir las operaciones de los clientes generados como muestra el siguiente código (archivo: &amp;ldquo;Program.cs&amp;rdquo;):&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -1050,7 +1078,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Problema resuelto, pero mi curiosidad me hizo investigar un poco más y ver qué sucedía con una API creada usando .NET Core en lugar de usar .NET Framework. La Figura 9 muestra la API migrada. Básicamente, las mismas funcionalidades (controladores, métodos, rutas) pero basadas en .NET Core.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;.NET Core API&#34; src=&#34;/generate-swagger-openapi-clients/09.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generate-swagger-openapi-clients/09.png&#34; alt=&#34;.NET Core API&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 9: API en .NET Core.&lt;/p&gt;
 &lt;p&gt;Accediendo a su documento de especificación: &amp;ldquo;http://localhost:5100/swagger/v1/swagger.json&amp;rdquo; tenemos:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -1326,15 +1354,15 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Lo primero que es diferente (y probablemente lo más importante) es el campo: &amp;ldquo;openapi&amp;rdquo; (anteriormente &amp;ldquo;swagger&amp;rdquo;) con la versión: &amp;ldquo;3.0.1&amp;rdquo; (anteriormente: &amp;ldquo;2.0&amp;rdquo;). Guardemos esta nueva especificación como: &amp;ldquo;CoreAPI.json&amp;rdquo; junto con la otra en la carpeta: &amp;ldquo;OpenAPI&amp;rdquo;. Ahora, generemos el cliente de la misma manera que lo hicimos para la API desarrollada en .NET Framework y veamos qué sucede. Las figuras del 10 al 14 muestran el proceso.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Agregar un servicio conectado&#34; src=&#34;/generate-swagger-openapi-clients/10.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generate-swagger-openapi-clients/10.png&#34; alt=&#34;Agregar un servicio conectado&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 10: Agregar un servicio conectado.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Agregar una especificación de OpenAPI&#34; src=&#34;/generate-swagger-openapi-clients/11.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generate-swagger-openapi-clients/11.png&#34; alt=&#34;Agregar una especificación de OpenAPI&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 11: Agregar una especificación de OpenAPI.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Especificando los parámetros de generación del cliente&#34; src=&#34;/generate-swagger-openapi-clients/12.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generate-swagger-openapi-clients/12.png&#34; alt=&#34;Especificando los parámetros de generación del cliente&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 12: Especificación de los parámetros de generación de clientes.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Resultados de la generación de clientes&#34; src=&#34;/generate-swagger-openapi-clients/13.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generate-swagger-openapi-clients/13.png&#34; alt=&#34;Resultados de la generación de clientes&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 13: Resultados de la generación de clientes.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Lista de servicios conectados&#34; src=&#34;/generate-swagger-openapi-clients/14.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generate-swagger-openapi-clients/14.png&#34; alt=&#34;Lista de servicios conectados&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 14: Lista de servicios conectados.&lt;/p&gt;
 &lt;p&gt;Se agrega una nueva sección al archivo del proyecto (.csproj) similar a la anterior:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -1372,7 +1400,7 @@
 &lt;li&gt;El constructor del cliente requiere la URL base.&lt;/li&gt;
 &lt;li&gt;Las operaciones tienen diferentes nombres.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img alt=&#34;Cliente generado para .NET Core API&#34; src=&#34;/generate-swagger-openapi-clients/15.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generate-swagger-openapi-clients/15.png&#34; alt=&#34;Cliente generado para .NET Core API&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 15: Cliente generado para una API en .NET Core.&lt;/p&gt;
 &lt;p&gt;Analizando el archivo de especificación (&amp;ldquo;CoreAPI.json&amp;rdquo;) podemos notar que no hay campos: &amp;ldquo;operationId&amp;rdquo; y eso es importante para los nombres de clientes y operaciones. Entonces, si agregamos, de alguna manera, los identificadores de operación a cada operación, deberíamos resolver el primer y tercer problema.&lt;/p&gt;
 &lt;p&gt;Para agregar el campo: &amp;ldquo;operationId&amp;rdquo; al archivo de especificación, necesitamos agregar el atributo: &amp;ldquo;SwaggerOperation&amp;rdquo; a cada método de cada controlador. Ese atributo es parte del paquete NuGet: &amp;ldquo;Swashbuckle.AspNetCore.Annotations&amp;rdquo; que necesitamos instalar primero. El siguiente código muestra cómo usarlo:&lt;/p&gt;
@@ -1452,7 +1480,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Pero el código no compila. ¿Por qué, si hicimos exactamente lo que hicimos al generar clientes para la API en .NET Framework? La figura 16 muestra los errores.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Errores al generar clientes para .NET Core API&#34; src=&#34;/generate-swagger-openapi-clients/16.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generate-swagger-openapi-clients/16.png&#34; alt=&#34;Errores al generar clientes para .NET Core API&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 16: Errores al generar clientes para la API en .NET Core.&lt;/p&gt;
 &lt;p&gt;Tenga en cuenta que los errores están en los clientes generados anteriormente (archivo: &amp;ldquo;FullAPI.cs&amp;rdquo;). Bueno, esto se debe a un &lt;a href=&#34;https://github.com/dotnet/aspnetcore/issues/18204&#34;&gt;error bien conocido&lt;/a&gt; en NSwag CSharp Generator que está activo y debería resolverse en el futuro y tener una solución fácil. Modifiquemos una vez más el archivo del proyecto (.csproj):&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -1803,7 +1831,7 @@
 &lt;/div&gt;&lt;h2 id=&#34;net-framework&#34;&gt;.NET Framework&lt;/h2&gt;
 &lt;p&gt;Las cosas no cambian drásticamente desde el enfoque de .NET Core porque intentamos ser lo más genéricos posible desde el principio. Sin embargo, hay algunos detalles a tener en cuenta.&lt;/p&gt;
 &lt;p&gt;En la aplicación .NET Framework podemos editar los eventos de compilación en las propiedades del proyecto como se muestra en la figura 1.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Project build events&#34; src=&#34;/signing-assemblies/01.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/signing-assemblies/01.png&#34; alt=&#34;Project build events&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 1: Eventos de compilación del proyecto.&lt;/p&gt;
 &lt;p&gt;Esto modifica el archivo del proyecto (.csproj) agregando las siguientes líneas&amp;hellip;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -1921,12 +1949,12 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Básicamente creamos una carpeta (llamada: &amp;ldquo;Certificate&amp;rdquo;) y la convertimos en el directorio de trabajo. Después creamos un archivo escribiendo su contenido línea por línea. Finalmente, en varios pasos, usamos la herramienta: &amp;ldquo;openssl.exe&amp;rdquo; para generar el certificado. Observe las comillas dobles que rodean el valor de la contraseña debido a que contiene el carácter especial de conjunción (&amp;amp;). El código fuente de ese archivo se puede descargar desde &lt;a href=&#34;https://gist.github.com/rsotolongo/80410cee05c26a7bcb17327d0c279b86&#34;&gt;este GIST&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Suponiendo que lo hemos copiado en la carpeta: &amp;ldquo;C:\Temp&amp;rdquo;, veamos qué hace a través del análisis de la figura 1 que representa su ejecución.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Ejecución de la secuencia de comandos&#34; src=&#34;/generating-signature-certificates/01.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generating-signature-certificates/01.png&#34; alt=&#34;Ejecución de la secuencia de comandos&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 1: Ejecución de la secuencia de comandos.&lt;/p&gt;
 &lt;p&gt;Los pasos a prestar más atención se indican con flechas rojas y amarillas, mientras que hay otros pasos opcionales indicados con flechas azules. La primera flecha roja es el nombre común que elegimos para el certificado. Este debe ser el mismo valor que tenemos que ingresar una vez que la secuencia de comandos solicita un valor en la segunda flecha roja.&lt;/p&gt;
 &lt;p&gt;Las flechas amarillas son la contraseña elegida para el certificado. Si bien los dos primeros valores se especifican en el archivo por lotes: &amp;ldquo;generateCertificate.cmd&amp;rdquo;, los dos últimos valores deben introducirse manualmente cuando se soliciten. La herramienta: &amp;ldquo;openssl.exe&amp;rdquo; oculta esos valores mientras se escriben, pero deben coincidir.&lt;/p&gt;
 &lt;p&gt;Una vez que todos los pasos terminan con éxito, podemos ver el resultado en la figura 2.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Certificado resultante&#34; src=&#34;/generating-signature-certificates/02.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/generating-signature-certificates/02.png&#34; alt=&#34;Certificado resultante&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 2: Certificado resultante.&lt;/p&gt;
 &lt;p&gt;Ese es un certificado que podemos usar para firmar ensamblados (un proceso que explicaré en una publicación posterior).&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://gist.github.com/rsotolongo/80410cee05c26a7bcb17327d0c279b86&#34;&gt;Código fuente de apoyo disponible en GitHub&lt;/a&gt;&lt;/p&gt;
@@ -1943,10 +1971,10 @@
       
         <description>&lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/DeployPackages&#34;&gt;Código fuente de apoyo disponible en GitHub&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;En una publicación anterior vimos cómo: &amp;ldquo;&lt;a href=&#34;../create_nuget_packages&#34;&gt;Crear paquetes NuGet&lt;/a&gt;&amp;rdquo; pero el paso de despliegue aún era un proceso manual. Intentemos automatizar esto. La figura 1 muestra cómo generar un paquete NuGet para un proyecto de .NET Core (similar al enfoque mostrado anteriormente) utilizando las propiedades del proyecto.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Creando un paquete NuGet&#34; src=&#34;/deploying-nuget-packages/01.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/deploying-nuget-packages/01.png&#34; alt=&#34;Creando un paquete NuGet&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 1: &amp;ldquo;Creando un paquete NuGet&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;Esto agrega un par de líneas al archivo del proyecto (.csproj) como muestra la figura 2:&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Propiedades del archivo de proyecto para crear el paquete NuGet&#34; src=&#34;/deploying-nuget-packages/02.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/deploying-nuget-packages/02.png&#34; alt=&#34;Propiedades del archivo de proyecto para crear el paquete NuGet&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 2: &amp;ldquo;Propiedades del archivo de proyecto para crear el paquete NuGet&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;Mi enfoque también usa tagets de MSBuild. El primer paso es incluir el siguiente código en el archivo del proyecto (.csproj):&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -2015,10 +2043,10 @@
 &lt;p&gt;La tarea: &amp;ldquo;DeployPackage&amp;rdquo; (llamada desde el archivo del proyecto) se ejecutará solo si las variables: &amp;ldquo;DeployPackage&amp;rdquo; o &amp;ldquo;DeployPackages&amp;rdquo; tienen el valor: &amp;ldquo;true&amp;rdquo;. La variable: &amp;ldquo;DeployPackage&amp;rdquo; se pasa desde la llamada en el archivo del proyecto y está diseñada para desplegar solo el paquete NuGet generado para ese proyecto. Por otro lado, la variable: &amp;ldquo;DeployPackages&amp;rdquo; es global para este archivo y está diseñada para desplegar todos los paquetes generados en la solución (normalmente cada proyecto genera un paquete NuGet diferente). Si esta tarea cumple con la condición de ejecución, se ejecutará primero su tarea dependiente.&lt;/p&gt;
 &lt;p&gt;La tarea: &amp;ldquo;DownloadNuget&amp;rdquo; proporciona un administrador de paquetes: &amp;ldquo;NuGet.exe&amp;rdquo; para no lidiar con herramientas instaladas, rutas de herramientas, diferencias en el entorno de desarrollo entre los miembros del equipo, etc. Una vez finalizada esta tarea, vuelve a la ejecución de la tarea: &amp;ldquo;DeployPackage&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;Finalmente, se llama a la herramienta del administrador de paquetes con todos los parámetros requeridos. La figura 3 muestra un ejemplo de ejecución.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Resultado del despliegue&#34; src=&#34;/deploying-nuget-packages/03.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/deploying-nuget-packages/03.png&#34; alt=&#34;Resultado del despliegue&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 3: &amp;ldquo;Resultado del despliegue&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;la figura 4 muestra el paquete desplegado.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Paquete desplegado&#34; src=&#34;/deploying-nuget-packages/04.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/deploying-nuget-packages/04.png&#34; alt=&#34;Paquete desplegado&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 4: &amp;ldquo;Paquete desplegado&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;Espero que estas siemples instrucciones le ayuden a automatizar los despliegues de paquetes NuGet.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/DeployPackages&#34;&gt;Código fuente de apoyo disponible en GitHub&lt;/a&gt;&lt;/p&gt;
@@ -2035,42 +2063,42 @@
       
         <description>&lt;p&gt;Últimamente he estado involucrado en la creación de varios paquetes NuGet útiles para algunos portales que se están siendo desarrollando. Quiero compartir mis conocimientos en este tema.&lt;/p&gt;
 &lt;p&gt;Si estuviéramos desarrollando bibliotecas para .NET Core o .NET Standard, la vida sería fácil, como muestra La figura 1 a La figura 8.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Creación de una nueva biblioteca de .NET Core&#34; src=&#34;/creating-nuget-packages/01.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/01.png&#34; alt=&#34;Creación de una nueva biblioteca de .NET Core&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 1: &amp;ldquo;Creación de una nueva biblioteca de .NET Core&amp;rdquo;.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Código predeterminado&#34; src=&#34;/creating-nuget-packages/02.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/02.png&#34; alt=&#34;Código predeterminado&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 2: “Código predeterminado”.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Resultados de la primera compilación&#34; src=&#34;/creating-nuget-packages/03.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/03.png&#34; alt=&#34;Resultados de la primera compilación&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 3: &amp;ldquo;Resultados de la primera compilación&amp;rdquo;.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Propiedades del proyecto&#34; src=&#34;/creating-nuget-packages/04.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/04.png&#34; alt=&#34;Propiedades del proyecto&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 4: “Propiedades del proyecto”.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Salida de la segunda compilación&#34; src=&#34;/creating-nuget-packages/05.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/05.png&#34; alt=&#34;Salida de la segunda compilación&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 5: &amp;ldquo;Salida de la segunda compilación&amp;rdquo;.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Resultados de la segunda compilación&#34; src=&#34;/creating-nuget-packages/06.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/06.png&#34; alt=&#34;Resultados de la segunda compilación&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 6: &amp;ldquo;Resultados de la segunda compilación&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;Pero la vida no es tan fácil y casi todos nuestros productos utilizan .NET Framework (normal), lo que significa que Visual Studio no nos ofrece las capacidades que se muestran en las figuras 7 y 8.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Nueva biblioteca de .NET Framework&#34; src=&#34;/creating-nuget-packages/07.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/07.png&#34; alt=&#34;Nueva biblioteca de .NET Framework&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 7: “Nueva biblioteca de .NET Framework”.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Propiedades del proyecto biblioteca&#34; src=&#34;/creating-nuget-packages/08.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/08.png&#34; alt=&#34;Propiedades del proyecto biblioteca&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 8: &amp;ldquo;Las propiedades para este tipo de proyectos no incluyen la función Paquete&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;Entonces, ¿qué alternativa tenemos? En realidad, algunas de ellas: usan Octopus para generar el paquete, pero esto es complicado debido a que Octopus usa una compilación personalizada de NuGet.exe, por lo que la estructura generada puede no coincidir y su obtención implica muchos pasos.&lt;/p&gt;
 &lt;p&gt;Otra alternativa es usar &amp;ldquo;NuGet.exe&amp;rdquo; manualmente desde la línea de comandos, pero esto puede ser confuso y también implica muchos otros pasos para realizar.&lt;/p&gt;
 &lt;p&gt;Dije una vez pero me gusta repetirlo, me encantan los paquetes NuGet, entonces, ¿por qué no usar un paquete NuGet para generar paquetes NuGet? Bueno, ya existe y es muy fácil de usar. El primer paso es agregar el paquete: “CreateNewNuGetPackageFromProjectAfterEachBuild” al proyecto que queremos distribuir como un paquete NuGet. La figura 9 muestra un ejemplo.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Administrador de paquetes de la solución&#34; src=&#34;/creating-nuget-packages/09.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/09.png&#34; alt=&#34;Administrador de paquetes de la solución&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 9.&lt;/p&gt;
 &lt;p&gt;Una vez agregado, este paquete crea un subdirectorio dentro de la raíz del proyecto llamado: &amp;ldquo;_CreateNewNuGetPackage&amp;rdquo; y eso es todo lo que necesita. La figura 10 muestra la estructura creada.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Explorardor de la solución&#34; src=&#34;/creating-nuget-packages/10.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/10.png&#34; alt=&#34;Explorardor de la solución&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 10.&lt;/p&gt;
 &lt;p&gt;Una vez que compilamos el proyecto, podemos ver el resultado en La figura 11.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Salida de la tercera compilación&#34; src=&#34;/creating-nuget-packages/11.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/11.png&#34; alt=&#34;Salida de la tercera compilación&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 11.&lt;/p&gt;
 &lt;p&gt;La figura 12 muestra los resultados de la compilación.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Resultados de la tercera compilación&#34; src=&#34;/creating-nuget-packages/12.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/12.png&#34; alt=&#34;Resultados de la tercera compilación&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 12.&lt;/p&gt;
 &lt;p&gt;La figura 13 muestra el contenido del paquete generado.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Contenidos del paquete&#34; src=&#34;/creating-nuget-packages/13.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/13.png&#34; alt=&#34;Contenidos del paquete&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 13.&lt;/p&gt;
 &lt;p&gt;Tenga en cuenta que los metadatos se extraen básicamente de la información del ensamblado o se generan automáticamente (la salida de la compilación también tiene registros sobre esto). Podemos cambiar esto si incluimos un archivo de metadatos como muestra La figura 14.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Archivo de metadatos del paquete&#34; src=&#34;/creating-nuget-packages/14.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/14.png&#34; alt=&#34;Archivo de metadatos del paquete&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 14.&lt;/p&gt;
 &lt;p&gt;El contenido de este archivo depende de lo que desee para su paquete, pero como ejemplo:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -2108,43 +2136,43 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Ahora los resultados de la compilación se parecen a los de La figura 15.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Primeros paquetes generados&#34; src=&#34;/creating-nuget-packages/15.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/15.png&#34; alt=&#34;Primeros paquetes generados&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 15.&lt;/p&gt;
 &lt;p&gt;La figura 16 muestra el contenido del nuevo paquete generado, esta vez con metadatos más precisos.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Contenido del primer paquete&#34; src=&#34;/creating-nuget-packages/16.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/16.png&#34; alt=&#34;Contenido del primer paquete&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 16.&lt;/p&gt;
 &lt;p&gt;En este punto pudimos generar el paquete pero lo que realmente necesitamos es la posibilidad de consumirlo desde otro proyecto. Primero necesitamos implementarlo en un repositorio interno de NuGet llamado: &amp;ldquo;McNuget&amp;rdquo;. Expliquemos cómo hacerlo.&lt;/p&gt;
 &lt;p&gt;Primero abra “$(ProjectDir)_CreateNewNuGetPackage\Config1.ps1” y realice las modificaciones resaltadas en color amarillo en La figura 17.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Archivo de configuración para la generación del paquete&#34; src=&#34;/creating-nuget-packages/17.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/17.png&#34; alt=&#34;Archivo de configuración para la generación del paquete&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 17.&lt;/p&gt;
 &lt;p&gt;Básicamente, estamos especificando que en cada compilación se genera otro paquete que contiene todos los símbolos de depuración, incluidos los códigos fuentes, para facilitar la depuración de este paquete. No agregue la configuración y la plataforma utilizadas para compilar en el nombre del paquete. Además, eventualmente implementaremos este paquete en McNuget (digo eventualmente porque no es automático en todas las compilaciones) y la API para implementar en McNuget. Esta API fue generada por el administrador de McNuget y nos la envió.&lt;/p&gt;
 &lt;p&gt;La figura 18 muestra el resultado de la compilación.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Segundos paquetes generados&#34; src=&#34;/creating-nuget-packages/18.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/18.png&#34; alt=&#34;Segundos paquetes generados&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 18.&lt;/p&gt;
 &lt;p&gt;Observe los dos nuevos paquetes sin la configuración y la plataforma; uno sin símbolos de depuración (igual que en La figura 16) y otro con símbolos y código fuente como muestra La figura 19.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Contenido del segundo paquete&#34; src=&#34;/creating-nuget-packages/19.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/19.png&#34; alt=&#34;Contenido del segundo paquete&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 19.&lt;/p&gt;
 &lt;p&gt;Es hora de implementar el paquete en McNuget y para hacer esto necesitamos ejecutar “$(ProjectDir)_CreateNewNuGetPackage\RunMeToUploadNuGetPackage.cmd” como se muestra en La figura 20.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Comando para subir paquete&#34; src=&#34;/creating-nuget-packages/20.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/20.png&#34; alt=&#34;Comando para subir paquete&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 20.&lt;/p&gt;
 &lt;p&gt;Una vez ejecutado, se abrirá una ventana de línea de comandos y un cuadro de diálogo solicitando que el paquete se despliegue, como se muestra en La figura 21.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Diálogo para subir paquete&#34; src=&#34;/creating-nuget-packages/21.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/21.png&#34; alt=&#34;Diálogo para subir paquete&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 21.&lt;/p&gt;
 &lt;p&gt;Una vez que se selecciona el paquete como se muestra en La figura 22&amp;hellip;&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Selección para subir paquete&#34; src=&#34;/creating-nuget-packages/22.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/22.png&#34; alt=&#34;Selección para subir paquete&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 22.&lt;/p&gt;
 &lt;p&gt;&amp;hellip;pide una confirmación como muestra La figura 23. Un punto válido para mencionar es que el repositorio de McNuget puede no estar configurado para permitir implementaciones de paquetes que contienen símbolos de código fuente y depuración. Entonces, la única opción que podemos despleguar es el paquete regular.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Confirmación de subida de paquete&#34; src=&#34;/creating-nuget-packages/23.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/23.png&#34; alt=&#34;Confirmación de subida de paquete&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 23.&lt;/p&gt;
 &lt;p&gt;Una vez aceptado y si todo ha ido bien, deberíamos poder ver una pantalla similar a la que muestra La figura 24.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Resultado de subida de paquete&#34; src=&#34;/creating-nuget-packages/24.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/24.png&#34; alt=&#34;Resultado de subida de paquete&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 24.&lt;/p&gt;
 &lt;p&gt;Lo que significa que nuestro paquete está en McNuget listo para usarse. Probémoslo.&lt;/p&gt;
 &lt;p&gt;La figura 25 muestra la gestión de paquetes para otro proyecto.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Administrador de paquetes de proyecto&#34; src=&#34;/creating-nuget-packages/25.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/25.png&#34; alt=&#34;Administrador de paquetes de proyecto&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 25.&lt;/p&gt;
 &lt;p&gt;Una vez que el paquete está instalado, podemos usar sus características. La figura 26 muestra un ejemplo.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Ejemplo de uso de paquete&#34; src=&#34;/creating-nuget-packages/26.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/26.png&#34; alt=&#34;Ejemplo de uso de paquete&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 26.&lt;/p&gt;
 &lt;p&gt;Una última observación, hemos implementado el paquete regular porque hipotéticamente McNuget no permite implementar paquetes con símbolos de depuración; pero hemos desplegado la versión construida en modo &amp;ldquo;Debug&amp;rdquo; y esto no es bueno, debemos desplegar la versión construida en modo &amp;ldquo;Release&amp;rdquo; y ganar más rendimiento.&lt;/p&gt;
 &lt;p&gt;Esto es todo lo que tengo que compartir con ustedes hoy. Espero que esta guía le resulte útil para sus proyectos una vez que desee generar paquetes NuGet.&lt;/p&gt;
@@ -2162,31 +2190,31 @@
         <description>&lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/UsingOctopus&#34;&gt;Código fuente de apoyo disponible en GitHub&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Desde hace un tiempo quería compartir mis experiencias automatizando los despliegues de productos con Octopus desde Visual Studio. Nuevamente, hagámoslo con un ejemplo.&lt;/p&gt;
 &lt;p&gt;Como no podía ser de otra manera, La figura 1 muestra el primer paquete que debes agregar a tu proyecto para poder crear paquetes Octopus listos para ser desplegados: &amp;ldquo;OctoPack&amp;rdquo;. La última versión del paquete disponible en el momento de este tutorial era la &amp;ldquo;3.6.1&amp;rdquo;, pero instalamos la &amp;ldquo;3.6.0&amp;rdquo; a propósito para mostrar el proceso de actualización.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Paquete OctoPack&#34; src=&#34;/using-octopus/01.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/01.png&#34; alt=&#34;Paquete OctoPack&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 1.&lt;/p&gt;
 &lt;p&gt;La figura 2 muestra el segundo paquete que debería instalarse: &amp;ldquo;OctopusTool&amp;rdquo;. Lo mismo aquí, la última versión disponible fue la &amp;ldquo;4.17.0&amp;rdquo; pero instalamos la &amp;ldquo;4.15.7&amp;rdquo; con el mismo propósito.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Paquete OctopusTool&#34; src=&#34;/using-octopus/02.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/02.png&#34; alt=&#34;Paquete OctopusTool&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 2.&lt;/p&gt;
 &lt;p&gt;Una vez instalados ambos paquetes, podemos comprobar el subdirectorio &amp;ldquo;paquetes&amp;rdquo; dentro del subdirectorio de la solución (C:\Temp\WebApplication1\packages) en este caso. La figura 3 muestra el contenido del subdirectorio.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Paquetes instalados&#34; src=&#34;/using-octopus/03.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/03.png&#34; alt=&#34;Paquetes instalados&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 3.&lt;/p&gt;
 &lt;p&gt;Ahora comienza los pasos divertidos. Primero, necesitamos abrir el archivo del proyecto (WebApplication1.csproj) en este caso. Al final del archivo, debemos eliminar la tarea &amp;ldquo;Importar&amp;rdquo; de &amp;ldquo;OctoPack.targets&amp;rdquo; del subdirectorio del paquete NuGet. Este es un paso MUY importante porque debe repetirse cada vez que se actualiza el paquete &amp;ldquo;OctoPack&amp;rdquo;. La figura 4 muestra la línea que debe eliminarse.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Contenidos del archivo de proyecto&#34; src=&#34;/using-octopus/04.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/04.png&#34; alt=&#34;Contenidos del archivo de proyecto&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 4.&lt;/p&gt;
 &lt;p&gt;Expliquemos un poco más aquí. MSBuild importará y ejecutará los destinos de &amp;ldquo;OctoPack&amp;rdquo; en cada compilación. Si mantenemos esa línea, el archivo que debe modificarse es el que se encuentra en el subdirectorio del paquete, lo que significa que normalmente no forma parte de los elementos controlados por el sistema de control de versiones (TFS ó Git) y estará suelto en cada actualización del paquete. NuGet elimina el subdirectorio del paquete anterior una vez que se descarga la nueva versión después de una actualización. Para evitar estos retrocesos y mantener actualizados los paquetes al mismo tiempo, es una buena práctica eliminar esta línea y continuar el proceso como recomiendo en los siguientes pasos.&lt;/p&gt;
 &lt;p&gt;Cree un nuevo subdirectorio dentro del proyecto a implementar y copie el archivo &amp;ldquo;OctoPack.targets&amp;rdquo; en ella. Normalmente lo llamo &amp;ldquo;Implementación&amp;rdquo; y guardo el archivo con el mismo nombre. Quiero decir, copiar &amp;ldquo;$(SolutionDir)\packages\OctoPack.X.Y.Z\build\OctoPack.targets&amp;rdquo; a &amp;ldquo;$(ProjectDir)\Deployment\OctoPack.targets&amp;rdquo; La figura 5 muestra este paso.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Tareas del archivo OctoPack&#34; src=&#34;/using-octopus/05.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/05.png&#34; alt=&#34;Tareas del archivo OctoPack&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 5.&lt;/p&gt;
 &lt;p&gt;En el archivo: &amp;ldquo;OctoPack.targets&amp;rdquo; dentro del subdirectorio &amp;ldquo;Implementación&amp;rdquo;, necesitamos modificar algunos campos y agregar algunos otros.&lt;/p&gt;
 &lt;p&gt;Los dos primeros campos que necesitamos modificar son los que apuntan a las bibliotecas de Octopus para ejecutar las tareas especificadas. La figura 6 lo muestra.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Tareas importadas&#34; src=&#34;/using-octopus/06.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/06.png&#34; alt=&#34;Tareas importadas&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 6.&lt;/p&gt;
 &lt;p&gt;Debido a que hemos movido el archivo de destino, necesitamos actualizar esas rutas a las bibliotecas dentro del subdirectorio del paquete. Debido a que estamos dentro del subdirectorio &amp;ldquo;Implementación&amp;rdquo;, necesitamos subir dos niveles hasta el subdirectorio de la solución donde está el subdirectorio &amp;ldquo;Paquete&amp;rdquo;. Tenga en cuenta que en cada actualización del paquete &amp;ldquo;OctoPack&amp;rdquo;, necesitamos actualizar estas rutas.&lt;/p&gt;
 &lt;p&gt;Después, necesitamos especificar el valor de &amp;ldquo;OctoPackNuGetExePath&amp;rdquo;. Me gusta usar lo que está incluido en el paquete que se está usando porque Octopus usa una versión personalizada de NuGet.exe, por lo que es mejor usar lo que está incluido en el paquete, por esa razón: &amp;ldquo;..\packages\OctoPack.3.6.0\build\NuGet.exe&amp;rdquo; es un buen valor (tenga en cuenta que también depende de la versión del paquete y subimos solo un nivel porque esto se ejecuta desde el subdirectorio raí del proyecto). La última variable para modificar aquí es &amp;ldquo;OctoPackPublishPackageToFileShare&amp;rdquo; que debe apuntar al subdirectorio compartido donde se copiará el paquete para implementarlo en Octopus. Normalmente usamos &amp;ldquo;\rant.com\Nuget&amp;rdquo;, por lo que &amp;ldquo;\rant.com\Nuget\Portals.WebApplication1&amp;rdquo; es una buena opción. La figura 7 muestra las modificaciones.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Valores de las variables de configuración&#34; src=&#34;/using-octopus/07.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/07.png&#34; alt=&#34;Valores de las variables de configuración&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 7.&lt;/p&gt;
 &lt;p&gt;Ahora lo que tenemos que hacer es configurar el proyecto para ejecutar la tarea una vez que esté construida. ¿Recuerda la línea eliminada en la figura 4? Necesitamos agregar una línea allí como se muestra en la figura 8.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Tareas importadas en el archivo de proyecto&#34; src=&#34;/using-octopus/08.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/08.png&#34; alt=&#34;Tareas importadas en el archivo de proyecto&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 8.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -2197,20 +2225,20 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Una vez agregada esta línea podemos construir la solución pero &amp;ldquo;\rant.com\Nuget\Portals.WebApplication1&amp;rdquo; sigue estando vacío. ¿Por qué? Porque necesitamos cambiar el valor de la variable &amp;ldquo;RunOctoPack&amp;rdquo; a &amp;ldquo;verdadero&amp;rdquo; como muestra la figura 9.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Valor de configuración para tarea de creación&#34; src=&#34;/using-octopus/09.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/09.png&#34; alt=&#34;Valor de configuración para tarea de creación&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 9.&lt;/p&gt;
 &lt;p&gt;Ahora, si construimos nuevamente la solución obtenemos los resultados que se muestran en la figura 10 y un archivo de paquete en &amp;ldquo;\rant.com\Nuget\Portals.WebApplication1&amp;rdquo; como muestra la figura 11.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Resultados de la primera compilación&#34; src=&#34;/using-octopus/10.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/10.png&#34; alt=&#34;Resultados de la primera compilación&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 10.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Primer paquete generado&#34; src=&#34;/using-octopus/11.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/11.png&#34; alt=&#34;Primer paquete generado&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 11.&lt;/p&gt;
 &lt;p&gt;Hasta ahora todo va bien, excepto que no importa cuántas veces compilemos, el paquete generado será la misma versión: &amp;ldquo;1.0.0.0&amp;rdquo; que no es buena para las versiones automáticas de Octopus. Entonces, arreglemos esto abriendo el archivo &amp;ldquo;AssemblyInfo.cs&amp;rdquo; dentro del subdirectorio del proyecto &amp;ldquo;Propiedades&amp;rdquo; y cambiemos el atributo &amp;ldquo;AssemblyVersion&amp;rdquo; de &amp;ldquo;1.0.0.0&amp;rdquo; a &amp;ldquo;1.0. *&amp;rdquo; Como se muestra en la figura 12.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Archivo de información del ensamblado&#34; src=&#34;/using-octopus/12.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/12.png&#34; alt=&#34;Archivo de información del ensamblado&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 12.&lt;/p&gt;
 &lt;p&gt;Al hacer eso, nos aseguramos de que cada compilación tenga una versión de ensamblado diferente, es decir, una versión de Octopus diferente que configuraremos en los siguientes pasos. Consulte las figuras 13 y 14 para observar los cambios.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Resultados de la segunda compilación&#34; src=&#34;/using-octopus/13.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/13.png&#34; alt=&#34;Resultados de la segunda compilación&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 13.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Segundo paquete generado&#34; src=&#34;/using-octopus/14.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/14.png&#34; alt=&#34;Segundo paquete generado&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 14.&lt;/p&gt;
 &lt;p&gt;Vayamos de nuevo al archivo: &amp;ldquo;OctoPack.targets&amp;rdquo; y agreguemos la sección resaltada en la figura 15.&lt;/p&gt;
 &lt;p&gt;Esta región es una sección totalmente nueva que debemos agregar para configurar (no ejecutar) despliegues automáticos de Octopus. El codigo es:&lt;/p&gt;
@@ -2232,7 +2260,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;OctopusNotes&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Condition=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#39;$(OctopusNotes)&amp;#39; == &amp;#39;&amp;#39;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;New release sample notes.&lt;span class=&#34;nt&#34;&gt;&amp;lt;/OctopusNotes&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img alt=&#34;Valores de configuración para tarea de despliegue&#34; src=&#34;/using-octopus/15.png&#34;&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;/using-octopus/15.png&#34; alt=&#34;Valores de configuración para tarea de despliegue&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 15.&lt;/p&gt;
 &lt;p&gt;Debido a que esto se ejecuta desdel subdirectorio raíz del proyecto, solo necesitamos subir un nivel. &amp;ldquo;OctoExePath&amp;rdquo; es la única variable que depende de la ruta del paquete &amp;ldquo;OctopusTools&amp;rdquo;. Las variables &amp;ldquo;OctopusProject&amp;rdquo;, &amp;ldquo;OctopusEnvironment&amp;rdquo;, &amp;ldquo;OctopusPortal&amp;rdquo; y &amp;ldquo;OctopusApiKey&amp;rdquo; dependen de la configuración de Octopus de tu proyecto, pero lo que puedo decir aquí es que normalmente solo desplegamos al entorno de &amp;ldquo;Desarrollo&amp;rdquo; y hablaré de la variable API después en este documento. Por último, especificamos el valor de las notas de la versión en la variable &amp;ldquo;OctopusNotes&amp;rdquo; que normalmente se incluyen en el correo electrónico que envía el servidor Octopus una vez que una nueva versión termina de implementarse.&lt;/p&gt;
 &lt;p&gt;Una vez más, esa región es solo para configurar variables relacionadas con Octopus para crear despliegues. Para hacer realmente los despliegues, necesitamos agregar las siguientes líneas al final de ese archivo. La figura 16 muestra los resultados.&lt;/p&gt;
@@ -2246,50 +2274,50 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;Exec&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Command=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;&amp;#34;$(OctoExePath)&amp;#34; create-release --server=&amp;#34;$(OctopusPortal)&amp;#34; --project=&amp;#34;$(OctopusProject)&amp;#34; --apikey=&amp;#34;$(OctopusApiKey)&amp;#34; --deployto=&amp;#34;$(OctopusEnvironment)&amp;#34; --version=$(OctoPackPackageVersion) --packageversion=$(OctoPackPackageVersion)&amp;#39;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Condition=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#39;$(OctoExePath)&amp;#39; != &amp;#39;&amp;#39;&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img alt=&#34;Configuración de tarea de despliegue&#34; src=&#34;/using-octopus/16.png&#34;&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;/using-octopus/16.png&#34; alt=&#34;Configuración de tarea de despliegue&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 16.&lt;/p&gt;
 &lt;p&gt;La Figura 17 muestra el resultado de la compilación, observe la sección resaltada después del último mensaje recibido en la figura 10.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Salida de tercera compilación&#34; src=&#34;/using-octopus/17.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/17.png&#34; alt=&#34;Salida de tercera compilación&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 17.&lt;/p&gt;
 &lt;p&gt;Si abre el portal Octopus en su proyecto después de la compilación, puede obtener algo como lo que se muestra en la figura 18.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Portal del proyecto en Octopus&#34; src=&#34;/using-octopus/18.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/18.png&#34; alt=&#34;Portal del proyecto en Octopus&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 18.&lt;/p&gt;
 &lt;p&gt;Entonces, con solo un cambio de una palabra: &amp;ldquo;falso&amp;rdquo; por &amp;ldquo;verdadero&amp;rdquo; en la variable &amp;ldquo;RunOctoPack&amp;rdquo; logramos muchos resultados: un paquete Octopus listo para ser desplegado y una versión del producto desplegado en el entorno especificado en Octopus. El riesgo aquí es dejar esa variable como verdadera y/o registrarla como verdadera y hacer un despliegue después de cada compilación. Eso sucede, pero generalmente no es lo que me gusta hacer, por lo que presto doble atención antes de registrar los cambios en este archivo.&lt;/p&gt;
 &lt;p&gt;Pasemos entonces a la actualización de paquetes. La Figura 19 muestra las actualizaciones disponibles.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Actualización de paquetes&#34; src=&#34;/using-octopus/19.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/19.png&#34; alt=&#34;Actualización de paquetes&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 19.&lt;/p&gt;
 &lt;p&gt;Después de actualizar ambos paquetes, Visual Studio elimina las versiones anteriores como muestra la Figura 20.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Subdirectorios de paquetes actualizados&#34; src=&#34;/using-octopus/20.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/20.png&#34; alt=&#34;Subdirectorios de paquetes actualizados&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 20.&lt;/p&gt;
 &lt;p&gt;Gracias a que estamos usando los objetivos no desde la ubicación del paquete sino desde la ubicación del proyecto, lo que tenemos que hacer es actualizar todas las referencias de la versión anterior a las referencias de la nueva versión, es decir, todos &amp;ldquo;3.6.0&amp;rdquo; por &amp;ldquo;3.6.1&amp;rdquo; y todos &amp;ldquo;4.15.7&amp;rdquo; por &amp;ldquo;4.17.0&amp;rdquo;. Hay 3 lugares en &amp;ldquo;OctoPack.targets&amp;rdquo; para los primeros cambios y solo un lugar para el segundo cambio.&lt;/p&gt;
 &lt;p&gt;Las figures 21 y 22 muestran los respectivos lugares.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Configuración actualizada para tarea de creación&#34; src=&#34;/using-octopus/21.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/21.png&#34; alt=&#34;Configuración actualizada para tarea de creación&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 21.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Configuración actualizada para tarea de despliegue&#34; src=&#34;/using-octopus/22.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/22.png&#34; alt=&#34;Configuración actualizada para tarea de despliegue&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 22.&lt;/p&gt;
 &lt;p&gt;Una cosa más, el valor de API para las versiones de Octopus se puede generar accediendo al portal de Octopus&amp;hellip;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;http://octopus.rant.com/Web/&#34;&gt;http://octopus.rant.com/Web/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&amp;hellip;y siga los pasos de la figura 23 a la figura 26.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Opciön del perfil en Octopus&#34; src=&#34;/using-octopus/23.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/23.png&#34; alt=&#34;Opciön del perfil en Octopus&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 23.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Configuración del perfil en Octopus&#34; src=&#34;/using-octopus/24.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/24.png&#34; alt=&#34;Configuración del perfil en Octopus&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 24.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Opción de generación de llave API en Octopus&#34; src=&#34;/using-octopus/25.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/25.png&#34; alt=&#34;Opción de generación de llave API en Octopus&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 25.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Resultado de generación de llave API en Octopus&#34; src=&#34;/using-octopus/26.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/26.png&#34; alt=&#34;Resultado de generación de llave API en Octopus&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 26.&lt;/p&gt;
 &lt;p&gt;Es importante que guarde esta clave porque tan pronto como cierre este cuadro de diálogo, no podrá volver a ver ese valor.&lt;/p&gt;
 &lt;p&gt;Una última cosa, algunos productos pueden introducir nuevos problemas a la mesa porque pueden estar siendo implementandos por países: es decir, diferentes proyectos de Octopus, entornos, ruta física, etc. Entonces, la idea es tener varios archivos &amp;ldquo;.target&amp;rdquo; en el subdirectorio &amp;ldquo;Implementación&amp;rdquo; y agregado de la misma manera que lo hicimos en el archivo &amp;ldquo;.csproj&amp;rdquo;. Las figuras 27 y 28 muestran un ejemplo.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Archivos multi objetivo&#34; src=&#34;/using-octopus/27.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/27.png&#34; alt=&#34;Archivos multi objetivo&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 27.&lt;/p&gt;
 &lt;p&gt;Se agregaron objetivos para Chile y Brasil para implementar esas respectivas instancias.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Archivo del proyecto using multi objetivo&#34; src=&#34;/using-octopus/28.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/28.png&#34; alt=&#34;Archivo del proyecto using multi objetivo&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 28.&lt;/p&gt;
 &lt;p&gt;Aquí en el &amp;ldquo;.csproj&amp;rdquo; es importante tener el primer objetivo creado (llamémoslo de ahora en adelante el &amp;ldquo;general&amp;rdquo; o &amp;ldquo;genérico&amp;rdquo; -OctoPack.targets-) como el último en la lista de objetivos importados.&lt;/p&gt;
 &lt;p&gt;Las figuras 29 y 30 muestran el contenido de esos nuevos objetivos creados.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Primer archivo de objetivo específico&#34; src=&#34;/using-octopus/29.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/29.png&#34; alt=&#34;Primer archivo de objetivo específico&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 29.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Segundo archivo de objetivo específico&#34; src=&#34;/using-octopus/30.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/30.png&#34; alt=&#34;Segundo archivo de objetivo específico&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 30.&lt;/p&gt;
 &lt;p&gt;Básicamente, ambos nuevos destinos son archivos muy pequeños que comparten la misma estructura pero con valores muy específicos para la instancia del país.&lt;/p&gt;
 &lt;p&gt;RunOctoPack
@@ -2298,7 +2326,7 @@ OctopusNotas&lt;/p&gt;
 &lt;p&gt;Son las variables específicas de la instancia que deben cambiar el valor en el momento del despliegue. Todos se controlan ahora mediante una nueva condición que depende del valor de una nueva variable introducida: &amp;ldquo;Desploy&amp;hellip;&amp;rdquo; (&amp;ldquo;DeployBrasil&amp;rdquo; y &amp;ldquo;DeployChile&amp;rdquo; en las figuras). Es válido mencionar que es posible incluir más variables como la versión que queremos usar, etc.&lt;/p&gt;
 &lt;p&gt;Esta nueva variable es la única que deberíamos cambiar si decidimos desplegar esa instancia. Por ejemplo, si quiero desplegar una instancia de Brasil, puse el valor de la variable &amp;ldquo;DeployBazil&amp;rdquo; como &amp;ldquo;verdadero&amp;rdquo; en el archivo &amp;ldquo;OctoPack (Brasil).targets&amp;rdquo; y eso hará que &amp;ldquo;RunOctoPack&amp;rdquo; sea verdadero y &amp;ldquo;OctopusProject&amp;rdquo; el nombre de Proyecto Octopus para Brasil. Debido a que el destino para Brasil se importa antes que el genérico en el archivo &amp;ldquo;.csproj&amp;rdquo;, una vez que ese destino se ejecuta en el tiempo de compilación, se implementará utilizando los valores especificados.&lt;/p&gt;
 &lt;p&gt;Por último, pero no menos importante, debemos modificar el objetivo genérico para eliminar el valor de &amp;ldquo;OctopusProject&amp;rdquo;. Ver figura 31.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Configuración actualizada para multi objetivo&#34; src=&#34;/using-octopus/31.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/using-octopus/31.png&#34; alt=&#34;Configuración actualizada para multi objetivo&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 31.&lt;/p&gt;
 &lt;p&gt;Espero que haya disfrutado de esta guía y la encuentre útil.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/UsingOctopus&#34;&gt;Código fuente de apoyo disponible en GitHub&lt;/a&gt;&lt;/p&gt;
@@ -2316,13 +2344,13 @@ OctopusNotas&lt;/p&gt;
         <description>&lt;p&gt;Un colega me pidió que compartiera mi experiencia programando con ReSharper y, una vez que se enteró de que no uso ReSharper, sintió aún más curiosidad por saber cómo escribo los códigos fuentes. Quien me conoce sabe que me encantan los paquetes NuGet y estar actualizado constantemente, por eso encontré un paquete muy útil que instalo en todos mis proyectos apenas los inicio.&lt;/p&gt;
 &lt;p&gt;StyleCop.MSBuild&lt;/p&gt;
 &lt;p&gt;StyleCop solía ser una aplicación independiente con integración con Visual Studio, pero eso cambió hace un tiempo. Lo explicaré con un ejemplo. Comencemos a crear una aplicación de consola desde cero.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Applicación de consola&#34; src=&#34;/stylecop-coding-style/01.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/stylecop-coding-style/01.png&#34; alt=&#34;Applicación de consola&#34;&gt;&lt;/p&gt;
 &lt;p&gt;La figura 1 muestra una aplicación de consola recién creada en Visual Studio.&lt;/p&gt;
 &lt;p&gt;Observe los 0 errores, 0 advertencias y 0 mensajes una vez que se compila. Instalemos el paquete NuGet y veamos qué sucede. La figura 2 muestra la administración de paquetes NuGet para la aplicación.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Administrador de paquetes de la solución&#34; src=&#34;/stylecop-coding-style/02.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/stylecop-coding-style/02.png&#34; alt=&#34;Administrador de paquetes de la solución&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 2.&lt;/p&gt;
 &lt;p&gt;La figura 3 muestra los resultados de la creación de la solución una vez que se instala ese paquete.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Primeros resultados de compilación&#34; src=&#34;/stylecop-coding-style/03.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/stylecop-coding-style/03.png&#34; alt=&#34;Primeros resultados de compilación&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 3.&lt;/p&gt;
 &lt;p&gt;Note las 11 advertencias. Mi filosofía personal es entregar productos sin errores (eso es lógico porque los compiladores y administradores lo buscan); cero advertencias (pocas herramientas y personas le impiden implementar con advertencias); y cero mensajes (prácticamente a nadie le importa esto).&lt;/p&gt;
 &lt;p&gt;La mayoría de las advertencias recibidas se explican por sí mismas y son fáciles de solucionar. Analicémoslsas una por una.&lt;/p&gt;
@@ -2330,41 +2358,41 @@ OctopusNotas&lt;/p&gt;
 &lt;p&gt;Las siguientes cinco advertencias están relacionadas con el hecho de que las declaraciones de &amp;ldquo;uso&amp;rdquo; deben estar dentro del espacio de nombres y no afuera, como dice la plantilla. La solución es obvia, simplemente mover las declaraciones dentro del espacio de nombres.&lt;/p&gt;
 &lt;p&gt;Las siguientes cuatro advertencias están relacionadas con la falta de documentación en los diferentes instrumentos de código: clases y métodos en este caso. Una vez que se agrega la documentación, las advertencias desaparecen.&lt;/p&gt;
 &lt;p&gt;La figura 4 muestra el resultado de la compilación después de aplicar las correcciones anteriores.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Segundos resultados de compilación&#34; src=&#34;/stylecop-coding-style/04.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/stylecop-coding-style/04.png&#34; alt=&#34;Segundos resultados de compilación&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 4.&lt;/p&gt;
 &lt;p&gt;Observe las dos nuevas advertencias. En este punto es bueno mencionar que este es un procedimiento iterativo hasta la meta (0 errores, 0 advertencias, 0 mensajes). También se eliminaron las declaraciones de &amp;ldquo;uso&amp;rdquo; no utilizadas (las que están en gris). La figura 5 muestra el nuevo resultado una vez que arreglamos estas dos advertencias agregando el modificador &amp;ldquo;público&amp;rdquo; a la clase y al método.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Primeros arreglos&#34; src=&#34;/stylecop-coding-style/05.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/stylecop-coding-style/05.png&#34; alt=&#34;Primeros arreglos&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 5.&lt;/p&gt;
 &lt;p&gt;¡Hurra! ¡Lo hicimos! Pero (siempre hay un pero, ¿no?), Esto es posible gracias al conjunto de reglas que hemos configurado en el proyecto para reportar advertencias. Entonces, seamos más exigentes al cambiar el conjunto de reglas.&lt;/p&gt;
 &lt;p&gt;La figura 6 muestra las propiedades del proyecto en la opción &amp;ldquo;Análisis de código&amp;rdquo;. Observe la casilla de verificación no seleccionada: &amp;ldquo;Habilitar análisis de código al compilar&amp;rdquo; y las &amp;ldquo;Reglas recomendadas administradas por Microsoft&amp;rdquo; en el menú desplegable Conjunto de reglas.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Opciones de configuración del proyecto&#34; src=&#34;/stylecop-coding-style/06.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/stylecop-coding-style/06.png&#34; alt=&#34;Opciones de configuración del proyecto&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 6.&lt;/p&gt;
 &lt;p&gt;Si habilita la casilla de verificación sin instalar el paquete NuGet, no recibirá ninguna advertencia y si también cambia el conjunto de reglas sin instalar el paquete NuGet, recibirá solo 2 advertencias también devueltas por el paquete StyleCop porque lo que hace es agregar muchas más reglas al conjunto de trabajo. Esa es la razón por la que me encanta agregarlo a mis proyectos y no solo usar lo que está incluido en Visual Studio.&lt;/p&gt;
 &lt;p&gt;La figura 7 muestra las opciones recomendadas.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Opciones recomendadas&#34; src=&#34;/stylecop-coding-style/07.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/stylecop-coding-style/07.png&#34; alt=&#34;Opciones recomendadas&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 7.&lt;/p&gt;
 &lt;p&gt;Sí, &amp;ldquo;Microsoft All Rules&amp;rdquo;, más estrictos somos, mejor código obtenemos si seguimos los criterios para obtener al final 0 errores, 0 advertencias y 0 mensajes.&lt;/p&gt;
 &lt;p&gt;La figura 8 muestra los resultados de la compilación después de las nuevas opciones para el análisis de código.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Terceros resultados de compilación&#34; src=&#34;/stylecop-coding-style/08.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/stylecop-coding-style/08.png&#34; alt=&#34;Terceros resultados de compilación&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 8.&lt;/p&gt;
 &lt;p&gt;Seis nuevas advertencias, es hora de empezar de nuevo. Uhmmm&amp;hellip; Los dos primeros no tienen un archivo asociado, ¿cómo puedo solucionarlos? Bueno, hay una solución. Haga clic derecho en el código &amp;ldquo;CA2210&amp;rdquo; en este caso, seleccione la opción de &amp;ldquo;Suprimir&amp;rdquo; y luego la opción &amp;ldquo;En Archivo de Supresión&amp;rdquo; como se muestra en La figura 9.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Opciones de reglas&#34; src=&#34;/stylecop-coding-style/09.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/stylecop-coding-style/09.png&#34; alt=&#34;Opciones de reglas&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 9.&lt;/p&gt;
 &lt;p&gt;Una vez seleccionada esta opción, se crea un nuevo archivo llamado &amp;ldquo;GlobalSuppressions.cs&amp;rdquo; en la raíz del proyecto como se muestra en La figura 10.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Archivo de supresión de reglas&#34; src=&#34;/stylecop-coding-style/10.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/stylecop-coding-style/10.png&#34; alt=&#34;Archivo de supresión de reglas&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 10.&lt;/p&gt;
 &lt;p&gt;En este punto, me gustaría mencionar que hay ocasiones en las que puede suprimir la advertencia en el archivo de supresión y otras directamente en el código fuente. En La figura 10 todavía hay 5 advertencias más para corregir. Mis opciones son suprimir en el archivo de supresión global la primera advertencia y suprimir en el código fuente la cuarta advertencia. Para suprimir el código fuente, debe hacer casi lo mismo: haga clic con el botón derecho en el código de la advertencia, seleccione la opción &amp;ldquo;Supresión&amp;rdquo; y luego seleccione la opción &amp;ldquo;En fuente&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;Esta opción agrega un atributo sobre el método que se informa que contiene el código para suprimir la advertencia, similar al código agregado en el archivo &amp;ldquo;GlobalSuppressions.cs&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;La segunda advertencia se puede arreglar marcando el método &amp;ldquo;Principal&amp;rdquo; como &amp;ldquo;estático&amp;rdquo;; mientras que el tercero se puede arreglar eliminando el parámetro &amp;ldquo;args&amp;rdquo; (y su documentación en los comentarios del método). Finalmente, la quinta advertencia se puede arreglar simplemente corrigiendo la ortografía de la palabra. Sí, StyleCop también incluye corrección ortográfica, ¿no es genial?&lt;/p&gt;
 &lt;p&gt;Una vez que se abordan todas las advertencias restantes, podemos volver a compilar y ver lo que se informa esta vez, La figura 11 muestra eso.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Cuartos resultados de compilación&#34; src=&#34;/stylecop-coding-style/11.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/stylecop-coding-style/11.png&#34; alt=&#34;Cuartos resultados de compilación&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 11.&lt;/p&gt;
 &lt;p&gt;¿Qué? ¿Más advertencias? Sí, recuerde que agregó un nuevo archivo: &amp;ldquo;GlobalSuppressions.cs&amp;rdquo; y ese archivo ingresa al ciclo para reportar advertencias de compilación también. Entonces, es hora de corregir las nuevas advertencias informadas.&lt;/p&gt;
 &lt;p&gt;Todas las supresiones a través del código (código fuente del archivo &amp;ldquo;GlobalSuppressions.cs&amp;rdquo; o atributos en los instrumentos de código) deben tener una justificación. Utilizo mis iniciales como justificación como una forma de rastrear quién decidió suprimir esta advertencia. Así es como soluciono la primera y tercera advertencias.&lt;/p&gt;
 &lt;p&gt;La segunda advertencia se puede corregir agregando el encabezado al archivo &amp;ldquo;GlobalSuppressions.cs&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;La cuarta advertencia solicita el uso de &amp;ldquo;////&amp;rdquo; en lugar de &amp;ldquo;//&amp;rdquo; para iniciar un comentario de código fuente. Si no le gusta esta opción, puede suprimir globalmente en el archivo &amp;ldquo;GlobalSuppressions.cs&amp;rdquo;, pero prefiero corregirlo cambiando la forma en que escribo los comentarios.&lt;/p&gt;
 &lt;p&gt;Finalmente, La figura 12 muestra cómo se ve el código al final.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Código final&#34; src=&#34;/stylecop-coding-style/12.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/stylecop-coding-style/12.png&#34; alt=&#34;Código final&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 12.&lt;/p&gt;
 &lt;p&gt;Primero que se cumpla todo nuestro objetivo: 0 errores, 0 advertencias y 0 mensajes. En segundo lugar, nuestro código resultante es atractivo y se explica por sí mismo para futuras modificaciones, así como menos problemas reportados por otras herramientas de análisis de seguridad como HP Fortify.&lt;/p&gt;
 &lt;p&gt;Es válido mencionar que debido a que esta disciplina requiere agregar comentarios en todos los instrumentos escribir todos esos comentarios manualmente es una tarea tediosa. Por esa razón también utilizo otra herramienta llamada &amp;ldquo;GhostDoc&amp;rdquo; que genera documentación muy precisa dependiendo del contexto del instrumento que se está documentando. El problema con esto es que debe hacerse uno por uno debido a la limitación de la licencia. En realidad, yo uso la versión gratuita, pero la licencia profesional permite generar comentarios para toda una clase, archivo o espacio de nombres con un solo clic o presionando &amp;ldquo;Shift + Ctrl + D&amp;rdquo; sobre el instrumento. La buena noticia es que recientemente &amp;ldquo;GhostDoc&amp;rdquo; distribuyó una versión usando el paquete de extensión de Visual Studio y no la aplicación independiente como estaba, por lo que la instalación y las actualizaciones se vuelven más fáciles.&lt;/p&gt;
@@ -2662,7 +2690,7 @@ OctopusNotas&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Figura 3: Resultado de las transformaciones a los datos.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Relaciones de las tablas en la base de datos&#34; src=&#34;/xml-recovery/04.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/xml-recovery/04.jpg&#34; alt=&#34;Relaciones de las tablas en la base de datos&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 4: Algunas relaciones de las tablas en la base de datos.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -2946,11 +2974,11 @@ OctopusNotas&lt;/p&gt;
 &lt;p&gt;Nos remitiremos a un ejemplo a grandes rasgos para ver cómo funciona en la práctica. Supongamos que una agencia noticiosa deportiva, se comprometió a brindar como servicio de su sitio web en Internet, todos los pormenores de una competición X cualquiera. La misma tiene reporteros en todos los eventos programados encargados de hacer llegar los detalles.&lt;/p&gt;
 &lt;p&gt;Pues bien, los programadores de dicha agencia luego de deliberar mucho acerca de cómo hacerlo, llegaron a la conclusión de que lo ideal sería hacer una aplicación que recogiera los datos pertinentes, los cuales pueden ser tanto noticias y entrevistas; como estadísticas y resultados de eventos en sí para el repositorio de artículos y tablas resúmenes respectivamente. Los mismos irían a parar al centro de comunicaciones a través del correo electrónico (buena elección si no se posee plena conexión a Internet) donde una vez allí, un servicio creado a la espera de dichos correos los haría guardarse en la base de datos de la cual se nutre el sitio web de la agencia.&lt;/p&gt;
 &lt;p&gt;Dicha aplicación fue implementada en Borland Delphi 6 y consiste en un conjunto de formas MDI que se acceden por menús (ver figura 2) donde cada una representa un modelo de resultado y/o noticia (ver figuras 3 y 4 respectivamente). Para no perder tiempo en la confección de la misma decidieron reutilizar tanto código como pudiesen. Para ello hicieron un módulo (unit) con una función cuya tarea es generar el XML de los datos partiendo de ciertas características de los componentes dispuestos en las formas.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Menús de aplicación&#34; src=&#34;/xml-generation/02.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/xml-generation/02.jpg&#34; alt=&#34;Menús de aplicación&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 2: Menús de la aplicación.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Forma captadora de resultados&#34; src=&#34;/xml-generation/03.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/xml-generation/03.jpg&#34; alt=&#34;Forma captadora de resultados&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 3: Forma captadora de resultados (en este caso un partido de baloncesto) y generadora del XML de la figura 1.&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Forma captadora de noticias&#34; src=&#34;/xml-generation/04.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/xml-generation/04.jpg&#34; alt=&#34;Forma captadora de noticias&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Figura 4: Forma captadora de noticias.&lt;/p&gt;
 &lt;p&gt;Según esta función basta con esparcir componentes y ajustarles ciertas propiedades, la propiedad Name corresponderá con el nombre de la etiqueta del XML y la propiedad Tag indicará el orden en el que serán tomados los componentes para la generación de sus respectivas etiquetas de XML. Cuando se quiera no tomar en cuenta algunos componentes bastará con dejarle su Tag con valor 0 (el por defecto). Podrá haber componentes con el mismo orden de prioridad sin que dejen de incluirse solo que indistintamente podrá procesarse uno primero o después; esto solo es importante a la hora de generar listas de etiquetas con un mismo nivel de profundidad. La lista de propiedades Tag no tiene por qué ser consecutiva, es decir, se podrán omitir números sin que se afecte el resultado. Los Paneles agrupan dentro de sí otros componentes al igual que los GroupBoxs agrupan dentro de sí listas de etiquetas.&lt;/p&gt;
 &lt;p&gt;En la figura 3 se colocó un Panel llamado “baloncesto” que agrupa todos los componentes que generarán etiquetas XML en orden (según propiedad Tag): el Edit “dia”, el ComboBox “sexo”, el ComboBox “etapa” y el Panel “equipos”, el ComboBox “lanotador” (líder anotador del partido) y el ComboBox “ldefensivo” (el más destacado en la defensa). A su vez dentro del Panel “equipos” se dispuso un GroupBox llamado “equipo” que agrupa un ListBox “centro” y un ListBox “puntuacion” estos con el mismo orden de prioridad (propiedad Tag, 1) ya que son listas que tienen (según el XML deseado) que estar al mismo nivel. Los botones: “Adicionar”, “Eliminar”, “Generar” y “Enviar” y el Memo en este caso no generarán XML por lo que se les dejó su Tag como 0.&lt;/p&gt;
@@ -3427,25 +3455,6 @@ Lo cierto es que hay protestas por todo el mundo tanto de detractores como de lo
 &lt;p&gt;¡Increíble lo que me sucedió, no pude hacer ningún documento pues terminé de ponerme al día a las 8:00 PM! No me considero un profesional que examina a profundidad todas las temáticas de la rama de la computación. Dentro de las pocas que puedo revisar (me gustaría poder hacer más) pues cuestiones igualmente obvias no puedo enterarme de todo lo que se relaciona con ellas. Es por eso que decidí revisarlas periódicamente con diferente frecuencia en dependencia del nivel de actualización de los sitios, algunos sitios los visitaba diariamente, otros semanales y otros mensuales. Así fue pasando el tiempo y adopté un lector de RSS como herramienta de trabajo imprescindible; así todo fluctuó de una manera más cómoda y rápida.&lt;/p&gt;
 &lt;p&gt;Este sistema el único defecto que poseía (y posee todavía) es que no está preparado para cuando no hay Internet pues al fin y al cabo sigo siendo yo el que al final determine lo importante o no y dentro de los primeros lo que realmente vale la pena leer y estudiar a profundidad.&lt;/p&gt;
 &lt;p&gt;Antes del día antes mencionado estuve 10 días sin poder consultar absolutamente nada de Internet y cuando al fin lo pude hacer miren cuantas horas me costó y el sacrificio que tuve que hacer. Al punto que quiero llegar es poner un ejemplo de lo importante que es estar al día en las temáticas de la ciencia que de desempeñes y el súper papel que juega Internet en eso. Hoy por hoy es difícil imaginarse un profesional competente que no tenga a su disposición Internet.&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Amaos los unos a los otros</title>
-      <link>/es/post/amaos-todos/</link>
-      <pubDate>Mon, 21 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/es/post/amaos-todos/</guid>
-      
-        <description>&lt;p&gt;Leyendo el título de este artículo pudieran pensar que se enfrentarán a un debate relacionado con la teología, pero no será así. Creo haber escrito antes algo sobre las diferencias entre profesionales de la computación y la semejanza que tienen sus discusiones con las que sostienen los creyentes con los no creyentes en Dios.&lt;/p&gt;
-&lt;p&gt;No repetiré lo que ya dije una vez, esta vez me desenvolveré en la rama de mi profesión solamente. Cada día salen nuevas tecnologías y por lo general lo que hacen es dividir a la comunidad en dos bandos, el que la acepta y el que no la acepta; este proceso se repite muchas veces dentro de cada bando y así sucesivamente.&lt;/p&gt;
-&lt;p&gt;Al final todos están en lo cierto pues &amp;ldquo;para gusto están los colores&amp;hellip;&amp;rdquo; y eso hace que cada profesional se rodee de un conjunto de tecnologías y herramientas y que luego el cambio hacia otras le resulte falta y a veces nunca lo hacen, aunque queden obsoletas. Pienso que el error está (y pasa actualmente, según creo) en las rencillas que tienen los profesionales de la computación hacia las implementaciones particulares de las tecnologías y no a ellas en su concepción.&lt;/p&gt;
-&lt;p&gt;Todos entendemos la necesidad y utilidad de AJAX, pero unos prefieren Atlas y otros jAJAX, unos prefieren RPC y otros RMI y así por el estilo pasa con casi todas las tecnologías de desarrollo de software que hay en el mercado. Las motivaciones para que este fenómeno se de son muy variadas, donde intervienen las licencias de software, precios, filosofías y otros factores, cada cual tiene los suyos.&lt;/p&gt;
-&lt;p&gt;El título de este artículo es con toda intención, le llamaré &amp;ldquo;los unos&amp;rdquo; a aquellos seguidores de las tecnologías y herramientas de Microsoft y llamaré &amp;ldquo;los otros&amp;rdquo; a aquellos seguidores de las de Linux. No hay desmérito en que precisamente haya sido en ese orden y no al revés por mi ya sabida predilección por Microsoft (es decir yo sería un &amp;ldquo;uno&amp;rdquo; y no un &amp;ldquo;otro&amp;rdquo;), dada más bien por la fuerza de costumbre, aunque no me declaro un ciego, sino más bien un agnóstico de este tipo de creencias. Bueno, a lo que iba.&lt;/p&gt;
-&lt;p&gt;Microsoft atacó con medidas drásticas (con las cuales no concuerdo en nada) desde la coerción hasta los juicios a otras empresas etc. Creo que al final haga lo que haga gana siempre el mejor y en eso Microsoft tenía las de ganar sin llegar a esos extremos que tanto dinero le ha costado. Si bien esto fue así, de un tiempo para acá la situación ha cambiado y en vez de seguir luchando contra lo indetenible (fenómeno Linux) ha decidido aliarse sin traicionar sus propios principios (¿no hay mejor estrategia verdad?). Ejemplo de ello tenemos el recién mega-acuerdo con Novell que incluye de todo como en botica (patentes, herramientas, tecnologías de desarrollo, códigos fuentes, etc.) el cual ha sido muy bien visto por su &amp;ldquo;unos-comunidad&amp;rdquo; y no tan así por la &amp;ldquo;otros-comunidad&amp;rdquo;.&lt;/p&gt;
-&lt;p&gt;La &amp;ldquo;otros-comunidad&amp;rdquo; nació y crece con esa fobia hacia Microsoft sin importar si Microsoft tiene o no razón o si desarrolla algo mejor; lo único que hace el mirarse el ombligo y ser ciega y sorda para cualquier otro criterio. Así son la mayoría de las personas de esa comunidad con las que me he topado alguna vez en mi vida, lo bueno es que tampoco son todas las personas, sino que hay un grupo más asequible que entiende y razona las diferencias y sabe valorar muy bien las cosas.&lt;/p&gt;
-&lt;p&gt;Son simples cuestionamientos los que quisiera que se hagan ustedes mismos a ver si les sucede lo mismo y lo más que quisiera que supieran apoyar al que realmente tenga la razón para un contexto dado y no se dejen llevar por las creencias tecnológicas, por muy arraigadas que las tengan, la próxima vez que se enfrente a la pregunta de a qué grupo pertenecen, si a los &amp;ldquo;unos&amp;rdquo; o a los &amp;ldquo;otros&amp;rdquo;.&lt;/p&gt;
 </description>
       
     </item>

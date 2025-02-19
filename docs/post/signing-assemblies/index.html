@@ -28,7 +28,9 @@
   <meta name="description" content="Source code of support available at GitHub
 .NET Core Not all clients require to sign the assemblies of their applications but when its required, the task is not so easy as you can expect.
 In the case of .NET Core applications, we can achieve this just editing the project file (.csproj) adding the following code:
-1 2 3 &lt;Target Name=&#34;BuildSigning&#34; AfterTargets=&#34;AfterBuild&#34;&gt; &lt;Exec Command=&#34;SIGNING_COMMAND&#34; /&gt; &lt;/Target&gt; As example SIGNING_COMMAND could be:" />
+1 2 3 &lt;Target Name=&#34;BuildSigning&#34; AfterTargets=&#34;AfterBuild&#34;&gt; &lt;Exec Command=&#34;SIGNING_COMMAND&#34; /&gt; &lt;/Target&gt; As example SIGNING_COMMAND could be:
+&ldquo;C\Program Files (x86)\Windows Kits\10\bin\10.0.177630\x64\signtool.exe&rdquo; sign /f &ldquo;$(SolutionDir)certificate.pfx&rdquo; /p &ldquo;pass&amp;1234&rdquo; &ldquo;S(TargetDir).dll&rdquo;*
+" />
 
   <meta name="keywords" content="Hugo, theme, jane" />
 
@@ -37,7 +39,7 @@ In the case of .NET Core applications, we can achieve this just editing the proj
 
 
 
-<meta name="generator" content="Hugo 0.133.0" />
+<meta name="generator" content="Hugo 0.144.1" />
 
 
 <link rel="canonical" href="/post/signing-assemblies/" />
@@ -71,7 +73,8 @@ In the case of .NET Core applications, we can achieve this just editing the proj
   <meta property="og:description" content="Source code of support available at GitHub
 .NET Core Not all clients require to sign the assemblies of their applications but when its required, the task is not so easy as you can expect.
 In the case of .NET Core applications, we can achieve this just editing the project file (.csproj) adding the following code:
-1 2 3 &lt;Target Name=&#34;BuildSigning&#34; AfterTargets=&#34;AfterBuild&#34;&gt; &lt;Exec Command=&#34;SIGNING_COMMAND&#34; /&gt; &lt;/Target&gt; As example SIGNING_COMMAND could be:">
+1 2 3 &lt;Target Name=&#34;BuildSigning&#34; AfterTargets=&#34;AfterBuild&#34;&gt; &lt;Exec Command=&#34;SIGNING_COMMAND&#34; /&gt; &lt;/Target&gt; As example SIGNING_COMMAND could be:
+“C\Program Files (x86)\Windows Kits\10\bin\10.0.177630\x64\signtool.exe” sign /f “$(SolutionDir)certificate.pfx” /p “pass&amp;1234” “S(TargetDir).dll”*">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
@@ -85,7 +88,8 @@ In the case of .NET Core applications, we can achieve this just editing the proj
   <meta itemprop="description" content="Source code of support available at GitHub
 .NET Core Not all clients require to sign the assemblies of their applications but when its required, the task is not so easy as you can expect.
 In the case of .NET Core applications, we can achieve this just editing the project file (.csproj) adding the following code:
-1 2 3 &lt;Target Name=&#34;BuildSigning&#34; AfterTargets=&#34;AfterBuild&#34;&gt; &lt;Exec Command=&#34;SIGNING_COMMAND&#34; /&gt; &lt;/Target&gt; As example SIGNING_COMMAND could be:">
+1 2 3 &lt;Target Name=&#34;BuildSigning&#34; AfterTargets=&#34;AfterBuild&#34;&gt; &lt;Exec Command=&#34;SIGNING_COMMAND&#34; /&gt; &lt;/Target&gt; As example SIGNING_COMMAND could be:
+“C\Program Files (x86)\Windows Kits\10\bin\10.0.177630\x64\signtool.exe” sign /f “$(SolutionDir)certificate.pfx” /p “pass&amp;1234” “S(TargetDir).dll”*">
   <meta itemprop="datePublished" content="2021-02-08T00:00:00+00:00">
   <meta itemprop="dateModified" content="2021-02-08T00:00:00+00:00">
   <meta itemprop="wordCount" content="1629">
@@ -95,7 +99,8 @@ In the case of .NET Core applications, we can achieve this just editing the proj
   <meta name="twitter:description" content="Source code of support available at GitHub
 .NET Core Not all clients require to sign the assemblies of their applications but when its required, the task is not so easy as you can expect.
 In the case of .NET Core applications, we can achieve this just editing the project file (.csproj) adding the following code:
-1 2 3 &lt;Target Name=&#34;BuildSigning&#34; AfterTargets=&#34;AfterBuild&#34;&gt; &lt;Exec Command=&#34;SIGNING_COMMAND&#34; /&gt; &lt;/Target&gt; As example SIGNING_COMMAND could be:">
+1 2 3 &lt;Target Name=&#34;BuildSigning&#34; AfterTargets=&#34;AfterBuild&#34;&gt; &lt;Exec Command=&#34;SIGNING_COMMAND&#34; /&gt; &lt;/Target&gt; As example SIGNING_COMMAND could be:
+“C\Program Files (x86)\Windows Kits\10\bin\10.0.177630\x64\signtool.exe” sign /f “$(SolutionDir)certificate.pfx” /p “pass&amp;1234” “S(TargetDir).dll”*">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -638,7 +643,7 @@ In the case of .NET Core applications, we can achieve this just editing the proj
 </div><h2 id="net-framework">.NET Framework</h2>
 <p>Things don&rsquo;t change drastically from .NET Core approach because we tried to be as generic as possible from the beginning. However, there are a few details to take in consideration.</p>
 <p>In .NET Framework application we can edit the Build Events in the project properties as is shown in figure 1.</p>
-<p><img alt="Project build events" src="/signing-assemblies/01.png"></p>
+<p><img src="/signing-assemblies/01.png" alt="Project build events"></p>
 <p>Figure 1: Project build events.</p>
 <p>This modifies the project file (.csproj) adding the following lines&hellip;</p>
 <div class="highlight"><div class="chroma">
@@ -857,7 +862,7 @@ In the case of .NET Core applications, we can achieve this just editing the proj
     &copy;
     
       2020 -
-    2024</span>
+    2025</span>
 
   
   

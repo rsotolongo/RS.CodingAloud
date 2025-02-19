@@ -13,7 +13,7 @@
       <link>/es/post/asynchronous-commands/</link>
       <pubDate>Mon, 15 Mar 2021 00:00:00 +0000</pubDate>
       <guid>/es/post/asynchronous-commands/</guid>
-      <description>Código fuente de apoyo disponible en GitHub&#xA;Recientemente tuve que implementar una aplicación simple con Windows Presentation Framework (WPF) usando el patrón Model-View-ViewModel (MVVM). Me sorprendí cuando noté que no había una solución simple lista para usar para enlazar comandos asíncronos, así que decidí crear mis implementaciones para ellos.&#xA;También quiero ser genérico, así que comencé a definir la interfaz más general que hereda de ICommand (incluida en el espacio de nombres: &amp;ldquo;System.</description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/AsyncCommands&#34;&gt;Código fuente de apoyo disponible en GitHub&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Recientemente tuve que implementar una aplicación simple con Windows Presentation Framework (WPF) usando el patrón Model-View-ViewModel (MVVM). Me sorprendí cuando noté que no había una solución simple lista para usar para enlazar comandos asíncronos, así que decidí crear mis implementaciones para ellos.&lt;/p&gt;&#xA;&lt;p&gt;También quiero ser genérico, así que comencé a definir la interfaz más general que hereda de ICommand (incluida en el espacio de nombres: &amp;ldquo;System.Windows.Input&amp;rdquo;).&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

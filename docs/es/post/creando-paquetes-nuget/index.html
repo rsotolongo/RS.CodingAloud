@@ -28,8 +28,7 @@
   <meta name="description" content="Últimamente he estado involucrado en la creación de varios paquetes NuGet útiles para algunos portales que se están siendo desarrollando. Quiero compartir mis conocimientos en este tema.
 Si estuviéramos desarrollando bibliotecas para .NET Core o .NET Standard, la vida sería fácil, como muestra La figura 1 a La figura 8.
 Figura 1: &ldquo;Creación de una nueva biblioteca de .NET Core&rdquo;.
-Figura 2: “Código predeterminado”.
-Figura 3: &ldquo;Resultados de la primera compilación&rdquo;." />
+" />
 
   <meta name="keywords" content="Hugo, theme, jane" />
 
@@ -38,7 +37,7 @@ Figura 3: &ldquo;Resultados de la primera compilación&rdquo;." />
 
 
 
-<meta name="generator" content="Hugo 0.133.0" />
+<meta name="generator" content="Hugo 0.144.1" />
 
 
 <link rel="canonical" href="/es/post/creando-paquetes-nuget/" />
@@ -71,9 +70,7 @@ Figura 3: &ldquo;Resultados de la primera compilación&rdquo;." />
   <meta property="og:title" content="Creando paquetes NuGet">
   <meta property="og:description" content="Últimamente he estado involucrado en la creación de varios paquetes NuGet útiles para algunos portales que se están siendo desarrollando. Quiero compartir mis conocimientos en este tema.
 Si estuviéramos desarrollando bibliotecas para .NET Core o .NET Standard, la vida sería fácil, como muestra La figura 1 a La figura 8.
-Figura 1: “Creación de una nueva biblioteca de .NET Core”.
-Figura 2: “Código predeterminado”.
-Figura 3: “Resultados de la primera compilación”.">
+Figura 1: “Creación de una nueva biblioteca de .NET Core”.">
   <meta property="og:locale" content="es">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
@@ -86,9 +83,7 @@ Figura 3: “Resultados de la primera compilación”.">
   <meta itemprop="name" content="Creando paquetes NuGet">
   <meta itemprop="description" content="Últimamente he estado involucrado en la creación de varios paquetes NuGet útiles para algunos portales que se están siendo desarrollando. Quiero compartir mis conocimientos en este tema.
 Si estuviéramos desarrollando bibliotecas para .NET Core o .NET Standard, la vida sería fácil, como muestra La figura 1 a La figura 8.
-Figura 1: “Creación de una nueva biblioteca de .NET Core”.
-Figura 2: “Código predeterminado”.
-Figura 3: “Resultados de la primera compilación”.">
+Figura 1: “Creación de una nueva biblioteca de .NET Core”.">
   <meta itemprop="datePublished" content="2021-01-18T00:00:00+00:00">
   <meta itemprop="dateModified" content="2021-01-18T00:00:00+00:00">
   <meta itemprop="wordCount" content="923">
@@ -97,9 +92,7 @@ Figura 3: “Resultados de la primera compilación”.">
   <meta name="twitter:title" content="Creando paquetes NuGet">
   <meta name="twitter:description" content="Últimamente he estado involucrado en la creación de varios paquetes NuGet útiles para algunos portales que se están siendo desarrollando. Quiero compartir mis conocimientos en este tema.
 Si estuviéramos desarrollando bibliotecas para .NET Core o .NET Standard, la vida sería fácil, como muestra La figura 1 a La figura 8.
-Figura 1: “Creación de una nueva biblioteca de .NET Core”.
-Figura 2: “Código predeterminado”.
-Figura 3: “Resultados de la primera compilación”.">
+Figura 1: “Creación de una nueva biblioteca de .NET Core”.">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -442,42 +435,42 @@ Figura 3: “Resultados de la primera compilación”.">
     <div class="post-content">
       <p>Últimamente he estado involucrado en la creación de varios paquetes NuGet útiles para algunos portales que se están siendo desarrollando. Quiero compartir mis conocimientos en este tema.</p>
 <p>Si estuviéramos desarrollando bibliotecas para .NET Core o .NET Standard, la vida sería fácil, como muestra La figura 1 a La figura 8.</p>
-<p><img alt="Creación de una nueva biblioteca de .NET Core" src="/creating-nuget-packages/01.png"></p>
+<p><img src="/creating-nuget-packages/01.png" alt="Creación de una nueva biblioteca de .NET Core"></p>
 <p>Figura 1: &ldquo;Creación de una nueva biblioteca de .NET Core&rdquo;.</p>
-<p><img alt="Código predeterminado" src="/creating-nuget-packages/02.png"></p>
+<p><img src="/creating-nuget-packages/02.png" alt="Código predeterminado"></p>
 <p>Figura 2: “Código predeterminado”.</p>
-<p><img alt="Resultados de la primera compilación" src="/creating-nuget-packages/03.png"></p>
+<p><img src="/creating-nuget-packages/03.png" alt="Resultados de la primera compilación"></p>
 <p>Figura 3: &ldquo;Resultados de la primera compilación&rdquo;.</p>
-<p><img alt="Propiedades del proyecto" src="/creating-nuget-packages/04.png"></p>
+<p><img src="/creating-nuget-packages/04.png" alt="Propiedades del proyecto"></p>
 <p>Figura 4: “Propiedades del proyecto”.</p>
-<p><img alt="Salida de la segunda compilación" src="/creating-nuget-packages/05.png"></p>
+<p><img src="/creating-nuget-packages/05.png" alt="Salida de la segunda compilación"></p>
 <p>Figura 5: &ldquo;Salida de la segunda compilación&rdquo;.</p>
-<p><img alt="Resultados de la segunda compilación" src="/creating-nuget-packages/06.png"></p>
+<p><img src="/creating-nuget-packages/06.png" alt="Resultados de la segunda compilación"></p>
 <p>Figura 6: &ldquo;Resultados de la segunda compilación&rdquo;.</p>
 <p>Pero la vida no es tan fácil y casi todos nuestros productos utilizan .NET Framework (normal), lo que significa que Visual Studio no nos ofrece las capacidades que se muestran en las figuras 7 y 8.</p>
-<p><img alt="Nueva biblioteca de .NET Framework" src="/creating-nuget-packages/07.png"></p>
+<p><img src="/creating-nuget-packages/07.png" alt="Nueva biblioteca de .NET Framework"></p>
 <p>Figura 7: “Nueva biblioteca de .NET Framework”.</p>
-<p><img alt="Propiedades del proyecto biblioteca" src="/creating-nuget-packages/08.png"></p>
+<p><img src="/creating-nuget-packages/08.png" alt="Propiedades del proyecto biblioteca"></p>
 <p>Figura 8: &ldquo;Las propiedades para este tipo de proyectos no incluyen la función Paquete&rdquo;.</p>
 <p>Entonces, ¿qué alternativa tenemos? En realidad, algunas de ellas: usan Octopus para generar el paquete, pero esto es complicado debido a que Octopus usa una compilación personalizada de NuGet.exe, por lo que la estructura generada puede no coincidir y su obtención implica muchos pasos.</p>
 <p>Otra alternativa es usar &ldquo;NuGet.exe&rdquo; manualmente desde la línea de comandos, pero esto puede ser confuso y también implica muchos otros pasos para realizar.</p>
 <p>Dije una vez pero me gusta repetirlo, me encantan los paquetes NuGet, entonces, ¿por qué no usar un paquete NuGet para generar paquetes NuGet? Bueno, ya existe y es muy fácil de usar. El primer paso es agregar el paquete: “CreateNewNuGetPackageFromProjectAfterEachBuild” al proyecto que queremos distribuir como un paquete NuGet. La figura 9 muestra un ejemplo.</p>
-<p><img alt="Administrador de paquetes de la solución" src="/creating-nuget-packages/09.png"></p>
+<p><img src="/creating-nuget-packages/09.png" alt="Administrador de paquetes de la solución"></p>
 <p>Figura 9.</p>
 <p>Una vez agregado, este paquete crea un subdirectorio dentro de la raíz del proyecto llamado: &ldquo;_CreateNewNuGetPackage&rdquo; y eso es todo lo que necesita. La figura 10 muestra la estructura creada.</p>
-<p><img alt="Explorardor de la solución" src="/creating-nuget-packages/10.png"></p>
+<p><img src="/creating-nuget-packages/10.png" alt="Explorardor de la solución"></p>
 <p>Figura 10.</p>
 <p>Una vez que compilamos el proyecto, podemos ver el resultado en La figura 11.</p>
-<p><img alt="Salida de la tercera compilación" src="/creating-nuget-packages/11.png"></p>
+<p><img src="/creating-nuget-packages/11.png" alt="Salida de la tercera compilación"></p>
 <p>Figura 11.</p>
 <p>La figura 12 muestra los resultados de la compilación.</p>
-<p><img alt="Resultados de la tercera compilación" src="/creating-nuget-packages/12.png"></p>
+<p><img src="/creating-nuget-packages/12.png" alt="Resultados de la tercera compilación"></p>
 <p>Figura 12.</p>
 <p>La figura 13 muestra el contenido del paquete generado.</p>
-<p><img alt="Contenidos del paquete" src="/creating-nuget-packages/13.png"></p>
+<p><img src="/creating-nuget-packages/13.png" alt="Contenidos del paquete"></p>
 <p>Figura 13.</p>
 <p>Tenga en cuenta que los metadatos se extraen básicamente de la información del ensamblado o se generan automáticamente (la salida de la compilación también tiene registros sobre esto). Podemos cambiar esto si incluimos un archivo de metadatos como muestra La figura 14.</p>
-<p><img alt="Archivo de metadatos del paquete" src="/creating-nuget-packages/14.png"></p>
+<p><img src="/creating-nuget-packages/14.png" alt="Archivo de metadatos del paquete"></p>
 <p>Figura 14.</p>
 <p>El contenido de este archivo depende de lo que desee para su paquete, pero como ejemplo:</p>
 <div class="highlight"><div class="chroma">
@@ -515,43 +508,43 @@ Figura 3: “Resultados de la primera compilación”.">
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Ahora los resultados de la compilación se parecen a los de La figura 15.</p>
-<p><img alt="Primeros paquetes generados" src="/creating-nuget-packages/15.png"></p>
+<p><img src="/creating-nuget-packages/15.png" alt="Primeros paquetes generados"></p>
 <p>Figura 15.</p>
 <p>La figura 16 muestra el contenido del nuevo paquete generado, esta vez con metadatos más precisos.</p>
-<p><img alt="Contenido del primer paquete" src="/creating-nuget-packages/16.png"></p>
+<p><img src="/creating-nuget-packages/16.png" alt="Contenido del primer paquete"></p>
 <p>Figura 16.</p>
 <p>En este punto pudimos generar el paquete pero lo que realmente necesitamos es la posibilidad de consumirlo desde otro proyecto. Primero necesitamos implementarlo en un repositorio interno de NuGet llamado: &ldquo;McNuget&rdquo;. Expliquemos cómo hacerlo.</p>
 <p>Primero abra “$(ProjectDir)_CreateNewNuGetPackage\Config1.ps1” y realice las modificaciones resaltadas en color amarillo en La figura 17.</p>
-<p><img alt="Archivo de configuración para la generación del paquete" src="/creating-nuget-packages/17.png"></p>
+<p><img src="/creating-nuget-packages/17.png" alt="Archivo de configuración para la generación del paquete"></p>
 <p>Figura 17.</p>
 <p>Básicamente, estamos especificando que en cada compilación se genera otro paquete que contiene todos los símbolos de depuración, incluidos los códigos fuentes, para facilitar la depuración de este paquete. No agregue la configuración y la plataforma utilizadas para compilar en el nombre del paquete. Además, eventualmente implementaremos este paquete en McNuget (digo eventualmente porque no es automático en todas las compilaciones) y la API para implementar en McNuget. Esta API fue generada por el administrador de McNuget y nos la envió.</p>
 <p>La figura 18 muestra el resultado de la compilación.</p>
-<p><img alt="Segundos paquetes generados" src="/creating-nuget-packages/18.png"></p>
+<p><img src="/creating-nuget-packages/18.png" alt="Segundos paquetes generados"></p>
 <p>Figura 18.</p>
 <p>Observe los dos nuevos paquetes sin la configuración y la plataforma; uno sin símbolos de depuración (igual que en La figura 16) y otro con símbolos y código fuente como muestra La figura 19.</p>
-<p><img alt="Contenido del segundo paquete" src="/creating-nuget-packages/19.png"></p>
+<p><img src="/creating-nuget-packages/19.png" alt="Contenido del segundo paquete"></p>
 <p>Figura 19.</p>
 <p>Es hora de implementar el paquete en McNuget y para hacer esto necesitamos ejecutar “$(ProjectDir)_CreateNewNuGetPackage\RunMeToUploadNuGetPackage.cmd” como se muestra en La figura 20.</p>
-<p><img alt="Comando para subir paquete" src="/creating-nuget-packages/20.png"></p>
+<p><img src="/creating-nuget-packages/20.png" alt="Comando para subir paquete"></p>
 <p>Figura 20.</p>
 <p>Una vez ejecutado, se abrirá una ventana de línea de comandos y un cuadro de diálogo solicitando que el paquete se despliegue, como se muestra en La figura 21.</p>
-<p><img alt="Diálogo para subir paquete" src="/creating-nuget-packages/21.png"></p>
+<p><img src="/creating-nuget-packages/21.png" alt="Diálogo para subir paquete"></p>
 <p>Figura 21.</p>
 <p>Una vez que se selecciona el paquete como se muestra en La figura 22&hellip;</p>
-<p><img alt="Selección para subir paquete" src="/creating-nuget-packages/22.png"></p>
+<p><img src="/creating-nuget-packages/22.png" alt="Selección para subir paquete"></p>
 <p>Figura 22.</p>
 <p>&hellip;pide una confirmación como muestra La figura 23. Un punto válido para mencionar es que el repositorio de McNuget puede no estar configurado para permitir implementaciones de paquetes que contienen símbolos de código fuente y depuración. Entonces, la única opción que podemos despleguar es el paquete regular.</p>
-<p><img alt="Confirmación de subida de paquete" src="/creating-nuget-packages/23.png"></p>
+<p><img src="/creating-nuget-packages/23.png" alt="Confirmación de subida de paquete"></p>
 <p>Figura 23.</p>
 <p>Una vez aceptado y si todo ha ido bien, deberíamos poder ver una pantalla similar a la que muestra La figura 24.</p>
-<p><img alt="Resultado de subida de paquete" src="/creating-nuget-packages/24.png"></p>
+<p><img src="/creating-nuget-packages/24.png" alt="Resultado de subida de paquete"></p>
 <p>Figura 24.</p>
 <p>Lo que significa que nuestro paquete está en McNuget listo para usarse. Probémoslo.</p>
 <p>La figura 25 muestra la gestión de paquetes para otro proyecto.</p>
-<p><img alt="Administrador de paquetes de proyecto" src="/creating-nuget-packages/25.png"></p>
+<p><img src="/creating-nuget-packages/25.png" alt="Administrador de paquetes de proyecto"></p>
 <p>Figura 25.</p>
 <p>Una vez que el paquete está instalado, podemos usar sus características. La figura 26 muestra un ejemplo.</p>
-<p><img alt="Ejemplo de uso de paquete" src="/creating-nuget-packages/26.png"></p>
+<p><img src="/creating-nuget-packages/26.png" alt="Ejemplo de uso de paquete"></p>
 <p>Figura 26.</p>
 <p>Una última observación, hemos implementado el paquete regular porque hipotéticamente McNuget no permite implementar paquetes con símbolos de depuración; pero hemos desplegado la versión construida en modo &ldquo;Debug&rdquo; y esto no es bueno, debemos desplegar la versión construida en modo &ldquo;Release&rdquo; y ganar más rendimiento.</p>
 <p>Esto es todo lo que tengo que compartir con ustedes hoy. Espero que esta guía le resulte útil para sus proyectos una vez que desee generar paquetes NuGet.</p>
@@ -712,7 +705,7 @@ Figura 3: “Resultados de la primera compilación”.">
     &copy;
     
       2020 -
-    2024</span>
+    2025</span>
 
   
   

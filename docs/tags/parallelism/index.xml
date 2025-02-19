@@ -13,7 +13,7 @@
       <link>/post/asynchronous-commands/</link>
       <pubDate>Mon, 15 Mar 2021 00:00:00 +0000</pubDate>
       <guid>/post/asynchronous-commands/</guid>
-      <description>Source code of support available at GitHub&#xA;Recently I had to implement a simple application with Windows Presentation Framework (WPF) using Model-View-ViewModel (MVVM) pattern. I got surprised when I noticed that there was not a simple solution out-of-the-box for bind asynchronous commands, so I decided to create my implementations for them.&#xA;I also want genericity, so I started defining the most general interface that inheritance from ICommand (included in namespace: &amp;ldquo;System.</description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/AsyncCommands&#34;&gt;Source code of support available at GitHub&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Recently I had to implement a simple application with Windows Presentation Framework (WPF) using Model-View-ViewModel (MVVM) pattern. I got surprised when I noticed that there was not a simple solution out-of-the-box for bind asynchronous commands, so I decided to create my implementations for them.&lt;/p&gt;&#xA;&lt;p&gt;I also want genericity, so I started defining the most general interface that inheritance from ICommand (included in namespace: &amp;ldquo;System.Windows.Input&amp;rdquo;).&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

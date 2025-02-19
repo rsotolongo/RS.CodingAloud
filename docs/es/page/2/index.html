@@ -33,7 +33,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.133.0" />
+<meta name="generator" content="Hugo 0.144.1" />
 
 
 <link rel="canonical" href="/es/" />
@@ -70,8 +70,8 @@
 
   <meta itemprop="name" content="Programando en voz alta">
   <meta itemprop="description" content="Hugo theme jane example site.">
-  <meta itemprop="datePublished" content="2021-03-15T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2021-03-15T00:00:00+00:00">
+  <meta itemprop="datePublished" content="2025-02-17T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-02-17T00:00:00+00:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Programando en voz alta">
   <meta name="twitter:description" content="Hugo theme jane example site.">
@@ -392,6 +392,52 @@
   <header class="post-header">
     <h1 class="post-title">
       
+      <a class="post-link" href="/es/post/generating-signature-certificates/">Generando certificados de firma</a>
+    </h1>
+    
+<div class="post-meta">
+  
+  <div><a href="/post/generating-signature-certificates/">Read in English: Generating signature certificates</a></div>
+  
+</div>
+
+    <div class="post-meta">
+      <time datetime="2021-02-01" class="post-time">
+        2021-02-01
+      </time>
+      <div class="post-category">
+          <a href="/es/categories/desarrollo/"> Desarrollo </a>
+          
+        </div>
+      <span class="more-meta"> 418 palabras </span>
+      <span class="more-meta"> 2 min lectura </span>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      <p><a href="https://gist.github.com/rsotolongo/80410cee05c26a7bcb17327d0c279b86">Código fuente de apoyo disponible en GitHub</a></p>
+<p>A veces, los ensamblados (ejecutables y bibliotecas) deben estar firmados y no tenemos un certificado disponible con fines de prueba. En este post pretendo mostrar cómo generar un certificado para firmar ensamblados.</p>
+<p>Primero, necesitamos instalar OpenSSL que podemos lograr siguiendo los pasos que se especifican en el siguiente enlace:</p>
+<p><a href="https://medium.com/swlh/installing-openssl-on-windows-10-and-updating-path-80992e26f6a1">Instalación de OpenSSL en Windows 10 y actualización de PATH</a></p>
+<p>En segundo lugar, creemos un archivo de secuencia de comandos por lotes llamado: &ldquo;generateCertificate.cmd&rdquo; con contenido:</p>
+    </div>
+    <div class="read-more">
+      <a href="/es/post/generating-signature-certificates/" class="read-more-link">Leer más</a>
+    </div>
+    
+  </div>
+</article>
+
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
       <a class="post-link" href="/es/post/deploying-nuget-packages/">Desplegando paquetes NuGet</a>
     </h1>
     
@@ -420,10 +466,11 @@
   <div class="post-content">
     
     <div class="post-summary">
-      Código fuente de apoyo disponible en GitHub
-En una publicación anterior vimos cómo: &ldquo;Crear paquetes NuGet&rdquo; pero el paso de despliegue aún era un proceso manual. Intentemos automatizar esto. La figura 1 muestra cómo generar un paquete NuGet para un proyecto de .NET Core (similar al enfoque mostrado anteriormente) utilizando las propiedades del proyecto.
-Figura 1: &ldquo;Creando un paquete NuGet&rdquo;.
-Esto agrega un par de líneas al archivo del proyecto (.
+      <p><a href="https://github.com/rsotolongo/RS.Blog.Projects/tree/main/DeployPackages">Código fuente de apoyo disponible en GitHub</a></p>
+<p>En una publicación anterior vimos cómo: &ldquo;<a href="../create_nuget_packages">Crear paquetes NuGet</a>&rdquo; pero el paso de despliegue aún era un proceso manual. Intentemos automatizar esto. La figura 1 muestra cómo generar un paquete NuGet para un proyecto de .NET Core (similar al enfoque mostrado anteriormente) utilizando las propiedades del proyecto.</p>
+<p><img src="/deploying-nuget-packages/01.png" alt="Creando un paquete NuGet"></p>
+<p>Figura 1: &ldquo;Creando un paquete NuGet&rdquo;.</p>
+<p>Esto agrega un par de líneas al archivo del proyecto (.csproj) como muestra la figura 2:</p>
     </div>
     <div class="read-more">
       <a href="/es/post/deploying-nuget-packages/" class="read-more-link">Leer más</a>
@@ -465,11 +512,11 @@ Esto agrega un par de líneas al archivo del proyecto (.
   <div class="post-content">
     
     <div class="post-summary">
-      Últimamente he estado involucrado en la creación de varios paquetes NuGet útiles para algunos portales que se están siendo desarrollando. Quiero compartir mis conocimientos en este tema.
-Si estuviéramos desarrollando bibliotecas para .NET Core o .NET Standard, la vida sería fácil, como muestra La figura 1 a La figura 8.
-Figura 1: &ldquo;Creación de una nueva biblioteca de .NET Core&rdquo;.
-Figura 2: “Código predeterminado”.
-Figura 3: &ldquo;Resultados de la primera compilación&rdquo;.
+      <p>Últimamente he estado involucrado en la creación de varios paquetes NuGet útiles para algunos portales que se están siendo desarrollando. Quiero compartir mis conocimientos en este tema.</p>
+<p>Si estuviéramos desarrollando bibliotecas para .NET Core o .NET Standard, la vida sería fácil, como muestra La figura 1 a La figura 8.</p>
+<p><img src="/creating-nuget-packages/01.png" alt="Creación de una nueva biblioteca de .NET Core"></p>
+<p>Figura 1: &ldquo;Creación de una nueva biblioteca de .NET Core&rdquo;.</p>
+<p><img src="/creating-nuget-packages/02.png" alt="Código predeterminado"></p>
     </div>
     <div class="read-more">
       <a href="/es/post/creando-paquetes-nuget/" class="read-more-link">Leer más</a>
@@ -511,9 +558,9 @@ Figura 3: &ldquo;Resultados de la primera compilación&rdquo;.
   <div class="post-content">
     
     <div class="post-summary">
-      Código fuente de apoyo disponible en GitHub
-Desde hace un tiempo quería compartir mis experiencias automatizando los despliegues de productos con Octopus desde Visual Studio. Nuevamente, hagámoslo con un ejemplo.
-Como no podía ser de otra manera, La figura 1 muestra el primer paquete que debes agregar a tu proyecto para poder crear paquetes Octopus listos para ser desplegados: &ldquo;OctoPack&rdquo;. La última versión del paquete disponible en el momento de este tutorial era la &ldquo;3.
+      <p><a href="https://github.com/rsotolongo/RS.Blog.Projects/tree/main/UsingOctopus">Código fuente de apoyo disponible en GitHub</a></p>
+<p>Desde hace un tiempo quería compartir mis experiencias automatizando los despliegues de productos con Octopus desde Visual Studio. Nuevamente, hagámoslo con un ejemplo.</p>
+<p>Como no podía ser de otra manera, La figura 1 muestra el primer paquete que debes agregar a tu proyecto para poder crear paquetes Octopus listos para ser desplegados: &ldquo;OctoPack&rdquo;. La última versión del paquete disponible en el momento de este tutorial era la &ldquo;3.6.1&rdquo;, pero instalamos la &ldquo;3.6.0&rdquo; a propósito para mostrar el proceso de actualización.</p>
     </div>
     <div class="read-more">
       <a href="/es/post/usando-octopus/" class="read-more-link">Leer más</a>
@@ -555,55 +602,12 @@ Como no podía ser de otra manera, La figura 1 muestra el primer paquete que deb
   <div class="post-content">
     
     <div class="post-summary">
-      Un colega me pidió que compartiera mi experiencia programando con ReSharper y, una vez que se enteró de que no uso ReSharper, sintió aún más curiosidad por saber cómo escribo los códigos fuentes. Quien me conoce sabe que me encantan los paquetes NuGet y estar actualizado constantemente, por eso encontré un paquete muy útil que instalo en todos mis proyectos apenas los inicio.
-StyleCop.MSBuild
-StyleCop solía ser una aplicación independiente con integración con Visual Studio, pero eso cambió hace un tiempo.
+      <p>Un colega me pidió que compartiera mi experiencia programando con ReSharper y, una vez que se enteró de que no uso ReSharper, sintió aún más curiosidad por saber cómo escribo los códigos fuentes. Quien me conoce sabe que me encantan los paquetes NuGet y estar actualizado constantemente, por eso encontré un paquete muy útil que instalo en todos mis proyectos apenas los inicio.</p>
+<p>StyleCop.MSBuild</p>
+<p>StyleCop solía ser una aplicación independiente con integración con Visual Studio, pero eso cambió hace un tiempo. Lo explicaré con un ejemplo. Comencemos a crear una aplicación de consola desde cero.</p>
     </div>
     <div class="read-more">
       <a href="/es/post/estilo-de-c%C3%B3digo-usando-stylecop/" class="read-more-link">Leer más</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/es/post/bienvenida/">Bienvenida</a>
-    </h1>
-    
-<div class="post-meta">
-  
-  <div><a href="/post/welcome/">Read in English: Welcome</a></div>
-  
-</div>
-
-    <div class="post-meta">
-      <time datetime="2021-01-01" class="post-time">
-        2021-01-01
-      </time>
-      <div class="post-category">
-          <a href="/es/categories/general/"> General </a>
-          
-        </div>
-      <span class="more-meta"> 110 palabras </span>
-      <span class="more-meta"> 1 min lectura </span>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      Les doy la bienvenida oficial a mi blog profesional, intentaré escribir frecuentemente sobre tecnologías de desarrollo, lenguajes de programación, estructuras de datos, algoritmos, entre otros temas vinculados con este increíble mundo tecnológico expresando siempre mis opiniones personales.
-Me decidí gracias a que sentí la necesidad imperiosa de escribir luego de acumular experiencia desarrollando software y constantemente explicar una y otra vez los conceptos, enfoques, y soluciones aplicados; unido a la recomendación de Scott Hanselman de escribir un artículo de todo aquello que no pueda ser explicado en seis oraciones.
-    </div>
-    <div class="read-more">
-      <a href="/es/post/bienvenida/" class="read-more-link">Leer más</a>
     </div>
     
   </div>
@@ -757,7 +761,7 @@ Me decidí gracias a que sentí la necesidad imperiosa de escribir luego de acum
     &copy;
     
       2020 -
-    2024</span>
+    2025</span>
 
   
   

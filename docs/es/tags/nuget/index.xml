@@ -13,14 +13,14 @@
       <link>/es/post/deploying-nuget-packages/</link>
       <pubDate>Mon, 25 Jan 2021 00:00:00 +0000</pubDate>
       <guid>/es/post/deploying-nuget-packages/</guid>
-      <description>Código fuente de apoyo disponible en GitHub&#xA;En una publicación anterior vimos cómo: &amp;ldquo;Crear paquetes NuGet&amp;rdquo; pero el paso de despliegue aún era un proceso manual. Intentemos automatizar esto. La figura 1 muestra cómo generar un paquete NuGet para un proyecto de .NET Core (similar al enfoque mostrado anteriormente) utilizando las propiedades del proyecto.&#xA;Figura 1: &amp;ldquo;Creando un paquete NuGet&amp;rdquo;.&#xA;Esto agrega un par de líneas al archivo del proyecto (.</description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/DeployPackages&#34;&gt;Código fuente de apoyo disponible en GitHub&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;En una publicación anterior vimos cómo: &amp;ldquo;&lt;a href=&#34;../create_nuget_packages&#34;&gt;Crear paquetes NuGet&lt;/a&gt;&amp;rdquo; pero el paso de despliegue aún era un proceso manual. Intentemos automatizar esto. La figura 1 muestra cómo generar un paquete NuGet para un proyecto de .NET Core (similar al enfoque mostrado anteriormente) utilizando las propiedades del proyecto.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;/deploying-nuget-packages/01.png&#34; alt=&#34;Creando un paquete NuGet&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Figura 1: &amp;ldquo;Creando un paquete NuGet&amp;rdquo;.&lt;/p&gt;&#xA;&lt;p&gt;Esto agrega un par de líneas al archivo del proyecto (.csproj) como muestra la figura 2:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Creando paquetes NuGet</title>
       <link>/es/post/creando-paquetes-nuget/</link>
       <pubDate>Mon, 18 Jan 2021 00:00:00 +0000</pubDate>
       <guid>/es/post/creando-paquetes-nuget/</guid>
-      <description>Últimamente he estado involucrado en la creación de varios paquetes NuGet útiles para algunos portales que se están siendo desarrollando. Quiero compartir mis conocimientos en este tema.&#xA;Si estuviéramos desarrollando bibliotecas para .NET Core o .NET Standard, la vida sería fácil, como muestra La figura 1 a La figura 8.&#xA;Figura 1: &amp;ldquo;Creación de una nueva biblioteca de .NET Core&amp;rdquo;.&#xA;Figura 2: “Código predeterminado”.&#xA;Figura 3: &amp;ldquo;Resultados de la primera compilación&amp;rdquo;.</description>
+      <description>&lt;p&gt;Últimamente he estado involucrado en la creación de varios paquetes NuGet útiles para algunos portales que se están siendo desarrollando. Quiero compartir mis conocimientos en este tema.&lt;/p&gt;&#xA;&lt;p&gt;Si estuviéramos desarrollando bibliotecas para .NET Core o .NET Standard, la vida sería fácil, como muestra La figura 1 a La figura 8.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/01.png&#34; alt=&#34;Creación de una nueva biblioteca de .NET Core&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Figura 1: &amp;ldquo;Creación de una nueva biblioteca de .NET Core&amp;rdquo;.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;/creating-nuget-packages/02.png&#34; alt=&#34;Código predeterminado&#34;&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

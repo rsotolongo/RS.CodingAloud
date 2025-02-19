@@ -13,7 +13,7 @@
       <link>/post/stylecop-coding-style/</link>
       <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
       <guid>/post/stylecop-coding-style/</guid>
-      <description>A colleague ask me to share my experience coding with ReSharper and once he heard that I’m not use ReSharper he was even more curious about how I write source codes. Who knows me knows I love NuGet packages and be updated constantly, that’s why I found a very useful package that I install in all my projects as soon I start it.&#xA;StyleCop.MSBuild&#xA;StyleCop used to be a standalone application with integration with Visual Studio but that changed a while ago.</description>
+      <description>&lt;p&gt;A colleague ask me to share my experience coding with ReSharper and once he heard that I’m not use ReSharper he was even more curious about how I write source codes. Who knows me knows I love NuGet packages and be updated constantly, that’s why I found a very useful package that I install in all my projects as soon I start it.&lt;/p&gt;&#xA;&lt;p&gt;StyleCop.MSBuild&lt;/p&gt;&#xA;&lt;p&gt;StyleCop used to be a standalone application with integration with Visual Studio but that changed a while ago. I’ll explain through an example. Let’s start creating a console application from scratch.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -28,7 +28,8 @@
   <meta name="description" content="Source code of support available at GitHub
 I a previous post we saw how to: &ldquo;Create NuGet packages&rdquo; but the deployment step was still a manual process. Let&rsquo;s try to automatize this. Figure 1 shows how to generate NuGet package for a .NET Core project (similar to the approach previously shown) using the project&rsquo;s properties.
 Figure 1: &ldquo;Creating NuGet package&rdquo;.
-This adds a couple of lines into the project file (." />
+This adds a couple of lines into the project file (.csproj) as figure 2 shows:
+" />
 
   <meta name="keywords" content="Hugo, theme, jane" />
 
@@ -37,7 +38,7 @@ This adds a couple of lines into the project file (." />
 
 
 
-<meta name="generator" content="Hugo 0.133.0" />
+<meta name="generator" content="Hugo 0.144.1" />
 
 
 <link rel="canonical" href="/post/deploying-nuget-packages/" />
@@ -71,7 +72,7 @@ This adds a couple of lines into the project file (." />
   <meta property="og:description" content="Source code of support available at GitHub
 I a previous post we saw how to: “Create NuGet packages” but the deployment step was still a manual process. Let’s try to automatize this. Figure 1 shows how to generate NuGet package for a .NET Core project (similar to the approach previously shown) using the project’s properties.
 Figure 1: “Creating NuGet package”.
-This adds a couple of lines into the project file (.">
+This adds a couple of lines into the project file (.csproj) as figure 2 shows:">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
@@ -85,7 +86,7 @@ This adds a couple of lines into the project file (.">
   <meta itemprop="description" content="Source code of support available at GitHub
 I a previous post we saw how to: “Create NuGet packages” but the deployment step was still a manual process. Let’s try to automatize this. Figure 1 shows how to generate NuGet package for a .NET Core project (similar to the approach previously shown) using the project’s properties.
 Figure 1: “Creating NuGet package”.
-This adds a couple of lines into the project file (.">
+This adds a couple of lines into the project file (.csproj) as figure 2 shows:">
   <meta itemprop="datePublished" content="2021-01-25T00:00:00+00:00">
   <meta itemprop="dateModified" content="2021-01-25T00:00:00+00:00">
   <meta itemprop="wordCount" content="447">
@@ -95,7 +96,7 @@ This adds a couple of lines into the project file (.">
   <meta name="twitter:description" content="Source code of support available at GitHub
 I a previous post we saw how to: “Create NuGet packages” but the deployment step was still a manual process. Let’s try to automatize this. Figure 1 shows how to generate NuGet package for a .NET Core project (similar to the approach previously shown) using the project’s properties.
 Figure 1: “Creating NuGet package”.
-This adds a couple of lines into the project file (.">
+This adds a couple of lines into the project file (.csproj) as figure 2 shows:">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -438,10 +439,10 @@ This adds a couple of lines into the project file (.">
     <div class="post-content">
       <p><a href="https://github.com/rsotolongo/RS.Blog.Projects/tree/main/DeployPackages">Source code of support available at GitHub</a></p>
 <p>I a previous post we saw how to: &ldquo;<a href="../creating_nuget_packages">Create NuGet packages</a>&rdquo; but the deployment step was still a manual process. Let&rsquo;s try to automatize this. Figure 1 shows how to generate NuGet package for a .NET Core project (similar to the approach previously shown) using the project&rsquo;s properties.</p>
-<p><img alt="Creating NuGet package" src="/deploying-nuget-packages/01.png"></p>
+<p><img src="/deploying-nuget-packages/01.png" alt="Creating NuGet package"></p>
 <p>Figure 1: &ldquo;Creating NuGet package&rdquo;.</p>
 <p>This adds a couple of lines into the project file (.csproj) as figure 2 shows:</p>
-<p><img alt="Project file properties to create NuGet package" src="/deploying-nuget-packages/02.png"></p>
+<p><img src="/deploying-nuget-packages/02.png" alt="Project file properties to create NuGet package"></p>
 <p>Figure 2: &ldquo;Project file properties to create NuGet package&rdquo;.</p>
 <p>My approach also uses MSBuild targets. The first step is to include the following code into the project file (.csproj):</p>
 <div class="highlight"><div class="chroma">
@@ -510,10 +511,10 @@ This adds a couple of lines into the project file (.">
 <p>The task: &ldquo;DeployPackage&rdquo; (called from the project file) will be executed only if variables: &ldquo;DeployPackage&rdquo; or &ldquo;DeployPackages&rdquo; have value: &ldquo;true&rdquo;. Variable: &ldquo;DeployPackage&rdquo; is passed from the project file call and is designed to deploy only the NuGet package generated for that project. In the other hand, variable: &ldquo;DeployPackages&rdquo; is global to this file and is designed to deploy all packages generated in the solution (normally every project generates one different NuGet package). If this task matches the condition to be executed, it will execute its dependent task first.</p>
 <p>Task: &ldquo;DownloadNuget&rdquo; provides package manager: &ldquo;NuGet.exe&rdquo; in order to not deal with installed tools, tool paths, development environment differences between team members, etc. Once this task finish, it returns to the execution of the task: &ldquo;DeployPackage&rdquo;.</p>
 <p>Finally, the package manager tool is called with all required parameters. Figure 3 shows an example of execution.</p>
-<p><img alt="Deployment result" src="/deploying-nuget-packages/03.png"></p>
+<p><img src="/deploying-nuget-packages/03.png" alt="Deployment result"></p>
 <p>Figure 3: &ldquo;Deployment result&rdquo;.</p>
 <p>Figure 4 shows the deployed package.</p>
-<p><img alt="Deployed package" src="/deploying-nuget-packages/04.png"></p>
+<p><img src="/deploying-nuget-packages/04.png" alt="Deployed package"></p>
 <p>Figure 4: &ldquo;Deployed package&rdquo;.</p>
 <p>I hope these simple instructions help you to automate NuGet deployments.</p>
 <p><a href="https://github.com/rsotolongo/RS.Blog.Projects/tree/main/DeployPackages">Source code of support available at GitHub</a></p>
@@ -674,7 +675,7 @@ This adds a couple of lines into the project file (.">
     &copy;
     
       2020 -
-    2024</span>
+    2025</span>
 
   
   

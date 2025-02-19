@@ -13,7 +13,7 @@
       <link>/es/post/estilo-de-c%C3%B3digo-usando-stylecop/</link>
       <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
       <guid>/es/post/estilo-de-c%C3%B3digo-usando-stylecop/</guid>
-      <description>Un colega me pidió que compartiera mi experiencia programando con ReSharper y, una vez que se enteró de que no uso ReSharper, sintió aún más curiosidad por saber cómo escribo los códigos fuentes. Quien me conoce sabe que me encantan los paquetes NuGet y estar actualizado constantemente, por eso encontré un paquete muy útil que instalo en todos mis proyectos apenas los inicio.&#xA;StyleCop.MSBuild&#xA;StyleCop solía ser una aplicación independiente con integración con Visual Studio, pero eso cambió hace un tiempo.</description>
+      <description>&lt;p&gt;Un colega me pidió que compartiera mi experiencia programando con ReSharper y, una vez que se enteró de que no uso ReSharper, sintió aún más curiosidad por saber cómo escribo los códigos fuentes. Quien me conoce sabe que me encantan los paquetes NuGet y estar actualizado constantemente, por eso encontré un paquete muy útil que instalo en todos mis proyectos apenas los inicio.&lt;/p&gt;&#xA;&lt;p&gt;StyleCop.MSBuild&lt;/p&gt;&#xA;&lt;p&gt;StyleCop solía ser una aplicación independiente con integración con Visual Studio, pero eso cambió hace un tiempo. Lo explicaré con un ejemplo. Comencemos a crear una aplicación de consola desde cero.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

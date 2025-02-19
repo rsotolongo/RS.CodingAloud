@@ -13,7 +13,7 @@
       <link>/post/using-octopus/</link>
       <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
       <guid>/post/using-octopus/</guid>
-      <description>Source code of support available at GitHub&#xA;Since while ago I wanted to share my experiences automatizing the product releases with Octopus from Visual Studio. Again, let’s do it through an example.&#xA;As it could not be otherwise, figure 1 shows the first package you should add to your project in order to create Octopus packages ready to be deployed: &amp;ldquo;OctoPack&amp;rdquo;. The latest package version available at the time of this tutorial was the &amp;ldquo;3.</description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/UsingOctopus&#34;&gt;Source code of support available at GitHub&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Since while ago I wanted to share my experiences automatizing the product releases with Octopus from Visual Studio. Again, let’s do it through an example.&lt;/p&gt;&#xA;&lt;p&gt;As it could not be otherwise, figure 1 shows the first package you should add to your project in order to create Octopus packages ready to be deployed: &amp;ldquo;OctoPack&amp;rdquo;. The latest package version available at the time of this tutorial was the &amp;ldquo;3.6.1&amp;rdquo; but we installed the &amp;ldquo;3.6.0&amp;rdquo; on purpose in order to show the update process.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

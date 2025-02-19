@@ -13,7 +13,7 @@
       <link>/post/generating-swagger-openapi-clients/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       <guid>/post/generating-swagger-openapi-clients/</guid>
-      <description>Source code of support available at GitHub&#xA;Recently I was developing a .NET Core web application that needs to consume an API developed few years ago using ASP.NET WebAPI. Fortunately, that API have Swagger integrated, so I thought I can save time do not creating manually the instruments required to API calls (DTOs, client, etc.) instead using the &amp;ldquo;Connected Services&amp;rdquo; feature of Visual Studio.&#xA;I got a big surprise that inspired me to share the experience and the solution in this post.</description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/ConnectedServices&#34;&gt;Source code of support available at GitHub&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Recently I was developing a .NET Core web application that needs to consume an API developed few years ago using ASP.NET WebAPI. Fortunately, that API have Swagger integrated, so I thought I can save time do not creating manually the instruments required to API calls (DTOs, client, etc.) instead using the &amp;ldquo;Connected Services&amp;rdquo; feature of Visual Studio.&lt;/p&gt;&#xA;&lt;p&gt;I got a big surprise that inspired me to share the experience and the solution in this post. I reproduced a simplified scenario as you can see in figure 1 accessing to Swagger UI through its URL: &amp;ldquo;http://localhost:5200/swagger&amp;rdquo;.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

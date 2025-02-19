@@ -29,7 +29,8 @@
 Sometimes assemblies (executables and libraries) are required to be sign and I don&rsquo;t have a certificate available for test purpose. In this post I pretend to show how to generate a certificate to sign assemblies.
 First, we need to install OpenSSL that we can achive following the steps specified in the next link:
 Installing OpenSSL on Windows 10 and updating PATH
-Second, let&rsquo;s create a batch script file called: &ldquo;generateCertificate." />
+Second, let&rsquo;s create a batch script file called: &ldquo;generateCertificate.cmd&rdquo; with content:
+" />
 
   <meta name="keywords" content="Hugo, theme, jane" />
 
@@ -38,7 +39,7 @@ Second, let&rsquo;s create a batch script file called: &ldquo;generateCertificat
 
 
 
-<meta name="generator" content="Hugo 0.133.0" />
+<meta name="generator" content="Hugo 0.144.1" />
 
 
 <link rel="canonical" href="/post/generating-signature-certificates/" />
@@ -73,7 +74,7 @@ Second, let&rsquo;s create a batch script file called: &ldquo;generateCertificat
 Sometimes assemblies (executables and libraries) are required to be sign and I don’t have a certificate available for test purpose. In this post I pretend to show how to generate a certificate to sign assemblies.
 First, we need to install OpenSSL that we can achive following the steps specified in the next link:
 Installing OpenSSL on Windows 10 and updating PATH
-Second, let’s create a batch script file called: “generateCertificate.">
+Second, let’s create a batch script file called: “generateCertificate.cmd” with content:">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
@@ -87,7 +88,7 @@ Second, let’s create a batch script file called: “generateCertificate.">
 Sometimes assemblies (executables and libraries) are required to be sign and I don’t have a certificate available for test purpose. In this post I pretend to show how to generate a certificate to sign assemblies.
 First, we need to install OpenSSL that we can achive following the steps specified in the next link:
 Installing OpenSSL on Windows 10 and updating PATH
-Second, let’s create a batch script file called: “generateCertificate.">
+Second, let’s create a batch script file called: “generateCertificate.cmd” with content:">
   <meta itemprop="datePublished" content="2021-02-01T00:00:00+00:00">
   <meta itemprop="dateModified" content="2021-02-01T00:00:00+00:00">
   <meta itemprop="wordCount" content="403">
@@ -98,7 +99,7 @@ Second, let’s create a batch script file called: “generateCertificate.">
 Sometimes assemblies (executables and libraries) are required to be sign and I don’t have a certificate available for test purpose. In this post I pretend to show how to generate a certificate to sign assemblies.
 First, we need to install OpenSSL that we can achive following the steps specified in the next link:
 Installing OpenSSL on Windows 10 and updating PATH
-Second, let’s create a batch script file called: “generateCertificate.">
+Second, let’s create a batch script file called: “generateCertificate.cmd” with content:">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -484,12 +485,12 @@ Second, let’s create a batch script file called: “generateCertificate.">
 </div>
 </div><p>Roughly we create a folder (called: &ldquo;Certificate&rdquo;) and make it the working directory. After we create a file writing its content line by line. Finally, in several steps, we use tool: &ldquo;openssl.exe&rdquo; to generate the certificate. Notice the double quotes surrounding the password value due to it contains the special character ampersand (&amp;). The source code for that file could be downloaded from <a href="https://gist.github.com/rsotolongo/80410cee05c26a7bcb17327d0c279b86">this GIST</a>.</p>
 <p>Assuming that we have copied it into folder: &ldquo;C:\Temp&rdquo;, let&rsquo;s see what it does through the analysis of figure 1 representing its execution.</p>
-<p><img alt="Script execution" src="/generating-signature-certificates/01.png"></p>
+<p><img src="/generating-signature-certificates/01.png" alt="Script execution"></p>
 <p>Figure 1: Script execution.</p>
 <p>The steps to pay more attention are indicated with red and yellow arrows while there are other optional steps indicated with blue arrows. The first red arrow is the common name that we choose for the certificate. This must to be the same value that we have to enter once the script asks for a value in the second red arrow.</p>
 <p>Yellow arrows are the password chosen for the certificate. While the first two values are specified in batch file: &ldquo;generateCertificate.cmd&rdquo;, the last two values have to be introduced manually when are requested. Tool: &ldquo;openssl.exe&rdquo; hides those values while are typed but they must to be match.</p>
 <p>Once all steps end successfully we can see the result in figure 2.</p>
-<p><img alt="Resulting certificate" src="/generating-signature-certificates/02.png"></p>
+<p><img src="/generating-signature-certificates/02.png" alt="Resulting certificate"></p>
 <p>Figure 2: Resulting certificate.</p>
 <p>That is a certificate we can use to sign assemblies (a process I will explain in a later post).</p>
 <p><a href="https://gist.github.com/rsotolongo/80410cee05c26a7bcb17327d0c279b86">Source code of support available at GitHub</a></p>
@@ -649,7 +650,7 @@ Second, let’s create a batch script file called: “generateCertificate.">
     &copy;
     
       2020 -
-    2024</span>
+    2025</span>
 
   
   

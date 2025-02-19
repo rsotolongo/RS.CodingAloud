@@ -27,7 +27,8 @@
 
   <meta name="description" content="Código fuente de apoyo disponible en GitHub
 Recientemente, estaba desarrollando una aplicación web .NET Core que necesita consumir una API desarrollada hace unos años usando ASP.NET WebAPI. Afortunadamente, esa API tenía Swagger integrado, así que pensé que podía ahorrar tiempo al no crear manualmente los instrumentos necesarios para las llamadas a la API (DTO, cliente, etc.) en su lugar podría utilizar la función &ldquo;Servicios Conectados&rdquo; de Visual Studio.
-Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solución en este post." />
+Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solución en este post. Reproduje un escenario simplificado como se puede ver en la figura 1 accediendo a Swagger UI a través de su URL: &ldquo;http://localhost:5200/swagger&rdquo;.
+" />
 
   <meta name="keywords" content="Hugo, theme, jane" />
 
@@ -36,7 +37,7 @@ Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solu
 
 
 
-<meta name="generator" content="Hugo 0.133.0" />
+<meta name="generator" content="Hugo 0.144.1" />
 
 
 <link rel="canonical" href="/es/post/generating-swagger-openapi-clients/" />
@@ -69,7 +70,7 @@ Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solu
   <meta property="og:title" content="Generando clientes de Swagger/OpenAPI">
   <meta property="og:description" content="Código fuente de apoyo disponible en GitHub
 Recientemente, estaba desarrollando una aplicación web .NET Core que necesita consumir una API desarrollada hace unos años usando ASP.NET WebAPI. Afortunadamente, esa API tenía Swagger integrado, así que pensé que podía ahorrar tiempo al no crear manualmente los instrumentos necesarios para las llamadas a la API (DTO, cliente, etc.) en su lugar podría utilizar la función “Servicios Conectados” de Visual Studio.
-Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solución en este post.">
+Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solución en este post. Reproduje un escenario simplificado como se puede ver en la figura 1 accediendo a Swagger UI a través de su URL: “http://localhost:5200/swagger”.">
   <meta property="og:locale" content="es">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
@@ -83,7 +84,7 @@ Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solu
   <meta itemprop="name" content="Generando clientes de Swagger/OpenAPI">
   <meta itemprop="description" content="Código fuente de apoyo disponible en GitHub
 Recientemente, estaba desarrollando una aplicación web .NET Core que necesita consumir una API desarrollada hace unos años usando ASP.NET WebAPI. Afortunadamente, esa API tenía Swagger integrado, así que pensé que podía ahorrar tiempo al no crear manualmente los instrumentos necesarios para las llamadas a la API (DTO, cliente, etc.) en su lugar podría utilizar la función “Servicios Conectados” de Visual Studio.
-Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solución en este post.">
+Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solución en este post. Reproduje un escenario simplificado como se puede ver en la figura 1 accediendo a Swagger UI a través de su URL: “http://localhost:5200/swagger”.">
   <meta itemprop="datePublished" content="2021-02-15T00:00:00+00:00">
   <meta itemprop="dateModified" content="2021-02-15T00:00:00+00:00">
   <meta itemprop="wordCount" content="2409">
@@ -92,7 +93,7 @@ Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solu
   <meta name="twitter:title" content="Generando clientes de Swagger/OpenAPI">
   <meta name="twitter:description" content="Código fuente de apoyo disponible en GitHub
 Recientemente, estaba desarrollando una aplicación web .NET Core que necesita consumir una API desarrollada hace unos años usando ASP.NET WebAPI. Afortunadamente, esa API tenía Swagger integrado, así que pensé que podía ahorrar tiempo al no crear manualmente los instrumentos necesarios para las llamadas a la API (DTO, cliente, etc.) en su lugar podría utilizar la función “Servicios Conectados” de Visual Studio.
-Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solución en este post.">
+Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solución en este post. Reproduje un escenario simplificado como se puede ver en la figura 1 accediendo a Swagger UI a través de su URL: “http://localhost:5200/swagger”.">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -436,7 +437,7 @@ Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solu
       <p><a href="https://github.com/rsotolongo/RS.Blog.Projects/tree/main/ConnectedServices">Código fuente de apoyo disponible en GitHub</a></p>
 <p>Recientemente, estaba desarrollando una aplicación web .NET Core que necesita consumir una API desarrollada hace unos años usando ASP.NET WebAPI. Afortunadamente, esa API tenía Swagger integrado, así que pensé que podía ahorrar tiempo al no crear manualmente los instrumentos necesarios para las llamadas a la API (DTO, cliente, etc.) en su lugar podría utilizar la función &ldquo;Servicios Conectados&rdquo; de Visual Studio.</p>
 <p>Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solución en este post. Reproduje un escenario simplificado como se puede ver en la figura 1 accediendo a Swagger UI a través de su URL: &ldquo;http://localhost:5200/swagger&rdquo;.</p>
-<p><img alt="IU de Swagger de FullAPI" src="/generating-swagger-openapi-clients/01.png"></p>
+<p><img src="/generating-swagger-openapi-clients/01.png" alt="IU de Swagger de FullAPI"></p>
 <p>Figura 1: IU de Swagger para API usando .NET Framework.</p>
 <p>Básicamente, esta API tiene dos controladores que proporcionan dos métodos, cada uno con rutas diferentes pero intenciones equivalentes.</p>
 <p>Accediendo a su documento de especificación: &ldquo;http://localhost:5200/swagger/docs/v1&rdquo; tenemos:</p>
@@ -663,13 +664,13 @@ Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solu
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Para simplificar la aplicación cliente, decidí reproducirla como una aplicación de consola .NET Core. Agregué una carpeta: &ldquo;OpenAPI&rdquo; para almacenar el documento de especificación anterior como: &ldquo;FullAPI.json&rdquo;. Desde la figura 2 hasta la figura 5 podemos ver cómo agregar un servicio conectado.</p>
-<p><img alt="Agregar un servicio conectado" src="/generate-swagger-openapi-clients/02.png"></p>
+<p><img src="/generate-swagger-openapi-clients/02.png" alt="Agregar un servicio conectado"></p>
 <p>Figura 2: Agregar un servicio conectado.</p>
-<p><img alt="Adición de una especificación OpenAPI" src="/generate-swagger-openapi-clients/03.png"></p>
+<p><img src="/generate-swagger-openapi-clients/03.png" alt="Adición de una especificación OpenAPI"></p>
 <p>Figura 3: Agregar una especificación de OpenAPI.</p>
-<p><img alt="Especificando los parámetros de generación del cliente" src="/generate-swagger-openapi-clients/04.png"></p>
+<p><img src="/generate-swagger-openapi-clients/04.png" alt="Especificando los parámetros de generación del cliente"></p>
 <p>Figura 4: Especificación de los parámetros de generación de clientes.</p>
-<p><img alt="Resultados de generación de clientes" src="/generate-swagger-openapi-clients/05.png"></p>
+<p><img src="/generate-swagger-openapi-clients/05.png" alt="Resultados de generación de clientes"></p>
 <p>Figura 5: Resultados de la generación de clientes.</p>
 <p>Haga clic con el botón derecho en las dependencias del proyecto del cliente y seleccione: &ldquo;Agregar Servicio Conectado&rdquo;. Luego haga clic en el botón: &ldquo;Agregar&rdquo;. Seleccione &ldquo;OpenAPI&rdquo; y haga clic en el botón: &ldquo;Siguiente&rdquo;. Escriba el archivo de especificación (&ldquo;OpenAPI\FullAPI.json&rdquo;) y &ldquo;FullAPI&rdquo; como espacio de nombres para el cliente generado. Finalmente presione el botón: &ldquo;Finalizar&rdquo; y se generará el cliente mostrando los resultados en la siguiente pantalla. Este proceso agrega varias líneas de códigos al archivo del proyecto (.csproj) como se muestra a continuación:</p>
 <div class="highlight"><div class="chroma">
@@ -714,10 +715,10 @@ Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solu
 </div>
 </div><p>Una vez compilado, se crea un nuevo archivo llamado: &ldquo;FullAPIClient.cs&rdquo; en la carpeta &ldquo;obj&rdquo; dentro de la carpeta del proyecto. En este punto, el proyecto deja de compilarse correctamente debido a este archivo.</p>
 <p>Demasiados errores, ¡Qué sorpresa! ¿Qué esta pasando y por qué? (figura 6).</p>
-<p><img alt="Errores de compilación de generación de clientes" src="/generate-swagger-openapi-clients/06.png"></p>
+<p><img src="/generate-swagger-openapi-clients/06.png" alt="Errores de compilación de generación de clientes"></p>
 <p>Figura 6: Errores de compilación de generación de clientes.</p>
 <p>La causa se muestra en la figura 7. El cliente se genera dos veces repitiendo sus campos internos.</p>
-<p><img alt="Generación de clientes duplicados" src="/generate-swagger-openapi-clients/07.png"></p>
+<p><img src="/generate-swagger-openapi-clients/07.png" alt="Generación de clientes duplicados"></p>
 <p>Figura 7: Generación de clientes duplicados.</p>
 <p>Me preguntaba por qué sucede esto; así que decidí analizar el código fuente del generador del cliente: &ldquo;NSwag&rdquo; en este caso (recuerda lo que se agregó al archivo del proyecto). El código fuente se almacena en GitHub en:</p>
 <p><a href="https://github.com/RicoSuter/NSwag">NSwag: La cadena de herramientas Swagger/OpenAPI para .NET, ASP.NET Core y TypeScript</a></p>
@@ -742,7 +743,7 @@ Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solu
 </div>
 </div><p>El valor del nombre de clase es un patrón que incluye el nombre del controlador seguido de la palabra: &ldquo;Client&rdquo;. El nombre del controlador se toma del campo: &ldquo;operationId&rdquo; del archivo de especificación. El valor se divide por el carácter: &ldquo;_&rdquo; y el primer token se toma como nombre de cliente y el segundo token se toma como nombre de operación. Ejemplos: &ldquo;Second_NumberMethod&rdquo; crea el cliente: &ldquo;SecondClient&rdquo; con la operación: &ldquo;NumberMethod&rdquo;.</p>
 <p>La Figura 8 muestra los nuevos clientes generados. Esta vez sin errores de compilación porque no se generó ningún cliente duplicado.</p>
-<p><img alt="Nuevos clientes generados" src="/generate-swagger-openapi-clients/08.png"></p>
+<p><img src="/generate-swagger-openapi-clients/08.png" alt="Nuevos clientes generados"></p>
 <p>Figura 8: Nuevos clientes generados.</p>
 <p>Ahora, podemos consumir las operaciones de los clientes generados como muestra el siguiente código (archivo: &ldquo;Program.cs&rdquo;):</p>
 <div class="highlight"><div class="chroma">
@@ -796,7 +797,7 @@ Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solu
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Problema resuelto, pero mi curiosidad me hizo investigar un poco más y ver qué sucedía con una API creada usando .NET Core en lugar de usar .NET Framework. La Figura 9 muestra la API migrada. Básicamente, las mismas funcionalidades (controladores, métodos, rutas) pero basadas en .NET Core.</p>
-<p><img alt=".NET Core API" src="/generate-swagger-openapi-clients/09.png"></p>
+<p><img src="/generate-swagger-openapi-clients/09.png" alt=".NET Core API"></p>
 <p>Figura 9: API en .NET Core.</p>
 <p>Accediendo a su documento de especificación: &ldquo;http://localhost:5100/swagger/v1/swagger.json&rdquo; tenemos:</p>
 <div class="highlight"><div class="chroma">
@@ -1072,15 +1073,15 @@ Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solu
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Lo primero que es diferente (y probablemente lo más importante) es el campo: &ldquo;openapi&rdquo; (anteriormente &ldquo;swagger&rdquo;) con la versión: &ldquo;3.0.1&rdquo; (anteriormente: &ldquo;2.0&rdquo;). Guardemos esta nueva especificación como: &ldquo;CoreAPI.json&rdquo; junto con la otra en la carpeta: &ldquo;OpenAPI&rdquo;. Ahora, generemos el cliente de la misma manera que lo hicimos para la API desarrollada en .NET Framework y veamos qué sucede. Las figuras del 10 al 14 muestran el proceso.</p>
-<p><img alt="Agregar un servicio conectado" src="/generate-swagger-openapi-clients/10.png"></p>
+<p><img src="/generate-swagger-openapi-clients/10.png" alt="Agregar un servicio conectado"></p>
 <p>Figura 10: Agregar un servicio conectado.</p>
-<p><img alt="Agregar una especificación de OpenAPI" src="/generate-swagger-openapi-clients/11.png"></p>
+<p><img src="/generate-swagger-openapi-clients/11.png" alt="Agregar una especificación de OpenAPI"></p>
 <p>Figura 11: Agregar una especificación de OpenAPI.</p>
-<p><img alt="Especificando los parámetros de generación del cliente" src="/generate-swagger-openapi-clients/12.png"></p>
+<p><img src="/generate-swagger-openapi-clients/12.png" alt="Especificando los parámetros de generación del cliente"></p>
 <p>Figura 12: Especificación de los parámetros de generación de clientes.</p>
-<p><img alt="Resultados de la generación de clientes" src="/generate-swagger-openapi-clients/13.png"></p>
+<p><img src="/generate-swagger-openapi-clients/13.png" alt="Resultados de la generación de clientes"></p>
 <p>Figura 13: Resultados de la generación de clientes.</p>
-<p><img alt="Lista de servicios conectados" src="/generate-swagger-openapi-clients/14.png"></p>
+<p><img src="/generate-swagger-openapi-clients/14.png" alt="Lista de servicios conectados"></p>
 <p>Figura 14: Lista de servicios conectados.</p>
 <p>Se agrega una nueva sección al archivo del proyecto (.csproj) similar a la anterior:</p>
 <div class="highlight"><div class="chroma">
@@ -1118,7 +1119,7 @@ Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solu
 <li>El constructor del cliente requiere la URL base.</li>
 <li>Las operaciones tienen diferentes nombres.</li>
 </ol>
-<p><img alt="Cliente generado para .NET Core API" src="/generate-swagger-openapi-clients/15.png"></p>
+<p><img src="/generate-swagger-openapi-clients/15.png" alt="Cliente generado para .NET Core API"></p>
 <p>Figura 15: Cliente generado para una API en .NET Core.</p>
 <p>Analizando el archivo de especificación (&ldquo;CoreAPI.json&rdquo;) podemos notar que no hay campos: &ldquo;operationId&rdquo; y eso es importante para los nombres de clientes y operaciones. Entonces, si agregamos, de alguna manera, los identificadores de operación a cada operación, deberíamos resolver el primer y tercer problema.</p>
 <p>Para agregar el campo: &ldquo;operationId&rdquo; al archivo de especificación, necesitamos agregar el atributo: &ldquo;SwaggerOperation&rdquo; a cada método de cada controlador. Ese atributo es parte del paquete NuGet: &ldquo;Swashbuckle.AspNetCore.Annotations&rdquo; que necesitamos instalar primero. El siguiente código muestra cómo usarlo:</p>
@@ -1198,7 +1199,7 @@ Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solu
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Pero el código no compila. ¿Por qué, si hicimos exactamente lo que hicimos al generar clientes para la API en .NET Framework? La figura 16 muestra los errores.</p>
-<p><img alt="Errores al generar clientes para .NET Core API" src="/generate-swagger-openapi-clients/16.png"></p>
+<p><img src="/generate-swagger-openapi-clients/16.png" alt="Errores al generar clientes para .NET Core API"></p>
 <p>Figura 16: Errores al generar clientes para la API en .NET Core.</p>
 <p>Tenga en cuenta que los errores están en los clientes generados anteriormente (archivo: &ldquo;FullAPI.cs&rdquo;). Bueno, esto se debe a un <a href="https://github.com/dotnet/aspnetcore/issues/18204">error bien conocido</a> en NSwag CSharp Generator que está activo y debería resolverse en el futuro y tener una solución fácil. Modifiquemos una vez más el archivo del proyecto (.csproj):</p>
 <div class="highlight"><div class="chroma">
@@ -1494,7 +1495,7 @@ Me llevé una gran sorpresa que me inspiró a compartir la experiencia y la solu
     &copy;
     
       2020 -
-    2024</span>
+    2025</span>
 
   
   

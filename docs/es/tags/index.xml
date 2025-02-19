@@ -6,8 +6,29 @@
     <description>Recent content in Tags on Programando en voz alta</description>
     <generator>Hugo</generator>
     <language>es</language>
-    <lastBuildDate>Mon, 15 Mar 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 17 Feb 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="/es/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Client-Side</title>
+      <link>/es/tags/client-side/</link>
+      <pubDate>Mon, 17 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>/es/tags/client-side/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>QueryString</title>
+      <link>/es/tags/querystring/</link>
+      <pubDate>Mon, 17 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>/es/tags/querystring/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>TypeScript</title>
+      <link>/es/tags/typescript/</link>
+      <pubDate>Mon, 17 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>/es/tags/typescript/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Paralelismo</title>
       <link>/es/tags/paralelismo/</link>
@@ -125,27 +146,6 @@
       <link>/es/tags/xml/</link>
       <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate>
       <guid>/es/tags/xml/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Arquitectura</title>
-      <link>/es/tags/arquitectura/</link>
-      <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>/es/tags/arquitectura/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Filosofía</title>
-      <link>/es/tags/filosof%C3%ADa/</link>
-      <pubDate>Fri, 25 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>/es/tags/filosof%C3%ADa/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Internet</title>
-      <link>/es/tags/internet/</link>
-      <pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>/es/tags/internet/</guid>
       <description></description>
     </item>
   </channel>

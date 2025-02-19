@@ -29,8 +29,7 @@
 If we were developing libraries for .NET Core or .NET Standard life would be easy as figure 1 to figure 8 shows.
 Figure 1: &ldquo;Creating a new .NET Core library&rdquo;.
 Figure 2: &ldquo;Default code&rdquo;.
-Figure 3: &ldquo;First build results&rdquo;.
-Figure 4: &ldquo;Project properties&rdquo;." />
+" />
 
   <meta name="keywords" content="Hugo, theme, jane" />
 
@@ -39,7 +38,7 @@ Figure 4: &ldquo;Project properties&rdquo;." />
 
 
 
-<meta name="generator" content="Hugo 0.133.0" />
+<meta name="generator" content="Hugo 0.144.1" />
 
 
 <link rel="canonical" href="/post/creating-nuget-packages/" />
@@ -73,9 +72,7 @@ Figure 4: &ldquo;Project properties&rdquo;." />
   <meta property="og:description" content="Lately I have been involved in the creation of several NuGet packages useful for some portals being developed. I want to share my knowledge in this topic.
 If we were developing libraries for .NET Core or .NET Standard life would be easy as figure 1 to figure 8 shows.
 Figure 1: “Creating a new .NET Core library”.
-Figure 2: “Default code”.
-Figure 3: “First build results”.
-Figure 4: “Project properties”.">
+Figure 2: “Default code”.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
@@ -89,9 +86,7 @@ Figure 4: “Project properties”.">
   <meta itemprop="description" content="Lately I have been involved in the creation of several NuGet packages useful for some portals being developed. I want to share my knowledge in this topic.
 If we were developing libraries for .NET Core or .NET Standard life would be easy as figure 1 to figure 8 shows.
 Figure 1: “Creating a new .NET Core library”.
-Figure 2: “Default code”.
-Figure 3: “First build results”.
-Figure 4: “Project properties”.">
+Figure 2: “Default code”.">
   <meta itemprop="datePublished" content="2021-01-18T00:00:00+00:00">
   <meta itemprop="dateModified" content="2021-01-18T00:00:00+00:00">
   <meta itemprop="wordCount" content="878">
@@ -101,9 +96,7 @@ Figure 4: “Project properties”.">
   <meta name="twitter:description" content="Lately I have been involved in the creation of several NuGet packages useful for some portals being developed. I want to share my knowledge in this topic.
 If we were developing libraries for .NET Core or .NET Standard life would be easy as figure 1 to figure 8 shows.
 Figure 1: “Creating a new .NET Core library”.
-Figure 2: “Default code”.
-Figure 3: “First build results”.
-Figure 4: “Project properties”.">
+Figure 2: “Default code”.">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -446,42 +439,42 @@ Figure 4: “Project properties”.">
     <div class="post-content">
       <p>Lately I have been involved in the creation of several NuGet packages useful for some portals being developed. I want to share my knowledge in this topic.</p>
 <p>If we were developing libraries for .NET Core or .NET Standard life would be easy as figure 1 to figure 8 shows.</p>
-<p><img alt="Creating a new .NET Core library" src="/creating-nuget-packages/01.png"></p>
+<p><img src="/creating-nuget-packages/01.png" alt="Creating a new .NET Core library"></p>
 <p>Figure 1: &ldquo;Creating a new .NET Core library&rdquo;.</p>
-<p><img alt="Default code" src="/creating-nuget-packages/02.png"></p>
+<p><img src="/creating-nuget-packages/02.png" alt="Default code"></p>
 <p>Figure 2: &ldquo;Default code&rdquo;.</p>
-<p><img alt="First build results" src="/creating-nuget-packages/03.png"></p>
+<p><img src="/creating-nuget-packages/03.png" alt="First build results"></p>
 <p>Figure 3: &ldquo;First build results&rdquo;.</p>
-<p><img alt="Project properties" src="/creating-nuget-packages/04.png"></p>
+<p><img src="/creating-nuget-packages/04.png" alt="Project properties"></p>
 <p>Figure 4: &ldquo;Project properties&rdquo;.</p>
-<p><img alt="Second build output" src="/creating-nuget-packages/05.png"></p>
+<p><img src="/creating-nuget-packages/05.png" alt="Second build output"></p>
 <p>Figure 5: &ldquo;Second build output&rdquo;.</p>
-<p><img alt="Second build results" src="/creating-nuget-packages/06.png"></p>
+<p><img src="/creating-nuget-packages/06.png" alt="Second build results"></p>
 <p>Figure 6: &ldquo;Second build results&rdquo;.</p>
 <p>But, life is not so easy and almost all our products use the .NET Framework (regular) meaning that Visual Studio don’t offer us such capabilities as figure 7 and 8 show.</p>
-<p><img alt="New .NET Framework Library" src="/creating-nuget-packages/07.png"></p>
+<p><img src="/creating-nuget-packages/07.png" alt="New .NET Framework Library"></p>
 <p>Figure 7: &ldquo;New .NET Framework Library&rdquo;.</p>
-<p><img alt="Library project properties" src="/creating-nuget-packages/08.png"></p>
+<p><img src="/creating-nuget-packages/08.png" alt="Library project properties"></p>
 <p>Figure 8: &ldquo;Properties for this kind of projects don’t include the Package feature&rdquo;.</p>
 <p>So, what alternative we have? Actually few of them: use Octopus to generate the package but this tricky due to Octopus use a custom made build of NuGet.exe, so the generated structure could not match and involve much steps to obtained.</p>
 <p>Other alternative is use &ldquo;NuGet.exe&rdquo; manually from the command line but this can be confusing and also involve many other steps to accomplish.</p>
 <p>I said once but I like to repeat it, I love NuGet packages, so, why not use a NuGet package to generate NuGet packages? Well, it already exists and is very easy to use. The first step is to add the package: &ldquo;CreateNewNuGetPackageFromProjectAfterEachBuild&rdquo; to the project that we want to distribute as a NuGet package. Figure 9 shows an example.</p>
-<p><img alt="Solution package management" src="/creating-nuget-packages/09.png"></p>
+<p><img src="/creating-nuget-packages/09.png" alt="Solution package management"></p>
 <p>Figure 9.</p>
 <p>After been added this package creates a directory inside the project root called: &ldquo;_CreateNewNuGetPackage&rdquo; and pretty much that’s is all you need. Figure 10 shows the structure created.</p>
-<p><img alt="Solution explorer" src="/creating-nuget-packages/10.png"></p>
+<p><img src="/creating-nuget-packages/10.png" alt="Solution explorer"></p>
 <p>Figure 10.</p>
 <p>Once we build the project we can see the output in figure 11.</p>
-<p><img alt="Third build output" src="/creating-nuget-packages/11.png"></p>
+<p><img src="/creating-nuget-packages/11.png" alt="Third build output"></p>
 <p>Figure 11.</p>
 <p>Figure 12 shows the build results.</p>
-<p><img alt="Third build results" src="/creating-nuget-packages/12.png"></p>
+<p><img src="/creating-nuget-packages/12.png" alt="Third build results"></p>
 <p>Figure 12.</p>
 <p>Figure 13 shows the content of the generated package.</p>
-<p><img alt="Package contents" src="/creating-nuget-packages/13.png"></p>
+<p><img src="/creating-nuget-packages/13.png" alt="Package contents"></p>
 <p>Figure 13.</p>
 <p>Notice that metadata is basically extracted from the assembly info or auto generated (the build output also have logs about this). We can change this if we include a metadata file as Figure 14 shows.</p>
-<p><img alt="Package metadata file" src="/creating-nuget-packages/14.png"></p>
+<p><img src="/creating-nuget-packages/14.png" alt="Package metadata file"></p>
 <p>Figure 14.</p>
 <p>The content of this file depends of what you want for your package but as example:</p>
 <div class="highlight"><div class="chroma">
@@ -519,43 +512,43 @@ Figure 4: “Project properties”.">
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Now the build results looks like figure 15.</p>
-<p><img alt="First generated packages" src="/creating-nuget-packages/15.png"></p>
+<p><img src="/creating-nuget-packages/15.png" alt="First generated packages"></p>
 <p>Figure 15.</p>
 <p>Figure 16 shows the content of the new generated package, this time with more accurate metadata.</p>
-<p><img alt="First package contents" src="/creating-nuget-packages/16.png"></p>
+<p><img src="/creating-nuget-packages/16.png" alt="First package contents"></p>
 <p>Figure 16.</p>
 <p>At this point we were able to generate the package but what we really need is the possibility to consume it from another project. We need first to deploy it in an internal NuGet repository called: &ldquo;McNuget&rdquo;. Let’s explain how to do it.</p>
 <p>First open &ldquo;$(ProjectDir)_CreateNewNuGetPackage\Config1.ps1&rdquo; and made the modifications highlighted in yellow color in figure 17.</p>
-<p><img alt="Package generation configuration file" src="/creating-nuget-packages/17.png"></p>
+<p><img src="/creating-nuget-packages/17.png" alt="Package generation configuration file"></p>
 <p>Figure 17.</p>
 <p>Basically we are specifying that in every build generate another package that contain all debug symbols including source codes to facilitate the debugging of this package. Do not append the configuration and platform used to build into the package name. Also we will eventually deploy this package to McNuget (I say eventually because is not automatic in every build) and the API for deploy into McNuget. This API was generated by the administrator of McNuget and sent it to us.</p>
 <p>Figure 18 shows the result of the build.</p>
-<p><img alt="Second generated packages" src="/creating-nuget-packages/18.png"></p>
+<p><img src="/creating-nuget-packages/18.png" alt="Second generated packages"></p>
 <p>Figure 18.</p>
 <p>Notice the new two packages without the configuration and platform; one without debug symbols (same than figure 16) and other with symbols and source code as figure 19 shows.</p>
-<p><img alt="Second package contents" src="/creating-nuget-packages/19.png"></p>
+<p><img src="/creating-nuget-packages/19.png" alt="Second package contents"></p>
 <p>Figure 19.</p>
 <p>Is time to deploy the package into McNuget and to do this we need to execute &ldquo;$(ProjectDir)_CreateNewNuGetPackage\RunMeToUploadNuGetPackage.cmd&rdquo; as is shown in figure 20.</p>
-<p><img alt="Package upload command" src="/creating-nuget-packages/20.png"></p>
+<p><img src="/creating-nuget-packages/20.png" alt="Package upload command"></p>
 <p>Figure 20.</p>
 <p>Once is executed it will open a command line window and a dialog asking for the package to deploy as is shown in figure 21.</p>
-<p><img alt="Package upload dialog" src="/creating-nuget-packages/21.png"></p>
+<p><img src="/creating-nuget-packages/21.png" alt="Package upload dialog"></p>
 <p>Figure 21.</p>
 <p>Once the package is selected as is shown in figure 22…</p>
-<p><img alt="Package upload selection" src="/creating-nuget-packages/22.png"></p>
+<p><img src="/creating-nuget-packages/22.png" alt="Package upload selection"></p>
 <p>Figure 22.</p>
 <p>…it ask for a confirmation as figure 23 shows. One valid point to mention is that McNuget repository could be not configured to allow deployments of packages containing debugging and source code symbols. So the only option we can deploy is the regular package.</p>
-<p><img alt="Package upload confirmation" src="/creating-nuget-packages/23.png"></p>
+<p><img src="/creating-nuget-packages/23.png" alt="Package upload confirmation"></p>
 <p>Figure 23.</p>
 <p>Once is accepted and if everything was OK, we should be able to see a screen similar to what figure 24 shows.</p>
-<p><img alt="Package upload result" src="/creating-nuget-packages/24.png"></p>
+<p><img src="/creating-nuget-packages/24.png" alt="Package upload result"></p>
 <p>Figure 24.</p>
 <p>Meaning that our package is in McNuget ready to be use. Let’s test it.</p>
 <p>Figure 25 shows the package management for another project.</p>
-<p><img alt="Project package management" src="/creating-nuget-packages/25.png"></p>
+<p><img src="/creating-nuget-packages/25.png" alt="Project package management"></p>
 <p>Figure 25.</p>
 <p>Once the package is installed we can use its features. Figure 26 shows an example.</p>
-<p><img alt="Package usage sample" src="/creating-nuget-packages/26.png"></p>
+<p><img src="/creating-nuget-packages/26.png" alt="Package usage sample"></p>
 <p>Figure 26.</p>
 <p>One last observation, we have deploy the regular package because hypothetically McNuget don’t allow to deploy packages with debugging symbols; but we have deployed the version built in &ldquo;Debug&rdquo; mode and this is not good, we suppose to deploy the version built in &ldquo;Release&rdquo; mode and gain more performance.</p>
 <p>This is everything I have to share with you today. Hopefully you find this guide useful for your projects once you want to generate NuGet packages.</p>
@@ -716,7 +709,7 @@ Figure 4: “Project properties”.">
     &copy;
     
       2020 -
-    2024</span>
+    2025</span>
 
   
   

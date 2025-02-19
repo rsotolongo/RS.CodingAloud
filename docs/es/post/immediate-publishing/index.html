@@ -28,7 +28,8 @@
   <meta name="description" content="Código fuente de apoyo disponible en GitHub
 Érase una vez una solución, alojada en un proyecto de equipo en Team Foundation Services (TFS) que fue descargada por primera vez. Sabía que la solución compilaba y podía publicarse sin problemas de inmediato. Pero me llevé una sorpresa porque ambos procesos fallaron. La figura 1 muestra una estructura simplificada del proyecto.
 Figura 1: &ldquo;Estructura del proyecto&rdquo;.
-La figura 2 muestra cómo se configuró el proyecto para generar su documentación:" />
+La figura 2 muestra cómo se configuró el proyecto para generar su documentación:
+" />
 
   <meta name="keywords" content="Hugo, theme, jane" />
 
@@ -37,7 +38,7 @@ La figura 2 muestra cómo se configuró el proyecto para generar su documentaci�
 
 
 
-<meta name="generator" content="Hugo 0.133.0" />
+<meta name="generator" content="Hugo 0.144.1" />
 
 
 <link rel="canonical" href="/es/post/immediate-publishing/" />
@@ -437,27 +438,27 @@ La figura 2 muestra cómo se configuró el proyecto para generar su documentaci�
     <div class="post-content">
       <p><a href="https://github.com/rsotolongo/RS.Blog.Projects/tree/main/ImmediatePublishing">Código fuente de apoyo disponible en GitHub</a></p>
 <p>Érase una vez una solución, alojada en un proyecto de equipo en Team Foundation Services (TFS) que fue descargada por primera vez. Sabía que la solución compilaba y podía publicarse sin problemas de inmediato. Pero me llevé una sorpresa porque ambos procesos fallaron. La figura 1 muestra una estructura simplificada del proyecto.</p>
-<p><img alt="Estructura del proyecto" src="/immediate-publishing/01.png"></p>
+<p><img src="/immediate-publishing/01.png" alt="Estructura del proyecto"></p>
 <p>Figura 1: &ldquo;Estructura del proyecto&rdquo;.</p>
 <p>La figura 2 muestra cómo se configuró el proyecto para generar su documentación:</p>
-<p><img alt="Generación de documentación del proyecto" src="/immediate-publishing/02.png"></p>
+<p><img src="/immediate-publishing/02.png" alt="Generación de documentación del proyecto"></p>
 <p>Figura 2: &ldquo;Generación de documentación del proyecto&rdquo;.</p>
 <p>Una vez que intentamos construirlo obtenemos el error que se muestra en la figura 3.</p>
-<p><img alt="Resultado de la compilación del proyecto" src="/immediate-publishing/03.png"></p>
+<p><img src="/immediate-publishing/03.png" alt="Resultado de la compilación del proyecto"></p>
 <p>Figura 3: &ldquo;Resultado de la compilación del proyecto&rdquo;.</p>
 <p>El error se debe a que el archivo de documentación: &ldquo;RS.Blog.Projects.ImmediatePublishing.Web.xml&rdquo; es de solo lectura y no se puede sobrescribir. Este problema se puede resolver si pasamos por el sistema de archivos y eliminamos el atributo: &ldquo;Solo lectura&rdquo; de ese archivo. Esa es la solución a corto plazo porque si usted u otro miembro del equipo descargan la solución por primera vez, el atributo volverá a impedir que la solución compilación. La solución a largo plazo es excluir ese archivo del proyecto como se muestra en la figura 4.</p>
-<p><img alt="Exclusión del archivo de documentación del proyecto" src="/immediate-publishing/04.png"></p>
+<p><img src="/immediate-publishing/04.png" alt="Exclusión del archivo de documentación del proyecto"></p>
 <p>Figura 4: &ldquo;Exclusión del archivo de documentación del proyecto&rdquo;.</p>
 <p>Este paso agrega un par de líneas al archivo del proyecto (.csproj) como muestra la figura 5:</p>
-<p><img alt="Contenido del archivo del proyecto" src="/immediate-publishing/05.png"></p>
+<p><img src="/immediate-publishing/05.png" alt="Contenido del archivo del proyecto"></p>
 <p>Figura 5: &ldquo;Contenido del archivo del proyecto&rdquo;.</p>
 <p>Ahora, la solución compila pero una vez que intentamos publicarla; no funciona. La figura 6 muestra el error.</p>
-<p><img alt="Error de pubicación" src="/immediate-publishing/06.png"></p>
+<p><img src="/immediate-publishing/06.png" alt="Error de pubicación"></p>
 <p>Figura 6: &ldquo;Error de pubicación&rdquo;.</p>
 <p>En este caso, el error también está relacionado con el atributo: &ldquo;Solo lectura&rdquo; pero del archivo: &ldquo;web.config&rdquo;. Por lo general, publicamos aplicaciones en configuración: &ldquo;Release&rdquo; y las transformaciones de configuración para &ldquo;web.config&rdquo; no se pueden ejecutar. Una vez más, eliminando el atributo del archivo: &ldquo;web.config&rdquo; (figura 7) resolverá el problema y finalmente podremos publicar la aplicación de inmediato (figura 8).</p>
-<p><img alt="Quitando el atributo &lsquo;Solo lectura&rsquo;" src="/immediate-publishing/07.png"></p>
+<p><img src="/immediate-publishing/07.png" alt="Quitando el atributo ‘Solo lectura’"></p>
 <p>Figura 7: &ldquo;Quitando el atributo &lsquo;Solo lectura&rsquo;&rdquo;.</p>
-<p><img alt="Resultados de publicación" src="/immediate-publishing/08.png"></p>
+<p><img src="/immediate-publishing/08.png" alt="Resultados de publicación"></p>
 <p>Figura 8: &ldquo;Resultados de publicación&rdquo;.</p>
 <h3 id="resumen">Resumen</h3>
 <p>La publicación de una aplicación inmediatamente después de descargarla por primera vez desde TFS requiere eliminar el atributo: &ldquo;Solo lectura&rdquo; del archivo: &ldquo;web.config&rdquo;. Si el proyecto también genera documentación, es mejor excluirlo del proyecto en lugar de eliminar el mismo atributo del archivo de documentación.</p>
@@ -618,7 +619,7 @@ La figura 2 muestra cómo se configuró el proyecto para generar su documentaci�
     &copy;
     
       2020 -
-    2024</span>
+    2025</span>
 
   
   

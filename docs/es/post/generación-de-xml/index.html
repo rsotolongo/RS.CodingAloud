@@ -24,7 +24,8 @@
 
 
   <meta name="description" content="En números anteriores de esta revista salió un artículo acerca de cómo generar XML (Lenguaje de Marcas Extendido –siglas en inglés) proveniente de una forma de HTML (Lenguaje de Marcado de Hipertexto –siglas en inglés) desde ASP (Active Server Pages) con la ayuda del objeto del sistema de ficheros (FileSystemObject). En este artículo veremos cómo hacerlo desde Delphi aprovechando algunas de las incontables ventajas de este ambiente de desarrollo.
-Recordemos primeramente que XML es un subconjunto de SGML (Lenguaje de Marcado Generalizado Estándar) y más que un simple lenguaje de marcas como su nombre sugiere es un meta-lenguaje que nos permite definir lenguajes de marcado adecuados a usos determinados y que está llamado a ser el nuevo ASCII debido a su fácil confección, transmisión y comprensión." />
+Recordemos primeramente que XML es un subconjunto de SGML (Lenguaje de Marcado Generalizado Estándar) y más que un simple lenguaje de marcas como su nombre sugiere es un meta-lenguaje que nos permite definir lenguajes de marcado adecuados a usos determinados y que está llamado a ser el nuevo ASCII debido a su fácil confección, transmisión y comprensión.
+" />
 
   <meta name="keywords" content="Hugo, theme, jane" />
 
@@ -33,7 +34,7 @@ Recordemos primeramente que XML es un subconjunto de SGML (Lenguaje de Marcado G
 
 
 
-<meta name="generator" content="Hugo 0.133.0" />
+<meta name="generator" content="Hugo 0.144.1" />
 
 
 <link rel="canonical" href="/es/post/generaci%C3%B3n-de-xml/" />
@@ -467,11 +468,11 @@ Recordemos primeramente que XML es un subconjunto de SGML (Lenguaje de Marcado G
 <p>Nos remitiremos a un ejemplo a grandes rasgos para ver cómo funciona en la práctica. Supongamos que una agencia noticiosa deportiva, se comprometió a brindar como servicio de su sitio web en Internet, todos los pormenores de una competición X cualquiera. La misma tiene reporteros en todos los eventos programados encargados de hacer llegar los detalles.</p>
 <p>Pues bien, los programadores de dicha agencia luego de deliberar mucho acerca de cómo hacerlo, llegaron a la conclusión de que lo ideal sería hacer una aplicación que recogiera los datos pertinentes, los cuales pueden ser tanto noticias y entrevistas; como estadísticas y resultados de eventos en sí para el repositorio de artículos y tablas resúmenes respectivamente. Los mismos irían a parar al centro de comunicaciones a través del correo electrónico (buena elección si no se posee plena conexión a Internet) donde una vez allí, un servicio creado a la espera de dichos correos los haría guardarse en la base de datos de la cual se nutre el sitio web de la agencia.</p>
 <p>Dicha aplicación fue implementada en Borland Delphi 6 y consiste en un conjunto de formas MDI que se acceden por menús (ver figura 2) donde cada una representa un modelo de resultado y/o noticia (ver figuras 3 y 4 respectivamente). Para no perder tiempo en la confección de la misma decidieron reutilizar tanto código como pudiesen. Para ello hicieron un módulo (unit) con una función cuya tarea es generar el XML de los datos partiendo de ciertas características de los componentes dispuestos en las formas.</p>
-<p><img alt="Menús de aplicación" src="/xml-generation/02.jpg"></p>
+<p><img src="/xml-generation/02.jpg" alt="Menús de aplicación"></p>
 <p>Figura 2: Menús de la aplicación.</p>
-<p><img alt="Forma captadora de resultados" src="/xml-generation/03.jpg"></p>
+<p><img src="/xml-generation/03.jpg" alt="Forma captadora de resultados"></p>
 <p>Figura 3: Forma captadora de resultados (en este caso un partido de baloncesto) y generadora del XML de la figura 1.</p>
-<p><img alt="Forma captadora de noticias" src="/xml-generation/04.jpg"></p>
+<p><img src="/xml-generation/04.jpg" alt="Forma captadora de noticias"></p>
 <p>Figura 4: Forma captadora de noticias.</p>
 <p>Según esta función basta con esparcir componentes y ajustarles ciertas propiedades, la propiedad Name corresponderá con el nombre de la etiqueta del XML y la propiedad Tag indicará el orden en el que serán tomados los componentes para la generación de sus respectivas etiquetas de XML. Cuando se quiera no tomar en cuenta algunos componentes bastará con dejarle su Tag con valor 0 (el por defecto). Podrá haber componentes con el mismo orden de prioridad sin que dejen de incluirse solo que indistintamente podrá procesarse uno primero o después; esto solo es importante a la hora de generar listas de etiquetas con un mismo nivel de profundidad. La lista de propiedades Tag no tiene por qué ser consecutiva, es decir, se podrán omitir números sin que se afecte el resultado. Los Paneles agrupan dentro de sí otros componentes al igual que los GroupBoxs agrupan dentro de sí listas de etiquetas.</p>
 <p>En la figura 3 se colocó un Panel llamado “baloncesto” que agrupa todos los componentes que generarán etiquetas XML en orden (según propiedad Tag): el Edit “dia”, el ComboBox “sexo”, el ComboBox “etapa” y el Panel “equipos”, el ComboBox “lanotador” (líder anotador del partido) y el ComboBox “ldefensivo” (el más destacado en la defensa). A su vez dentro del Panel “equipos” se dispuso un GroupBox llamado “equipo” que agrupa un ListBox “centro” y un ListBox “puntuacion” estos con el mismo orden de prioridad (propiedad Tag, 1) ya que son listas que tienen (según el XML deseado) que estar al mismo nivel. Los botones: “Adicionar”, “Eliminar”, “Generar” y “Enviar” y el Memo en este caso no generarán XML por lo que se les dejó su Tag como 0.</p>
@@ -967,7 +968,7 @@ Recordemos primeramente que XML es un subconjunto de SGML (Lenguaje de Marcado G
     &copy;
     
       2020 -
-    2024</span>
+    2025</span>
 
   
   

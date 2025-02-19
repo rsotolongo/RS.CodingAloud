@@ -28,7 +28,8 @@
   <meta name="description" content="Source code of support available at GitHub
 Once upon a time, a solution hosted in Team Foundation Services (TFS) team project that I downloaded for the first time. I knew that solution build and could be published seamlessly right away. But I got a surprise because both processes failed. Figure 1 shows a simplified project structure.
 Figure 1: &ldquo;Project structure&rdquo;.
-Figure 2 shows how the project was configured to generate its documentation:" />
+Figure 2 shows how the project was configured to generate its documentation:
+" />
 
   <meta name="keywords" content="Hugo, theme, jane" />
 
@@ -37,7 +38,7 @@ Figure 2 shows how the project was configured to generate its documentation:" />
 
 
 
-<meta name="generator" content="Hugo 0.133.0" />
+<meta name="generator" content="Hugo 0.144.1" />
 
 
 <link rel="canonical" href="/post/immediate-publishing/" />
@@ -437,27 +438,27 @@ Figure 2 shows how the project was configured to generate its documentation:">
     <div class="post-content">
       <p><a href="https://github.com/rsotolongo/RS.Blog.Projects/tree/main/ImmediatePublishing">Source code of support available at GitHub</a></p>
 <p>Once upon a time, a solution hosted in Team Foundation Services (TFS) team project that I downloaded for the first time. I knew that solution build and could be published seamlessly right away. But I got a surprise because both processes failed. Figure 1 shows a simplified project structure.</p>
-<p><img alt="Project structure" src="/immediate-publishing/01.png"></p>
+<p><img src="/immediate-publishing/01.png" alt="Project structure"></p>
 <p>Figure 1: &ldquo;Project structure&rdquo;.</p>
 <p>Figure 2 shows how the project was configured to generate its documentation:</p>
-<p><img alt="Project documentation generation" src="/immediate-publishing/02.png"></p>
+<p><img src="/immediate-publishing/02.png" alt="Project documentation generation"></p>
 <p>Figure 2: &ldquo;Project documentation generation&rdquo;.</p>
 <p>Once we try to build it we get the error shown in figure 3.</p>
-<p><img alt="Project build result" src="/immediate-publishing/03.png"></p>
+<p><img src="/immediate-publishing/03.png" alt="Project build result"></p>
 <p>Figure 3: &ldquo;Project build result&rdquo;.</p>
 <p>The error is because the documentation file: &ldquo;RS.Blog.Projects.ImmediatePublishing.Web.xml&rdquo; is read-only and can&rsquo;t be overwritten. This problem can be solved if we go through the file system and remove the attribute: &ldquo;read-only&rdquo; from that file. That is the short-term solution because if you or another team member download the solution for the first time, it will have the attribute again impeding that solution build. The long term solution is to exclude that file from the project as figure 4.</p>
-<p><img alt="Exclude documentation file from the project" src="/immediate-publishing/04.png"></p>
+<p><img src="/immediate-publishing/04.png" alt="Exclude documentation file from the project"></p>
 <p>Figure 4: &ldquo;Exclude documentation file from the project&rdquo;.</p>
 <p>This step adds a couple of lines into the project file (.csproj) as figure 5 shows:</p>
-<p><img alt="Project file content" src="/immediate-publishing/05.png"></p>
+<p><img src="/immediate-publishing/05.png" alt="Project file content"></p>
 <p>Figure 5: &ldquo;Project file content&rdquo;.</p>
 <p>Now, the solution builds but once we try to publish it; it doesn&rsquo;t work. Figure 6 shows the error.</p>
-<p><img alt="Publishing error" src="/immediate-publishing/06.png"></p>
+<p><img src="/immediate-publishing/06.png" alt="Publishing error"></p>
 <p>Figure 6: &ldquo;Publishing error&rdquo;.</p>
 <p>In this case, the error is also related with the attribute: &ldquo;read-only&rdquo; but for file: &ldquo;web.config&rdquo;. Usually, we publish applications under configuration: &ldquo;Release&rdquo; and configuration transformation for &ldquo;web.config&rdquo; can&rsquo;t be executed. Once again, removing the attribute from the file: &ldquo;web.config&rdquo; (figure 7) will solve the problem and finally we can publish the application straight away (figure 8).</p>
-<p><img alt="Removing &lsquo;read-only&rsquo; attribute" src="/immediate-publishing/07.png"></p>
+<p><img src="/immediate-publishing/07.png" alt="Removing ‘read-only’ attribute"></p>
 <p>Figure 7: &ldquo;Removing &lsquo;read-only&rsquo; attribute&rdquo;.</p>
-<p><img alt="Publishing result" src="/immediate-publishing/08.png"></p>
+<p><img src="/immediate-publishing/08.png" alt="Publishing result"></p>
 <p>Figure 8: &ldquo;Publishing result&rdquo;.</p>
 <h3 id="summary">Summary</h3>
 <p>Publishing an application immediately after downloaded for the first time from TFS requires to remove attribute: &ldquo;read-only&rdquo; from file: &ldquo;web.config&rdquo;. If the project also generates documentation is better to exclude it from the project instead of remove the same attribute from the documentation file.</p>
@@ -618,7 +619,7 @@ Figure 2 shows how the project was configured to generate its documentation:">
     &copy;
     
       2020 -
-    2024</span>
+    2025</span>
 
   
   

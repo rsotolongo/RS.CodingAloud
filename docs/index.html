@@ -33,7 +33,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.133.0" />
+<meta name="generator" content="Hugo 0.144.1" />
 
 
 <link rel="canonical" href="/" />
@@ -70,8 +70,8 @@
 
   <meta itemprop="name" content="Coding Aloud">
   <meta itemprop="description" content="Hugo theme jane example site.">
-  <meta itemprop="datePublished" content="2021-03-15T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2021-03-15T00:00:00+00:00">
+  <meta itemprop="datePublished" content="2025-02-17T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-02-17T00:00:00+00:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Coding Aloud">
   <meta name="twitter:description" content="Hugo theme jane example site.">
@@ -392,6 +392,65 @@
   <header class="post-header">
     <h1 class="post-title">
       
+      <a class="post-link" href="/post/insensitive-query-string-value/">Insensitive QueryString value</a>
+    </h1>
+    
+<div class="post-meta">
+  
+  <div><a href="/es/post/insensitive-query-string-value/">Leer en español: Valor insensitivo en la QueryString</a></div>
+  
+</div>
+
+    <div class="post-meta">
+      <time datetime="2025-02-17" class="post-time">
+        2025-02-17
+      </time>
+      <div class="post-category">
+          <a href="/categories/development/"> Development </a>
+          
+        </div>
+      <span class="more-meta"> 80 words </span>
+      <span class="more-meta"> 1 min read </span>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      <p>Recently I got into a situation where I need in the client side the value of a specific parameter in the request&rsquo;s query string and I need to be sure that I could find the parameter regardless its casing. For that purpose I crate the following function in TypeScript:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="line"><span class="cl"><span class="kr">private</span> <span class="nx">getInsensitiveQueryStringValue</span><span class="p">(</span><span class="nx">queryParams</span>: <span class="kt">Params</span><span class="p">,</span> <span class="nx">paramKey</span>: <span class="kt">string</span><span class="p">)</span><span class="o">:</span> <span class="kt">string</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">keys</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">queryParams</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">key</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="kr">from</span><span class="p">(</span><span class="nx">keys</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="nx">item</span> <span class="o">=&gt;</span> <span class="nx">item</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">()</span> <span class="o">==</span> <span class="nx">paramKey</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">key</span> <span class="o">?</span> <span class="nx">queryParams</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">:</span> <span class="kc">null</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+    <div class="read-more">
+      <a href="/post/insensitive-query-string-value/" class="read-more-link">Read more</a>
+    </div>
+    
+  </div>
+</article>
+
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
       <a class="post-link" href="/post/asynchronous-commands/">Asynchronous commands</a>
     </h1>
     
@@ -420,9 +479,9 @@
   <div class="post-content">
     
     <div class="post-summary">
-      Source code of support available at GitHub
-Recently I had to implement a simple application with Windows Presentation Framework (WPF) using Model-View-ViewModel (MVVM) pattern. I got surprised when I noticed that there was not a simple solution out-of-the-box for bind asynchronous commands, so I decided to create my implementations for them.
-I also want genericity, so I started defining the most general interface that inheritance from ICommand (included in namespace: &ldquo;System.
+      <p><a href="https://github.com/rsotolongo/RS.Blog.Projects/tree/main/AsyncCommands">Source code of support available at GitHub</a></p>
+<p>Recently I had to implement a simple application with Windows Presentation Framework (WPF) using Model-View-ViewModel (MVVM) pattern. I got surprised when I noticed that there was not a simple solution out-of-the-box for bind asynchronous commands, so I decided to create my implementations for them.</p>
+<p>I also want genericity, so I started defining the most general interface that inheritance from ICommand (included in namespace: &ldquo;System.Windows.Input&rdquo;).</p>
     </div>
     <div class="read-more">
       <a href="/post/asynchronous-commands/" class="read-more-link">Read more</a>
@@ -464,10 +523,11 @@ I also want genericity, so I started defining the most general interface that in
   <div class="post-content">
     
     <div class="post-summary">
-      Source code of support available at GitHub
-Once upon a time, a solution hosted in Team Foundation Services (TFS) team project that I downloaded for the first time. I knew that solution build and could be published seamlessly right away. But I got a surprise because both processes failed. Figure 1 shows a simplified project structure.
-Figure 1: &ldquo;Project structure&rdquo;.
-Figure 2 shows how the project was configured to generate its documentation:
+      <p><a href="https://github.com/rsotolongo/RS.Blog.Projects/tree/main/ImmediatePublishing">Source code of support available at GitHub</a></p>
+<p>Once upon a time, a solution hosted in Team Foundation Services (TFS) team project that I downloaded for the first time. I knew that solution build and could be published seamlessly right away. But I got a surprise because both processes failed. Figure 1 shows a simplified project structure.</p>
+<p><img src="/immediate-publishing/01.png" alt="Project structure"></p>
+<p>Figure 1: &ldquo;Project structure&rdquo;.</p>
+<p>Figure 2 shows how the project was configured to generate its documentation:</p>
     </div>
     <div class="read-more">
       <a href="/post/immediate-publishing/" class="read-more-link">Read more</a>
@@ -509,9 +569,9 @@ Figure 2 shows how the project was configured to generate its documentation:
   <div class="post-content">
     
     <div class="post-summary">
-      Source code of support available at GitHub
-Recently I was developing a .NET Core web application that needs to consume an API developed few years ago using ASP.NET WebAPI. Fortunately, that API have Swagger integrated, so I thought I can save time do not creating manually the instruments required to API calls (DTOs, client, etc.) instead using the &ldquo;Connected Services&rdquo; feature of Visual Studio.
-I got a big surprise that inspired me to share the experience and the solution in this post.
+      <p><a href="https://github.com/rsotolongo/RS.Blog.Projects/tree/main/ConnectedServices">Source code of support available at GitHub</a></p>
+<p>Recently I was developing a .NET Core web application that needs to consume an API developed few years ago using ASP.NET WebAPI. Fortunately, that API have Swagger integrated, so I thought I can save time do not creating manually the instruments required to API calls (DTOs, client, etc.) instead using the &ldquo;Connected Services&rdquo; feature of Visual Studio.</p>
+<p>I got a big surprise that inspired me to share the experience and the solution in this post. I reproduced a simplified scenario as you can see in figure 1 accessing to Swagger UI through its URL: &ldquo;http://localhost:5200/swagger&rdquo;.</p>
     </div>
     <div class="read-more">
       <a href="/post/generating-swagger-openapi-clients/" class="read-more-link">Read more</a>
@@ -553,59 +613,27 @@ I got a big surprise that inspired me to share the experience and the solution i
   <div class="post-content">
     
     <div class="post-summary">
-      Source code of support available at GitHub
-.NET Core Not all clients require to sign the assemblies of their applications but when its required, the task is not so easy as you can expect.
-In the case of .NET Core applications, we can achieve this just editing the project file (.csproj) adding the following code:
-1 2 3 &lt;Target Name=&#34;BuildSigning&#34; AfterTargets=&#34;AfterBuild&#34;&gt; &lt;Exec Command=&#34;SIGNING_COMMAND&#34; /&gt; &lt;/Target&gt; As example SIGNING_COMMAND could be:
+      <p><a href="https://github.com/rsotolongo/RS.Blog.Projects/tree/main/SigningAssemblies">Source code of support available at GitHub</a></p>
+<h2 id="net-core">.NET Core</h2>
+<p>Not all clients require to sign the assemblies of their applications but when its required, the task is not so easy as you can expect.</p>
+<p>In the case of .NET Core applications, we can achieve this just editing the project file (.csproj) adding the following code:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-XML" data-lang="XML"><span class="line"><span class="cl"><span class="nt">&lt;Target</span> <span class="na">Name=</span><span class="s">&#34;BuildSigning&#34;</span> <span class="na">AfterTargets=</span><span class="s">&#34;AfterBuild&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;Exec</span> <span class="na">Command=</span><span class="s">&#34;SIGNING_COMMAND&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/Target&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>As example <strong>SIGNING_COMMAND</strong> could be:</p>
+<p><em>&ldquo;C\Program Files (x86)\Windows Kits\10\bin\10.0.177630\x64\signtool.exe&rdquo;</em> <em>sign /f &ldquo;$(SolutionDir)certificate.pfx&rdquo; /p &ldquo;pass&amp;1234&rdquo; &ldquo;S(TargetDir)</em>.dll&rdquo;*</p>
     </div>
     <div class="read-more">
       <a href="/post/signing-assemblies/" class="read-more-link">Read more</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/generating-signature-certificates/">Generating signature certificates</a>
-    </h1>
-    
-<div class="post-meta">
-  
-  <div><a href="/es/post/generating-signature-certificates/">Leer en español: Generando certificados de firma</a></div>
-  
-</div>
-
-    <div class="post-meta">
-      <time datetime="2021-02-01" class="post-time">
-        2021-02-01
-      </time>
-      <div class="post-category">
-          <a href="/categories/development/"> Development </a>
-          
-        </div>
-      <span class="more-meta"> 403 words </span>
-      <span class="more-meta"> 2 min read </span>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      Source code of support available at GitHub
-Sometimes assemblies (executables and libraries) are required to be sign and I don&rsquo;t have a certificate available for test purpose. In this post I pretend to show how to generate a certificate to sign assemblies.
-First, we need to install OpenSSL that we can achive following the steps specified in the next link:
-Installing OpenSSL on Windows 10 and updating PATH
-Second, let&rsquo;s create a batch script file called: &ldquo;generateCertificate.
-    </div>
-    <div class="read-more">
-      <a href="/post/generating-signature-certificates/" class="read-more-link">Read more</a>
     </div>
     
   </div>
@@ -643,6 +671,10 @@ Second, let&rsquo;s create a batch script file called: &ldquo;generateCertificat
       
       <li >
         <a href="/page/2/">2</a>
+      </li>
+      
+      <li >
+        <a href="/page/3/">3</a>
       </li>
       
     </ul>
@@ -739,7 +771,7 @@ Second, let&rsquo;s create a batch script file called: &ldquo;generateCertificat
     &copy;
     
       2020 -
-    2024</span>
+    2025</span>
 
   
   

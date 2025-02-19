@@ -13,7 +13,7 @@
       <link>/es/post/generating-signature-certificates/</link>
       <pubDate>Mon, 01 Feb 2021 00:00:00 +0000</pubDate>
       <guid>/es/post/generating-signature-certificates/</guid>
-      <description>Código fuente de apoyo disponible en GitHub&#xA;A veces, los ensamblados (ejecutables y bibliotecas) deben estar firmados y no tenemos un certificado disponible con fines de prueba. En este post pretendo mostrar cómo generar un certificado para firmar ensamblados.&#xA;Primero, necesitamos instalar OpenSSL que podemos lograr siguiendo los pasos que se especifican en el siguiente enlace:&#xA;Instalación de OpenSSL en Windows 10 y actualización de PATH&#xA;En segundo lugar, creemos un archivo de secuencia de comandos por lotes llamado: &amp;ldquo;generateCertificate.</description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://gist.github.com/rsotolongo/80410cee05c26a7bcb17327d0c279b86&#34;&gt;Código fuente de apoyo disponible en GitHub&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;A veces, los ensamblados (ejecutables y bibliotecas) deben estar firmados y no tenemos un certificado disponible con fines de prueba. En este post pretendo mostrar cómo generar un certificado para firmar ensamblados.&lt;/p&gt;&#xA;&lt;p&gt;Primero, necesitamos instalar OpenSSL que podemos lograr siguiendo los pasos que se especifican en el siguiente enlace:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://medium.com/swlh/installing-openssl-on-windows-10-and-updating-path-80992e26f6a1&#34;&gt;Instalación de OpenSSL en Windows 10 y actualización de PATH&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;En segundo lugar, creemos un archivo de secuencia de comandos por lotes llamado: &amp;ldquo;generateCertificate.cmd&amp;rdquo; con contenido:&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
