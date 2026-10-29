@@ -10,10 +10,10 @@
       {{ .Site.Params.since }} -
     {{ end }}
     {{- $current }}
-    {{- if or .Site.Copyright .Site.Author.name -}}
+    {{- if or .Site.Copyright .Site.Params.author.name -}}
       <span class="author">
         {{if .Site.Copyright }}{{ .Site.Copyright | safeHTML }}
-        {{ else }}{{ .Site.Author.name | safeHTML }}
+        {{ else }}{{ .Site.Params.author.name | safeHTML }}
         {{ end }}
       </span>
     {{- end -}}
