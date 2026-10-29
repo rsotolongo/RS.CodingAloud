@@ -2,18 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ciencia on Programando en voz alta</title>
-    <link>/es/tags/ciencia/</link>
+    <link>https://example.org/es/tags/ciencia/</link>
     <description>Recent content in Ciencia on Programando en voz alta</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
     <lastBuildDate>Wed, 23 Dec 2020 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/es/tags/ciencia/index.xml" rel="self" type="application/rss+xml" />
+    
+        <atom:link href="https://example.org/es/tags/ciencia/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>ISFUROS 2006</title>
-      <link>/es/post/isfuros-2006/</link>
+      <link>https://example.org/es/post/isfuros-2006/</link>
       <pubDate>Wed, 23 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>/es/post/isfuros-2006/</guid>
-      <description>&lt;p&gt;He estado tan ocupado en tareas aledañas que poco a poco fue pasando el tiempo y ni cuenta me di de que llevaba meses sin escribir nada, luego caí en un vacío profesional que no me incitaba a redactar nada hasta hoy mismo que luego de participar en el ISFUROS me llamé yo mismo a reflexionar y no dejar pasar inadvertido el evento.&lt;/p&gt;&#xA;&lt;p&gt;El International International Symposium on Fuzzy and Rough Sets (ISFUROS) fue un evento que se desarrolló en la UCLV del 4 al 6 de Diciembre del 2006. El comité Organizador hizo un trabajo encomiable y digno de elogiar pues a pesar de todas las carencias materiales que a diario nos entorpecen, el evento fue un éxito total, al menos yo lo considero así.&lt;/p&gt;</description>
+      
+      <guid>https://example.org/es/post/isfuros-2006/</guid>
+      
+        <description>&lt;p&gt;He estado tan ocupado en tareas aledañas que poco a poco fue pasando el tiempo y ni cuenta me di de que llevaba meses sin escribir nada, luego caí en un vacío profesional que no me incitaba a redactar nada hasta hoy mismo que luego de participar en el ISFUROS me llamé yo mismo a reflexionar y no dejar pasar inadvertido el evento.&lt;/p&gt;
+&lt;p&gt;El International International Symposium on Fuzzy and Rough Sets (ISFUROS) fue un evento que se desarrolló en la UCLV del 4 al 6 de Diciembre del 2006. El comité Organizador hizo un trabajo encomiable y digno de elogiar pues a pesar de todas las carencias materiales que a diario nos entorpecen, el evento fue un éxito total, al menos yo lo considero así.&lt;/p&gt;
+&lt;p&gt;Al evento pudo asistir un profesor por cada Universidad donde se estudia Informática o Cibernética como invitados, además, claro está de aquellos que tuvieran trabajos aceptados por el Comité Evaluador. El Comité Organizador y Evaluador estuvo compuesto por personalidades nacionales y extranjeras de alto rango y quehacer científico, se podría catalogar de excelencia ambos comités.&lt;/p&gt;
+&lt;p&gt;Por la parte extranjera asistieron muchos profesionales de varios países que trabajan las líneas de investigación centrales del evento. Dentro de las personalidades que asistieron se encuentra Jose Luis Verdegay, Kaoru Hirota, Bernard de Baets, Witold Pedrycz, Wojciech Ziarko, estos dos últimos, presidentes de las asociaciones internacionales de conjuntos difusos y aproximados respectivamente.&lt;/p&gt;
+&lt;p&gt;Las exposiciones estuvieron muy buenas (todas en inglés -incluyendo las de los cubanos-) con trabajos muy buenos todos (exalto otra vez el trabajo del Comité Evaluador). Fue una ocasión única de compartir con tan altas personalidades mundiales y oír sus criterios y en lo que actualmente trabajan.&lt;/p&gt;
+&lt;p&gt;Las actividades colaterales fueron organizadas con esmero, desde el aseguramiento alimenticio, el hospedaje, hasta los recorridos turísticos. La idea final fue repetir el encuentro cada dos años.&lt;/p&gt;
+</description>
+      
     </item>
+    
   </channel>
 </rss>

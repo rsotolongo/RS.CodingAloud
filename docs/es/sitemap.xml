@@ -1,512 +1,512 @@
-<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
+<?xml-stylesheet type="text/xsl" href="https://example.org/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>/es/categories/</loc>
+    <loc>https://example.org/es/categories/</loc>
     <lastmod>2025-02-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/client-side/</loc>
+    <loc>https://example.org/es/tags/client-side/</loc>
     <lastmod>2025-02-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/categories/desarrollo/</loc>
+    <loc>https://example.org/es/categories/desarrollo/</loc>
     <lastmod>2025-02-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/</loc>
+    <loc>https://example.org/es/post/</loc>
     <lastmod>2025-02-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/</loc>
+    <loc>https://example.org/es/</loc>
     <lastmod>2025-02-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/querystring/</loc>
+    <loc>https://example.org/es/tags/querystring/</loc>
     <lastmod>2025-02-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/</loc>
+    <loc>https://example.org/es/tags/</loc>
     <lastmod>2025-02-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/typescript/</loc>
+    <loc>https://example.org/es/tags/typescript/</loc>
     <lastmod>2025-02-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/insensitive-query-string-value/</loc>
+    <loc>https://example.org/es/post/insensitive-query-string-value/</loc>
     <lastmod>2025-02-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/asynchronous-commands/</loc>
+    <loc>https://example.org/es/post/asynchronous-commands/</loc>
     <lastmod>2021-03-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/paralelismo/</loc>
+    <loc>https://example.org/es/tags/paralelismo/</loc>
     <lastmod>2021-03-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/wpf/</loc>
+    <loc>https://example.org/es/tags/wpf/</loc>
     <lastmod>2021-03-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/msbuild/</loc>
+    <loc>https://example.org/es/tags/msbuild/</loc>
     <lastmod>2021-02-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/immediate-publishing/</loc>
+    <loc>https://example.org/es/post/immediate-publishing/</loc>
     <lastmod>2021-02-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/visual-studio/</loc>
+    <loc>https://example.org/es/tags/visual-studio/</loc>
     <lastmod>2021-02-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/api/</loc>
+    <loc>https://example.org/es/tags/api/</loc>
     <lastmod>2021-02-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/generating-swagger-openapi-clients/</loc>
+    <loc>https://example.org/es/post/generating-swagger-openapi-clients/</loc>
     <lastmod>2021-02-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/openapi/</loc>
+    <loc>https://example.org/es/tags/openapi/</loc>
     <lastmod>2021-02-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/swagger/</loc>
+    <loc>https://example.org/es/tags/swagger/</loc>
     <lastmod>2021-02-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/signing-assemblies/</loc>
+    <loc>https://example.org/es/post/signing-assemblies/</loc>
     <lastmod>2021-02-08T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/seguridad/</loc>
+    <loc>https://example.org/es/tags/seguridad/</loc>
     <lastmod>2021-02-08T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/generating-signature-certificates/</loc>
+    <loc>https://example.org/es/post/generating-signature-certificates/</loc>
     <lastmod>2021-02-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/openssl/</loc>
+    <loc>https://example.org/es/tags/openssl/</loc>
     <lastmod>2021-02-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/deploying-nuget-packages/</loc>
+    <loc>https://example.org/es/post/deploying-nuget-packages/</loc>
     <lastmod>2021-01-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/nuget/</loc>
+    <loc>https://example.org/es/tags/nuget/</loc>
     <lastmod>2021-01-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/creando-paquetes-nuget/</loc>
+    <loc>https://example.org/es/post/creando-paquetes-nuget/</loc>
     <lastmod>2021-01-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/usando-octopus/</loc>
+    <loc>https://example.org/es/post/usando-octopus/</loc>
     <lastmod>2021-01-11T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/octopus/</loc>
+    <loc>https://example.org/es/tags/octopus/</loc>
     <lastmod>2021-01-11T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/an%C3%A1lisis-de-c%C3%B3digo/</loc>
+    <loc>https://example.org/es/tags/an%C3%A1lisis-de-c%C3%B3digo/</loc>
     <lastmod>2021-01-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/c%C3%B3digo-fuente/</loc>
+    <loc>https://example.org/es/tags/c%C3%B3digo-fuente/</loc>
     <lastmod>2021-01-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/estilo-de-c%C3%B3digo-usando-stylecop/</loc>
+    <loc>https://example.org/es/post/estilo-de-c%C3%B3digo-usando-stylecop/</loc>
     <lastmod>2021-01-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/resharper/</loc>
+    <loc>https://example.org/es/tags/resharper/</loc>
     <lastmod>2021-01-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/stylecop/</loc>
+    <loc>https://example.org/es/tags/stylecop/</loc>
     <lastmod>2021-01-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/bienvenida/</loc>
+    <loc>https://example.org/es/post/bienvenida/</loc>
     <lastmod>2021-01-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/categories/general/</loc>
+    <loc>https://example.org/es/categories/general/</loc>
     <lastmod>2021-01-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/categories/memorias/</loc>
+    <loc>https://example.org/es/categories/memorias/</loc>
     <lastmod>2020-12-31T23:59:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/memorias/</loc>
+    <loc>https://example.org/es/post/memorias/</loc>
     <lastmod>2020-12-31T23:59:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/delphi/</loc>
+    <loc>https://example.org/es/tags/delphi/</loc>
     <lastmod>2020-12-31T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/recuperaci%C3%B3n-de-xml/</loc>
+    <loc>https://example.org/es/post/recuperaci%C3%B3n-de-xml/</loc>
     <lastmod>2020-12-31T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/xml/</loc>
+    <loc>https://example.org/es/tags/xml/</loc>
     <lastmod>2020-12-31T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/generaci%C3%B3n-de-xml/</loc>
+    <loc>https://example.org/es/post/generaci%C3%B3n-de-xml/</loc>
     <lastmod>2020-12-30T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/consideraciones-de-implementaci%C3%B3n/</loc>
+    <loc>https://example.org/es/post/consideraciones-de-implementaci%C3%B3n/</loc>
     <lastmod>2020-12-29T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/arquitectura/</loc>
+    <loc>https://example.org/es/tags/arquitectura/</loc>
     <lastmod>2020-12-29T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/consideraciones-de-dise%C3%B1o/</loc>
+    <loc>https://example.org/es/post/consideraciones-de-dise%C3%B1o/</loc>
     <lastmod>2020-12-28T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/filosof%C3%ADa/</loc>
+    <loc>https://example.org/es/tags/filosof%C3%ADa/</loc>
     <lastmod>2020-12-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/gobierno-electr%C3%B3nico/</loc>
+    <loc>https://example.org/es/post/gobierno-electr%C3%B3nico/</loc>
     <lastmod>2020-12-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/confianza-en-internet/</loc>
+    <loc>https://example.org/es/post/confianza-en-internet/</loc>
     <lastmod>2020-12-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/internet/</loc>
+    <loc>https://example.org/es/tags/internet/</loc>
     <lastmod>2020-12-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/ciencia/</loc>
+    <loc>https://example.org/es/tags/ciencia/</loc>
     <lastmod>2020-12-23T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/evento/</loc>
+    <loc>https://example.org/es/tags/evento/</loc>
     <lastmod>2020-12-23T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/isfuros-2006/</loc>
+    <loc>https://example.org/es/post/isfuros-2006/</loc>
     <lastmod>2020-12-23T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/poni%C3%A9ndonos-al-d%C3%ADa/</loc>
+    <loc>https://example.org/es/post/poni%C3%A9ndonos-al-d%C3%ADa/</loc>
     <lastmod>2020-12-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/amaos-todos/</loc>
+    <loc>https://example.org/es/post/amaos-todos/</loc>
     <lastmod>2020-12-21T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/reescribir-%C3%B3-reusar/</loc>
+    <loc>https://example.org/es/post/reescribir-%C3%B3-reusar/</loc>
     <lastmod>2020-12-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/futuro-del-ensamblador/</loc>
+    <loc>https://example.org/es/post/futuro-del-ensamblador/</loc>
     <lastmod>2020-12-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/fanatismos/</loc>
+    <loc>https://example.org/es/post/fanatismos/</loc>
     <lastmod>2020-12-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/blog/</loc>
+    <loc>https://example.org/es/tags/blog/</loc>
     <lastmod>2020-12-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/herramienta/</loc>
+    <loc>https://example.org/es/tags/herramienta/</loc>
     <lastmod>2020-12-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/herramientas-para-blogs/</loc>
+    <loc>https://example.org/es/post/herramientas-para-blogs/</loc>
     <lastmod>2020-12-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/borland/</loc>
+    <loc>https://example.org/es/post/borland/</loc>
     <lastmod>2020-12-14T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/compa%C3%B1%C3%ADa/</loc>
+    <loc>https://example.org/es/tags/compa%C3%B1%C3%ADa/</loc>
     <lastmod>2020-12-14T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/superaci%C3%B3n-personal/</loc>
+    <loc>https://example.org/es/post/superaci%C3%B3n-personal/</loc>
     <lastmod>2020-12-11T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/educaci%C3%B3n/</loc>
+    <loc>https://example.org/es/tags/educaci%C3%B3n/</loc>
     <lastmod>2020-12-11T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/programaci%C3%B3n-elegante/</loc>
+    <loc>https://example.org/es/post/programaci%C3%B3n-elegante/</loc>
     <lastmod>2020-12-10T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/calidad/</loc>
+    <loc>https://example.org/es/tags/calidad/</loc>
     <lastmod>2020-12-09T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/solo-desplegar-no-basta/</loc>
+    <loc>https://example.org/es/post/solo-desplegar-no-basta/</loc>
     <lastmod>2020-12-09T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/objetos-duros-objetos-blandos/</loc>
+    <loc>https://example.org/es/post/objetos-duros-objetos-blandos/</loc>
     <lastmod>2020-12-08T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/encapsulamiento-vs-c%C3%B3digo-abierto/</loc>
+    <loc>https://example.org/es/post/encapsulamiento-vs-c%C3%B3digo-abierto/</loc>
     <lastmod>2020-12-07T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/profesionales-de-la-computaci%C3%B3n/</loc>
+    <loc>https://example.org/es/post/profesionales-de-la-computaci%C3%B3n/</loc>
     <lastmod>2020-12-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/cibern%C3%A9ticos-como-ingenieros/</loc>
+    <loc>https://example.org/es/post/cibern%C3%A9ticos-como-ingenieros/</loc>
     <lastmod>2020-12-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/validaci%C3%B3n-de-datos/</loc>
+    <loc>https://example.org/es/post/validaci%C3%B3n-de-datos/</loc>
     <lastmod>2020-12-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/post/apuntes-ingenier%C3%ADa-software/</loc>
+    <loc>https://example.org/es/post/apuntes-ingenier%C3%ADa-software/</loc>
     <lastmod>2020-12-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>/es/tags/complejidad/</loc>
+    <loc>https://example.org/es/tags/complejidad/</loc>
     <lastmod>2020-12-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

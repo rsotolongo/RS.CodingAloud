@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Creating NuGet packages - Coding Aloud</title>
   
-<link rel="alternate" hreflang="es" href="/es/post/creando-paquetes-nuget/" />
+<link rel="alternate" hreflang="es" href="https://example.org/es/post/creando-paquetes-nuget/" />
 
 
 <meta name="renderer" content="webkit" />
@@ -24,7 +24,7 @@
 
 <meta name="mobile-web-app-capable" content="yes">
 
-
+<meta name="author" content="Ricardo Sotolongo" />
   <meta name="description" content="Lately I have been involved in the creation of several NuGet packages useful for some portals being developed. I want to share my knowledge in this topic.
 If we were developing libraries for .NET Core or .NET Standard life would be easy as figure 1 to figure 8 shows.
 Figure 1: &ldquo;Creating a new .NET Core library&rdquo;.
@@ -38,10 +38,10 @@ Figure 2: &ldquo;Default code&rdquo;.
 
 
 
-<meta name="generator" content="Hugo 0.144.1" />
+<meta name="generator" content="Hugo 0.169.0" />
 
 
-<link rel="canonical" href="/post/creating-nuget-packages/" />
+<link rel="canonical" href="https://example.org/post/creating-nuget-packages/" />
 
 
 
@@ -66,7 +66,7 @@ Figure 2: &ldquo;Default code&rdquo;.
 
 
 
-<meta property="og:url" content="/post/creating-nuget-packages/">
+<meta property="og:url" content="https://example.org/post/creating-nuget-packages/">
   <meta property="og:site_name" content="Coding Aloud">
   <meta property="og:title" content="Creating NuGet packages">
   <meta property="og:description" content="Lately I have been involved in the creation of several NuGet packages useful for some portals being developed. I want to share my knowledge in this topic.
@@ -82,18 +82,18 @@ Figure 2: “Default code”.">
     <meta property="article:tag" content="NuGet">
     <meta property="article:tag" content="MSBuild">
 
-  <meta itemprop="name" content="Creating NuGet packages">
-  <meta itemprop="description" content="Lately I have been involved in the creation of several NuGet packages useful for some portals being developed. I want to share my knowledge in this topic.
+	<meta itemprop="name" content="Creating NuGet packages">
+	<meta itemprop="description" content="Lately I have been involved in the creation of several NuGet packages useful for some portals being developed. I want to share my knowledge in this topic.
 If we were developing libraries for .NET Core or .NET Standard life would be easy as figure 1 to figure 8 shows.
 Figure 1: “Creating a new .NET Core library”.
 Figure 2: “Default code”.">
-  <meta itemprop="datePublished" content="2021-01-18T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2021-01-18T00:00:00+00:00">
-  <meta itemprop="wordCount" content="878">
-  <meta itemprop="keywords" content="Visual Studio,NuGet,MSBuild">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Creating NuGet packages">
-  <meta name="twitter:description" content="Lately I have been involved in the creation of several NuGet packages useful for some portals being developed. I want to share my knowledge in this topic.
+	<meta itemprop="datePublished" content="2021-01-18T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2021-01-18T00:00:00+00:00">
+	<meta itemprop="wordCount" content="878">
+	<meta itemprop="keywords" content="Visual Studio,NuGet,MSBuild">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Creating NuGet packages">
+	<meta name="twitter:description" content="Lately I have been involved in the creation of several NuGet packages useful for some portals being developed. I want to share my knowledge in this topic.
 If we were developing libraries for .NET Core or .NET Standard life would be easy as figure 1 to figure 8 shows.
 Figure 1: “Creating a new .NET Core library”.
 Figure 2: “Default code”.">
@@ -139,28 +139,28 @@ Figure 2: “Default code”.">
         
           
           
-            <a class="menu-item-link" href="/">Home</a>
+            <a class="menu-item-link" href="https://example.org/">Home</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="/post/">Archives</a>
+            <a class="menu-item-link" href="https://example.org/post/">Archives</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="/tags/">Tags</a>
+            <a class="menu-item-link" href="https://example.org/tags/">Tags</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="/categories/">Categories</a>
+            <a class="menu-item-link" href="https://example.org/categories/">Categories</a>
           
         
       </li><li class="mobile-menu-item">
@@ -202,13 +202,13 @@ Figure 2: “Default code”.">
           
             <li>
               
-                <a href="/"><strong>English</strong></a>
+                <a href="https://example.org/"><strong>English</strong></a>
               
             </li>
           
             <li>
               
-                <a href="/es/">Español</a>
+                <a href="https://example.org/es/">Español</a>
               
             </li>
           
@@ -301,7 +301,7 @@ Figure 2: “Default code”.">
         
           
           
-            <a class="menu-item-link" href="/">Home</a>
+            <a class="menu-item-link" href="https://example.org/">Home</a>
           
 
         
@@ -312,7 +312,7 @@ Figure 2: “Default code”.">
         
           
           
-            <a class="menu-item-link" href="/post/">Archives</a>
+            <a class="menu-item-link" href="https://example.org/post/">Archives</a>
           
 
         
@@ -323,7 +323,7 @@ Figure 2: “Default code”.">
         
           
           
-            <a class="menu-item-link" href="/tags/">Tags</a>
+            <a class="menu-item-link" href="https://example.org/tags/">Tags</a>
           
 
         
@@ -334,7 +334,7 @@ Figure 2: “Default code”.">
         
           
           
-            <a class="menu-item-link" href="/categories/">Categories</a>
+            <a class="menu-item-link" href="https://example.org/categories/">Categories</a>
           
 
         
@@ -384,7 +384,7 @@ Figure 2: “Default code”.">
           
             
               <li>
-                <a href="/es/">Español</a>
+                <a href="https://example.org/es/">Español</a>
               </li>
             
           
@@ -409,7 +409,7 @@ Figure 2: “Default code”.">
       
 <div class="post-meta">
   
-  <div><a href="/es/post/creando-paquetes-nuget/">Leer en español: Creando paquetes NuGet</a></div>
+  <div><a href="https://example.org/es/post/creando-paquetes-nuget/">Leer en español: Creando paquetes NuGet</a></div>
   
 </div>
 
@@ -418,7 +418,7 @@ Figure 2: “Default code”.">
           2021-01-18
         </time>
         <div class="post-category">
-            <a href="/categories/development/"> Development </a>
+            <a href="https://example.org/categories/development/"> Development </a>
             
           </div>
         <span class="more-meta"> 878 words </span>
@@ -564,9 +564,9 @@ Figure 2: “Default code”.">
 
     <footer class="post-footer">
       <div class="post-tags">
-          <a href="/tags/visual-studio/">Visual Studio</a>
-          <a href="/tags/nuget/">NuGet</a>
-          <a href="/tags/msbuild/">MSBuild</a>
+          <a href="https://example.org/tags/visual-studio/">Visual Studio</a>
+          <a href="https://example.org/tags/nuget/">NuGet</a>
+          <a href="https://example.org/tags/msbuild/">MSBuild</a>
           
         </div>
 
@@ -604,6 +604,8 @@ Figure 2: “Default code”.">
     </footer>
   </article>
 
+  
+  
   
   
 
@@ -692,7 +694,7 @@ Figure 2: “Default code”.">
   
 
 
-<a href="/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
+<a href="https://example.org/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
     class="iconfont" title="rss" target="_blank">
     <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -709,7 +711,10 @@ Figure 2: “Default code”.">
     &copy;
     
       2020 -
-    2025</span>
+    2026<span class="author">
+        Ricardo Sotolongo
+        
+      </span></span>
 
   
   

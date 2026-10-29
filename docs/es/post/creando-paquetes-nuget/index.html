@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Creando paquetes NuGet - Programando en voz alta</title>
   
-<link rel="alternate" hreflang="en" href="/post/creating-nuget-packages/" />
+<link rel="alternate" hreflang="en" href="https://example.org/post/creating-nuget-packages/" />
 
 
 <meta name="renderer" content="webkit" />
@@ -24,7 +24,7 @@
 
 <meta name="mobile-web-app-capable" content="yes">
 
-
+<meta name="author" content="Ricardo Sotolongo" />
   <meta name="description" content="Últimamente he estado involucrado en la creación de varios paquetes NuGet útiles para algunos portales que se están siendo desarrollando. Quiero compartir mis conocimientos en este tema.
 Si estuviéramos desarrollando bibliotecas para .NET Core o .NET Standard, la vida sería fácil, como muestra La figura 1 a La figura 8.
 Figura 1: &ldquo;Creación de una nueva biblioteca de .NET Core&rdquo;.
@@ -37,10 +37,10 @@ Figura 1: &ldquo;Creación de una nueva biblioteca de .NET Core&rdquo;.
 
 
 
-<meta name="generator" content="Hugo 0.144.1" />
+<meta name="generator" content="Hugo 0.169.0" />
 
 
-<link rel="canonical" href="/es/post/creando-paquetes-nuget/" />
+<link rel="canonical" href="https://example.org/es/post/creando-paquetes-nuget/" />
 
 
 
@@ -65,7 +65,7 @@ Figura 1: &ldquo;Creación de una nueva biblioteca de .NET Core&rdquo;.
 
 
 
-<meta property="og:url" content="/es/post/creando-paquetes-nuget/">
+<meta property="og:url" content="https://example.org/es/post/creando-paquetes-nuget/">
   <meta property="og:site_name" content="Programando en voz alta">
   <meta property="og:title" content="Creando paquetes NuGet">
   <meta property="og:description" content="Últimamente he estado involucrado en la creación de varios paquetes NuGet útiles para algunos portales que se están siendo desarrollando. Quiero compartir mis conocimientos en este tema.
@@ -80,17 +80,17 @@ Figura 1: “Creación de una nueva biblioteca de .NET Core”.">
     <meta property="article:tag" content="NuGet">
     <meta property="article:tag" content="MSBuild">
 
-  <meta itemprop="name" content="Creando paquetes NuGet">
-  <meta itemprop="description" content="Últimamente he estado involucrado en la creación de varios paquetes NuGet útiles para algunos portales que se están siendo desarrollando. Quiero compartir mis conocimientos en este tema.
+	<meta itemprop="name" content="Creando paquetes NuGet">
+	<meta itemprop="description" content="Últimamente he estado involucrado en la creación de varios paquetes NuGet útiles para algunos portales que se están siendo desarrollando. Quiero compartir mis conocimientos en este tema.
 Si estuviéramos desarrollando bibliotecas para .NET Core o .NET Standard, la vida sería fácil, como muestra La figura 1 a La figura 8.
 Figura 1: “Creación de una nueva biblioteca de .NET Core”.">
-  <meta itemprop="datePublished" content="2021-01-18T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2021-01-18T00:00:00+00:00">
-  <meta itemprop="wordCount" content="923">
-  <meta itemprop="keywords" content="Visual Studio,NuGet,MSBuild">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Creando paquetes NuGet">
-  <meta name="twitter:description" content="Últimamente he estado involucrado en la creación de varios paquetes NuGet útiles para algunos portales que se están siendo desarrollando. Quiero compartir mis conocimientos en este tema.
+	<meta itemprop="datePublished" content="2021-01-18T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2021-01-18T00:00:00+00:00">
+	<meta itemprop="wordCount" content="923">
+	<meta itemprop="keywords" content="Visual Studio,NuGet,MSBuild">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Creando paquetes NuGet">
+	<meta name="twitter:description" content="Últimamente he estado involucrado en la creación de varios paquetes NuGet útiles para algunos portales que se están siendo desarrollando. Quiero compartir mis conocimientos en este tema.
 Si estuviéramos desarrollando bibliotecas para .NET Core o .NET Standard, la vida sería fácil, como muestra La figura 1 a La figura 8.
 Figura 1: “Creación de una nueva biblioteca de .NET Core”.">
 
@@ -135,28 +135,28 @@ Figura 1: “Creación de una nueva biblioteca de .NET Core”.">
         
           
           
-            <a class="menu-item-link" href="es/">Inicio</a>
+            <a class="menu-item-link" href="https://example.org/es/">Inicio</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="es/post/">Archivos</a>
+            <a class="menu-item-link" href="https://example.org/es/post/">Archivos</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="es/tags/">Etiquetas</a>
+            <a class="menu-item-link" href="https://example.org/es/tags/">Etiquetas</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="es/categories/">Categorías</a>
+            <a class="menu-item-link" href="https://example.org/es/categories/">Categorías</a>
           
         
       </li><li class="mobile-menu-item">
@@ -198,13 +198,13 @@ Figura 1: “Creación de una nueva biblioteca de .NET Core”.">
           
             <li>
               
-                <a href="/">English</a>
+                <a href="https://example.org/">English</a>
               
             </li>
           
             <li>
               
-                <a href="/es/"><strong>Español</strong></a>
+                <a href="https://example.org/es/"><strong>Español</strong></a>
               
             </li>
           
@@ -297,7 +297,7 @@ Figura 1: “Creación de una nueva biblioteca de .NET Core”.">
         
           
           
-            <a class="menu-item-link" href="es/">Inicio</a>
+            <a class="menu-item-link" href="https://example.org/es/">Inicio</a>
           
 
         
@@ -308,7 +308,7 @@ Figura 1: “Creación de una nueva biblioteca de .NET Core”.">
         
           
           
-            <a class="menu-item-link" href="es/post/">Archivos</a>
+            <a class="menu-item-link" href="https://example.org/es/post/">Archivos</a>
           
 
         
@@ -319,7 +319,7 @@ Figura 1: “Creación de una nueva biblioteca de .NET Core”.">
         
           
           
-            <a class="menu-item-link" href="es/tags/">Etiquetas</a>
+            <a class="menu-item-link" href="https://example.org/es/tags/">Etiquetas</a>
           
 
         
@@ -330,7 +330,7 @@ Figura 1: “Creación de una nueva biblioteca de .NET Core”.">
         
           
           
-            <a class="menu-item-link" href="es/categories/">Categorías</a>
+            <a class="menu-item-link" href="https://example.org/es/categories/">Categorías</a>
           
 
         
@@ -378,7 +378,7 @@ Figura 1: “Creación de una nueva biblioteca de .NET Core”.">
           
             
               <li>
-                <a href="/">English</a>
+                <a href="https://example.org/">English</a>
               </li>
             
           
@@ -405,7 +405,7 @@ Figura 1: “Creación de una nueva biblioteca de .NET Core”.">
       
 <div class="post-meta">
   
-  <div><a href="/post/creating-nuget-packages/">Read in English: Creating NuGet packages</a></div>
+  <div><a href="https://example.org/post/creating-nuget-packages/">Read in English: Creating NuGet packages</a></div>
   
 </div>
 
@@ -414,7 +414,7 @@ Figura 1: “Creación de una nueva biblioteca de .NET Core”.">
           2021-01-18
         </time>
         <div class="post-category">
-            <a href="/es/categories/desarrollo/"> Desarrollo </a>
+            <a href="https://example.org/es/categories/desarrollo/"> Desarrollo </a>
             
           </div>
         <span class="more-meta"> 923 palabras </span>
@@ -560,9 +560,9 @@ Figura 1: “Creación de una nueva biblioteca de .NET Core”.">
 
     <footer class="post-footer">
       <div class="post-tags">
-          <a href="/es/tags/visual-studio/">Visual Studio</a>
-          <a href="/es/tags/nuget/">NuGet</a>
-          <a href="/es/tags/msbuild/">MSBuild</a>
+          <a href="https://example.org/es/tags/visual-studio/">Visual Studio</a>
+          <a href="https://example.org/es/tags/nuget/">NuGet</a>
+          <a href="https://example.org/es/tags/msbuild/">MSBuild</a>
           
         </div>
 
@@ -600,6 +600,8 @@ Figura 1: “Creación de una nueva biblioteca de .NET Core”.">
     </footer>
   </article>
 
+  
+  
   
   
 
@@ -688,7 +690,7 @@ Figura 1: “Creación de una nueva biblioteca de .NET Core”.">
   
 
 
-<a href="/es/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
+<a href="https://example.org/es/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
     class="iconfont" title="rss" target="_blank">
     <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -705,7 +707,10 @@ Figura 1: “Creación de una nueva biblioteca de .NET Core”.">
     &copy;
     
       2020 -
-    2025</span>
+    2026<span class="author">
+        Ricardo Sotolongo
+        
+      </span></span>
 
   
   

@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Creating and deploying releases using Octopus - Coding Aloud</title>
   
-<link rel="alternate" hreflang="es" href="/es/post/usando-octopus/" />
+<link rel="alternate" hreflang="es" href="https://example.org/es/post/usando-octopus/" />
 
 
 <meta name="renderer" content="webkit" />
@@ -24,7 +24,7 @@
 
 <meta name="mobile-web-app-capable" content="yes">
 
-
+<meta name="author" content="Ricardo Sotolongo" />
   <meta name="description" content="Source code of support available at GitHub
 Since while ago I wanted to share my experiences automatizing the product releases with Octopus from Visual Studio. Again, let’s do it through an example.
 As it could not be otherwise, figure 1 shows the first package you should add to your project in order to create Octopus packages ready to be deployed: &ldquo;OctoPack&rdquo;. The latest package version available at the time of this tutorial was the &ldquo;3.6.1&rdquo; but we installed the &ldquo;3.6.0&rdquo; on purpose in order to show the update process.
@@ -37,10 +37,10 @@ As it could not be otherwise, figure 1 shows the first package you should add to
 
 
 
-<meta name="generator" content="Hugo 0.144.1" />
+<meta name="generator" content="Hugo 0.169.0" />
 
 
-<link rel="canonical" href="/post/using-octopus/" />
+<link rel="canonical" href="https://example.org/post/using-octopus/" />
 
 
 
@@ -65,7 +65,7 @@ As it could not be otherwise, figure 1 shows the first package you should add to
 
 
 
-<meta property="og:url" content="/post/using-octopus/">
+<meta property="og:url" content="https://example.org/post/using-octopus/">
   <meta property="og:site_name" content="Coding Aloud">
   <meta property="og:title" content="Creating and deploying releases using Octopus">
   <meta property="og:description" content="Source code of support available at GitHub
@@ -79,17 +79,17 @@ As it could not be otherwise, figure 1 shows the first package you should add to
     <meta property="article:tag" content="Visual Studio">
     <meta property="article:tag" content="Octopus">
 
-  <meta itemprop="name" content="Creating and deploying releases using Octopus">
-  <meta itemprop="description" content="Source code of support available at GitHub
+	<meta itemprop="name" content="Creating and deploying releases using Octopus">
+	<meta itemprop="description" content="Source code of support available at GitHub
 Since while ago I wanted to share my experiences automatizing the product releases with Octopus from Visual Studio. Again, let’s do it through an example.
 As it could not be otherwise, figure 1 shows the first package you should add to your project in order to create Octopus packages ready to be deployed: “OctoPack”. The latest package version available at the time of this tutorial was the “3.6.1” but we installed the “3.6.0” on purpose in order to show the update process.">
-  <meta itemprop="datePublished" content="2021-01-11T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2021-01-11T00:00:00+00:00">
-  <meta itemprop="wordCount" content="1650">
-  <meta itemprop="keywords" content="Visual Studio,Octopus">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Creating and deploying releases using Octopus">
-  <meta name="twitter:description" content="Source code of support available at GitHub
+	<meta itemprop="datePublished" content="2021-01-11T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2021-01-11T00:00:00+00:00">
+	<meta itemprop="wordCount" content="1650">
+	<meta itemprop="keywords" content="Visual Studio,Octopus">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Creating and deploying releases using Octopus">
+	<meta name="twitter:description" content="Source code of support available at GitHub
 Since while ago I wanted to share my experiences automatizing the product releases with Octopus from Visual Studio. Again, let’s do it through an example.
 As it could not be otherwise, figure 1 shows the first package you should add to your project in order to create Octopus packages ready to be deployed: “OctoPack”. The latest package version available at the time of this tutorial was the “3.6.1” but we installed the “3.6.0” on purpose in order to show the update process.">
 
@@ -134,28 +134,28 @@ As it could not be otherwise, figure 1 shows the first package you should add to
         
           
           
-            <a class="menu-item-link" href="/">Home</a>
+            <a class="menu-item-link" href="https://example.org/">Home</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="/post/">Archives</a>
+            <a class="menu-item-link" href="https://example.org/post/">Archives</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="/tags/">Tags</a>
+            <a class="menu-item-link" href="https://example.org/tags/">Tags</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="/categories/">Categories</a>
+            <a class="menu-item-link" href="https://example.org/categories/">Categories</a>
           
         
       </li><li class="mobile-menu-item">
@@ -197,13 +197,13 @@ As it could not be otherwise, figure 1 shows the first package you should add to
           
             <li>
               
-                <a href="/"><strong>English</strong></a>
+                <a href="https://example.org/"><strong>English</strong></a>
               
             </li>
           
             <li>
               
-                <a href="/es/">Español</a>
+                <a href="https://example.org/es/">Español</a>
               
             </li>
           
@@ -296,7 +296,7 @@ As it could not be otherwise, figure 1 shows the first package you should add to
         
           
           
-            <a class="menu-item-link" href="/">Home</a>
+            <a class="menu-item-link" href="https://example.org/">Home</a>
           
 
         
@@ -307,7 +307,7 @@ As it could not be otherwise, figure 1 shows the first package you should add to
         
           
           
-            <a class="menu-item-link" href="/post/">Archives</a>
+            <a class="menu-item-link" href="https://example.org/post/">Archives</a>
           
 
         
@@ -318,7 +318,7 @@ As it could not be otherwise, figure 1 shows the first package you should add to
         
           
           
-            <a class="menu-item-link" href="/tags/">Tags</a>
+            <a class="menu-item-link" href="https://example.org/tags/">Tags</a>
           
 
         
@@ -329,7 +329,7 @@ As it could not be otherwise, figure 1 shows the first package you should add to
         
           
           
-            <a class="menu-item-link" href="/categories/">Categories</a>
+            <a class="menu-item-link" href="https://example.org/categories/">Categories</a>
           
 
         
@@ -379,7 +379,7 @@ As it could not be otherwise, figure 1 shows the first package you should add to
           
             
               <li>
-                <a href="/es/">Español</a>
+                <a href="https://example.org/es/">Español</a>
               </li>
             
           
@@ -404,7 +404,7 @@ As it could not be otherwise, figure 1 shows the first package you should add to
       
 <div class="post-meta">
   
-  <div><a href="/es/post/usando-octopus/">Leer en español: Creando y desplegando aplicaciones usando Octopus</a></div>
+  <div><a href="https://example.org/es/post/usando-octopus/">Leer en español: Creando y desplegando aplicaciones usando Octopus</a></div>
   
 </div>
 
@@ -413,7 +413,7 @@ As it could not be otherwise, figure 1 shows the first package you should add to
           2021-01-11
         </time>
         <div class="post-category">
-            <a href="/categories/development/"> Development </a>
+            <a href="https://example.org/categories/development/"> Development </a>
             
           </div>
         <span class="more-meta"> 1650 words </span>
@@ -587,8 +587,8 @@ OctopusNotes</p>
 
     <footer class="post-footer">
       <div class="post-tags">
-          <a href="/tags/visual-studio/">Visual Studio</a>
-          <a href="/tags/octopus/">Octopus</a>
+          <a href="https://example.org/tags/visual-studio/">Visual Studio</a>
+          <a href="https://example.org/tags/octopus/">Octopus</a>
           
         </div>
 
@@ -626,6 +626,8 @@ OctopusNotes</p>
     </footer>
   </article>
 
+  
+  
   
   
 
@@ -714,7 +716,7 @@ OctopusNotes</p>
   
 
 
-<a href="/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
+<a href="https://example.org/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
     class="iconfont" title="rss" target="_blank">
     <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -731,7 +733,10 @@ OctopusNotes</p>
     &copy;
     
       2020 -
-    2025</span>
+    2026<span class="author">
+        Ricardo Sotolongo
+        
+      </span></span>
 
   
   

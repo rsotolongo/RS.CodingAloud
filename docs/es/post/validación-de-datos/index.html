@@ -22,7 +22,7 @@
 
 <meta name="mobile-web-app-capable" content="yes">
 
-
+<meta name="author" content="Ricardo Sotolongo" />
   <meta name="description" content="Desde los tiempos del inicio del protocolo HTTP (¿Quién iba a imaginar que, a solo 12 años, alguien se refiriera a eso con tal antigüedad?) y el ansiado carácter dinámico que poco a poco se fue haciendo más y más necesario en el mismo; la validación de los datos provenientes del cliente se hizo una necesidad mayor cada vez más.
 ¿Cuántas veces introducimos código HTML en los campos que se nos pedían en un formulario? ¿Nunca probaron la respuesta del sistema ante la introducción de una consulta a la base de datos en un campo de un formulario? Como por ejemplo: &ldquo;;DROP ALL DATABASE&rdquo; o algo similar en dependencia del SQL que se maneje -el punto y coma &ldquo;;&rdquo; lo que le dice al sistema es que la consulta se que termina ahí y en adelante hay otra y entonces cuando se trataba de insertar el valor en la base de datos lo que pasaba era que se truncaba el INSERT y se ejecutaba el DROP y por consiguiente sus devastadoras consecuencias (OJO: Todavía hay sistemas vulnerables a este tipo de código malicioso, nunca digan que fue aquí donde lo aprendieron).
 " />
@@ -34,10 +34,10 @@
 
 
 
-<meta name="generator" content="Hugo 0.144.1" />
+<meta name="generator" content="Hugo 0.169.0" />
 
 
-<link rel="canonical" href="/es/post/validaci%C3%B3n-de-datos/" />
+<link rel="canonical" href="https://example.org/es/post/validaci%C3%B3n-de-datos/" />
 
 
 
@@ -62,7 +62,7 @@
 
 
 
-<meta property="og:url" content="/es/post/validaci%C3%B3n-de-datos/">
+<meta property="og:url" content="https://example.org/es/post/validaci%C3%B3n-de-datos/">
   <meta property="og:site_name" content="Programando en voz alta">
   <meta property="og:title" content="Validación en el cliente o en el servidor: ¿Llegó .NET? ¡Se acabaron las preocupaciones!">
   <meta property="og:description" content="Desde los tiempos del inicio del protocolo HTTP (¿Quién iba a imaginar que, a solo 12 años, alguien se refiriera a eso con tal antigüedad?) y el ansiado carácter dinámico que poco a poco se fue haciendo más y más necesario en el mismo; la validación de los datos provenientes del cliente se hizo una necesidad mayor cada vez más.
@@ -74,16 +74,16 @@
     <meta property="article:modified_time" content="2020-12-02T00:00:00+00:00">
     <meta property="article:tag" content="Seguridad">
 
-  <meta itemprop="name" content="Validación en el cliente o en el servidor: ¿Llegó .NET? ¡Se acabaron las preocupaciones!">
-  <meta itemprop="description" content="Desde los tiempos del inicio del protocolo HTTP (¿Quién iba a imaginar que, a solo 12 años, alguien se refiriera a eso con tal antigüedad?) y el ansiado carácter dinámico que poco a poco se fue haciendo más y más necesario en el mismo; la validación de los datos provenientes del cliente se hizo una necesidad mayor cada vez más.
+	<meta itemprop="name" content="Validación en el cliente o en el servidor: ¿Llegó .NET? ¡Se acabaron las preocupaciones!">
+	<meta itemprop="description" content="Desde los tiempos del inicio del protocolo HTTP (¿Quién iba a imaginar que, a solo 12 años, alguien se refiriera a eso con tal antigüedad?) y el ansiado carácter dinámico que poco a poco se fue haciendo más y más necesario en el mismo; la validación de los datos provenientes del cliente se hizo una necesidad mayor cada vez más.
 ¿Cuántas veces introducimos código HTML en los campos que se nos pedían en un formulario? ¿Nunca probaron la respuesta del sistema ante la introducción de una consulta a la base de datos en un campo de un formulario? Como por ejemplo: “;DROP ALL DATABASE” o algo similar en dependencia del SQL que se maneje -el punto y coma “;” lo que le dice al sistema es que la consulta se que termina ahí y en adelante hay otra y entonces cuando se trataba de insertar el valor en la base de datos lo que pasaba era que se truncaba el INSERT y se ejecutaba el DROP y por consiguiente sus devastadoras consecuencias (OJO: Todavía hay sistemas vulnerables a este tipo de código malicioso, nunca digan que fue aquí donde lo aprendieron).">
-  <meta itemprop="datePublished" content="2020-12-02T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2020-12-02T00:00:00+00:00">
-  <meta itemprop="wordCount" content="596">
-  <meta itemprop="keywords" content="Seguridad">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Validación en el cliente o en el servidor: ¿Llegó .NET? ¡Se acabaron las preocupaciones!">
-  <meta name="twitter:description" content="Desde los tiempos del inicio del protocolo HTTP (¿Quién iba a imaginar que, a solo 12 años, alguien se refiriera a eso con tal antigüedad?) y el ansiado carácter dinámico que poco a poco se fue haciendo más y más necesario en el mismo; la validación de los datos provenientes del cliente se hizo una necesidad mayor cada vez más.
+	<meta itemprop="datePublished" content="2020-12-02T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2020-12-02T00:00:00+00:00">
+	<meta itemprop="wordCount" content="596">
+	<meta itemprop="keywords" content="Seguridad">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Validación en el cliente o en el servidor: ¿Llegó .NET? ¡Se acabaron las preocupaciones!">
+	<meta name="twitter:description" content="Desde los tiempos del inicio del protocolo HTTP (¿Quién iba a imaginar que, a solo 12 años, alguien se refiriera a eso con tal antigüedad?) y el ansiado carácter dinámico que poco a poco se fue haciendo más y más necesario en el mismo; la validación de los datos provenientes del cliente se hizo una necesidad mayor cada vez más.
 ¿Cuántas veces introducimos código HTML en los campos que se nos pedían en un formulario? ¿Nunca probaron la respuesta del sistema ante la introducción de una consulta a la base de datos en un campo de un formulario? Como por ejemplo: “;DROP ALL DATABASE” o algo similar en dependencia del SQL que se maneje -el punto y coma “;” lo que le dice al sistema es que la consulta se que termina ahí y en adelante hay otra y entonces cuando se trataba de insertar el valor en la base de datos lo que pasaba era que se truncaba el INSERT y se ejecutaba el DROP y por consiguiente sus devastadoras consecuencias (OJO: Todavía hay sistemas vulnerables a este tipo de código malicioso, nunca digan que fue aquí donde lo aprendieron).">
 
 <!--[if lte IE 9]>
@@ -127,28 +127,28 @@
         
           
           
-            <a class="menu-item-link" href="es/">Inicio</a>
+            <a class="menu-item-link" href="https://example.org/es/">Inicio</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="es/post/">Archivos</a>
+            <a class="menu-item-link" href="https://example.org/es/post/">Archivos</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="es/tags/">Etiquetas</a>
+            <a class="menu-item-link" href="https://example.org/es/tags/">Etiquetas</a>
           
         
       </li><li class="mobile-menu-item">
         
           
           
-            <a class="menu-item-link" href="es/categories/">Categorías</a>
+            <a class="menu-item-link" href="https://example.org/es/categories/">Categorías</a>
           
         
       </li><li class="mobile-menu-item">
@@ -190,13 +190,13 @@
           
             <li>
               
-                <a href="/">English</a>
+                <a href="https://example.org/">English</a>
               
             </li>
           
             <li>
               
-                <a href="/es/"><strong>Español</strong></a>
+                <a href="https://example.org/es/"><strong>Español</strong></a>
               
             </li>
           
@@ -289,7 +289,7 @@
         
           
           
-            <a class="menu-item-link" href="es/">Inicio</a>
+            <a class="menu-item-link" href="https://example.org/es/">Inicio</a>
           
 
         
@@ -300,7 +300,7 @@
         
           
           
-            <a class="menu-item-link" href="es/post/">Archivos</a>
+            <a class="menu-item-link" href="https://example.org/es/post/">Archivos</a>
           
 
         
@@ -311,7 +311,7 @@
         
           
           
-            <a class="menu-item-link" href="es/tags/">Etiquetas</a>
+            <a class="menu-item-link" href="https://example.org/es/tags/">Etiquetas</a>
           
 
         
@@ -322,7 +322,7 @@
         
           
           
-            <a class="menu-item-link" href="es/categories/">Categorías</a>
+            <a class="menu-item-link" href="https://example.org/es/categories/">Categorías</a>
           
 
         
@@ -370,7 +370,7 @@
           
             
               <li>
-                <a href="/">English</a>
+                <a href="https://example.org/">English</a>
               </li>
             
           
@@ -400,7 +400,7 @@
           2020-12-02
         </time>
         <div class="post-category">
-            <a href="/es/categories/memorias/"> Memorias </a>
+            <a href="https://example.org/es/categories/memorias/"> Memorias </a>
             
           </div>
         <span class="more-meta"> 596 palabras </span>
@@ -440,7 +440,7 @@
 
     <footer class="post-footer">
       <div class="post-tags">
-          <a href="/es/tags/seguridad/">seguridad</a>
+          <a href="https://example.org/es/tags/seguridad/">seguridad</a>
           
         </div>
 
@@ -478,6 +478,8 @@
     </footer>
   </article>
 
+  
+  
   
   
 
@@ -566,7 +568,7 @@
   
 
 
-<a href="/es/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
+<a href="https://example.org/es/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
     class="iconfont" title="rss" target="_blank">
     <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -583,7 +585,10 @@
     &copy;
     
       2020 -
-    2025</span>
+    2026<span class="author">
+        Ricardo Sotolongo
+        
+      </span></span>
 
   
   

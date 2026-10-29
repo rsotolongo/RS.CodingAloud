@@ -2,18 +2,82 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Análisis De Código on Programando en voz alta</title>
-    <link>/es/tags/an%C3%A1lisis-de-c%C3%B3digo/</link>
+    <link>https://example.org/es/tags/an%C3%A1lisis-de-c%C3%B3digo/</link>
     <description>Recent content in Análisis De Código on Programando en voz alta</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
     <lastBuildDate>Mon, 04 Jan 2021 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/es/tags/an%C3%A1lisis-de-c%C3%B3digo/index.xml" rel="self" type="application/rss+xml" />
+    
+        <atom:link href="https://example.org/es/tags/an%C3%A1lisis-de-c%C3%B3digo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Estilizando códigos usando StyleCop</title>
-      <link>/es/post/estilo-de-c%C3%B3digo-usando-stylecop/</link>
+      <link>https://example.org/es/post/estilo-de-c%C3%B3digo-usando-stylecop/</link>
       <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>/es/post/estilo-de-c%C3%B3digo-usando-stylecop/</guid>
-      <description>&lt;p&gt;Un colega me pidió que compartiera mi experiencia programando con ReSharper y, una vez que se enteró de que no uso ReSharper, sintió aún más curiosidad por saber cómo escribo los códigos fuentes. Quien me conoce sabe que me encantan los paquetes NuGet y estar actualizado constantemente, por eso encontré un paquete muy útil que instalo en todos mis proyectos apenas los inicio.&lt;/p&gt;&#xA;&lt;p&gt;StyleCop.MSBuild&lt;/p&gt;&#xA;&lt;p&gt;StyleCop solía ser una aplicación independiente con integración con Visual Studio, pero eso cambió hace un tiempo. Lo explicaré con un ejemplo. Comencemos a crear una aplicación de consola desde cero.&lt;/p&gt;</description>
+      
+      <guid>https://example.org/es/post/estilo-de-c%C3%B3digo-usando-stylecop/</guid>
+      
+        <description>&lt;p&gt;Un colega me pidió que compartiera mi experiencia programando con ReSharper y, una vez que se enteró de que no uso ReSharper, sintió aún más curiosidad por saber cómo escribo los códigos fuentes. Quien me conoce sabe que me encantan los paquetes NuGet y estar actualizado constantemente, por eso encontré un paquete muy útil que instalo en todos mis proyectos apenas los inicio.&lt;/p&gt;
+&lt;p&gt;StyleCop.MSBuild&lt;/p&gt;
+&lt;p&gt;StyleCop solía ser una aplicación independiente con integración con Visual Studio, pero eso cambió hace un tiempo. Lo explicaré con un ejemplo. Comencemos a crear una aplicación de consola desde cero.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.org/stylecop-coding-style/01.png&#34; alt=&#34;Applicación de consola&#34;&gt;&lt;/p&gt;
+&lt;p&gt;La figura 1 muestra una aplicación de consola recién creada en Visual Studio.&lt;/p&gt;
+&lt;p&gt;Observe los 0 errores, 0 advertencias y 0 mensajes una vez que se compila. Instalemos el paquete NuGet y veamos qué sucede. La figura 2 muestra la administración de paquetes NuGet para la aplicación.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.org/stylecop-coding-style/02.png&#34; alt=&#34;Administrador de paquetes de la solución&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 2.&lt;/p&gt;
+&lt;p&gt;La figura 3 muestra los resultados de la creación de la solución una vez que se instala ese paquete.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.org/stylecop-coding-style/03.png&#34; alt=&#34;Primeros resultados de compilación&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 3.&lt;/p&gt;
+&lt;p&gt;Note las 11 advertencias. Mi filosofía personal es entregar productos sin errores (eso es lógico porque los compiladores y administradores lo buscan); cero advertencias (pocas herramientas y personas le impiden implementar con advertencias); y cero mensajes (prácticamente a nadie le importa esto).&lt;/p&gt;
+&lt;p&gt;La mayoría de las advertencias recibidas se explican por sí mismas y son fáciles de solucionar. Analicémoslsas una por una.&lt;/p&gt;
+&lt;p&gt;La primera y el última están relacionadas con el hecho de que los archivos &amp;ldquo;Program.cs&amp;rdquo; y &amp;ldquo;AssemblyInfo.cs&amp;rdquo; no tienen encabezado y se pueden arreglar simplemente agregando un encabezado en formato XML que contenga el nombre del archivo entre otra información útil.&lt;/p&gt;
+&lt;p&gt;Las siguientes cinco advertencias están relacionadas con el hecho de que las declaraciones de &amp;ldquo;uso&amp;rdquo; deben estar dentro del espacio de nombres y no afuera, como dice la plantilla. La solución es obvia, simplemente mover las declaraciones dentro del espacio de nombres.&lt;/p&gt;
+&lt;p&gt;Las siguientes cuatro advertencias están relacionadas con la falta de documentación en los diferentes instrumentos de código: clases y métodos en este caso. Una vez que se agrega la documentación, las advertencias desaparecen.&lt;/p&gt;
+&lt;p&gt;La figura 4 muestra el resultado de la compilación después de aplicar las correcciones anteriores.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.org/stylecop-coding-style/04.png&#34; alt=&#34;Segundos resultados de compilación&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 4.&lt;/p&gt;
+&lt;p&gt;Observe las dos nuevas advertencias. En este punto es bueno mencionar que este es un procedimiento iterativo hasta la meta (0 errores, 0 advertencias, 0 mensajes). También se eliminaron las declaraciones de &amp;ldquo;uso&amp;rdquo; no utilizadas (las que están en gris). La figura 5 muestra el nuevo resultado una vez que arreglamos estas dos advertencias agregando el modificador &amp;ldquo;público&amp;rdquo; a la clase y al método.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.org/stylecop-coding-style/05.png&#34; alt=&#34;Primeros arreglos&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 5.&lt;/p&gt;
+&lt;p&gt;¡Hurra! ¡Lo hicimos! Pero (siempre hay un pero, ¿no?), Esto es posible gracias al conjunto de reglas que hemos configurado en el proyecto para reportar advertencias. Entonces, seamos más exigentes al cambiar el conjunto de reglas.&lt;/p&gt;
+&lt;p&gt;La figura 6 muestra las propiedades del proyecto en la opción &amp;ldquo;Análisis de código&amp;rdquo;. Observe la casilla de verificación no seleccionada: &amp;ldquo;Habilitar análisis de código al compilar&amp;rdquo; y las &amp;ldquo;Reglas recomendadas administradas por Microsoft&amp;rdquo; en el menú desplegable Conjunto de reglas.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.org/stylecop-coding-style/06.png&#34; alt=&#34;Opciones de configuración del proyecto&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 6.&lt;/p&gt;
+&lt;p&gt;Si habilita la casilla de verificación sin instalar el paquete NuGet, no recibirá ninguna advertencia y si también cambia el conjunto de reglas sin instalar el paquete NuGet, recibirá solo 2 advertencias también devueltas por el paquete StyleCop porque lo que hace es agregar muchas más reglas al conjunto de trabajo. Esa es la razón por la que me encanta agregarlo a mis proyectos y no solo usar lo que está incluido en Visual Studio.&lt;/p&gt;
+&lt;p&gt;La figura 7 muestra las opciones recomendadas.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.org/stylecop-coding-style/07.png&#34; alt=&#34;Opciones recomendadas&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 7.&lt;/p&gt;
+&lt;p&gt;Sí, &amp;ldquo;Microsoft All Rules&amp;rdquo;, más estrictos somos, mejor código obtenemos si seguimos los criterios para obtener al final 0 errores, 0 advertencias y 0 mensajes.&lt;/p&gt;
+&lt;p&gt;La figura 8 muestra los resultados de la compilación después de las nuevas opciones para el análisis de código.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.org/stylecop-coding-style/08.png&#34; alt=&#34;Terceros resultados de compilación&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 8.&lt;/p&gt;
+&lt;p&gt;Seis nuevas advertencias, es hora de empezar de nuevo. Uhmmm&amp;hellip; Los dos primeros no tienen un archivo asociado, ¿cómo puedo solucionarlos? Bueno, hay una solución. Haga clic derecho en el código &amp;ldquo;CA2210&amp;rdquo; en este caso, seleccione la opción de &amp;ldquo;Suprimir&amp;rdquo; y luego la opción &amp;ldquo;En Archivo de Supresión&amp;rdquo; como se muestra en La figura 9.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.org/stylecop-coding-style/09.png&#34; alt=&#34;Opciones de reglas&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 9.&lt;/p&gt;
+&lt;p&gt;Una vez seleccionada esta opción, se crea un nuevo archivo llamado &amp;ldquo;GlobalSuppressions.cs&amp;rdquo; en la raíz del proyecto como se muestra en La figura 10.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.org/stylecop-coding-style/10.png&#34; alt=&#34;Archivo de supresión de reglas&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 10.&lt;/p&gt;
+&lt;p&gt;En este punto, me gustaría mencionar que hay ocasiones en las que puede suprimir la advertencia en el archivo de supresión y otras directamente en el código fuente. En La figura 10 todavía hay 5 advertencias más para corregir. Mis opciones son suprimir en el archivo de supresión global la primera advertencia y suprimir en el código fuente la cuarta advertencia. Para suprimir el código fuente, debe hacer casi lo mismo: haga clic con el botón derecho en el código de la advertencia, seleccione la opción &amp;ldquo;Supresión&amp;rdquo; y luego seleccione la opción &amp;ldquo;En fuente&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Esta opción agrega un atributo sobre el método que se informa que contiene el código para suprimir la advertencia, similar al código agregado en el archivo &amp;ldquo;GlobalSuppressions.cs&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;La segunda advertencia se puede arreglar marcando el método &amp;ldquo;Principal&amp;rdquo; como &amp;ldquo;estático&amp;rdquo;; mientras que el tercero se puede arreglar eliminando el parámetro &amp;ldquo;args&amp;rdquo; (y su documentación en los comentarios del método). Finalmente, la quinta advertencia se puede arreglar simplemente corrigiendo la ortografía de la palabra. Sí, StyleCop también incluye corrección ortográfica, ¿no es genial?&lt;/p&gt;
+&lt;p&gt;Una vez que se abordan todas las advertencias restantes, podemos volver a compilar y ver lo que se informa esta vez, La figura 11 muestra eso.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.org/stylecop-coding-style/11.png&#34; alt=&#34;Cuartos resultados de compilación&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 11.&lt;/p&gt;
+&lt;p&gt;¿Qué? ¿Más advertencias? Sí, recuerde que agregó un nuevo archivo: &amp;ldquo;GlobalSuppressions.cs&amp;rdquo; y ese archivo ingresa al ciclo para reportar advertencias de compilación también. Entonces, es hora de corregir las nuevas advertencias informadas.&lt;/p&gt;
+&lt;p&gt;Todas las supresiones a través del código (código fuente del archivo &amp;ldquo;GlobalSuppressions.cs&amp;rdquo; o atributos en los instrumentos de código) deben tener una justificación. Utilizo mis iniciales como justificación como una forma de rastrear quién decidió suprimir esta advertencia. Así es como soluciono la primera y tercera advertencias.&lt;/p&gt;
+&lt;p&gt;La segunda advertencia se puede corregir agregando el encabezado al archivo &amp;ldquo;GlobalSuppressions.cs&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;La cuarta advertencia solicita el uso de &amp;ldquo;////&amp;rdquo; en lugar de &amp;ldquo;//&amp;rdquo; para iniciar un comentario de código fuente. Si no le gusta esta opción, puede suprimir globalmente en el archivo &amp;ldquo;GlobalSuppressions.cs&amp;rdquo;, pero prefiero corregirlo cambiando la forma en que escribo los comentarios.&lt;/p&gt;
+&lt;p&gt;Finalmente, La figura 12 muestra cómo se ve el código al final.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.org/stylecop-coding-style/12.png&#34; alt=&#34;Código final&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 12.&lt;/p&gt;
+&lt;p&gt;Primero que se cumpla todo nuestro objetivo: 0 errores, 0 advertencias y 0 mensajes. En segundo lugar, nuestro código resultante es atractivo y se explica por sí mismo para futuras modificaciones, así como menos problemas reportados por otras herramientas de análisis de seguridad como HP Fortify.&lt;/p&gt;
+&lt;p&gt;Es válido mencionar que debido a que esta disciplina requiere agregar comentarios en todos los instrumentos escribir todos esos comentarios manualmente es una tarea tediosa. Por esa razón también utilizo otra herramienta llamada &amp;ldquo;GhostDoc&amp;rdquo; que genera documentación muy precisa dependiendo del contexto del instrumento que se está documentando. El problema con esto es que debe hacerse uno por uno debido a la limitación de la licencia. En realidad, yo uso la versión gratuita, pero la licencia profesional permite generar comentarios para toda una clase, archivo o espacio de nombres con un solo clic o presionando &amp;ldquo;Shift + Ctrl + D&amp;rdquo; sobre el instrumento. La buena noticia es que recientemente &amp;ldquo;GhostDoc&amp;rdquo; distribuyó una versión usando el paquete de extensión de Visual Studio y no la aplicación independiente como estaba, por lo que la instalación y las actualizaciones se vuelven más fáciles.&lt;/p&gt;
+&lt;p&gt;Una vez más esta es mi experiencia creando códigos fuentes. Sé que seguir esta disciplina no tiene gracia si el producto no es nuevo pero como dice Robert C. Martin: &amp;ldquo;… no importa el estado de un proyecto, pero cualquier cosa que cambies trata de hacer tu mejor esfuerzo…&amp;rdquo; para mí eso significa no generar nuevas advertencias. Al final, piense siempre que el desarrollador que le toque el código en el futuro podría ser un asesino en serie y conoce su dirección (también cita de Robert C. Martin), así que es mejor dejar el código lo más limpio posible.&lt;/p&gt;
+&lt;p&gt;Todos esto comenzó con una pregunta de ReSharper y terminará con un comentario relacionado con ReSharper. A veces, las advertencias informadas por StyleCop y las informadas por ReSharper entran en conflicto entre ellas. Yo suelo dar prioridad a los reportados por StyleCop porque creo que son más estrictos y compatibles con más herramientas. Además, no hay dinero asociado porque es gratis mientras que ReSharper no lo es.&lt;/p&gt;
+</description>
+      
     </item>
+    
   </channel>
 </rss>

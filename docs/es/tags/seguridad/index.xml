@@ -2,32 +2,374 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Seguridad on Programando en voz alta</title>
-    <link>/es/tags/seguridad/</link>
+    <link>https://example.org/es/tags/seguridad/</link>
     <description>Recent content in Seguridad on Programando en voz alta</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
     <lastBuildDate>Mon, 08 Feb 2021 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/es/tags/seguridad/index.xml" rel="self" type="application/rss+xml" />
+    
+        <atom:link href="https://example.org/es/tags/seguridad/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Firmando ensamblados</title>
-      <link>/es/post/signing-assemblies/</link>
+      <link>https://example.org/es/post/signing-assemblies/</link>
       <pubDate>Mon, 08 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>/es/post/signing-assemblies/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/SigningAssemblies&#34;&gt;Código fuente de apoyo disponible en GitHub&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;net-core&#34;&gt;.NET Core&lt;/h2&gt;&#xA;&lt;p&gt;No todos los clientes requieren firmar los ensamblados de sus aplicaciones, pero cuando es necesario, la tarea no es tan fácil como cabría esperar.&lt;/p&gt;&#xA;&lt;p&gt;En el caso de las aplicaciones .NET Core, podemos lograr esto simplemente editando el archivo del proyecto (.csproj) agregando el siguiente código:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;Target&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;BuildSigning&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;AfterTargets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AfterBuild&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;Exec&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Command=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;SIGNING_COMMAND&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;/Target&amp;gt;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;Como ejemplo, &lt;strong&gt;SIGNING_COMMAND&lt;/strong&gt; podría ser:&lt;/p&gt;&#xA;&lt;p&gt;&lt;em&gt;&amp;ldquo;C\Program Files (x86)\Windows Kits\10\bin\10.0.177630\x64\signtool.exe&amp;rdquo;&lt;/em&gt; &lt;em&gt;sign /f &amp;ldquo;$(SolutionDir)certificate.pfx&amp;rdquo; /p &amp;ldquo;pass&amp;amp;1234&amp;rdquo; &amp;ldquo;S(TargetDir)&lt;/em&gt;.dll&amp;rdquo;*&lt;/p&gt;</description>
+      
+      <guid>https://example.org/es/post/signing-assemblies/</guid>
+      
+        <description>&lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/SigningAssemblies&#34;&gt;Código fuente de apoyo disponible en GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;net-core&#34;&gt;.NET Core&lt;/h2&gt;
+&lt;p&gt;No todos los clientes requieren firmar los ensamblados de sus aplicaciones, pero cuando es necesario, la tarea no es tan fácil como cabría esperar.&lt;/p&gt;
+&lt;p&gt;En el caso de las aplicaciones .NET Core, podemos lograr esto simplemente editando el archivo del proyecto (.csproj) agregando el siguiente código:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;Target&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;BuildSigning&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;AfterTargets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AfterBuild&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;Exec&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Command=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;SIGNING_COMMAND&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;/Target&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Como ejemplo, &lt;strong&gt;SIGNING_COMMAND&lt;/strong&gt; podría ser:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&amp;ldquo;C\Program Files (x86)\Windows Kits\10\bin\10.0.177630\x64\signtool.exe&amp;rdquo;&lt;/em&gt; &lt;em&gt;sign /f &amp;ldquo;$(SolutionDir)certificate.pfx&amp;rdquo; /p &amp;ldquo;pass&amp;amp;1234&amp;rdquo; &amp;ldquo;S(TargetDir)&lt;/em&gt;.dll&amp;rdquo;*&lt;/p&gt;
+&lt;p&gt;Estamos utilizando el certificado generado en este post anterior: &amp;ldquo;&lt;a href=&#34;../generating-signature-certificates&#34;&gt;Generando certificados de firma&lt;/a&gt;&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Esto hace que después de cada compilación (independientemente de la configuración -Debug, Release, etc.-) se firmen los ensamblados al final del proceso. La firma continúa funcionando después de las compilaciones, pero no después de la publicación. El resultado del script de publicación anterior que publica una aplicación .NET Core es &amp;ldquo;curioso&amp;rdquo;:&lt;/p&gt;
+&lt;p&gt;Suponiendo que la publicación se basa en la configuración de &amp;ldquo;Release&amp;rdquo;, los ensamblados en la carpeta &amp;ldquo;Release&amp;rdquo; se firman antes de copiarse en la carpeta temporal &amp;ldquo;Publish&amp;rdquo;. Luego, los artefactos en la carpeta temporal &amp;ldquo;Publish&amp;rdquo; se copian en el destino final &amp;ldquo;Publish&amp;rdquo;. Finalmente, los ensamblados en la carpeta &amp;ldquo;Release&amp;rdquo; se vuelven a firmar nuevamente.&lt;/p&gt;
+&lt;p&gt;Los ensamblados en la carpeta &amp;ldquo;Release&amp;rdquo; se firman dos veces porque para la funcionalidad de publicación, la macro $(TargetDir) sigue teniendo el valor para la carpeta &amp;ldquo;Release&amp;rdquo; y no la carpeta &amp;ldquo;Publish&amp;rdquo;. Una solución probada cambió la macro $(TargetDir) por la macro $(PublishDir) pero no funcionó porque esa macro toma el valor de la carpeta temporal &amp;ldquo;Publish&amp;rdquo; y no de la carpeta final &amp;ldquo;Publish&amp;rdquo;. El resultado es que los ensamblados de la carpeta &amp;ldquo;Release&amp;rdquo; no se firman dos veces, pero los ensamblados de la carpeta &amp;ldquo;Publish&amp;rdquo; tampoco están firmados. En cambio, los ensamblados en la carpeta temporal &amp;ldquo;Publish&amp;rdquo; se firman después de haber sido copiados en la carpeta final &amp;ldquo;Publish&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Con estos antecedentes, la mejor solución es cambiar el script de post compilación para que sea un script posterior a la publicación:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;Target&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;PublishSigning&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;AfterTargets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AfterPublish&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;Exec&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Command=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;SIGNING_COMMAND&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;/Target&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Cambiando &lt;strong&gt;SIGNING_COMMAND&lt;/strong&gt; a:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&amp;ldquo;C:\Program Files (x86)\Windows Kits\10\bin\10.0.17763.0\x64\signtool.exe&amp;rdquo; sign /f &amp;ldquo;$(SolutionDir)certificate.pfx&amp;rdquo; /p &amp;ldquo;pass&amp;amp;1234&amp;rdquo; &amp;ldquo;$(PublishUrl)&lt;/em&gt;.dll&amp;rdquo;*&lt;/p&gt;
+&lt;p&gt;Observe la adición de &lt;em&gt;&amp;ldquo;publish&amp;quot;&lt;/em&gt; después de la macro $(TargetDir).&lt;/p&gt;
+&lt;p&gt;Esta modificación funcionará pero, por supuesto, solo para la publicación y no para todas las compilaciones. Nada nos detiene para agregar ambos scripts de publicación (compilar y/o publicar) para que los ensamblados se firmen en todos los casos, el único problema con esto es que los ensamblados en la carpeta &amp;ldquo;Release&amp;rdquo; se firmarán dos veces. Eso no es gran cosa, pero es algo a tener en cuenta.&lt;/p&gt;
+&lt;p&gt;Otro tema es el tiempo de inactividad durante la firma de ensamblados. Dependiendo de la aplicación que se esté firmando, este proceso puede llevar una cantidad considerable de tiempo que es el doble en caso de doble firma o el triple en caso de utilizar los dos scripts de publicación (Compilar y Publicar). Debido a que &amp;ldquo;Publicar&amp;rdquo; no se usa con tanta frecuencia como &amp;ldquo;Compilar&amp;rdquo;, el tiempo de inactividad no es un gran problema, excepto si incluimos una marca de tiempo en la firma.&lt;/p&gt;
+&lt;p&gt;Agregar el parámetro &lt;em&gt;/t timeseverURL&lt;/em&gt; to &lt;strong&gt;SIGNING_COMMAND&lt;/strong&gt; podría saltar (como ejemplo) de 15 segundos a 2030 segundos (4.5 minutos) en el caso de un servidor de tiempo externo como &lt;a href=&#34;http://timestamp.comodoca.com/authenticode&#34;&gt;http://timestamp.comodoca.com/authenticode&lt;/a&gt; . Si usamos un servidor de tiempo interno, este tiempo podría disminuir significativamente, pero su uso dependerá de si la política de seguridad de ejecución toma o no la marca de tiempo en consideración.&lt;/p&gt;
+&lt;p&gt;Finalmente, analicemos una muestra para el script de post publicación:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;Target&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;PublishSigning&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;AfterTargets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AfterPublish&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;Message&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Importance=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;high&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Text=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Firmando ensamblados publicados...&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;Exec&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Command=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;amp;quot;C:\Program Files (x86)\Windows Kits\10\bin\10.0.17763.0\x64\signtool.exe&amp;amp;quot; sign /f &amp;amp;quot;$(SolutionDir)certificate.pfx&amp;amp;quot; /p &amp;amp;quot;pass&amp;amp;amp;1234&amp;amp;quot; &amp;amp;quot;$(PublishUrl)*.dll&amp;amp;quot; &amp;amp;quot;$(PublishUrl)*.exe&amp;amp;quot;&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;Message&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Importance=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;high&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Text=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Ensamblados publicados firmados...&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;/Target&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Incluir mensajes de inicio y finalización en la consola de compilación es una buena práctica. Todas las comillas dobles (&amp;rdquo;) deben codificarse en su equivalente HTML (&lt;code&gt;&amp;amp;quot;&lt;/code&gt;). El símbolo de conjunción (&amp;amp;) que coincidentemente está presente en la contraseña del certificado, también debe codificarse (&lt;code&gt;&amp;amp;amp;&lt;/code&gt;). No solo se firman los ensamblados de biblioteca (DLL), los ejecutables (EXE) también se firman.&lt;/p&gt;
+&lt;p&gt;Finalmente, algo a lo que hay que prestar atención es la versión del SDK de Windows (10.0.17763.0) porque eso depende de lo que esté instalado en la computadora de desarrollo pero podría ser diferente para cada miembro del equipo. Con todo esto en mente, se podría adoptar otro enfoque que aportara claridad y generalidad:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;Target&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;PublishSigning&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;AfterTargets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AfterPublish&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;Exec&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Command=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;$(SolutionDir)SignAssemblies.cmd $(SolutionDir) $(PublishUrl)&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;/Target&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Donde el archivo: &amp;ldquo;SignAssemblies.cmd&amp;rdquo; podría ser:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gdscript3&#34; data-lang=&#34;gdscript3&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ECHO&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Firmando&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ensamblados&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;C:\Program Files (x86)\Windows Kits&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\10\b&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;in&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\10&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;.0.17763.0&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\x64&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;\signtool.exe&amp;#34;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;sign&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%c&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;ertificate.pfx&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;pass&amp;amp;1234&amp;#34;&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;%2*.dll&amp;#34;&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;%2*.exe&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ECHO&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Ensamblados&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;firmados&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Esto todavía tiene el problema de la versión del SDK codificada de forma rígida, pero podría generalizarse como:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gdscript3&#34; data-lang=&#34;gdscript3&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ECHO&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Firmando&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ensamblados&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;SET&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;basedir&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;C&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;\&lt;span class=&#34;n&#34;&gt;Program&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Files&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x86&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;\&lt;span class=&#34;n&#34;&gt;Windows&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Kits&lt;/span&gt;\&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;\&lt;span class=&#34;n&#34;&gt;bin&lt;/span&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;SET&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;newestSdkDir&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;10.0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;17763.0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;FOR&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;F&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;tokens=*&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;dir /b /on &amp;#34;%baseDir%10*&amp;#34;&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;DO&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SET&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;newestSdkDir&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=%%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;REM&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;%baseDir&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%%&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;newestSdkDir%&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\x64&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;\signtool.exe&amp;#34;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;sign&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;?&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;%baseDir&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%%&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;newestSdkDir%&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\x64&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;\signtool.exe&amp;#34;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;sign&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%1c&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;ertificate.pfx&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;pass&amp;amp;1234&amp;#34;&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;%2*.dll&amp;#34;&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;%2*.exe&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ECHO&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Ensamblados&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;firmados&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;La versión del SDK se inicializa como la versión 10.0.17763.0 (porque es la última que he instalado en mi computadora en el momento de escribir esta publicación, pero podría ser cualquier otra versión) y luego itera sobre todas las carpetas que coinciden con el patrón &amp;ldquo;10*&amp;rdquo; en orden para obtener la última versión. Hay una instrucción útil que no hace nada, pero si sustituimos &lt;strong&gt;REM&lt;/strong&gt; por &lt;strong&gt;ECHO&lt;/strong&gt; podemos ver la información del tiempo de ejecución en las trazas de compilación. Observe cómo eliminamos los caracteres codificados porque los trasladamos al archivo de comando (.cmd) y no es necesario usarlos allí.&lt;/p&gt;
+&lt;p&gt;Por último, creemos un enfoque aún más unificado utilizando más tareas de MSBuild. Necesitamos sustituir el destino de MSBuild &amp;ldquo;PublishSigning&amp;rdquo; anterior por el siguiente código:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;Import&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Project=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;..\SignAssemblies.targets&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Condition=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Exists(&amp;#39;..\SignAssemblies.targets&amp;#39;)&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;Target&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;PublishSigning&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;AfterTargets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AfterPublish&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;MSBuild&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Projects=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;$(MsBuildThisFile)&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Targets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;SignAssemblies&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Properties=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AssembliesPath=$(PublishUrl);AssembliesPattern=*.dll&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;MSBuild&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Projects=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;$(MsBuildThisFile)&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Targets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;SignAssemblies&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Properties=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AssembliesPath=$(PublishUrl);AssembliesPattern=*.exe&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;/Target&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Básicamente, se incluye otro archivo externo de MSBuild y se llama a su tarea principal pasando los parámetros &amp;ldquo;AssembliesPath&amp;rdquo; y &amp;ldquo;AssembliesPattern&amp;rdquo;. Esto se debe a que no todas las soluciones generan bibliotecas y ensamblados ejecutables al mismo tiempo. Ahora, el nuevo archivo &amp;ldquo;SignAssemblies.targets&amp;rdquo; se ve así:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;utf-8&amp;#34;?&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;Project&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;xmlns=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;http://schemas.microsoft.com/developer/msbuild/2003&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;Target&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;SignAssemblies&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;Message&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Importance=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;high&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Text=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Firmando ensamblados...&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;Message&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Importance=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;high&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Text=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Camino de los ensamblados: $(AssembliesPath)&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;Message&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Importance=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;high&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Text=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Patrón de los ensamblados: $(AssembliesPattern)&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;Exec&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Command=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;$(SolutionDir)SignAssemblies.cmd $(SolutionDir) $(AssembliesPath)$(AssembliesPattern)&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;Message&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Importance=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;high&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Text=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Ensamblados firmados...&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/Target&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;/Project&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;El archivo &amp;ldquo;SignAssemblies.cmd&amp;rdquo; permanece casi idéntico con solo una pequeña modificación (el patrón de archivos a firmar se pasa desde la llamada a la tarea):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gdscript3&#34; data-lang=&#34;gdscript3&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ECHO&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Firmando&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ensamblados&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;SET&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;basedir&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;C&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;\&lt;span class=&#34;n&#34;&gt;Program&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Files&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x86&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;\&lt;span class=&#34;n&#34;&gt;Windows&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Kits&lt;/span&gt;\&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;\&lt;span class=&#34;n&#34;&gt;bin&lt;/span&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;SET&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;newestSdkDir&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;10.0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;17763.0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;FOR&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;F&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;tokens=*&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;dir /b /on &amp;#34;%baseDir%10*&amp;#34;&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;DO&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SET&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;newestSdkDir&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=%%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;REM&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;%baseDir&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%%&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;newestSdkDir%&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\x64&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;\signtool.exe&amp;#34;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;sign&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;?&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;%baseDir&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%%&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;newestSdkDir%&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\x64&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;\signtool.exe&amp;#34;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;sign&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%1c&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;ertificate.pfx&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;pass&amp;amp;1234&amp;#34;&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;%2&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ECHO&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Ensamblados&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;firmados&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;En caso de que queramos firmar además todos los ensamblados después de la compilación, podemos agregar las siguientes líneas al archivo del proyecto (.csproj) antes o después del objetivo &amp;ldquo;PublishSigning&amp;rdquo; anterior:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;Target&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;BuildSigning&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;AfterTargets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AfterBuild&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;MSBuild&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Projects=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;$(MsBuildThisFile)&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Targets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;SignAssemblies&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Properties=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AssembliesPath=$(TargetDir);AssembliesPattern=*.dll&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;MSBuild&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Projects=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;$(MsBuildThisFile)&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Targets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;SignAssemblies&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Properties=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AssembliesPath=$(TargetDir);AssembliesPattern=*.exe&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;/Target&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;net-framework&#34;&gt;.NET Framework&lt;/h2&gt;
+&lt;p&gt;Las cosas no cambian drásticamente desde el enfoque de .NET Core porque intentamos ser lo más genéricos posible desde el principio. Sin embargo, hay algunos detalles a tener en cuenta.&lt;/p&gt;
+&lt;p&gt;En la aplicación .NET Framework podemos editar los eventos de compilación en las propiedades del proyecto como se muestra en la figura 1.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.org/signing-assemblies/01.png&#34; alt=&#34;Project build events&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 1: Eventos de compilación del proyecto.&lt;/p&gt;
+&lt;p&gt;Esto modifica el archivo del proyecto (.csproj) agregando las siguientes líneas&amp;hellip;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;PropertyGroup&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;PostBuildEvent&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    ECHO Test message...
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;/PostBuildEvent&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;/PropertyGroup&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&amp;hellip;donde, por supuesto, podemos reemplazar el comando ECHO por &lt;strong&gt;SIGNING_COMMAND&lt;/strong&gt; de la sección anterior. El resultado es muy similar, los ensamblados se firman en la carpeta de configuración (Debug. Release, etc.) pero la función de publicación sigue teniendo problemas. Si revisamos la carpeta publicada, podemos verificar que los ensamblados producidos por la solución se firmen mientras que los ensamblados dependientes de terceros (como los paquetes NuGet) no están firmados por nuestro certificado. Permanecen firmados por su firmante original o no están firmados en absoluto. Esto no es lo que necesitamos, necesitamos todos los ensamblados firmados por nuestro certificado preferiblemente en el momento de la publicación para evitar la firma manual antes de desplegar.&lt;/p&gt;
+&lt;p&gt;Intenté reutilizar el enfoque de la sección anterior para .NET Core, pero no fue posible sin modificaciones. Terminé de modificar manualmente el archivo del proyecto (.csproj) para agregar las siguientes líneas:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;Import&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Project=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;..\SignAssemblies.targets&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Condition=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Exists(&amp;#39;..\SignAssemblies.targets&amp;#39;)&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;Target&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;PublishSigning&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;AfterTargets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;GatherAllFilesToPublish&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;MSBuild&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Projects=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;$(MsBuildThisFile)&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Targets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;SignAssemblies&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Properties=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AssembliesPath=$(ProjectDir)$(WPPAllFilesinSingleFolder)\bin\;AssembliesPattern=*.dll&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;/Target&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Aquí estamos especificando que queremos ejecutar target: &amp;ldquo;PublishSigning&amp;rdquo; cuando todo esté listo para ser copiado en la carpeta final &amp;ldquo;Publish&amp;rdquo; (tarea: &amp;ldquo;GatherAllFilesToPublish&amp;rdquo;). Muy similar a lo que hicimos en .NET Core pero cambiando el valor del parámetro &amp;ldquo;AssembliesPath&amp;rdquo;. Con este enfoque, todos los ensamblados se firman justo antes de que todo esté listo para copiarse en la carpeta &amp;ldquo;Publish&amp;rdquo; final; de la carpeta temporal &amp;ldquo;Publish&amp;rdquo; a la carpeta final &amp;ldquo;Publish&amp;rdquo;. No es necesario firmar archivos ejecutables porque las aplicaciones web de .NET Framework no generan archivos .EXE.&lt;/p&gt;
+&lt;p&gt;En caso de que queramos firmar todos los ensamblados también después de la compilación, podemos agregar las siguientes líneas al archivo del proyecto (.csproj):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;Target&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Name=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;BuildSigning&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;AfterTargets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AfterBuild&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;MSBuild&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Projects=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;$(MsBuildThisFile)&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Targets=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;SignAssemblies&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;Properties=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;AssembliesPath=$(TargetDir);AssembliesPattern=*.dll&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;/Target&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Traté de incluir en el archivo &amp;ldquo;SignAssemblies.targets&amp;rdquo; el objetivo de llamada &amp;ldquo;PublishSigning&amp;rdquo; para simplificar las modificaciones manuales en el archivo del proyecto (.csproj) y reutilizarlo en diferentes soluciones. Desafortunadamente, eso no es una buena idea porque los destinos de llamada dependen de parámetros que son específicos para los proyectos en desarrollo (Atributo: &amp;ldquo;Properties&amp;rdquo;). Esto parece más consistente y estandarizado.&lt;/p&gt;
+&lt;p&gt;El proceso de firma de ensamblados ideal podría verse así:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Copiar y agregar el archivo de certificado: &amp;ldquo;certificate.pfx&amp;rdquo; a la solución.&lt;/li&gt;
+&lt;li&gt;Copiar y agregar el archivo por lotes: &amp;ldquo;SignAssemblies.cmd&amp;rdquo; a la solución.&lt;/li&gt;
+&lt;li&gt;Copiar y agregar el archivo de MSBuild &amp;ldquo;SignAssemblies.targets&amp;rdquo; a la solución.&lt;/li&gt;
+&lt;li&gt;Modificar el archivo del proyecto (.csproj) para incluir el archivo: &amp;ldquo;SingAssemblies.targets&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Modificar el archivo del proyecto (.csproj) para agregar la llamada a la tarea: &amp;ldquo;BuildSigning&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Modificar el archivo del proyecto (.csproj) para agregar la llamada a la tarea: &amp;ldquo;PublishSigning&amp;rdquo;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Si el archivo: &amp;ldquo;SignAssemblies.targets&amp;rdquo; usa el archivo &amp;ldquo;SignAssemblies.cmd&amp;rdquo; para encontrar el último SDK instalado, el paso 2 no es opcional.&lt;/p&gt;
+&lt;p&gt;Con suerte, este documento ayuda a aclarar las diferentes opciones que tenemos a la hora de firmar ensamblados para cumplir con las políticas de seguridad de ejecución de código.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/rsotolongo/RS.Blog.Projects/tree/main/SigningAssemblies&#34;&gt;Código fuente de apoyo disponible en GitHub&lt;/a&gt;&lt;/p&gt;
+</description>
+      
     </item>
+    
     <item>
       <title>Generando certificados de firma</title>
-      <link>/es/post/generating-signature-certificates/</link>
+      <link>https://example.org/es/post/generating-signature-certificates/</link>
       <pubDate>Mon, 01 Feb 2021 00:00:00 +0000</pubDate>
-      <guid>/es/post/generating-signature-certificates/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://gist.github.com/rsotolongo/80410cee05c26a7bcb17327d0c279b86&#34;&gt;Código fuente de apoyo disponible en GitHub&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;A veces, los ensamblados (ejecutables y bibliotecas) deben estar firmados y no tenemos un certificado disponible con fines de prueba. En este post pretendo mostrar cómo generar un certificado para firmar ensamblados.&lt;/p&gt;&#xA;&lt;p&gt;Primero, necesitamos instalar OpenSSL que podemos lograr siguiendo los pasos que se especifican en el siguiente enlace:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://medium.com/swlh/installing-openssl-on-windows-10-and-updating-path-80992e26f6a1&#34;&gt;Instalación de OpenSSL en Windows 10 y actualización de PATH&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;En segundo lugar, creemos un archivo de secuencia de comandos por lotes llamado: &amp;ldquo;generateCertificate.cmd&amp;rdquo; con contenido:&lt;/p&gt;</description>
+      
+      <guid>https://example.org/es/post/generating-signature-certificates/</guid>
+      
+        <description>&lt;p&gt;&lt;a href=&#34;https://gist.github.com/rsotolongo/80410cee05c26a7bcb17327d0c279b86&#34;&gt;Código fuente de apoyo disponible en GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;A veces, los ensamblados (ejecutables y bibliotecas) deben estar firmados y no tenemos un certificado disponible con fines de prueba. En este post pretendo mostrar cómo generar un certificado para firmar ensamblados.&lt;/p&gt;
+&lt;p&gt;Primero, necesitamos instalar OpenSSL que podemos lograr siguiendo los pasos que se especifican en el siguiente enlace:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://medium.com/swlh/installing-openssl-on-windows-10-and-updating-path-80992e26f6a1&#34;&gt;Instalación de OpenSSL en Windows 10 y actualización de PATH&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;En segundo lugar, creemos un archivo de secuencia de comandos por lotes llamado: &amp;ldquo;generateCertificate.cmd&amp;rdquo; con contenido:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gdscript3&#34; data-lang=&#34;gdscript3&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;MD&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Certificate&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;CD&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Certificate&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ECHO&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;authorityKeyIdentifier&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;keyid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;issuer&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;certificate&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ext&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ECHO&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;basicConstraints&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;CA&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;FALSE&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;certificate&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ext&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ECHO&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;keyUsage&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;digitalSignature&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;nonRepudiation&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;keyEncipherment&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dataEncipherment&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;certificate&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ext&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ECHO&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;subjectAltName&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;alt_names&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;certificate&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ext&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ECHO&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;certificate&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ext&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ECHO&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;alt_names&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;certificate&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ext&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ECHO&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;DNS&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;RS&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;certificate&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ext&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;openssl&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;genrsa&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;des3&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;passout&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;pass&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;pass&amp;amp;1234&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;certificate&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;pass&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;key&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2048&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;openssl&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rsa&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;passin&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;pass&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;pass&amp;amp;1234&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;certificate&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;pass&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;key&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;certificate&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;key&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;openssl&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;req&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;key&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;certificate&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;key&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;certificate&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;csr&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;openssl&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x509&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;req&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sha256&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;extfile&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;certificate&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ext&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;days&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;365&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;certificate&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;csr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;signkey&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;certificate&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;key&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;certificate&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;crt&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;openssl&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pkcs12&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;certificate&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pfx&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;inkey&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;certificate&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;key&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;certificate&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;crt&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Básicamente creamos una carpeta (llamada: &amp;ldquo;Certificate&amp;rdquo;) y la convertimos en el directorio de trabajo. Después creamos un archivo escribiendo su contenido línea por línea. Finalmente, en varios pasos, usamos la herramienta: &amp;ldquo;openssl.exe&amp;rdquo; para generar el certificado. Observe las comillas dobles que rodean el valor de la contraseña debido a que contiene el carácter especial de conjunción (&amp;amp;). El código fuente de ese archivo se puede descargar desde &lt;a href=&#34;https://gist.github.com/rsotolongo/80410cee05c26a7bcb17327d0c279b86&#34;&gt;este GIST&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Suponiendo que lo hemos copiado en la carpeta: &amp;ldquo;C:\Temp&amp;rdquo;, veamos qué hace a través del análisis de la figura 1 que representa su ejecución.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.org/generating-signature-certificates/01.png&#34; alt=&#34;Ejecución de la secuencia de comandos&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 1: Ejecución de la secuencia de comandos.&lt;/p&gt;
+&lt;p&gt;Los pasos a prestar más atención se indican con flechas rojas y amarillas, mientras que hay otros pasos opcionales indicados con flechas azules. La primera flecha roja es el nombre común que elegimos para el certificado. Este debe ser el mismo valor que tenemos que ingresar una vez que la secuencia de comandos solicita un valor en la segunda flecha roja.&lt;/p&gt;
+&lt;p&gt;Las flechas amarillas son la contraseña elegida para el certificado. Si bien los dos primeros valores se especifican en el archivo por lotes: &amp;ldquo;generateCertificate.cmd&amp;rdquo;, los dos últimos valores deben introducirse manualmente cuando se soliciten. La herramienta: &amp;ldquo;openssl.exe&amp;rdquo; oculta esos valores mientras se escriben, pero deben coincidir.&lt;/p&gt;
+&lt;p&gt;Una vez que todos los pasos terminan con éxito, podemos ver el resultado en la figura 2.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.org/generating-signature-certificates/02.png&#34; alt=&#34;Certificado resultante&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Figura 2: Certificado resultante.&lt;/p&gt;
+&lt;p&gt;Ese es un certificado que podemos usar para firmar ensamblados (un proceso que explicaré en una publicación posterior).&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://gist.github.com/rsotolongo/80410cee05c26a7bcb17327d0c279b86&#34;&gt;Código fuente de apoyo disponible en GitHub&lt;/a&gt;&lt;/p&gt;
+</description>
+      
     </item>
+    
     <item>
       <title>Validación en el cliente o en el servidor: ¿Llegó .NET? ¡Se acabaron las preocupaciones!</title>
-      <link>/es/post/validaci%C3%B3n-de-datos/</link>
+      <link>https://example.org/es/post/validaci%C3%B3n-de-datos/</link>
       <pubDate>Wed, 02 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>/es/post/validaci%C3%B3n-de-datos/</guid>
-      <description>&lt;p&gt;Desde los tiempos del inicio del protocolo HTTP (¿Quién iba a imaginar que, a solo 12 años, alguien se refiriera a eso con tal antigüedad?) y el ansiado carácter dinámico que poco a poco se fue haciendo más y más necesario en el mismo; la validación de los datos provenientes del cliente se hizo una necesidad mayor cada vez más.&lt;/p&gt;&#xA;&lt;p&gt;¿Cuántas veces introducimos código HTML en los campos que se nos pedían en un formulario? ¿Nunca probaron la respuesta del sistema ante la introducción de una consulta a la base de datos en un campo de un formulario? Como por ejemplo: &amp;ldquo;;DROP ALL DATABASE&amp;rdquo; o algo similar en dependencia del SQL que se maneje -el punto y coma &amp;ldquo;;&amp;rdquo; lo que le dice al sistema es que la consulta se que termina ahí y en adelante hay otra y entonces cuando se trataba de insertar el valor en la base de datos lo que pasaba era que se truncaba el INSERT y se ejecutaba el DROP y por consiguiente sus devastadoras consecuencias (OJO: Todavía hay sistemas vulnerables a este tipo de código malicioso, nunca digan que fue aquí donde lo aprendieron).&lt;/p&gt;</description>
+      
+      <guid>https://example.org/es/post/validaci%C3%B3n-de-datos/</guid>
+      
+        <description>&lt;p&gt;Desde los tiempos del inicio del protocolo HTTP (¿Quién iba a imaginar que, a solo 12 años, alguien se refiriera a eso con tal antigüedad?) y el ansiado carácter dinámico que poco a poco se fue haciendo más y más necesario en el mismo; la validación de los datos provenientes del cliente se hizo una necesidad mayor cada vez más.&lt;/p&gt;
+&lt;p&gt;¿Cuántas veces introducimos código HTML en los campos que se nos pedían en un formulario? ¿Nunca probaron la respuesta del sistema ante la introducción de una consulta a la base de datos en un campo de un formulario? Como por ejemplo: &amp;ldquo;;DROP ALL DATABASE&amp;rdquo; o algo similar en dependencia del SQL que se maneje -el punto y coma &amp;ldquo;;&amp;rdquo; lo que le dice al sistema es que la consulta se que termina ahí y en adelante hay otra y entonces cuando se trataba de insertar el valor en la base de datos lo que pasaba era que se truncaba el INSERT y se ejecutaba el DROP y por consiguiente sus devastadoras consecuencias (OJO: Todavía hay sistemas vulnerables a este tipo de código malicioso, nunca digan que fue aquí donde lo aprendieron).&lt;/p&gt;
+&lt;p&gt;Para evitar cosas como estas se realizan (incluso hoy en la actualidad) validaciones en el servidor donde se validaban los datos. Esto por supuesto trae aparejado una ralentización del sistema producto del tráfico en la red; cosa que puede dar al traste con la buena explotación del sistema debido a sus bajas prestaciones en dependencia de la configuración de la red.&lt;/p&gt;
+&lt;p&gt;En este caso también caían las restricciones propias de los sistemas en cuanto a obligar a sus usuarios a introducir determinados campos de los formularios y al olvido de los clientes de esta restricción.&lt;/p&gt;
+&lt;p&gt;Para todo esto se comenzó a hacer las validaciones en el cliente, es decir en el navegador web mediante la característica que poseen casi todos de brindar una interface de su documento mediante la programación en un lenguaje de secuencia de comandos (generalmente JavaScript). Esto no fue obstáculo para lo usuarios más avanzados pues comenzaron a salvar las páginas en sus computadoras para modificar los códigos fuentes eliminando dichas validaciones. Una vez introducidos los datos eran enviados al servidor donde eran procesados y de nuevo caían los sistemas.&lt;/p&gt;
+&lt;p&gt;Si bien es verdad que la filosofía de validaciones no ha cambiado con la introducción de modernas tecnologías de programación como lo constituye la plataforma .NET de Microsoft; es verdad también que el código a escribir se ha minimizado a un extremo que prácticamente es cero la cantidad de líneas que hay que escribir, sobre todo si se hace uso de las facilidades de herramientas RAD como el Visual Studio .NET.&lt;/p&gt;
+&lt;p&gt;Basta con arrastrar y soltar en nuestro formulario algunos controles y configurar, si acaso, un par de propiedades de los mimos para lograr que el sistema valide los datos tanto en el cliente como en el servidor en caso de que sea necesario. &amp;ldquo;RequiredFieldValidator&amp;rdquo; como su nombre bien lo indica hace que el control que se convierta de obligatoriedad la introducción de datos en el control que tiene asociado.&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;RangeFieldValidator&amp;rdquo; es otro control de este tipo. Por si los que vienen con la biblioteca de clases de la plataforma (.NET Framework) no fueran suficientes la misma posee una clase para que se pueda heredar de ella e implementar nosotros mismos nuestros propios validadores respondiendo a las restricciones propias del sistema a implementar.&lt;/p&gt;
+&lt;p&gt;Evalúe las posibilidades que brindan los validadores de .NET a la seguridad de aplicaciones web y utilícelos cuando los necesite para que vea en la práctica lo que decimos.&lt;/p&gt;
+</description>
+      
     </item>
+    
   </channel>
 </rss>
